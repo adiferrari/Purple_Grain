@@ -143,7 +143,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
             post("Array Length = %d", len);
         } */
         x->soundfile_length = garray_npoints(a);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, 50);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, 500);
     }
 
     return;

@@ -23,7 +23,9 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     //x->soundfile_table = (float *) vas_mem_alloc(x->soundfile_length * sizeof(float));
     x->soundfile_table = (float *) malloc(x->soundfile_length * sizeof(float));
 
-    x->current_grain_index, x->playback_position, x->current_adsr_stage_index = 0;
+    x->current_grain_index = 0;
+    x->playback_position = 0;
+    x->current_adsr_stage_index = 0;
     t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
     x->adsr_env = envelope_new(20, 200, 1, 1, 200);
@@ -57,31 +59,34 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size)
 {
     int i = vector_size;
-    float output;
+    float output, gauss_val;
     //playback position speichern
     while(i--)
     {
         output = 0;
-        //checken welches Grain gerade dran ist
+        if(x->playback_position >= x->soundfile_length) x->playback_position = 0;
         
         //checken an welcher position man innerhalb des Grains gerade sein müsste
         //checken ob dies die letzte position des Grain ist -- wenn ja current_grain_index++
         if(x->playback_position >= x->grains_table[x->current_grain_index].end)
         {
+
             x->current_grain_index++;
             if(x->current_grain_index >= x->num_grains) x->current_grain_index = 0;
             
             //post("Current Grain Index = %d", x->current_grain_index);
         }
+        
         //checken dabei ob das das letzte Grain war --- wenn ja current_grain_index = 0
 
         output += x->soundfile_table[(int)floor(x->playback_position++)];
         //output *= calculate_adsr_value(x);
 
-        //float gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
+        gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
+        //output *= gauss_val;
         //post("gauss value = %f", gauss_val);
 
-        if(x->playback_position >= x->soundfile_length) x->playback_position = 0;
+        
         *out++ = output;
     }
     

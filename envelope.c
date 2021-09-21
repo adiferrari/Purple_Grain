@@ -80,12 +80,16 @@ envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int 
 */
 float gauss(grain x, int sample)
 {
-    int grain_size = x.grain_size_samples;
+    t_int grain_size = x.grain_size_samples;
 
     if (grain_size == 0)
         return 0;
 
+    
     float gauss_value = expf(-(pow(sample-(grain_size/2), 2) / 0.2* pow(grain_size, 2)));
+    if(gauss_value > 0){
+        
+    }
     return gauss_value;
 
 }
