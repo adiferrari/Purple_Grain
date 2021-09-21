@@ -1,0 +1,14 @@
+https://n1n4-303.github.io/tutorials/granular
+Understanding granular synthesis with PureData
+
+http://pd-tutorial.com/english/ch03s07.html
+3.7.3.1 Granular technique as a synthesizer
+
+http://www.rossbencina.com/static/code/granular-synthesis/BencinaAudioAnecdotes310801.pdf
+Ein langes Paper mit mehreren Varianten(?) von Granular Synthese 
+
+https://granularsynthesis.com/hthesis/contents.html
+sehr umfangreiche GS Beschreibung 
+
+http://puredata.info/docs/manuals/pd/x1.htm#s2
+Pd Manual

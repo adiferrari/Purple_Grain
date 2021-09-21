@@ -1,0 +1,19 @@
+#N canvas 562 145 450 374 12;
+#X declare -stdpath soundfiler;
+#X obj 19 134 soundfiler;
+#X obj 232 311 declare -stdpath soundfiler;
+#X floatatom 19 163 8 0 0 0 - - -;
+#X obj 18 10 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 18 101 read -resize amen_break.wav \$1;
+#X obj 20 38 symbol sample;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array sample 345168 float 2;
+#X coords 0 1 345168 -1 200 140 1;
+#X restore 214 149 graph;
+#X msg 19 186 s $sample.length;
+#X connect 0 0 2 0;
+#X connect 2 0 7 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
