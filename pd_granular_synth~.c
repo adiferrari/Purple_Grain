@@ -47,7 +47,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
 
     x->soundfile = 0;
     x->soundfile_arrayname = soundfile_arrayname;
-        post("soundfile arrayname: %s", x->soundfile_arrayname);
+
     x->soundfile_length = 0;
     x->envelopeTable = 0;
     //x->synth = c_granular_synth_new(30);        // Default value of 30ms
@@ -105,9 +105,6 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
  */
 static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_symbol *s)
 {
-    // To-Do
-    // siehe Session 5 rtap_osc6.c "...getArray"-Methode
-    post("Array Name: %s",x->soundfile_arrayname->s_name);
     t_garray *a;
     x->soundfile_arrayname = s;
 
