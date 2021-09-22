@@ -59,7 +59,7 @@ typedef struct window
     t_sample *window_samples_table;
 }window;
 
-envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int release);
+envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, int release);
 float gauss(grain x, int sample);
 void envelope_free(envelope *x);
 

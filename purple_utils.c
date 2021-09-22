@@ -18,7 +18,7 @@ int get_samples_from_ms(int ms, float sr)
         return ceil((sr / 1000) * ms);
     }
     else{
-        post("could not convert from ms to samples");
+    
         return 0;
     }
 }

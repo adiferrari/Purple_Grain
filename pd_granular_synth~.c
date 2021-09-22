@@ -117,7 +117,6 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         post("Inner if-condition reached");
         x->soundfile = 0;
         }
-        
         post("Get Array method if block reached");
     }
 
