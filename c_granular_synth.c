@@ -45,7 +45,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->grains_table = (grain *) malloc(x->num_grains * sizeof(grain));
     for(int j = 0; j<x->num_grains; j++)
     {
-        x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j);
+        x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j, 1.3f);
         // entweder hier mit sternchen die new method return komponente dereferenzieren...
         //oder diese umschreiben dass sie keinen grain pointer sondern einen grain zurückliefert
     }
@@ -59,6 +59,7 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
 {
     int i = vector_size;
     float output, gauss_val;
+    float weighted, integral;
     //playback position speichern
     while(i--)
     {
@@ -67,18 +68,32 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         
         //checken an welcher position man innerhalb des Grains gerade sein müsste
         //checken ob dies die letzte position des Grain ist -- wenn ja current_grain_index++
-        if(x->playback_position >= x->grains_table[x->current_grain_index].end)
+        if(x->grains_table[x->current_grain_index].grain_played_through)
         {
-
+            x->grains_table[x->current_grain_index].grain_played_through = false;
             x->current_grain_index++;
             if(x->current_grain_index >= x->num_grains) x->current_grain_index = 0;
         }
+        
+        float left_sample = x->soundfile_table[(int)floor(x->grains_table[x->current_grain_index].current_sample_pos)];
+        float right_sample = x->soundfile_table[(int)ceil(x->grains_table[x->current_grain_index].current_sample_pos)];
+        float frac = modff(x->grains_table[x->current_grain_index].current_sample_pos, &integral);
 
-        gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        output *= gauss_val;
-        //post("gauss value = %f", gauss_val);
+        weighted = get_interpolated_sanple_value(left_sample, right_sample,frac);
 
-        output += x->soundfile_table[(int)floor(x->playback_position++)];
+        output += weighted;
+        //output += x->soundfile_table[(int)floor(x->playback_position++)];
+        
+        x->grains_table[x->current_grain_index].current_sample_pos = x->grains_table[x->current_grain_index].next_sample_pos;
+        x->grains_table[x->current_grain_index].next_sample_pos += x->grains_table[x->current_grain_index].time_stretch_factor;
+        if(x->grains_table[x->current_grain_index].next_sample_pos > x->soundfile_length)
+        {
+            x->grains_table[x->current_grain_index].next_sample_pos = x->soundfile_length - 1;
+        }
+        if(x->grains_table[x->current_grain_index].current_sample_pos >= x->grains_table[x->current_grain_index].end)
+        {
+            x->grains_table[x->current_grain_index].grain_played_through = true;
+        }
         
         *out++ = output;
     }

@@ -22,3 +22,10 @@ int get_samples_from_ms(int ms, float sr)
         return 0;
     }
 }
+
+float get_interpolated_sanple_value(float sample_left, float sample_right, float frac)
+{
+    float weighted_a = sample_left * (1 - frac);
+    float weighted_b = sample_right * frac;
+    return (weighted_a + weighted_b);
+}

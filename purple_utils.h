@@ -11,4 +11,6 @@
 
 int get_samples_from_ms(int ms, float sr);
 
+float get_interpolated_sanple_value(float sample_left, float sample_right, float frac);
+
 #endif /* purple_utils_h */

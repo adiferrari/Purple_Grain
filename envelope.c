@@ -69,7 +69,6 @@ float calculate_adsr_value(c_granular_synth *x)
     return adsr_val;
 }
 
-/*
 envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int release)
 {
     envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
@@ -117,11 +116,7 @@ envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int 
     }
     return x;
 }
-    Create windowing for alle Grains by using envelope.h
-    using only A,S,R parameters (3 stages: Fade-In, Full Volume, Fade-Out)
-    Consider Grain Duration (as Input parameter) and maybe take 1/10 of the duration at start for Fade-In
-    1/10 at the end fo Fade-Out and the other 8/10s for full output stage
-*/
+
 
 
 float gauss(grain x, int grainindex)
