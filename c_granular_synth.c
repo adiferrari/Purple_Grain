@@ -83,7 +83,7 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         //output *= calculate_adsr_value(x);
 
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        //output *= gauss_val;
+        output *= gauss_val;
         //post("gauss value = %f", gauss_val);
 
         

@@ -7,48 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6C2E2D5F-E44A-411B-9EDB-32AA1F049AB6"
-            shouldBeEnabled = "Yes"
+            uuid = "05A41CF1-D8F3-40BC-A40A-445E270FB7BD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pd_granular_synth~.c"
+            filePath = "envelope.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "pd_granular_synth_tilde_new(soundfile_arrayname)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "gauss(x, grainindex)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5FD91861-6424-43B2-A2C7-069D3648934D"
-            shouldBeEnabled = "Yes"
+            uuid = "AD3C9E28-7F43-48D1-910E-E6D4A9D8112E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pd_granular_synth~.c"
+            filePath = "envelope.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "pd_granular_synth_tilde_new(soundfile_arrayname)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BFF0C92F-BE1E-473C-8FC3-D83008054EAD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pd_granular_synth~.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "pd_granular_synth_tilde_getArray(x, s)"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "gauss(x, grainindex)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

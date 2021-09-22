@@ -34,7 +34,7 @@ typedef struct pd_granular_synth_tilde
     t_outlet *out;
 } t_pd_granular_synth_tilde;
 
-/**
+/** 
  * @related pd_granular_synth_tilde
  * @brief Creates a new pd_granular_synth_tilde object.<br>
  * For more information please refer to the <a href = "https://github.com/pure-data/externals-howto" > Pure Data Docs </a> <br>
