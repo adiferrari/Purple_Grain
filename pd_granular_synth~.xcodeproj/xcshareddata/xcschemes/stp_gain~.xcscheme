@@ -42,7 +42,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Applications/Pd-0.51-4.app/Contents/Resources/bin/pd">
+         FilePath = "/Users/michastrobl/Desktop/Pd-0.51-4.app/Contents/Resources/bin/pd">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -55,7 +55,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-open //Users/adrian/Documents/AKT/10_SoSo21/70_RTAPiC/_GIT/Purple_Grain/pd_test.pd"
+            argument = "-open /Users/michastrobl/repos/Purple_Grain/pd_test.pd"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
