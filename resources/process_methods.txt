@@ -1,0 +1,48 @@
+void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size)
+{
+    int i = vector_size;
+    
+    while(i--)
+    {
+        *out++ = x->soundfile_table[(int)floor(x->current_grain_index)];
+        x->current_grain_index++;
+        if(x->current_grain_index >= x->soundfile_length)
+        {
+            x->current_grain_index -= x->soundfile_length;
+        }
+    }
+    
+}
+
+
+
+
+void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size)
+{
+    int i = vector_size;
+    float output, gauss_val;
+    //playback position speichern
+    while(i--)
+    {
+        output = 0;
+        if(x->playback_position >= x->soundfile_length) x->playback_position = 0;
+        
+        //checken an welcher position man innerhalb des Grains gerade sein müsste
+        //checken ob dies die letzte position des Grain ist -- wenn ja current_grain_index++
+        if(x->playback_position >= x->grains_table[x->current_grain_index].end)
+        {
+
+            x->current_grain_index++;
+            if(x->current_grain_index >= x->num_grains) x->current_grain_index = 0;
+        }
+
+        //gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
+        //output *= gauss_val;
+        //post("gauss value = %f", gauss_val);
+
+        output += x->soundfile_table[(int)floor(x->playback_position++)];
+        
+        *out++ = output;
+    }
+    
+}
