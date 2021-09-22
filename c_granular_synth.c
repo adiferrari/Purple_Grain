@@ -28,7 +28,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->current_adsr_stage_index = 0;
     t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
-    x->adsr_env = envelope_new(20, 200, 1, 1, 200);
+    x->adsr_env = envelope_new(1000, 1000, 0.5, 1000, 4000);
     
     x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, SAMPLERATE);
 
@@ -58,8 +58,8 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size)
 {
     int i = vector_size;
-    float output, gauss_val;
     float weighted, integral;
+    float output, gauss_val, adsr_val;
     //playback position speichern
     while(i--)
     {
@@ -94,6 +94,12 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         {
             x->grains_table[x->current_grain_index].grain_played_through = true;
         }
+        
+        gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
+        output *= gauss_val;
+
+        adsr_val = calculate_adsr_value(x);
+        output *= adsr_val;
         
         *out++ = output;
     }
