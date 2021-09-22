@@ -73,11 +73,8 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
 
             x->current_grain_index++;
             if(x->current_grain_index >= x->num_grains) x->current_grain_index = 0;
-            
-            //post("Current Grain Index = %d", x->current_grain_index);
         }
-        
-        //checken dabei ob das das letzte Grain war --- wenn ja current_grain_index = 0
+
 
         output += x->soundfile_table[(int)floor(x->playback_position++)];
         //output *= calculate_adsr_value(x);
