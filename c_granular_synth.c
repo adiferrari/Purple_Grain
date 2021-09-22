@@ -12,12 +12,12 @@
 #include "c_granular_synth.h"
 #include "grain.h"
 #include "envelope.h"
+#include "purple_utils.h"
 
 c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
-    //post("length: %d", x->soundfile_length);
 
     // diese vas_mem_alloc funktion hat die ganze zeit alles crashen lassen...
     //x->soundfile_table = (float *) vas_mem_alloc(x->soundfile_length * sizeof(float));
@@ -30,9 +30,8 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->grain_size_ms = grain_size_ms;
     x->adsr_env = envelope_new(20, 200, 1, 1, 200);
     
-    x->grain_size_samples = getsamples_from_ms(x->grain_size_ms, SAMPLERATE);
+    x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, SAMPLERATE);
 
-    //x->grain_size_samples = (int)((x->grain_size_ms * SAMPLERATE) / 1000);
     c_granular_synth_set_num_grains(x);
     post("C main file - new method - number of grains = %d", x->num_grains);
     
@@ -73,39 +72,16 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
 
             x->current_grain_index++;
             if(x->current_grain_index >= x->num_grains) x->current_grain_index = 0;
-            
-            //post("Current Grain Index = %d", x->current_grain_index);
         }
-        
-        //checken dabei ob das das letzte Grain war --- wenn ja current_grain_index = 0
-
-        output += x->soundfile_table[(int)floor(x->playback_position++)];
-        //output *= calculate_adsr_value(x);
 
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
         output *= gauss_val;
         //post("gauss value = %f", gauss_val);
 
+        output += x->soundfile_table[(int)floor(x->playback_position++)];
         
         *out++ = output;
     }
-    
-    /* while(i--)
-    {
-        while(x->current_grain_index < x->num_grains)
-        {
-            for(int j=x->grains_table[x->current_grain_index].start; j < x->grains_table[x->current_grain_index].end; j++)
-            {
-               post("j = %d", j);
-               // *out++ = x->soundfile_table[j];
-            }
-            
-            x->current_grain_index++;
-            post("current grain index incremented");
-        }
-        post("current grain index set to 0");
-        x->current_grain_index = 0;
-    } */
     
 }
 

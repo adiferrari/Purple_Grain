@@ -6,6 +6,7 @@
 #include "envelope.h"
 #include "grain.h"
 #include "vas_mem.h"
+#include "purple_utils.h"
 #include "m_pd.h"
 #include "c_granular_synth.h"
 
@@ -72,7 +73,7 @@ float calculate_adsr_value(c_granular_synth *x)
 envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int release)
 {
     envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
-    t_float sr = sys_getsr();
+    t_float SAMPLERATE = sys_getsr();
     x->adsr = ATTACK;
 
     x->attack = attack;
@@ -84,12 +85,11 @@ envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int 
 
     x->envelope_samples_table = (t_sample *) vas_mem_alloc(x->duration * sizeof(t_sample));
     //fill envelope_samples_table
-    //samplerate anpassen???????????
-    t_float SAMPLERATE = sys_getsr();
-    x->attack_samples = attack * pow(10,-3) * SAMPLERATE;
-    x->decay_samples = decay * pow(10,-3)* SAMPLERATE;
-    x->key_pressed_samples = key_pressed * pow(10,-3) * SAMPLERATE;
-    x->release_samples = release * pow(10,-3) * SAMPLERATE;
+    
+    x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
+    x->decay_samples = get_samples_from_ms(decay, SAMPLERATE);
+    x->key_pressed_samples = get_samples_from_ms(key_pressed, SAMPLERATE);
+    x->release_samples = get_samples_from_ms(release, SAMPLERATE);
     int new_coordinate_decay = 0;
     int new_coordinate_release = 0;
 
@@ -140,5 +140,5 @@ float gauss(grain x, int grainindex)
 
 void envelope_free(envelope *x)
 {
-    vas_mem_free(x);
+    free(x);
 }
