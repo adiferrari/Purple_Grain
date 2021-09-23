@@ -39,12 +39,24 @@ grain *grain_new(int grain_size_samples, int soundfile_size, int grain_index, fl
     //post("Grain with index %d starts at %d and ends at %d", grain_index, x->start, x->end);
 
     return x;
-
-    // use envelope_windowing, only multiply values from attack and release phase
-    // as sustain phase should always contain "1" values
 }
 
-
+void grain_internal_scheduling(grain* g, t_int soundfile_length)
+{
+    g->current_sample_pos = g->next_sample_pos;
+    g->next_sample_pos += g->time_stretch_factor;
+    if(g->next_sample_pos > soundfile_length)
+    {
+        g->next_sample_pos = soundfile_length - 1;
+    }
+    if(g->current_sample_pos >= g->end)
+    {
+        g->grain_played_through = true;
+        // Grain wieder auf seinen Startpunkt setzen, wie bei Initialisierung in new-methode
+        g->current_sample_pos = g->grain_size_samples * g->grain_index;
+        g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
+    }
+}
 
 void grain_free(grain *x)
 {

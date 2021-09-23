@@ -29,6 +29,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
     x->adsr_env = envelope_new(1000, 1000, 0.5, 1000, 4000);
+    x->time_stretch_factor = 1.3f;
     
     x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, SAMPLERATE);
 
@@ -45,7 +46,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->grains_table = (grain *) malloc(x->num_grains * sizeof(grain));
     for(int j = 0; j<x->num_grains; j++)
     {
-        x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j, 1.3f);
+        x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
         // entweder hier mit sternchen die new method return komponente dereferenzieren...
         //oder diese umschreiben dass sie keinen grain pointer sondern einen grain zurückliefert
     }
@@ -82,24 +83,18 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         weighted = get_interpolated_sanple_value(left_sample, right_sample,frac);
 
         output += weighted;
-        //output += x->soundfile_table[(int)floor(x->playback_position++)];
-        
-        x->grains_table[x->current_grain_index].current_sample_pos = x->grains_table[x->current_grain_index].next_sample_pos;
-        x->grains_table[x->current_grain_index].next_sample_pos += x->grains_table[x->current_grain_index].time_stretch_factor;
-        if(x->grains_table[x->current_grain_index].next_sample_pos > x->soundfile_length)
-        {
-            x->grains_table[x->current_grain_index].next_sample_pos = x->soundfile_length - 1;
-        }
-        if(x->grains_table[x->current_grain_index].current_sample_pos >= x->grains_table[x->current_grain_index].end)
-        {
-            x->grains_table[x->current_grain_index].grain_played_through = true;
-        }
         
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        output *= gauss_val;
+        //output *= gauss_val;
 
         adsr_val = calculate_adsr_value(x);
-        output *= adsr_val;
+        //output *= adsr_val;
+        
+        // Original Playback
+        //output += x->soundfile_table[(int)floor(x->playback_position++)];
+        
+        // Adjust Grain's internal playback index, check if it has run through etc.
+        grain_internal_scheduling(&x->grains_table[x->current_grain_index], x->soundfile_length);
         
         *out++ = output;
     }

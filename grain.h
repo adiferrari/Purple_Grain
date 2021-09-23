@@ -44,6 +44,7 @@ typedef struct grain
 
 
 grain *grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor);
+void grain_internal_scheduling(grain* g, t_int soundfile_length);
 void grain_free(grain *x);
 
 #ifdef __cplusplus
