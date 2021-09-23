@@ -17,26 +17,26 @@ static t_class *grain_class;
 
 #define SAMPLERATE 44100   // To-Do: Set dynamically by user input
 
-grain *grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor)
+grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor)
 {
-    grain *x = (grain *) vas_mem_alloc(sizeof(grain));
-    x->grain_played_through = false;
+    grain x;
+    x.grain_played_through = false;
     // calculate numbr of samples in Grain,
     //if floating point, cast to nearest higher integer witz ceil()
-    x->grain_size_samples = grain_size_samples;
-    x->grain_index = grain_index;
-    x->time_stretch_factor = time_stretch_factor;
+    x.grain_size_samples = grain_size_samples;
+    x.grain_index = grain_index;
+    x.time_stretch_factor = time_stretch_factor;
     
-    x->start = x->grain_size_samples * grain_index;
-    x->current_sample_pos = (float)x->start;
-    x->next_sample_pos = x->current_sample_pos + x->time_stretch_factor;
+    x.start = x.grain_size_samples * grain_index;
+    x.current_sample_pos = (float)x.start;
+    x.next_sample_pos = x.current_sample_pos + x.time_stretch_factor;
     
-    x->end = x->start + x->grain_size_samples - 1;
-    if(x->end > soundfile_size)
+    x.end = x.start + x.grain_size_samples - 1;
+    if(x.end > soundfile_size)
     {
-        x->end = soundfile_size - 1;
+        x.end = soundfile_size - 1;
     }
-    //post("Grain with index %d starts at %d and ends at %d", grain_index, x->start, x->end);
+    //post("Grain with index %d starts at %d and ends at %d", grain_index, x.start, x.end);
 
     return x;
 }

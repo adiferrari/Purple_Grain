@@ -123,8 +123,8 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
         weighted *= gauss_val;
         
-        adsr_val = calculate_adsr_value(x);
-        weighted *= adsr_val;
+        //adsr_val = calculate_adsr_value(x);
+        //weighted *= adsr_val;
         
         *out++ = weighted;
     }
@@ -152,25 +152,18 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
 
 void c_granular_synth_populate_grain_table(c_granular_synth *x)
 {
-    //grain *grains_table;
-    if(!x->grains_table)
+    grain *grains_table;
+    
+    grains_table = (grain *) calloc(x->num_grains, sizeof(grain));
+    for(int j = 0; j<x->num_grains; j++)
     {
-        x->grains_table = (grain *) calloc(x->num_grains, sizeof(grain));
-        for(int j = 0; j<x->num_grains; j++)
-        {
-            x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
-            // entweder hier mit sternchen die new method return komponente dereferenzieren...
-            //oder diese umschreiben dass sie keinen grain pointer sondern einen grain zurückliefert
-        }
-        
+        grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
+        // entweder hier mit sternchen die new method return komponente dereferenzieren...
+        //oder diese umschreiben dass sie keinen grain pointer sondern einen grain zurückliefert
     }
-    else{
-        x->grains_table = (grain *) realloc(x->grains_table, x->num_grains * sizeof(grain));
-        for(int j = 0; j<x->num_grains; j++)
-        {
-            x->grains_table[j] = *grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
-        }
-    }
+    
+    if(x->grains_table) free(x->grains_table);
+    x->grains_table = grains_table;
 }
 
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos)
@@ -183,6 +176,7 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     
     if(x->grain_size_ms != grain_size_ms)
     {
+        x->grain_size_ms = grain_size_ms;
         int grain_size_samples = get_samples_from_ms(grain_size_ms, x->sr);
         x->grain_size_samples = grain_size_samples;
         c_granular_synth_set_num_grains(x);
