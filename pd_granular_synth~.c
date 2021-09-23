@@ -8,6 +8,7 @@
  */
 
 #include "c_granular_synth.h"
+#include "purple_utils.h"
 
 
 // Absolute playback point [in samples]
@@ -23,15 +24,20 @@ typedef struct pd_granular_synth_tilde
 {
     t_object  x_obj;
     t_float f;
+    t_float sr;
     c_granular_synth *synth;
+    t_int               grain_size,
+                        start_pos;
 
     t_word *soundfile;      // Pointer to the soundfile Array
     t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
     int soundfile_length;
+    float soundfile_length_ms;
     t_word *envelopeTable;
 
-    t_inlet *in;
-    t_outlet *out;
+    t_inlet             *in_grain_size,
+                        *in_start_pos;
+    t_outlet            *out;
 } t_pd_granular_synth_tilde;
 
 /** 
@@ -44,14 +50,21 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
 {
     t_pd_granular_synth_tilde *x = (t_pd_granular_synth_tilde *)pd_new(pd_granular_synth_tilde_class);
     x->f = 0;
-
+    x->sr  = sys_getsr();
     x->soundfile = 0;
     x->soundfile_arrayname = soundfile_arrayname;
 
     x->soundfile_length = 0;
+    x->soundfile_length_ms = 0;
     x->envelopeTable = 0;
+    x->grain_size = 50;
+    x->start_pos = 0;
     //x->synth = c_granular_synth_new(30);        // Default value of 30ms
     //The main inlet is created automatically
+    
+    x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
+    x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
+    
     x->out = outlet_new(&x->x_obj, &s_signal);
     return (void *)x;
 }
@@ -69,9 +82,14 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     t_sample  *out =  (t_sample *)(w[3]);
     int n =  (int)(w[4]);
 
-    // Die eigentliche Soundverarbeitung steckt im C-Teil (c_granular_synth.c)
+    if(x->grain_size < 1) x->grain_size = 1;
+    if(x->grain_size >  (int)x->soundfile_length_ms) x->grain_size = x->soundfile_length;
+    if(x->start_pos < 0) x->start_pos = 0;
+    if(x->start_pos > (int)x->soundfile_length_ms) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_process_alt(x->synth, in, out, n);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos);
+    
+    c_granular_synth_process(x->synth, in, out, n);
 
     /* return a pointer to the dataspace for the next dsp-object */
     /*
@@ -92,6 +110,8 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
 void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
 {
     if(x){
+        inlet_free(x->in_grain_size);
+        inlet_free(x->in_start_pos);
         outlet_free(x->out);
         c_granular_synth_free(x->synth);
         free(x);
@@ -107,7 +127,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
 {
     t_garray *a;
     x->soundfile_arrayname = s;
-
+    
     if (!(a = (t_garray *)pd_findbyclass(x->soundfile_arrayname, garray_class)))
     {
         
@@ -139,7 +159,8 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
             post("Array Length = %d", len);
         } */
         x->soundfile_length = garray_npoints(a);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, 500);
+        x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size);
     }
 
     return;
@@ -154,6 +175,26 @@ void pd_granular_synth_tilde_dsp(t_pd_granular_synth_tilde *x, t_signal **sp)
 {
     pd_granular_synth_tilde_getArray(x, x->soundfile_arrayname);
     dsp_add(pd_granular_synth_tilde_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
+}
+
+static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_grain_size = (int)f;
+    if(new_grain_size < 1) new_grain_size = 1;
+    if(x->soundfile_length && new_grain_size > x->soundfile_length) {
+        new_grain_size = x->soundfile_length;
+        }
+    x->grain_size = (int)new_grain_size;
+}
+
+static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_start_pos = (int)f;
+    if(new_start_pos < 0) new_start_pos = 0;
+    if(x->soundfile_length && new_start_pos > x->soundfile_length) {
+        new_start_pos = x->soundfile_length;
+        }
+    x->start_pos = (int)new_start_pos;
 }
 
 static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)
@@ -185,6 +226,12 @@ void pd_granular_synth_tilde_setup(void)
       // this adds the gain message to our object
       // class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_tilde_method, gensym("name"), A_DEFFLOAT,0);
 
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_grain_size,
+                    gensym("grain_size"), A_DEFFLOAT, 0);
+    
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
+                    gensym("start_pos"), A_DEFFLOAT, 0);
+    
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_get_arrayname_message,
                         gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);
 

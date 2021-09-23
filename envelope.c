@@ -131,7 +131,7 @@ float gauss(grain x, int grainindex)
     if (grain_size == 0)
         return 0;
     float numerator = pow(grainindex-(grain_size/2), 2);
-    float denominatior = 0.05*pow(grain_size, 2);
+    float denominatior = 0.2*pow(grain_size, 2);
     float gauss_value = expf(-numerator/denominatior);
     //float gauss_value = expf(-(pow(grainindex-(grain_size/2), 2) / 0.2* pow(grain_size, 2)));
     return gauss_value;

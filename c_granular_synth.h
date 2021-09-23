@@ -34,6 +34,7 @@ typedef struct c_granular_synth
 {
     t_word      *soundfile;
     int         soundfile_length,
+                current_start_pos,          // adjustable with dedicated pd slider
                 current_grain_index,
                 current_adsr_stage_index,
                 grain_size_ms,
@@ -41,7 +42,8 @@ typedef struct c_granular_synth
                 num_grains;
     t_int       playback_position;    // which sample of the grain goes to the output next?
     float       *soundfile_table;     //Array containing the original soundfile
-    t_float     time_stretch_factor;
+    t_float     time_stretch_factor,
+                sr;
     grain       *grains_table;
     envelope    *adsr_env;
     //float* windowing_table;  // smoothing window function applied to grain output
@@ -55,6 +57,8 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
 void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size);
 void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocity);
 void c_granular_synth_set_num_grains(c_granular_synth *x);
+void c_granular_synth_populate_grain_table(c_granular_synth *x);
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size, int start_pos);
 
 extern t_float SAMPLERATE;
 

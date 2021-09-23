@@ -18,7 +18,17 @@ int get_samples_from_ms(int ms, float sr)
         return ceil((sr / 1000) * ms);
     }
     else{
-    
+        return 0;
+    }
+}
+
+float get_ms_from_samples(int num_samples, float sr)
+{
+    if(sr)
+    {
+        return (num_samples * 1000) / sr;
+    }
+    else{
         return 0;
     }
 }
