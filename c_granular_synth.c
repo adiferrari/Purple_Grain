@@ -11,6 +11,7 @@
 
 #include "c_granular_synth.h"
 #include "envelope.h"
+#include "grain.h"
 #include "purple_utils.h"
 
 c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos)

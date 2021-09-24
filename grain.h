@@ -11,10 +11,7 @@
 #define grain_h
 
 #include "m_pd.h"
-#include "c_granular_synth.h"
-#include "envelope.h"
-#include "vas_mem.h"
-#include "purple_utils.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -49,7 +46,7 @@ typedef struct grain
 
 
 grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor);
-void grain_internal_scheduling(grain* g, c_granular_synth* synth);
+//void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 void grain_free(grain *x);
 
 #ifdef __cplusplus

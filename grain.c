@@ -10,6 +10,10 @@
 // length of the entire sound file [in samples]
 
 #include "grain.h"
+#include "c_granular_synth.h"
+#include "envelope.h"
+#include "purple_utils.h"
+#include "vas_mem.h"
 
 static t_class *grain_class;
 
@@ -42,10 +46,18 @@ grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, flo
 
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
-    g->grain_active = (g->start <= synth->playback_position && g->next_sample_pos >= synth->playback_position);
+    g->grain_active = (g->start <= synth->playback_position && g->end >= synth->playback_position);
     if(g->grain_active)
     {
         float left_sample, right_sample, frac, integral, weighted;
+        // soundfile[g->current_sample_pos] in output-buffer (oder weighted) schreiben
+        // interpol methode hier schon verwenden?
+        // rückgabewert hier also float? oder float pointer?
+        left_sample = synth->soundfile_table[(int)floor(g->current_sample_pos)];
+        right_sample = synth->soundfile_table[(int)ceil(g->current_sample_pos)];
+        frac = modff(g->current_sample_pos, &integral);
+        weighted = get_interpolated_sanple_value(left_sample, right_sample,frac);
+        synth->output_buffer += weighted;
         g->current_sample_pos = g->next_sample_pos;
         g->next_sample_pos += g->time_stretch_factor;
         if(g->next_sample_pos > synth->soundfile_length || g->current_sample_pos >= g->end)
@@ -55,14 +67,7 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
             g->current_sample_pos = g->grain_size_samples * g->grain_index;
             g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
         }
-        // soundfile[g->current_sample_pos] in output-buffer (oder weighted) schreiben
-        // interpol methode hier schon verwenden?
-        // rückgabewert hier also float? oder float pointer?
-        left_sample = synth->soundfile_table[(int)floor(g->current_sample_pos)];
-        right_sample = synth->soundfile_table[(int)ceil(g->current_sample_pos)];
-        frac = modff(g->current_sample_pos, &integral);
-        weighted = get_interpolated_sanple_value(left_sample, right_sample,frac);
-        synth->output_buffer += weighted;
+        
         
         // checken ob nächstes grain aktiv ist
         grain_internal_scheduling(g->next_grain, synth);
@@ -70,6 +75,8 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
     else {
         // Grain nicht oder nicht mehr aktiv
         // seine current pos auf seinen start zurücksetzen
+        g->current_sample_pos = g->grain_size_samples * g->grain_index;
+        g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
         return;
         
     }

@@ -61,6 +61,7 @@ void c_granular_synth_set_num_grains(c_granular_synth *x);
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x);
 void c_granular_synth_populate_grain_table(c_granular_synth *x);
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size, int start_pos);
+void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 
 extern t_float SAMPLERATE;
 
