@@ -55,7 +55,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-open //Users/adrian/Documents/AKT/10_SoSo21/70_RTAPiC/_GIT/Purple_Grain/pd_test.pd"
+            argument = "-open /Users/adrian/Documents/AKT/10_SoSo21/70_RTAPiC/_GIT/Purple_Grain/pd_test.pd"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -11,29 +11,17 @@
 #include "c_granular_synth.h"
 
 
-static t_class *envelope_class;
-
-int getsamples_from_ms(int ms, float sr)
-{
-    if(sr)
-    {
-        return ceil((sr / 1000) * ms);
-    }
-    else{
-        post("envelope.c - could not convert from ms to samples");
-        return 0;
-    }
-}
+//static t_class *envelope_class;
 
 float calculate_adsr_value(c_granular_synth *x)
 {
     float adsr_val = 0;
-
+    float attack_val = 0;
     switch(x->adsr_env->adsr)
     {
         case ATTACK:
-            x->current_adsr_stage_index++;
-            adsr_val = x->current_adsr_stage_index++ * (1/x->adsr_env->attack_samples);
+            attack_val = (1.0/x->adsr_env->attack_samples);
+            adsr_val = x->current_adsr_stage_index++ * attack_val;
             if(x->current_adsr_stage_index >= x->adsr_env->attack_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -41,20 +29,27 @@ float calculate_adsr_value(c_granular_synth *x)
             }
             break;
         case DECAY:
-            x->current_adsr_stage_index++;
-            adsr_val = 1 + (((x->adsr_env->sustain-1)/x->adsr_env->decay_samples)*x->current_adsr_stage_index++);
+            //decay_val = (x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples;
+            adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples*x->current_adsr_stage_index++);
+            //adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)*(x->current_adsr_stage_index++/x->adsr_env->decay_samples));
             
             if(x->current_adsr_stage_index >= x->adsr_env->decay_samples)
             {
                 x->current_adsr_stage_index = 0;
-                x->adsr_env->adsr = RELEASE;
+                x->adsr_env->adsr = SUSTAIN;
             }
             break;
         case SUSTAIN:
             adsr_val = x->adsr_env->sustain;
+            x->current_adsr_stage_index++;
+            if(x->current_adsr_stage_index >= x->adsr_env->key_pressed_samples)
+            {
+                x->current_adsr_stage_index = 0;
+                x->adsr_env->adsr = RELEASE;
+            }
+    
             break;
         case RELEASE:
-            x->current_adsr_stage_index++;
             adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
             if(x->current_adsr_stage_index >= x->adsr_env->release_samples)
             {
@@ -69,11 +64,14 @@ float calculate_adsr_value(c_granular_synth *x)
     return adsr_val;
 }
 
-/*
-envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int release)
+
+envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, int release)
+
 {
     envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
     t_float SAMPLERATE = sys_getsr();
+    
+    //ACHTUNG diese muss bei Note on wieder raus -> start mit silent
     x->adsr = ATTACK;
 
     x->attack = attack;
@@ -84,15 +82,17 @@ envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int 
     x->duration = x->attack + x->decay + x->key_pressed+ x->release;
 
     x->envelope_samples_table = (t_sample *) vas_mem_alloc(x->duration * sizeof(t_sample));
-    //fill envelope_samples_table
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
     x->decay_samples = get_samples_from_ms(decay, SAMPLERATE);
     x->key_pressed_samples = get_samples_from_ms(key_pressed, SAMPLERATE);
     x->release_samples = get_samples_from_ms(release, SAMPLERATE);
-    int new_coordinate_decay = 0;
-    int new_coordinate_release = 0;
+    return x;
+}
 
+    //int new_coordinate_decay = 0;
+    //int new_coordinate_release = 0;
+/*
     for(int i =0; i<x->duration;i++)
     {
         if(i<attack)
@@ -115,14 +115,15 @@ envelope *envelope_new(int attack, int decay, int sustain, int key_pressed, int 
             new_coordinate_release++;
         }
     }
-    return x;
-}
-    Create windowing for alle Grains by using envelope.h
+ */
+
+
+/*
+    Create windowing for all Grains by using envelope.h
     using only A,S,R parameters (3 stages: Fade-In, Full Volume, Fade-Out)
     Consider Grain Duration (as Input parameter) and maybe take 1/10 of the duration at start for Fade-In
     1/10 at the end fo Fade-Out and the other 8/10s for full output stage
 */
-
 
 float gauss(grain x, int grainindex)
 {
@@ -130,7 +131,7 @@ float gauss(grain x, int grainindex)
     if (grain_size == 0)
         return 0;
     float numerator = pow(grainindex-(grain_size/2), 2);
-    float denominatior = 0.05*pow(grain_size, 2);
+    float denominatior = 0.2*pow(grain_size, 2);
     float gauss_value = expf(-numerator/denominatior);
     //float gauss_value = expf(-(pow(grainindex-(grain_size/2), 2) / 0.2* pow(grain_size, 2)));
     return gauss_value;

@@ -1,0 +1,54 @@
+#N canvas 75 572 878 455 12;
+#X declare -stdpath soundfiler;
+#X obj 17 248 soundfiler;
+#X obj 500 18 declare -stdpath soundfiler;
+#X floatatom 20 290 8 0 0 0 - - -;
+#X obj 20 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array sample 345168 float 2;
+#X coords 0 1 345168 -1 200 140 1;
+#X restore 376 253 graph;
+#X obj 372 213 dac~;
+#X obj 750 311 phasor~;
+#X obj 737 259 readsf~;
+#X obj 723 159 line~;
+#X msg 724 106 0 \, 345168 8000;
+#X obj 725 205 tabread4~ sample;
+#X obj 717 45 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 17 154 read -resize resources/amen_break.wav sample;
+#X msg 98 197 soundfile_arrayname sample;
+#X obj 21 60 t b b;
+#X obj 377 169 pd_granular_synth~ sample;
+#X obj 19 6 loadbang;
+#X floatatom 271 76 5 0 0 0 - - -;
+#X obj 271 46 hsl 128 15 1 200 0 0 empty empty Grain_Size_[ms] -2 -8
+0 10 -262144 -1 -1 0 1;
+#X floatatom 545 143 15 0 0 0 - - -;
+#X text 264 19 comment;
+#X obj 404 60 r sample.length;
+#X obj 22 327 s sample.length;
+#X obj 551 45 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X obj 466 134 *;
+#X obj 539 80 / 127;
+#X connect 0 0 2 0;
+#X connect 2 0 22 0;
+#X connect 2 0 24 1;
+#X connect 3 0 14 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 11 0 9 0;
+#X connect 12 0 0 0;
+#X connect 14 0 13 0;
+#X connect 14 1 12 0;
+#X connect 15 0 5 0;
+#X connect 15 0 5 1;
+#X connect 16 0 3 0;
+#X connect 17 0 15 1;
+#X connect 18 0 17 0;
+#X connect 19 0 15 2;
+#X connect 23 0 25 0;
+#X connect 24 0 19 0;
+#X connect 25 0 24 0;
