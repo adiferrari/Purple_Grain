@@ -11,6 +11,10 @@
 #define grain_h
 
 #include "m_pd.h"
+#include "c_granular_synth.h"
+#include "envelope.h"
+#include "vas_mem.h"
+#include "purple_utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -24,14 +28,15 @@ extern "C" {
 
 typedef struct grain
 {
-    t_int       grain_size_samples,   // Grain size in samples
-                grain_index,
-                start,
-                end;
-    t_float     time_stretch_factor,
-                current_sample_pos,
-                next_sample_pos;
-    bool        grain_played_through;
+    struct grain        *next_grain;
+    t_int               grain_size_samples,   // Grain size in samples
+                        grain_index,
+                        start,
+                        end;
+    t_float             time_stretch_factor,
+                        current_sample_pos,
+                        next_sample_pos;
+    bool                grain_active;
     
     // statt start nehme source_read_position
     // dann laufe über so viele Schritte wie grain_size_samples groß ist
@@ -44,7 +49,7 @@ typedef struct grain
 
 
 grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor);
-void grain_internal_scheduling(grain* g, t_int soundfile_length);
+void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 void grain_free(grain *x);
 
 #ifdef __cplusplus

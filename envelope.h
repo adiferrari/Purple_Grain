@@ -10,11 +10,15 @@
 #ifndef envelope_h
 #define envelope_h
 
+#include "grain.h"
+#include "vas_mem.h"
+#include "purple_utils.h"
 #include "m_pd.h"
+#include "c_granular_synth.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "grain.h"
+
 
 #ifdef __cplusplus
 extern "C" {

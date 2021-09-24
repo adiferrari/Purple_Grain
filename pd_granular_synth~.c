@@ -160,7 +160,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos);
     }
 
     return;
@@ -185,6 +185,7 @@ static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_flo
         new_grain_size = x->soundfile_length;
         }
     x->grain_size = (int)new_grain_size;
+    // Changes get passed to synth in update properties method
 }
 
 static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floatarg f)
@@ -195,6 +196,7 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
         new_start_pos = x->soundfile_length;
         }
     x->start_pos = (int)new_start_pos;
+    // Changes get passed to synth in update properties method
 }
 
 static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)

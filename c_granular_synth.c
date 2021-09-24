@@ -10,29 +10,31 @@
  */
 
 #include "c_granular_synth.h"
-#include "grain.h"
 #include "envelope.h"
 #include "purple_utils.h"
 
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
     x->sr = sys_getsr();
+    x->grain_size_ms = grain_size_ms;
+    x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, x->sr);
     // diese vas_mem_alloc funktion hat die ganze zeit alles crashen lassen...
     //x->soundfile_table = (float *) vas_mem_alloc(x->soundfile_length * sizeof(float));
     x->soundfile_table = (float *) malloc(x->soundfile_length * sizeof(float));
 
+    x->output_buffer = 0.0;
+    x->current_start_pos = start_pos;                   // Set by user in pd with slider
     x->current_grain_index = 0;
-    x->current_start_pos = 0;       // Set by user in pd with slider
+    c_granular_synth_adjust_current_grain_index(x);     // Depends on start position slider
+          
     x->playback_position = 0;
     x->current_adsr_stage_index = 0;
-    t_float SAMPLERATE = sys_getsr();
-    x->grain_size_ms = grain_size_ms;
+    //t_float SAMPLERATE = sys_getsr();
+    
     x->adsr_env = envelope_new(1000, 1000, 0.5, 1000, 4000);
     x->time_stretch_factor = 1.0f;
-    
-    x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, SAMPLERATE);
 
     // Retrigger when user sets different grain size
     c_granular_synth_set_num_grains(x);
@@ -48,7 +50,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
 
     return x;
 }
-
+/*
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size)
 {
     int i = vector_size;
@@ -60,8 +62,8 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         output = 0;
         if(x->playback_position >= x->soundfile_length) x->playback_position = 0;
         
-        //checken an welcher position man innerhalb des Grains gerade sein müsste
-        //checken ob dies die letzte position des Grain ist -- wenn ja current_grain_index++
+        //hier wird fälschlicherweise die playback pos nicht hochgezählt
+       
         if(x->grains_table[x->current_grain_index].grain_played_through)
         {
             x->grains_table[x->current_grain_index].grain_played_through = false;
@@ -93,40 +95,37 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
     }
     
 }
-
+*/
 void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size)
 {
     int i = vector_size;
-    float weighted, integral;
-    float output, gauss_val, adsr_val;
+    float gauss_val, adsr_val;
     
     while(i--)
     {
-        output = 0;
-        x->current_grain_index = 20;
-        x->playback_position = x->grains_table[x->current_grain_index].current_sample_pos;
-        x->grains_table[x->current_grain_index].current_sample_pos = x->grains_table[x->current_grain_index].next_sample_pos;
-        x->grains_table[x->current_grain_index].next_sample_pos += x->grains_table[x->current_grain_index].time_stretch_factor;
+        x->output_buffer = 0;
+        //x->current_grain_index = 20;
+        // oder kann man playback jetzt einfach immer +1 hochgehen?
+        x->playback_position = x->current_start_pos;
+        //ab hier dann schauen welches grain aktiv ist
+        //x->playback_position = x->grains_table[x->current_grain_index].current_sample_pos;
+        
+        grain_internal_scheduling(&x->grains_table[x->current_grain_index], x);
+        /*
         if(x->grains_table[x->current_grain_index].next_sample_pos > x->grains_table[x->current_grain_index].end)
         {
             x->grains_table[x->current_grain_index].next_sample_pos = x->grains_table[x->current_grain_index].start;
         }
-        
+        */
         //if(x->playback_position >= x->soundfile_length) x->playback_position = 0;
         
-        float left_sample = x->soundfile_table[(int)floor(x->grains_table[x->current_grain_index].current_sample_pos)];
-        float right_sample = x->soundfile_table[(int)ceil(x->grains_table[x->current_grain_index].current_sample_pos)];
-        float frac = modff(x->grains_table[x->current_grain_index].current_sample_pos, &integral);
-
-        weighted = get_interpolated_sanple_value(left_sample, right_sample,frac);
-        
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        weighted *= gauss_val;
+        x->output_buffer *= gauss_val;
         
         //adsr_val = calculate_adsr_value(x);
         //weighted *= adsr_val;
         
-        *out++ = weighted;
+        *out++ = x->output_buffer;
     }
     
 }
@@ -150,17 +149,26 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
     x->num_grains = (int)ceilf(x->soundfile_length / x->grain_size_samples);
 }
 
+void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
+{
+    int index = x->current_start_pos / x->grain_size_samples;
+    x->current_grain_index = index;
+}
+
 void c_granular_synth_populate_grain_table(c_granular_synth *x)
 {
     grain *grains_table;
-    
     grains_table = (grain *) calloc(x->num_grains, sizeof(grain));
     for(int j = 0; j<x->num_grains; j++)
     {
         grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
-        // entweder hier mit sternchen die new method return komponente dereferenzieren...
-        //oder diese umschreiben dass sie keinen grain pointer sondern einen grain zurückliefert
+        if(j > 0) grains_table[j-1].next_grain = &grains_table[j];
+        if(grains_table[j].start <= x->playback_position &&  grains_table[j].end >= x->playback_position)
+        {
+            grains_table[j].grain_active = true;
+        }
     }
+    grains_table[x->num_grains - 1].next_grain = &grains_table[0];
     
     if(x->grains_table) free(x->grains_table);
     x->grains_table = grains_table;
@@ -172,7 +180,11 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     {
         c_granular_synth_populate_grain_table(x);
     }
-    if(x->current_start_pos != start_pos) x->current_start_pos = start_pos;
+    if(x->current_start_pos != start_pos)
+    {
+        x->current_start_pos = start_pos;
+        c_granular_synth_adjust_current_grain_index(x);
+    }
     
     if(x->grain_size_ms != grain_size_ms)
     {
