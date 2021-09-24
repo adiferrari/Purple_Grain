@@ -14,7 +14,7 @@
 #include "grain.h"
 #include "purple_utils.h"
 
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, int attack, int decay, float sustain, int release)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -33,8 +33,8 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->playback_position = 0;
     x->current_adsr_stage_index = 0;
     //t_float SAMPLERATE = sys_getsr();
-    
-    x->adsr_env = envelope_new(1000, 1000, 0.5, 1000, 4000);
+    x->grain_size_ms = grain_size_ms;
+    x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
     x->time_stretch_factor = 1.0f;
 
     // Retrigger when user sets different grain size
@@ -81,7 +81,7 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         output += weighted;
         
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        //output *= gauss_val;
+        output *= gauss_val;
 
         adsr_val = calculate_adsr_value(x);
         //output *= adsr_val;
@@ -123,8 +123,8 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
         x->output_buffer *= gauss_val;
         
-        //adsr_val = calculate_adsr_value(x);
-        //weighted *= adsr_val;
+        adsr_val = calculate_adsr_value(x);
+        weighted *= adsr_val;
         
         *out++ = x->output_buffer;
     }
@@ -175,7 +175,7 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     x->grains_table = grains_table;
 }
 
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos)
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
 {
     if(!x->grains_table)
     {
@@ -196,7 +196,19 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         //GrainTable neu schreiben
         c_granular_synth_populate_grain_table(x);
     }
+    if(x->midi_velo != midi_velo) x->midi_velo = midi_velo;
+    if(x->midi_pitch != midi_pitch) x->midi_pitch = midi_pitch;
+    if(x->attack != attack) x->attack = attack;
+    if(x->decay != decay) x->decay = decay;
+    if(x->sustain != sustain) x->sustain = sustain;
+    if(x->release != release) x->release = release;
 }
+/*
+void c_granular_synth_midi_update()
+{
+    
+}
+ */
 
 void c_granular_synth_free(c_granular_synth *x)
 {

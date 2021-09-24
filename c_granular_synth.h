@@ -39,7 +39,13 @@ typedef struct c_granular_synth
                 current_adsr_stage_index,
                 grain_size_ms,
                 grain_size_samples,
-                num_grains;
+                num_grains,
+                midi_velo,
+                midi_pitch,
+                attack,
+                decay,
+                release;
+    float       sustain;
     t_int       playback_position;    // which sample of the grain goes to the output next?
     float       *soundfile_table;     //Array containing the original soundfile
     t_float     output_buffer,          // to sum up the current samples of all active grains
@@ -51,7 +57,7 @@ typedef struct c_granular_synth
 } c_granular_synth;
 
 void c_granular_synth_free(c_granular_synth *x);
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos);
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos), int attack, int decay, float sustain, int release);
 void c_granular_synth_generate_window_function(c_granular_synth *x);
 
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size); // Test
@@ -60,9 +66,8 @@ void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocit
 void c_granular_synth_set_num_grains(c_granular_synth *x);
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x);
 void c_granular_synth_populate_grain_table(c_granular_synth *x);
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size, int start_pos);
 void grain_internal_scheduling(grain* g, c_granular_synth* synth);
-
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release);
 extern t_float SAMPLERATE;
 
 float calculate_adsr_value(c_granular_synth *x);
