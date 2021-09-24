@@ -78,7 +78,7 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
         output += weighted;
         
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
-        //output *= gauss_val;
+        output *= gauss_val;
 
         adsr_val = calculate_adsr_value(x);
         //output *= adsr_val;
@@ -166,7 +166,7 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     x->grains_table = grains_table;
 }
 
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos)
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
 {
     if(!x->grains_table)
     {
@@ -183,7 +183,19 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         //GrainTable neu schreiben
         c_granular_synth_populate_grain_table(x);
     }
+    if(x->midi_velo != midi_velo) x->midi_velo = midi_velo;
+    if(x->midi_pitch != midi_pitch) x->midi_pitch = midi_pitch;
+    if(x->attack != attack) x->attack = attack;
+    if(x->decay != decay) x->decay = decay;
+    if(x->sustain != sustain) x->sustain = sustain;
+    if(x->release != release) x->release = release;
 }
+/*
+void c_granular_synth_midi_update()
+{
+    
+}
+ */
 
 void c_granular_synth_free(c_granular_synth *x)
 {

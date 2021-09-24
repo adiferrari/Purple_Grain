@@ -27,8 +27,13 @@ typedef struct pd_granular_synth_tilde
     t_float sr;
     c_granular_synth *synth;
     t_int               grain_size,
-                        start_pos;
-
+                        start_pos,
+                        midi_velo,
+                        midi_pitch,
+                        attack,
+                        decay,
+                        release;
+    t_float             sustain;
     t_word *soundfile;      // Pointer to the soundfile Array
     t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
     int soundfile_length;
@@ -36,7 +41,13 @@ typedef struct pd_granular_synth_tilde
     t_word *envelopeTable;
 
     t_inlet             *in_grain_size,
-                        *in_start_pos;
+                        *in_start_pos,
+                        *in_midi_velo,
+                        *in_midi_pitch,
+                        *in_attack,
+                        *in_decay,
+                        *in_sustain,
+                        *in_release;
     t_outlet            *out;
 } t_pd_granular_synth_tilde;
 
@@ -58,12 +69,23 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->soundfile_length_ms = 0;
     x->envelopeTable = 0;
     x->grain_size = 50;
+    x->midi_velo = 0;
     x->start_pos = 0;
+    x->attack = 50;
+    x->decay = 50;
+    x->sustain = 0.7;
+    x->release = 50;
     //x->synth = c_granular_synth_new(30);        // Default value of 30ms
     //The main inlet is created automatically
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
     x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
+    x->in_midi_velo = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_velo"));
+    x->in_midi_pitch = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_pitch"));
+    x->in_attack = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("attack"));
+    x->in_decay = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("decay"));
+    x->in_sustain = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("sustain"));
+    x->in_release = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("release"));
     
     x->out = outlet_new(&x->x_obj, &s_signal);
     return (void *)x;
@@ -87,7 +109,7 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos < 0) x->start_pos = 0;
     if(x->start_pos > (int)x->soundfile_length_ms) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
     
     c_granular_synth_process(x->synth, in, out, n);
 
@@ -112,6 +134,12 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
     if(x){
         inlet_free(x->in_grain_size);
         inlet_free(x->in_start_pos);
+        inlet_free(x->in_midi_velo);
+        inlet_free(x->in_midi_pitch);
+        inlet_free(x->in_attack);
+        inlet_free(x->in_decay);
+        inlet_free(x->in_sustain);
+        inlet_free(x->in_release);
         outlet_free(x->out);
         c_granular_synth_free(x->synth);
         free(x);
@@ -197,6 +225,48 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
     x->start_pos = (int)new_start_pos;
 }
 
+static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_midi_velo = (int)f;
+    if(new_midi_velo < 0) new_midi_velo = 0;
+    x->midi_velo = (int)new_midi_velo;
+}
+
+static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_midi_pitch = (int)f;
+    if(new_midi_pitch < 0) new_midi_pitch = 0;
+    x->midi_pitch = (int)new_midi_pitch;
+}
+
+static void pd_granular_synth_set_attack(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_attack = (int)f;
+    if(new_attack < 0) new_attack = 0;
+    x->attack = (int)new_attack;
+}
+
+static void pd_granular_synth_set_decay(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_decay = (int)f;
+    if(new_decay < 0) new_decay = 0;
+    x->decay = (int)new_decay;
+}
+
+static void pd_granular_synth_set_sustain(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_sustain = (int)f;
+    if(new_sustain < 0) new_sustain = 0;
+    x->sustain = (int)new_sustain;
+}
+
+static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_release = (int)f;
+    if(new_release < 0) new_release = 0;
+    x->release = (int)new_release;
+}
+
 static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)
 {
     x->soundfile_arrayname = s;
@@ -231,6 +301,18 @@ void pd_granular_synth_tilde_setup(void)
     
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
                     gensym("start_pos"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_velo,
+                    gensym("midi_velo"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_pitch,
+                    gensym("midi_pitch"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_attack,
+                    gensym("attack"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_decay,
+                    gensym("decay"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_sustain,
+                    gensym("sustain"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_release,
+                    gensym("release"), A_DEFFLOAT, 0);
     
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_get_arrayname_message,
                         gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);

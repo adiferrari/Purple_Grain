@@ -39,7 +39,13 @@ typedef struct c_granular_synth
                 current_adsr_stage_index,
                 grain_size_ms,
                 grain_size_samples,
-                num_grains;
+                num_grains,
+                midi_velo,
+                midi_pitch,
+                attack,
+                decay,
+                release;
+    float       sustain;
     t_int       playback_position;    // which sample of the grain goes to the output next?
     float       *soundfile_table;     //Array containing the original soundfile
     t_float     time_stretch_factor,
@@ -58,8 +64,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
 void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocity);
 void c_granular_synth_set_num_grains(c_granular_synth *x);
 void c_granular_synth_populate_grain_table(c_granular_synth *x);
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size, int start_pos);
-
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release);
 extern t_float SAMPLERATE;
 
 float calculate_adsr_value(c_granular_synth *x);

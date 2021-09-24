@@ -1,4 +1,4 @@
-#N canvas 633 278 878 455 12;
+#N canvas 562 119 878 455 12;
 #X declare -stdpath soundfiler;
 #X obj 17 248 soundfiler;
 #X obj 500 18 declare -stdpath soundfiler;
@@ -25,11 +25,14 @@
 #X obj 19 6 loadbang;
 #X floatatom 271 76 5 0 0 0 - - -;
 #X obj 271 46 hsl 128 15 1 200 0 0 empty empty Grain_Size_[ms] -2 -8
-0 10 -262144 -1 -1 4700 1;
+0 10 -262144 -1 -1 0 1;
 #X floatatom 543 121 5 0 0 0 - - -;
 #X obj 547 90 hsl 128 15 0 127 0 0 empty empty Start_Position_[samples?/ms?]
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X text 264 19;
+#X text 264 19 comment;
+#X obj 449 56 notein;
+#X floatatom 424 80 5 0 0 0 - - -;
+#X floatatom 468 84 5 0 0 0 - - -;
 #X connect 0 0 2 0;
 #X connect 2 0 5 0;
 #X connect 3 0 15 0;
@@ -46,3 +49,7 @@
 #X connect 19 0 18 0;
 #X connect 20 0 16 2;
 #X connect 21 0 20 0;
+#X connect 23 0 24 0;
+#X connect 23 1 25 0;
+#X connect 24 0 16 3;
+#X connect 25 0 16 4;
