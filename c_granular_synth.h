@@ -56,7 +56,8 @@ typedef struct c_granular_synth
 } c_granular_synth;
 
 void c_granular_synth_free(c_granular_synth *x);
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms);
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int attack, int decay, float sustain, int release);
+//c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms);
 void c_granular_synth_generate_window_function(c_granular_synth *x);
 
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size); // Test

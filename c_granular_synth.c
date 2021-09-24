@@ -14,7 +14,7 @@
 #include "envelope.h"
 #include "purple_utils.h"
 
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int attack, int decay, float sustain, int release)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -29,7 +29,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->current_adsr_stage_index = 0;
     t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
-    x->adsr_env = envelope_new(1000, 1000, 0.5, 1000, 4000);
+    x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
     x->time_stretch_factor = 1.0f;
     
     x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, SAMPLERATE);
@@ -123,8 +123,8 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
         weighted *= gauss_val;
         
-        //adsr_val = calculate_adsr_value(x);
-        //weighted *= adsr_val;
+        adsr_val = calculate_adsr_value(x);
+        weighted *= adsr_val;
         
         *out++ = weighted;
     }

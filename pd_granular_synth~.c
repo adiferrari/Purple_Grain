@@ -73,7 +73,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->start_pos = 0;
     x->attack = 50;
     x->decay = 50;
-    x->sustain = 0.7;
+    x->sustain = 0.5;
     x->release = 50;
     //x->synth = c_granular_synth_new(30);        // Default value of 30ms
     //The main inlet is created automatically
@@ -188,7 +188,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->attack, x->decay, x->sustain, x->release);
     }
 
     return;
@@ -255,9 +255,9 @@ static void pd_granular_synth_set_decay(t_pd_granular_synth_tilde *x, t_floatarg
 
 static void pd_granular_synth_set_sustain(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
-    int new_sustain = (int)f;
+    float new_sustain = (float)f;
     if(new_sustain < 0) new_sustain = 0;
-    x->sustain = (int)new_sustain;
+    x->sustain = (float)new_sustain;
 }
 
 static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floatarg f)
