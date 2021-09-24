@@ -124,7 +124,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         x->output_buffer *= gauss_val;
         
         adsr_val = calculate_adsr_value(x);
-        weighted *= adsr_val;
+        x->output_buffer *= adsr_val;
         
         *out++ = x->output_buffer;
     }
