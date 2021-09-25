@@ -91,3 +91,4 @@ DerivedData/
 
 ## Gcc Patch
 /*.gcno
+pd_granular_synth~.xcodeproj/xcshareddata/xcschemes/stp_gain~.xcscheme
