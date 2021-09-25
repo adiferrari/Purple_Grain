@@ -105,9 +105,9 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     int n =  (int)(w[4]);
 
     if(x->grain_size < 1) x->grain_size = 1;
-    if(x->grain_size >  (int)x->soundfile_length_ms) x->grain_size = x->soundfile_length;
+    if(x->grain_size >  (int)x->soundfile_length) x->grain_size = x->soundfile_length;
     if(x->start_pos < 0) x->start_pos = 0;
-    if(x->start_pos > (int)x->soundfile_length_ms) x->start_pos = x->soundfile_length - 1;
+    if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
     c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
     

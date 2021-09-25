@@ -124,7 +124,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         x->output_buffer *= gauss_val;
         
         adsr_val = calculate_adsr_value(x);
-        x->output_buffer *= adsr_val;
+        //x->output_buffer *= adsr_val;
         
         *out++ = x->output_buffer;
     }
@@ -160,7 +160,10 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
 {
     grain *grains_table;
     grains_table = (grain *) calloc(x->num_grains, sizeof(grain));
-    for(int j = 0; j<x->num_grains; j++)
+    // Grain Table schreiben ab "current_grain_index"
+    // Bis jetzt schreibt for schlaife nur bis ans Ende der Num Grains
+    // Muss als Ring Buffer auch die ersten Grains befüllen!!
+    for(int j = x->current_grain_index; j<x->num_grains; j++)
     {
         grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
         if(j > 0) grains_table[j-1].next_grain = &grains_table[j];
@@ -185,6 +188,7 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     {
         x->current_start_pos = start_pos;
         c_granular_synth_adjust_current_grain_index(x);
+        c_granular_synth_populate_grain_table(x);
     }
     
     if(x->grain_size_ms != grain_size_ms)
@@ -193,6 +197,7 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         int grain_size_samples = get_samples_from_ms(grain_size_ms, x->sr);
         x->grain_size_samples = grain_size_samples;
         c_granular_synth_set_num_grains(x);
+        c_granular_synth_adjust_current_grain_index(x);
         //GrainTable neu schreiben
         c_granular_synth_populate_grain_table(x);
     }
