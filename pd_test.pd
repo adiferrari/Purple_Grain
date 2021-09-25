@@ -10,7 +10,7 @@
 #X coords 0 1 345168 -1 200 140 1;
 #X restore 156 359 graph;
 #X msg 19 341 s $sample.length;
-#X obj 353 328 dac~;
+#X obj 365 441 dac~;
 #X obj 855 330 phasor~;
 #X obj 842 278 readsf~;
 #X obj 828 178 line~;
@@ -21,34 +21,42 @@
 #X msg 17 154 read -resize resources/amen_break.wav sample;
 #X msg 98 197 soundfile_arrayname sample;
 #X obj 21 60 t b b;
-#X obj 358 284 pd_granular_synth~ sample;
+#X obj 363 387 pd_granular_synth~ sample;
 #X obj 19 6 loadbang;
 #X floatatom 344 197 5 0 0 0 - - -;
-#X obj 230 84 hsl 128 15 1 200 0 0 empty empty Grain_Size_[ms] -2 -8
-0 10 -262144 -1 -1 6000 1;
-#X floatatom 395 127 10 0 0 0 - - -;
+#X floatatom 367 124 8 0 0 0 - - -;
 #X obj 444 148 notein;
 #X floatatom 419 172 5 0 0 0 - - -;
 #X floatatom 463 176 5 0 0 0 - - -;
-#X obj 672 70 vsl 15 128 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
--1 0 1;
-#X obj 713 69 vsl 15 128 1 10000 0 0 empty empty R 0 -9 0 10 -262144
--1 -1 0 1;
-#X floatatom 594 204 5 0 0 0 - - -;
-#X floatatom 633 204 5 0 0 0 - - -;
-#X floatatom 672 204 5 0 0 0 - - -;
-#X floatatom 713 204 5 0 0 0 - - -;
-#X obj 593 67 vsl 15 128 1 3000 0 0 empty empty A 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 630 57 vsl 15 128 1 3000 0 0 empty empty D 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 365 31 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3400 1;
-#X obj 392 59 / 127;
-#X obj 393 94 *;
+#X obj 669 153 vsl 15 128 0 1 0 0 empty empty S 0 -9 0 10 -262144 -1
+-1 4500 1;
+#X obj 715 173 vsl 15 128 1 10000 0 0 empty empty R 0 -9 0 10 -262144
+-1 -1 33 1;
+#X floatatom 578 260 5 0 0 0 - - -;
+#X floatatom 625 280 5 0 0 0 - - -;
+#X floatatom 668 307 5 0 0 0 - - -;
+#X floatatom 715 330 5 0 0 0 - - -;
+#X obj 579 108 vsl 15 128 1 3000 0 0 empty empty A 0 -9 0 10 -262144
+-1 -1 13 1;
+#X obj 625 123 vsl 15 128 1 3000 0 0 empty empty D 0 -9 0 10 -262144
+-1 -1 517 1;
+#X obj 259 36 hsl 128 15 0 127 0 0 empty empty StartPosition(samples)-MIDI_CC_3
+-2 -8 0 10 -262144 -1 -1 4000 1;
+#X obj 277 59 / 127;
+#X obj 314 85 *;
+#X floatatom 95 38 5 0 0 3 - - -;
+#X obj 95 9 ctlin 2;
+#X obj 97 77 hsl 128 15 0 127 0 0 empty empty GrainSize(ms)-MIDI_CC_2
+-2 -8 0 10 -262144 -1 -1 7700 1;
+#X obj 196 10 ctlin 3;
+#X obj 561 44 ctlin 6;
+#X obj 623 44 ctlin 7;
+#X obj 660 69 ctlin 8;
+#X obj 711 96 ctlin 9;
+#X obj 660 103 / 127;
 #X connect 0 0 2 0;
 #X connect 2 0 5 0;
-#X connect 2 0 34 1;
+#X connect 2 0 33 1;
 #X connect 3 0 15 0;
 #X connect 9 0 11 0;
 #X connect 10 0 9 0;
@@ -60,20 +68,28 @@
 #X connect 16 0 6 1;
 #X connect 17 0 3 0;
 #X connect 18 0 16 1;
-#X connect 19 0 18 0;
-#X connect 20 0 16 2;
-#X connect 21 0 22 0;
-#X connect 21 1 23 0;
-#X connect 22 0 16 3;
-#X connect 23 0 16 4;
+#X connect 19 0 16 2;
+#X connect 20 0 21 0;
+#X connect 20 1 22 0;
+#X connect 21 0 16 3;
+#X connect 22 0 16 4;
+#X connect 23 0 27 0;
 #X connect 24 0 28 0;
-#X connect 25 0 29 0;
-#X connect 26 0 16 5;
-#X connect 27 0 16 6;
-#X connect 28 0 16 7;
-#X connect 29 0 16 8;
+#X connect 25 0 16 5;
+#X connect 26 0 16 6;
+#X connect 27 0 16 7;
+#X connect 28 0 16 8;
+#X connect 29 0 25 0;
 #X connect 30 0 26 0;
-#X connect 31 0 27 0;
+#X connect 31 0 32 0;
 #X connect 32 0 33 0;
-#X connect 33 0 34 0;
-#X connect 34 0 20 0;
+#X connect 33 0 19 0;
+#X connect 34 0 36 0;
+#X connect 35 0 34 0;
+#X connect 36 0 18 0;
+#X connect 37 0 31 0;
+#X connect 38 0 29 0;
+#X connect 39 0 30 0;
+#X connect 40 0 42 0;
+#X connect 41 0 24 0;
+#X connect 42 0 23 0;
