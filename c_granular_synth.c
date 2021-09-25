@@ -123,9 +123,26 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
         x->output_buffer *= gauss_val;
         
-        adsr_val = calculate_adsr_value(x);
-        //x->output_buffer *= adsr_val;
+        if(x->midi_velo > 0)
+        {
+            adsr_val = calculate_adsr_value(x);
+            
+        }
+        else
+        {
+            if(x->adsr_env->adsr == SILENT)
+            {
+                adsr_val = 0;
+            }
+            // Must be in Release State
+            else
+            {
+                x->adsr_env->adsr = RELEASE;
+                adsr_val = calculate_adsr_value(x);
+            }
+        }
         
+        x->output_buffer *= adsr_val;
         *out++ = x->output_buffer;
     }
     
@@ -201,12 +218,19 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         //GrainTable neu schreiben
         c_granular_synth_populate_grain_table(x);
     }
-    if(x->midi_velo != midi_velo) x->midi_velo = midi_velo;
-    if(x->midi_pitch != midi_pitch) x->midi_pitch = midi_pitch;
-    if(x->attack != attack) x->attack = attack;
-    if(x->decay != decay) x->decay = decay;
-    if(x->sustain != sustain) x->sustain = sustain;
-    if(x->release != release) x->release = release;
+    if(x->midi_pitch != midi_pitch)
+    {
+        x->midi_pitch = midi_pitch;
+    }
+    if(x->midi_velo != midi_velo)
+    {
+        x->midi_velo = midi_velo;
+    }
+    if(x->adsr_env->attack != attack)
+    {x->adsr_env->attack = attack;}
+    if(x->adsr_env->decay != decay) x->adsr_env->decay = decay;
+    if(x->adsr_env->sustain != sustain) x->adsr_env->sustain = sustain;
+    if(x->adsr_env->release != release) x->adsr_env->release = release;
 }
 /*
 void c_granular_synth_midi_update()

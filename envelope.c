@@ -41,15 +41,21 @@ float calculate_adsr_value(c_granular_synth *x)
             break;
         case SUSTAIN:
             adsr_val = x->adsr_env->sustain;
-            x->current_adsr_stage_index++;
-            if(x->current_adsr_stage_index >= x->adsr_env->key_pressed_samples)
+            //x->current_adsr_stage_index++;
+            //if(x->current_adsr_stage_index >= x->adsr_env->key_pressed_samples)
+            /*
+            if(x->midi_velo == 0)
             {
                 x->current_adsr_stage_index = 0;
                 x->adsr_env->adsr = RELEASE;
             }
-    
+    */
             break;
         case RELEASE:
+            if(x->midi_velo > 0)
+            {
+                x->adsr_env->adsr = ATTACK;
+            }
             adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
             if(x->current_adsr_stage_index >= x->adsr_env->release_samples)
             {
@@ -58,6 +64,11 @@ float calculate_adsr_value(c_granular_synth *x)
             }
             break;
         case SILENT:
+            if(x->midi_velo>0)
+            {
+                x->adsr_env->adsr = ATTACK;
+                break;
+            }
             adsr_val = 0;
             break;
     }
@@ -72,16 +83,16 @@ envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, in
     t_float SAMPLERATE = sys_getsr();
     
     //ACHTUNG diese muss bei Note on wieder raus -> start mit silent
-    x->adsr = ATTACK;
+    x->adsr = SILENT;
 
     x->attack = attack;
     x->decay = decay;
     x->sustain = sustain;
-    x->key_pressed = key_pressed;
+    //x->key_pressed = key_pressed;
     x->release = release;
-    x->duration = x->attack + x->decay + x->key_pressed+ x->release;
+    //x->duration = x->attack + x->decay + x->key_pressed+ x->release;
 
-    x->envelope_samples_table = (t_sample *) vas_mem_alloc(x->duration * sizeof(t_sample));
+    //x->envelope_samples_table = (t_sample *) vas_mem_alloc(x->duration * sizeof(t_sample));
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
     x->decay_samples = get_samples_from_ms(decay, SAMPLERATE);

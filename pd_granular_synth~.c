@@ -28,8 +28,8 @@ typedef struct pd_granular_synth_tilde
     c_granular_synth *synth;
     t_int               grain_size,
                         start_pos,
-                        midi_velo,
                         midi_pitch,
+                        midi_velo,
                         attack,
                         decay,
                         release;
@@ -42,8 +42,8 @@ typedef struct pd_granular_synth_tilde
 
     t_inlet             *in_grain_size,
                         *in_start_pos,
-                        *in_midi_velo,
                         *in_midi_pitch,
+                        *in_midi_velo,
                         *in_attack,
                         *in_decay,
                         *in_sustain,
@@ -80,8 +80,8 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
     x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
-    x->in_midi_velo = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_velo"));
     x->in_midi_pitch = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_pitch"));
+    x->in_midi_velo = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_velo"));
     x->in_attack = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("attack"));
     x->in_decay = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("decay"));
     x->in_sustain = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("sustain"));
@@ -110,9 +110,8 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
     c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
-    
-    c_granular_synth_process(x->synth, in, out, n);
 
+        c_granular_synth_process(x->synth, in, out, n);
     /* return a pointer to the dataspace for the next dsp-object */
     /*
         the return argument equals the argument of the perform-routine plus the
@@ -227,18 +226,18 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
     // Changes get passed to synth in update properties method
 }
 
-static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floatarg f)
-{
-    int new_midi_velo = (int)f;
-    if(new_midi_velo < 0) new_midi_velo = 0;
-    x->midi_velo = (int)new_midi_velo;
-}
-
 static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_midi_pitch = (int)f;
     if(new_midi_pitch < 0) new_midi_pitch = 0;
     x->midi_pitch = (int)new_midi_pitch;
+}
+
+static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_midi_velo = (int)f;
+    if(new_midi_velo < 0) new_midi_velo = 0;
+    x->midi_velo = (int)new_midi_velo;
 }
 
 static void pd_granular_synth_set_attack(t_pd_granular_synth_tilde *x, t_floatarg f)
@@ -303,10 +302,10 @@ void pd_granular_synth_tilde_setup(void)
     
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
                     gensym("start_pos"), A_DEFFLOAT, 0);
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_velo,
-                    gensym("midi_velo"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_pitch,
                     gensym("midi_pitch"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_velo,
+                    gensym("midi_velo"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_attack,
                     gensym("attack"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_decay,
