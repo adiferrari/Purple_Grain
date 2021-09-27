@@ -1,0 +1,131 @@
+\hypertarget{envelope_8h}{}\doxysection{envelope.\+h File Reference}
+\label{envelope_8h}\index{envelope.h@{envelope.h}}
+
+
+Envelope file header ~\newline
+ ~\newline
+ Envelope file header.  
+
+
+{\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}grain.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for envelope.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structenvelope}{envelope}}
+\item 
+struct \mbox{\hyperlink{structwindow}{window}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{envelope_8h_a159f982df6bc27a29ac68734579fbd83}\label{envelope_8h_a159f982df6bc27a29ac68734579fbd83}} 
+typedef struct \mbox{\hyperlink{structenvelope}{envelope}} {\bfseries envelope}
+\item 
+\mbox{\Hypertarget{envelope_8h_ac498c9df84b8f23df1cc926bf6bdbd4f}\label{envelope_8h_ac498c9df84b8f23df1cc926bf6bdbd4f}} 
+typedef struct \mbox{\hyperlink{structwindow}{window}} {\bfseries window}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{envelope_8h_a751beb55e4099c89885109d9978de19d}\label{envelope_8h_a751beb55e4099c89885109d9978de19d}} 
+enum {\bfseries adsr\+\_\+stage} \{ \newline
+{\bfseries A\+T\+T\+A\+CK}, 
+{\bfseries D\+E\+C\+AY}, 
+{\bfseries S\+U\+S\+T\+A\+IN}, 
+{\bfseries R\+E\+L\+E\+A\+SE}, 
+\newline
+{\bfseries S\+I\+L\+E\+NT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{envelope_8h_a2e76728151010ee93496e3b01cea0bb9}\label{envelope_8h_a2e76728151010ee93496e3b01cea0bb9}} 
+int {\bfseries getsamples\+\_\+from\+\_\+ms} (int ms, float sr)
+\item 
+\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}{envelope\+\_\+new}} (int attack, int decay, float sustain, int key\+\_\+pressed, int release)
+\begin{DoxyCompactList}\small\item\em calculates new A\+D\+SR envelope \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{envelope_8h_a0a3592cff3c411e98df69da098856168}{gauss}} (\mbox{\hyperlink{structgrain}{grain}} x, int sample)
+\item 
+void \mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\_\+free}} (\mbox{\hyperlink{structenvelope}{envelope}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em frees envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Envelope file header ~\newline
+ ~\newline
+ Envelope file header. 
+
+\begin{DoxyAuthor}{Author}
+Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
+ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}\label{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}} 
+\index{envelope.h@{envelope.h}!envelope\_free@{envelope\_free}}
+\index{envelope\_free@{envelope\_free}!envelope.h@{envelope.h}}
+\doxysubsubsection{\texorpdfstring{envelope\_free()}{envelope\_free()}}
+{\footnotesize\ttfamily void envelope\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structenvelope}{envelope}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+frees envelope 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input variable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}\label{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}} 
+\index{envelope.h@{envelope.h}!envelope\_new@{envelope\_new}}
+\index{envelope\_new@{envelope\_new}!envelope.h@{envelope.h}}
+\doxysubsubsection{\texorpdfstring{envelope\_new()}{envelope\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{key\+\_\+pressed,  }\item[{int}]{release }\end{DoxyParamCaption})}
+
+
+
+calculates new A\+D\+SR envelope 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attack} & \\
+\hline
+{\em decay} & \\
+\hline
+{\em sustain} & \\
+\hline
+{\em key\+\_\+pressed} & \\
+\hline
+{\em release} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+envelope$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{envelope_8h_a0a3592cff3c411e98df69da098856168}\label{envelope_8h_a0a3592cff3c411e98df69da098856168}} 
+\index{envelope.h@{envelope.h}!gauss@{gauss}}
+\index{gauss@{gauss}!envelope.h@{envelope.h}}
+\doxysubsubsection{\texorpdfstring{gauss()}{gauss()}}
+{\footnotesize\ttfamily float gauss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}}}]{x,  }\item[{int}]{grainindex }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em grainindex} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}

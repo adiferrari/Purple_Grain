@@ -8,7 +8,17 @@
 // overlap
 
 // length of the entire sound file [in samples]
-
+/**
+ * @file grain.c
+ * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * Audiocommunication Group, Technische Universität Berlin <br>
+ * @brief handles grain creation
+ * @version 0.1
+ * @date 2021-09-27
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "grain.h"
 #include "c_granular_synth.h"
 #include "envelope.h"
@@ -17,8 +27,16 @@
 
 static t_class *grain_class;
 
-#define SAMPLERATE 44100   // To-Do: Set dynamically by user input
-
+#define SAMPLERATE 44100   ///< To-Do: Set dynamically by user input
+/**
+ * @brief generates new grain depending on @param grain_size_samples, @param soundfile_size and @param grain_index
+ * 
+ * @param grain_size_samples size of samples contained in a grain
+ * @param soundfile_size size of the soundfile which can be read in via inlet
+ * @param grain_index corresponding index of a grain
+ * @param time_stretch_factor resizes sample length within a grain, adjustable through slider 
+ * @return grain 
+ */
 grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor)
 {
     grain x;
@@ -52,13 +70,22 @@ grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, flo
 
     return x;
 }
-
+/**
+ * @brief scheduling of grain playback
+ * sheduling of grain playback
+ * @param g grain
+ * @param synth synthesized output of c_granular_synth object
+ */
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
     g->grain_active = (g->start <= synth->playback_position && g->end >= synth->playback_position);
     if(g->grain_active)
     {
-        float left_sample, right_sample, frac, integral, weighted;
+        float   left_sample, ///<
+                right_sample, ///<
+                frac, ///<
+                integral, ///<
+                weighted;///<
         
         // For negative time_stretch_factor values read samples in backwards direction
         
@@ -72,25 +99,26 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
         if(g->next_sample_pos > synth->soundfile_length || g->current_sample_pos >= g->end)
         {
             //g->grain_active = false;
-            // Grain wieder auf seinen Startpunkt setzen, wie bei Initialisierung in new-methode
-            g->current_sample_pos = g->grain_size_samples * g->grain_index;
+            g->current_sample_pos = g->grain_size_samples * g->grain_index; ///< sets grain position to start
             g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
         }
         
         
-        // checken ob nächstes grain aktiv ist
-        grain_internal_scheduling(g->next_grain, synth);
+        grain_internal_scheduling(g->next_grain, synth); ///< checks active state of grain
     }
     else {
         // Grain nicht oder nicht mehr aktiv
-        // seine current pos auf seinen start zurücksetzen
-        g->current_sample_pos = g->grain_size_samples * g->grain_index;
+        g->current_sample_pos = g->grain_size_samples * g->grain_index; ///< sets current position to start
         g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
         return;
         
     }
 }
-
+/**
+ * @brief frees grain
+ * frees grain
+ * @param x input pointer of grain_fre object
+ */
 void grain_free(grain *x)
 {
     free(x);

@@ -1,6 +1,7 @@
 /**
  * @file c_granular_synth.c
- * @author your name (you@domain.com)
+ * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief The C Part of the synthesizer's implementation
  * @version 0.1
  * @date 2021-07-25
@@ -14,6 +15,20 @@
 #include "grain.h"
 #include "purple_utils.h"
 
+/**
+ * @brief initial setup of soundfile and adjustment silder related variables
+ * 
+ * @param soundfile contains the soundfile which can be read in via inlet
+ * @param soundfile_length lenght of the soundfile as integer variable
+ * @param grain_size_ms size of a grain in milliseconds, adjustable through slider
+ * @param start_pos position within the soundfile, adjustable through slider
+ * @param time_stretch_factor resizes sample length within a grain, adjustable through slider
+ * @param attack attack time in the range of 0 - 4000ms, adjustable through slider
+ * @param decay decay time in the range of 0 - 4000ms, adjustable through slider
+ * @param sustain sustain time in the range of 0 - 1, adjustable through slider
+ * @param release release time in the range of 0 - 10000ms, adjustable through slider
+ * @return c_granular_synth* 
+ */
 c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
@@ -97,6 +112,15 @@ void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, in
     
 }
 */
+
+/**
+ * @brief refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output
+ * 
+ * @param x input pointer of c_granular_synth_process object
+ * @param in input
+ * @param out output
+ * @param vector_size vectoral size of 
+ */
 void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size)
 {
     int i = vector_size;
@@ -161,18 +185,31 @@ void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocit
 
     return;
 }
-
+/**
+ * @brief sets number of grains
+ * sets number of grains according to @param soundfile_length and @param grain_size_samples
+ * @param x input pointer of c_granular_synth_set_num_grains object
+ */
 void c_granular_synth_set_num_grains(c_granular_synth *x)
 {
     x->num_grains = (int)ceilf(x->soundfile_length / x->grain_size_samples);
 }
-
+/**
+ * @brief adjusts current grain index
+ * adjusts current grain index according to @param currents_start_pos and @param grain_size_samples
+ * @param x input pointer of c_granular_synth_adjust_current_grain_index object
+ */
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
 {
     int index = x->current_start_pos / x->grain_size_samples;
     x->current_grain_index = index;
 }
-
+/**
+ * @brief generates a grain table
+ * generates a grain table according to @param current_grain_index
+ * for negative @param time_stretch_factor values samples are read in backwards direction
+ * @param x input pointer of c_granular_synth_populate_grain_table object
+ */
 void c_granular_synth_populate_grain_table(c_granular_synth *x)
 {
     grain *grains_table;
@@ -216,7 +253,20 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     if(x->grains_table) free(x->grains_table);
     x->grains_table = grains_table;
 }
-
+/**
+ * @brief checks on current input states e.g. slider positions and updates correspondent values
+ * 
+ * @param x input pointer of c_granular_synth_properties_update object
+ * @param midi_velo MIDI input velocity value
+ * @param midi_pitch MIDI input pitch/key value
+ * @param grain_size_ms size of a grain in milliseconds, adjustable through slider
+ * @param start_pos position within the soundfile, adjustable through slider
+ * @param time_stretch_factor resizes sample length within a grain, adjustable through slider
+ * @param attack attack time in the range of 0 - 4000ms, adjustable through slider
+ * @param decay decay time in the range of 0 - 4000ms, adjustable through slider
+ * @param sustain sustain time in the range of 0 - 1, adjustable through slider
+ * @param release release time in the range of 0 - 10000ms, adjustable through slider
+ */
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
 {
     if(x->grain_size_ms != grain_size_ms || x->current_start_pos != start_pos || x->time_stretch_factor != time_stretch_factor || !x->grains_table)
@@ -263,6 +313,12 @@ void c_granular_synth_midi_update()
 }
  */
 
+/**
+ * @related granular_synth_tilde
+ * @brief frees granular_synth object
+ * 
+ * @param x input pointer of c_granular_synth_free object
+ */
 void c_granular_synth_free(c_granular_synth *x)
 {
     if(x)
