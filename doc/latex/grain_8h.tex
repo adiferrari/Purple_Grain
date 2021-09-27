@@ -1,0 +1,81 @@
+\hypertarget{grain_8h}{}\doxysection{grain.\+h File Reference}
+\label{grain_8h}\index{grain.h@{grain.h}}
+
+
+Grain file header ~\newline
+ ~\newline
+ Grain file header.  
+
+
+{\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for grain.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgrain}{grain}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{grain_8h_a0886fd22971f685b5fa0a5ff4d017cef}\label{grain_8h_a0886fd22971f685b5fa0a5ff4d017cef}} 
+typedef struct \mbox{\hyperlink{structgrain}{grain}} {\bfseries grain}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8h_ac42c86512f5fdaa5371155efaf4b469e}{grain\+\_\+new}} (int grain\+\_\+size\+\_\+samples, int soundfile\+\_\+size, int grain\+\_\+index, float time\+\_\+stretch\+\_\+factor)
+\begin{DoxyCompactList}\small\item\em generates new grain depending on \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\+\_\+free}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em frees grain frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Grain file header ~\newline
+ ~\newline
+ Grain file header. 
+
+\begin{DoxyAuthor}{Author}
+Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
+ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}\label{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}} 
+\index{grain.h@{grain.h}!grain\_free@{grain\_free}}
+\index{grain\_free@{grain\_free}!grain.h@{grain.h}}
+\doxysubsubsection{\texorpdfstring{grain\_free()}{grain\_free()}}
+{\footnotesize\ttfamily void grain\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+frees grain frees grain 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input pointer of grain\+\_\+fre object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{grain_8h_ac42c86512f5fdaa5371155efaf4b469e}\label{grain_8h_ac42c86512f5fdaa5371155efaf4b469e}} 
+\index{grain.h@{grain.h}!grain\_new@{grain\_new}}
+\index{grain\_new@{grain\_new}!grain.h@{grain.h}}
+\doxysubsubsection{\texorpdfstring{grain\_new()}{grain\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgrain}{grain}} grain\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{grain\+\_\+size\+\_\+samples,  }\item[{int}]{soundfile\+\_\+size,  }\item[{int}]{grain\+\_\+index,  }\item[{float}]{time\+\_\+stretch\+\_\+factor }\end{DoxyParamCaption})}
+
+
+
+generates new grain depending on 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grain\+\_\+size\+\_\+samples} & \\
+\hline
+\end{DoxyParams}

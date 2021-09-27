@@ -1,0 +1,87 @@
+\hypertarget{vas__mem_8h}{}\doxysection{vas\+\_\+mem.\+h File Reference}
+\label{vas__mem_8h}\index{vas\_mem.h@{vas\_mem.h}}
+
+
+Utilties for dynamic memory allocation ~\newline
+ ~\newline
+ Wrapper for memory allocation Max/\+M\+SP S\+DK suggests using the Max/\+M\+SP \char`\"{}sysmem\+\_\+\char`\"{} -\/ routines instead of malloc/calloc/free So for Max/\+M\+SP define the Preprocessor macro \char`\"{}\+M\+A\+X\+M\+S\+P\+S\+D\+K\char`\"{}.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for vas\+\_\+mem.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{vas__mem_8h_ac549a7c59d4bb509d568f9978b916fbb}{vas\+\_\+mem\+\_\+alloc}} (long size)
+\item 
+void $\ast$ \mbox{\hyperlink{vas__mem_8h_ad6c97252ba29dace27ab0065778b2ba8}{vas\+\_\+mem\+\_\+resize}} (void $\ast$ptr, long size)
+\item 
+void \mbox{\hyperlink{vas__mem_8h_a751a5f7552bb2cd98282edf0afe0d059}{vas\+\_\+mem\+\_\+free}} (void $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em frees pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utilties for dynamic memory allocation ~\newline
+ ~\newline
+ Wrapper for memory allocation Max/\+M\+SP S\+DK suggests using the Max/\+M\+SP \char`\"{}sysmem\+\_\+\char`\"{} -\/ routines instead of malloc/calloc/free So for Max/\+M\+SP define the Preprocessor macro \char`\"{}\+M\+A\+X\+M\+S\+P\+S\+D\+K\char`\"{}. 
+
+\begin{DoxyAuthor}{Author}
+Thomas Resch ~\newline
+ Audiocommunication Group, Technical University Berlin ~\newline
+ University of Applied Sciences Nordwestschweiz (F\+H\+NW), Music-\/\+Academy, Research and Development ~\newline
+ Tools for calculating convolution based virtual acoustics (mainly dynamic binaural synthesis) ~\newline
+ ~\newline
+ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{vas__mem_8h_ac549a7c59d4bb509d568f9978b916fbb}\label{vas__mem_8h_ac549a7c59d4bb509d568f9978b916fbb}} 
+\index{vas\_mem.h@{vas\_mem.h}!vas\_mem\_alloc@{vas\_mem\_alloc}}
+\index{vas\_mem\_alloc@{vas\_mem\_alloc}!vas\_mem.h@{vas\_mem.h}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_alloc()}{vas\_mem\_alloc()}}
+{\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+alloc (\begin{DoxyParamCaption}\item[{long}]{size }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vas__mem_8h_a751a5f7552bb2cd98282edf0afe0d059}\label{vas__mem_8h_a751a5f7552bb2cd98282edf0afe0d059}} 
+\index{vas\_mem.h@{vas\_mem.h}!vas\_mem\_free@{vas\_mem\_free}}
+\index{vas\_mem\_free@{vas\_mem\_free}!vas\_mem.h@{vas\_mem.h}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_free()}{vas\_mem\_free()}}
+{\footnotesize\ttfamily void vas\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+frees pointer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{vas__mem_8h_ad6c97252ba29dace27ab0065778b2ba8}\label{vas__mem_8h_ad6c97252ba29dace27ab0065778b2ba8}} 
+\index{vas\_mem.h@{vas\_mem.h}!vas\_mem\_resize@{vas\_mem\_resize}}
+\index{vas\_mem\_resize@{vas\_mem\_resize}!vas\_mem.h@{vas\_mem.h}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_resize()}{vas\_mem\_resize()}}
+{\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+resize (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{long}]{size }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer \\
+\hline
+{\em size} & size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
