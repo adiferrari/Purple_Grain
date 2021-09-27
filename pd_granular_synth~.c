@@ -232,12 +232,19 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
 static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     float new_time_stretch_factor = f;
-    if(new_time_stretch_factor == 0)
+    if(x->synth)
     {
-        // Was tun wenn der Faktor 0 ist ???
-        // war die Richtung zuvor positiv setze jetzt auf -0.1 und umgekehrt
-        x->time_stretch_factor = (x->time_stretch_factor > 0) ? -0.1 : 0.1;
-        return;
+        if((!x->synth->reverse_playback && new_time_stretch_factor < 0)
+           || (x->synth->reverse_playback && new_time_stretch_factor > 0)
+           || fabsf(new_time_stretch_factor) < 0.1)
+        {
+            // Was tun wenn der Faktor 0 ist ???
+            // war die Richtung zuvor positiv setze jetzt auf -0.1 und umgekehrt
+            x->time_stretch_factor = (x->time_stretch_factor > 0) ? -0.1 : 0.1;
+            // drehe reverse playback status um
+            x->synth->reverse_playback = !x->synth->reverse_playback;
+            return;
+        }
     }
     x->time_stretch_factor = new_time_stretch_factor;
 }

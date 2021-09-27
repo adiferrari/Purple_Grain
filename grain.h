@@ -27,10 +27,11 @@ typedef struct grain
 {
     struct grain        *next_grain;
     t_int               grain_size_samples,   // Grain size in samples
-                        grain_index,
-                        start,
-                        end;
-    t_float             time_stretch_factor,
+                        grain_index;
+                        
+    t_float             start,
+                        end,
+                        time_stretch_factor,
                         current_sample_pos,
                         next_sample_pos;
     bool                grain_active;

@@ -43,6 +43,7 @@ typedef struct c_granular_synth
                 midi_pitch,
                 midi_velo;
     t_int       playback_position;    // which sample of the grain goes to the output next?
+    bool        reverse_playback;
     float       *soundfile_table;     //Array containing the original soundfile
     t_float     output_buffer,          // to sum up the current samples of all active grains
                 time_stretch_factor,

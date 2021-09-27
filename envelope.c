@@ -55,6 +55,7 @@ float calculate_adsr_value(c_granular_synth *x)
             if(x->midi_velo > 0)
             {
                 x->adsr_env->adsr = ATTACK;
+                break;
             }
             adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
             if(x->current_adsr_stage_index >= x->adsr_env->release_samples)

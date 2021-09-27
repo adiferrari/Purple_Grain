@@ -36,7 +36,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->grain_size_ms = grain_size_ms;
     x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
     x->time_stretch_factor = time_stretch_factor;
-
+    x->reverse_playback = (x->time_stretch_factor < 0);
     // Retrigger when user sets different grain size
     c_granular_synth_set_num_grains(x);
     post("C main file - new method - number of grains = %d", x->num_grains);
@@ -184,14 +184,13 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     // Muss als Ring Buffer auch die ersten Grains befüllen!!
     
     // For negative time_stretch_factor values read samples in backwards direction
-    bool reverse_playback = (x->time_stretch_factor < 0);
-    if(reverse_playback)
+    if(x->reverse_playback)
     {
         for(j = x->current_grain_index; j >= 0; j--)
         {
             grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
             if(j < x->current_grain_index) grains_table[j+1].next_grain = &grains_table[j];
-            if(labs(grains_table[j].start) <= x->playback_position &&  labs(grains_table[j].end) >= x->playback_position)
+            if(fabsf(grains_table[j].start) <= x->playback_position &&  fabsf(grains_table[j].end) >= x->playback_position)
             {
                 grains_table[j].grain_active = true;
             }
