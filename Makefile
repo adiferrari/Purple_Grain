@@ -15,6 +15,7 @@ pd_granular_synth~.class.sources += c_granular_synth.c
 pd_granular_synth~.class.sources += grain.c
 pd_granular_synth~.class.sources += vas_mem.c
 pd_granular_synth~.class.sources += envelope.c
+pd_granular_synth~.class.sources += purple_utils.c
 
 # Hiermit weiteresource files hinzufuegen
 # all extra files to be included in binary distribution of the library
