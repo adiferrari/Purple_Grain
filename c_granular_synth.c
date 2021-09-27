@@ -34,7 +34,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->current_adsr_stage_index = 0;
     //t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
-    x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
+    x->adsr_env = envelope_new(attack, decay, sustain, release);
     x->time_stretch_factor = time_stretch_factor;
 
     // Retrigger when user sets different grain size
@@ -136,7 +136,9 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
             // Must be in Release State
             else
             {
+                if(x->adsr_env->adsr != RELEASE) x->current_adsr_stage_index = 0;
                 x->adsr_env->adsr = RELEASE;
+                //x->current_adsr_stage_index = 0;
                 adsr_val = calculate_adsr_value(x);
             }
         }
@@ -246,15 +248,59 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     {
         x->midi_pitch = midi_pitch;
     }
+    
     if(x->midi_velo != midi_velo)
     {
         x->midi_velo = midi_velo;
     }
+    
+    if (x->adsr_env->attack != attack || x->adsr_env->decay != decay || x->adsr_env->sustain != sustain || x->adsr_env->release != release)
+    {
+        if(x->adsr_env->attack != attack)
+        {
+            x->adsr_env->attack = attack;
+        }
+        if(x->adsr_env->decay != decay)
+        {
+            x->adsr_env->decay = decay;
+        }
+        if(x->adsr_env->sustain != sustain)
+        {
+            x->adsr_env->sustain = sustain;
+        }
+        if(x->adsr_env->release != release)
+        {
+            x->adsr_env->release = release;
+        }
+        x->adsr_env = envelope_new(attack, decay, sustain, release);
+    }
+    /*
     if(x->adsr_env->attack != attack)
-    {x->adsr_env->attack = attack;}
-    if(x->adsr_env->decay != decay) x->adsr_env->decay = decay;
-    if(x->adsr_env->sustain != sustain) x->adsr_env->sustain = sustain;
-    if(x->adsr_env->release != release) x->adsr_env->release = release;
+    {
+        x->adsr_env->attack = attack;
+        
+    }
+    
+    if(x->adsr_env->decay != decay)
+    {
+        x->adsr_env->decay = decay;
+        x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
+    }
+    
+    if(x->adsr_env->sustain != sustain)
+    {
+        x->adsr_env->sustain = sustain;
+        x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
+    }
+    
+    if(x->adsr_env->release != release)
+    {
+        x->adsr_env->release = release;
+        x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
+
+    }
+    
+    */
 }
 /*
 void c_granular_synth_midi_update()
