@@ -41,12 +41,10 @@ typedef struct envelope
     t_int attack;
     t_int decay;
     t_float sustain;
-    t_int key_pressed;
     t_int release;
     t_int duration;
     t_int attack_samples,
             decay_samples,
-            key_pressed_samples,
             release_samples;
     t_sample *envelope_samples_table;
     enum adsr_stage adsr;
@@ -60,7 +58,7 @@ typedef struct window
     t_sample *window_samples_table;
 }window;
 
-envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, int release);
+envelope *envelope_new(int attack, int decay, float sustain, int release);
 
 float gauss(grain x, int sample);
 void envelope_free(envelope *x);

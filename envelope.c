@@ -55,6 +55,7 @@ float calculate_adsr_value(c_granular_synth *x)
             if(x->midi_velo > 0)
             {
                 x->adsr_env->adsr = ATTACK;
+                x->current_adsr_stage_index = 0;
                 break;
             }
             adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
@@ -68,6 +69,7 @@ float calculate_adsr_value(c_granular_synth *x)
             if(x->midi_velo>0)
             {
                 x->adsr_env->adsr = ATTACK;
+                x->current_adsr_stage_index = 0;
                 break;
             }
             adsr_val = 0;
@@ -77,7 +79,7 @@ float calculate_adsr_value(c_granular_synth *x)
 }
 
 
-envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, int release)
+envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 {
     envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
@@ -97,7 +99,6 @@ envelope *envelope_new(int attack, int decay, float sustain, int key_pressed, in
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
     x->decay_samples = get_samples_from_ms(decay, SAMPLERATE);
-    x->key_pressed_samples = get_samples_from_ms(key_pressed, SAMPLERATE);
     x->release_samples = get_samples_from_ms(release, SAMPLERATE);
     return x;
 }

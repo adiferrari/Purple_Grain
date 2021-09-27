@@ -73,10 +73,10 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->start_pos = 0;
     x->time_stretch_factor = 1.0,
     x->midi_velo = 0;
-    x->attack = 50;
-    x->decay = 50;
-    x->sustain = 0.5;
-    x->release = 50;
+    x->attack = 500;
+    x->decay = 500;
+    x->sustain = 0.7;
+    x->release = 1000;
     //The main inlet is created automatically
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
