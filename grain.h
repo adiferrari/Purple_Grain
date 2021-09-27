@@ -46,7 +46,10 @@ typedef struct grain
 
 
 grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor);
+
+// Include order forced this method to be included in c_granular_synth.h
 //void grain_internal_scheduling(grain* g, c_granular_synth* synth);
+
 void grain_free(grain *x);
 
 #ifdef __cplusplus

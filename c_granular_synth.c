@@ -14,7 +14,7 @@
 #include "grain.h"
 #include "purple_utils.h"
 
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, int attack, int decay, float sustain, int release)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -35,7 +35,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     //t_float SAMPLERATE = sys_getsr();
     x->grain_size_ms = grain_size_ms;
     x->adsr_env = envelope_new(attack, decay, sustain, 1000, release);
-    x->time_stretch_factor = 1.0f;
+    x->time_stretch_factor = time_stretch_factor;
 
     // Retrigger when user sets different grain size
     c_granular_synth_set_num_grains(x);
@@ -126,7 +126,6 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         if(x->midi_velo > 0)
         {
             adsr_val = calculate_adsr_value(x);
-            
         }
         else
         {
@@ -148,6 +147,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
     
 }
 
+// Obsolete?
 void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocity)
 {
         //Create Voice, map Midi Key Number to frequency?
@@ -177,47 +177,71 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
 {
     grain *grains_table;
     grains_table = (grain *) calloc(x->num_grains, sizeof(grain));
+    int j;
+    
     // Grain Table schreiben ab "current_grain_index"
     // Bis jetzt schreibt for schlaife nur bis ans Ende der Num Grains
     // Muss als Ring Buffer auch die ersten Grains befüllen!!
-    for(int j = x->current_grain_index; j<x->num_grains; j++)
+    
+    // For negative time_stretch_factor values read samples in backwards direction
+    bool reverse_playback = (x->time_stretch_factor < 0);
+    if(reverse_playback)
     {
-        grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
-        if(j > 0) grains_table[j-1].next_grain = &grains_table[j];
-        if(grains_table[j].start <= x->playback_position &&  grains_table[j].end >= x->playback_position)
+        for(j = x->current_grain_index; j >= 0; j--)
         {
-            grains_table[j].grain_active = true;
+            grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
+            if(j < x->current_grain_index) grains_table[j+1].next_grain = &grains_table[j];
+            if(labs(grains_table[j].start) <= x->playback_position &&  labs(grains_table[j].end) >= x->playback_position)
+            {
+                grains_table[j].grain_active = true;
+            }
         }
+        grains_table[0].next_grain = &grains_table[x->num_grains - 1];
     }
-    grains_table[x->num_grains - 1].next_grain = &grains_table[0];
+    // Playback inf forward direction
+    else
+    {
+        for(j = x->current_grain_index; j<x->num_grains; j++)
+        {
+            grains_table[j] = grain_new(x->grain_size_samples, x->soundfile_length, j, x->time_stretch_factor);
+            if(j > 0) grains_table[j-1].next_grain = &grains_table[j];
+            if(grains_table[j].start <= x->playback_position &&  grains_table[j].end >= x->playback_position)
+            {
+                grains_table[j].grain_active = true;
+            }
+        }
+        grains_table[x->num_grains - 1].next_grain = &grains_table[0];
+    }
     
     if(x->grains_table) free(x->grains_table);
     x->grains_table = grains_table;
 }
 
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
 {
-    if(!x->grains_table)
+    if(x->grain_size_ms != grain_size_ms || x->current_start_pos != start_pos || x->time_stretch_factor != time_stretch_factor || !x->grains_table)
     {
-        c_granular_synth_populate_grain_table(x);
-    }
-    if(x->current_start_pos != start_pos)
-    {
-        x->current_start_pos = start_pos;
-        c_granular_synth_adjust_current_grain_index(x);
+        if(x->current_start_pos != start_pos)
+        {
+            x->current_start_pos = start_pos;
+            c_granular_synth_adjust_current_grain_index(x);
+        }
+        if(x->grain_size_ms != grain_size_ms)
+        {
+            x->grain_size_ms = grain_size_ms;
+            int grain_size_samples = get_samples_from_ms(grain_size_ms, x->sr);
+            x->grain_size_samples = grain_size_samples;
+            c_granular_synth_set_num_grains(x);
+            c_granular_synth_adjust_current_grain_index(x);
+        }
+        if(x->time_stretch_factor != time_stretch_factor)
+        {
+            x->time_stretch_factor = time_stretch_factor;
+        }
+        // GrainTable in jedem Fall neu schreiben
         c_granular_synth_populate_grain_table(x);
     }
     
-    if(x->grain_size_ms != grain_size_ms)
-    {
-        x->grain_size_ms = grain_size_ms;
-        int grain_size_samples = get_samples_from_ms(grain_size_ms, x->sr);
-        x->grain_size_samples = grain_size_samples;
-        c_granular_synth_set_num_grains(x);
-        c_granular_synth_adjust_current_grain_index(x);
-        //GrainTable neu schreiben
-        c_granular_synth_populate_grain_table(x);
-    }
     if(x->midi_pitch != midi_pitch)
     {
         x->midi_pitch = midi_pitch;

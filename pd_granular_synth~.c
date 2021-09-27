@@ -33,7 +33,8 @@ typedef struct pd_granular_synth_tilde
                         attack,
                         decay,
                         release;
-    t_float             sustain;
+    t_float             sustain,
+                        time_stretch_factor;
     t_word *soundfile;      // Pointer to the soundfile Array
     t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
     int soundfile_length;
@@ -42,6 +43,7 @@ typedef struct pd_granular_synth_tilde
 
     t_inlet             *in_grain_size,
                         *in_start_pos,
+                        *in_time_stretch_factor,
                         *in_midi_pitch,
                         *in_midi_velo,
                         *in_attack,
@@ -67,19 +69,19 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
 
     x->soundfile_length = 0;
     x->soundfile_length_ms = 0;
-    x->envelopeTable = 0;
     x->grain_size = 50;
-    x->midi_velo = 0;
     x->start_pos = 0;
+    x->time_stretch_factor = 1.0,
+    x->midi_velo = 0;
     x->attack = 50;
     x->decay = 50;
     x->sustain = 0.5;
     x->release = 50;
-    //x->synth = c_granular_synth_new(30);        // Default value of 30ms
     //The main inlet is created automatically
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
     x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
+    x->in_time_stretch_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("time_stretch_factor"));
     x->in_midi_pitch = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_pitch"));
     x->in_midi_velo = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_velo"));
     x->in_attack = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("attack"));
@@ -109,9 +111,9 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos < 0) x->start_pos = 0;
     if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
 
-        c_granular_synth_process(x->synth, in, out, n);
+    c_granular_synth_process(x->synth, in, out, n);
     /* return a pointer to the dataspace for the next dsp-object */
     /*
         the return argument equals the argument of the perform-routine plus the
@@ -133,6 +135,7 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
     if(x){
         inlet_free(x->in_grain_size);
         inlet_free(x->in_start_pos);
+        inlet_free(x->in_time_stretch_factor);
         inlet_free(x->in_midi_velo);
         inlet_free(x->in_midi_pitch);
         inlet_free(x->in_attack);
@@ -187,7 +190,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->attack, x->decay, x->sustain, x->release);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release);
     }
 
     return;
@@ -224,6 +227,19 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
         }
     x->start_pos = (int)new_start_pos;
     // Changes get passed to synth in update properties method
+}
+
+static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    float new_time_stretch_factor = f;
+    if(new_time_stretch_factor == 0)
+    {
+        // Was tun wenn der Faktor 0 ist ???
+        // war die Richtung zuvor positiv setze jetzt auf -0.1 und umgekehrt
+        x->time_stretch_factor = (x->time_stretch_factor > 0) ? -0.1 : 0.1;
+        return;
+    }
+    x->time_stretch_factor = new_time_stretch_factor;
 }
 
 static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_floatarg f)
@@ -294,14 +310,12 @@ void pd_granular_synth_tilde_setup(void)
       class_addcreator((t_newmethod)pd_granular_synth_tilde_new, gensym("purple_grain"),
                         A_DEFSYMBOL, 0);
 
-      // this adds the gain message to our object
-      // class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_tilde_method, gensym("name"), A_DEFFLOAT,0);
-
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_grain_size,
                     gensym("grain_size"), A_DEFFLOAT, 0);
-    
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
                     gensym("start_pos"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_time_stretch_factor,
+                  gensym("time_stretch_factor"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_pitch,
                     gensym("midi_pitch"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_velo,
@@ -320,12 +334,6 @@ void pd_granular_synth_tilde_setup(void)
 
       CLASS_MAINSIGNALIN(pd_granular_synth_tilde_class, t_pd_granular_synth_tilde, f);
 
-      // Fetch the current system's samplerate in .h file, check here if value is assigned
-      // SAMPLERATE variable is still a "shadowed declaration"... -> needs Fix!
-      //t_float SAMPLERATE;
-      //SAMPLERATE = sys_getsr();
-      //if(SAMPLERATE > 0) post("SAMPLERATE = %f", SAMPLERATE);
-      
       /*
       class_sethelpsymbol(pd_granular_synth_tilde_class, gensym("pd_granular_synth~"));
 
@@ -336,6 +344,7 @@ void pd_granular_synth_tilde_setup(void)
       
 }
 
+// Obsolete?
 void pd_granular_synth_noteOn(t_pd_granular_synth_tilde *x, float frequency, float velocity)
 {
     c_granular_synth_noteOn(x->synth, frequency, velocity);

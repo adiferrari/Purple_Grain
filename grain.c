@@ -31,14 +31,23 @@ grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, flo
     x.time_stretch_factor = time_stretch_factor;
     
     x.start = x.grain_size_samples * grain_index * x.time_stretch_factor;
+    // For negative time_stretch_factor values read samples in backwards direction
+    if(x.start < 0)
+    {
+        // ???
+    }
     x.current_sample_pos = (float)x.start;
     x.next_sample_pos = x.current_sample_pos + x.time_stretch_factor;
     
     x.end = x.start + ((x.grain_size_samples - 1) * x.time_stretch_factor);
-    if(x.end > soundfile_size)
+    // If the endpoint exceeds the soundfile length in positive or negative direction
+    // clamp the grain length to a point the size of the file
+    if(abs((int)floor(x.end))  > soundfile_size)
     {
         x.end = soundfile_size - 1;
+        if(x.start < 0) x.end *= (-1);
     }
+    
     //post("Grain with index %d starts at %d and ends at %d", grain_index, x.start, x.end);
 
     return x;
@@ -50,9 +59,9 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
     if(g->grain_active)
     {
         float left_sample, right_sample, frac, integral, weighted;
-        // soundfile[g->current_sample_pos] in output-buffer (oder weighted) schreiben
-        // interpol methode hier schon verwenden?
-        // rückgabewert hier also float? oder float pointer?
+        
+        // For negative time_stretch_factor values read samples in backwards direction
+        
         left_sample = synth->soundfile_table[(int)floor(g->current_sample_pos)];
         right_sample = synth->soundfile_table[(int)ceil(g->current_sample_pos)];
         frac = modff(g->current_sample_pos, &integral);
