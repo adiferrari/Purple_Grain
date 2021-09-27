@@ -1,0 +1,37 @@
+digraph "pd_granular_synth_tilde"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="pd_granular_synth_tilde",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" x_obj" ];
+  Node2 [label="_text",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__text.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" te_g" ];
+  Node3 [label="_gobj",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__gobj.html",tooltip=" "];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_next" ];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" soundfile_arrayname" ];
+  Node4 [label="_symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__symbol.html",tooltip=" "];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" s_next" ];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" envelopeTable\nsoundfile" ];
+  Node5 [label="word",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unionword.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" w_symbol" ];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" w_gpointer" ];
+  Node6 [label="_gpointer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__gpointer.html",tooltip=" "];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_scalar" ];
+  Node7 [label="_scalar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__scalar.html",tooltip=" "];
+  Node3 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_gobj" ];
+  Node4 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_template" ];
+  Node5 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_vec" ];
+  Node8 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_stub" ];
+  Node8 [label="_gstub",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__gstub.html",tooltip=" "];
+  Node5 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_w" ];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" synth" ];
+  Node9 [label="c_granular_synth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structc__granular__synth.html",tooltip="The Purde Data struct of the c_granular_synth~ object."];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" grains_table" ];
+  Node10 [label="grain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrain.html",tooltip=" "];
+  Node10 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next_grain" ];
+  Node5 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" soundfile" ];
+  Node11 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" adsr_env" ];
+  Node11 [label="envelope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structenvelope.html",tooltip=" "];
+  Node2 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" x_obj" ];
+}

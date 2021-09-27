@@ -1,0 +1,110 @@
+\hypertarget{purple__utils_8c}{}\doxysection{purple\+\_\+utils.\+c File Reference}
+\label{purple__utils_8c}\index{purple\_utils.c@{purple\_utils.c}}
+
+
+useful utilities for calculations and conversions  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
+Include dependency graph for purple\+\_\+utils.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
+\begin{DoxyCompactList}\small\item\em Gets the number of samples from given time of a sample in ms. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
+\begin{DoxyCompactList}\small\item\em Gets the time of a sample in ms from the number of samples. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
+\begin{DoxyCompactList}\small\item\em Gets an interpolated sample value between. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+useful utilities for calculations and conversions 
+
+\begin{DoxyAuthor}{Author}
+Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/09-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}\label{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}} 
+\index{purple\_utils.c@{purple\_utils.c}!get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}}
+\index{get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}!purple\_utils.c@{purple\_utils.c}}
+\doxysubsubsection{\texorpdfstring{get\_interpolated\_sample\_value()}{get\_interpolated\_sample\_value()}}
+{\footnotesize\ttfamily float get\+\_\+interpolated\+\_\+sample\+\_\+value (\begin{DoxyParamCaption}\item[{float}]{sample\+\_\+left,  }\item[{float}]{sample\+\_\+right,  }\item[{float}]{frac }\end{DoxyParamCaption})}
+
+
+
+Gets an interpolated sample value between. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\+\_\+left} & and\\
+\hline
+{\em sample\+\_\+right} & \\
+\hline
+{\em sample\+\_\+left} & outer left sample \\
+\hline
+{\em sample\+\_\+right} & outer right sample \\
+\hline
+{\em frac} & position after decimal point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}\label{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}} 
+\index{purple\_utils.c@{purple\_utils.c}!get\_ms\_from\_samples@{get\_ms\_from\_samples}}
+\index{get\_ms\_from\_samples@{get\_ms\_from\_samples}!purple\_utils.c@{purple\_utils.c}}
+\doxysubsubsection{\texorpdfstring{get\_ms\_from\_samples()}{get\_ms\_from\_samples()}}
+{\footnotesize\ttfamily float get\+\_\+ms\+\_\+from\+\_\+samples (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+samples,  }\item[{float}]{sr }\end{DoxyParamCaption})}
+
+
+
+Gets the time of a sample in ms from the number of samples. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+samples} & number of samples \\
+\hline
+{\em sr} & defined samplerate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float time of a sample 
+\end{DoxyReturn}
+\mbox{\Hypertarget{purple__utils_8c_adedfab0848a63809acd487441d157908}\label{purple__utils_8c_adedfab0848a63809acd487441d157908}} 
+\index{purple\_utils.c@{purple\_utils.c}!get\_samples\_from\_ms@{get\_samples\_from\_ms}}
+\index{get\_samples\_from\_ms@{get\_samples\_from\_ms}!purple\_utils.c@{purple\_utils.c}}
+\doxysubsubsection{\texorpdfstring{get\_samples\_from\_ms()}{get\_samples\_from\_ms()}}
+{\footnotesize\ttfamily int get\+\_\+samples\+\_\+from\+\_\+ms (\begin{DoxyParamCaption}\item[{int}]{ms,  }\item[{float}]{sr }\end{DoxyParamCaption})}
+
+
+
+Gets the number of samples from given time of a sample in ms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & time window in ms \\
+\hline
+{\em sr} & defined samplerate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int number of samples 
+\end{DoxyReturn}

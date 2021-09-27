@@ -1,0 +1,39 @@
+digraph "c_granular_synth.c"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="c_granular_synth.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The C Part of the synthesizer's implementation."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="c_granular_synth.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$c__granular__synth_8h.html",tooltip="Main file header     Main file header."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="stdbool.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="math.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="grain.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8h.html",tooltip="Grain file header     Grain file header."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="m_pd.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$m__pd_8h_source.html",tooltip=" "];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="stddef.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="envelope.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8h.html",tooltip="Envelope file header     Envelope file header."];
+  Node10 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="purple_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8h_source.html",tooltip=" "];
+}

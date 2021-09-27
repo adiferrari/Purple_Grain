@@ -1,0 +1,285 @@
+\hypertarget{c__granular__synth_8h}{}\doxysection{c\+\_\+granular\+\_\+synth.\+h File Reference}
+\label{c__granular__synth_8h}\index{c\_granular\_synth.h@{c\_granular\_synth.h}}
+
+
+Main file header ~\newline
+ ~\newline
+ Main file header.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}grain.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}envelope.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
+Include dependency graph for c\+\_\+granular\+\_\+synth.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}
+\begin{DoxyCompactList}\small\item\em The Purde Data struct of the c\+\_\+granular\+\_\+synth$\sim$ object. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{c__granular__synth_8h_a61fe3a57d455ca80639cc2e96b34c23e}\label{c__granular__synth_8h_a61fe3a57d455ca80639cc2e96b34c23e}} 
+\#define {\bfseries N\+U\+M\+E\+L\+E\+M\+E\+N\+TS}(x)~(sizeof(x) / sizeof((x)\mbox{[}0\mbox{]}))
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{c__granular__synth_8h_a9595f86b44aabd0eb83d68d852a1512c}\label{c__granular__synth_8h_a9595f86b44aabd0eb83d68d852a1512c}} 
+typedef struct \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} {\bfseries c\+\_\+granular\+\_\+synth}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{c__granular__synth_8h_ac71179596b1f2169d42c27cb8ea54207}\label{c__granular__synth_8h_ac71179596b1f2169d42c27cb8ea54207}} 
+void {\bfseries c\+\_\+granular\+\_\+synth\+\_\+free} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\item 
+\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$ \mbox{\hyperlink{c__granular__synth_8h_a43f045161137a5c9940d6efca2d8828c}{c\+\_\+granular\+\_\+synth\+\_\+new}} (\mbox{\hyperlink{unionword}{t\+\_\+word}} $\ast$soundfile, int soundfile\+\_\+length, int grain\+\_\+size\+\_\+ms, int start\+\_\+pos, float time\+\_\+stretch\+\_\+factor, int attack, int decay, float sustain, int release)
+\begin{DoxyCompactList}\small\item\em initial setup of soundfile and adjustment silder related variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{c__granular__synth_8h_a9866c052c30e61e592ade29730821c8e}\label{c__granular__synth_8h_a9866c052c30e61e592ade29730821c8e}} 
+void {\bfseries c\+\_\+granular\+\_\+synth\+\_\+generate\+\_\+window\+\_\+function} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\item 
+\mbox{\Hypertarget{c__granular__synth_8h_a40f6a8e44a6be398592efbfbd9bf7d13}\label{c__granular__synth_8h_a40f6a8e44a6be398592efbfbd9bf7d13}} 
+void {\bfseries c\+\_\+granular\+\_\+synth\+\_\+process\+\_\+alt} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x, float $\ast$in, float $\ast$out, int vector\+\_\+size)
+\item 
+void \mbox{\hyperlink{c__granular__synth_8h_ab1c4e09392d873e432cb0edeae71f17c}{c\+\_\+granular\+\_\+synth\+\_\+process}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x, float $\ast$in, float $\ast$out, int vector\+\_\+size)
+\begin{DoxyCompactList}\small\item\em refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{c__granular__synth_8h_a60d847e30dcce2bbe361871c5ac3ef38}\label{c__granular__synth_8h_a60d847e30dcce2bbe361871c5ac3ef38}} 
+void {\bfseries c\+\_\+granular\+\_\+synth\+\_\+note\+On} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x, float frequency, float velocity)
+\item 
+void \mbox{\hyperlink{c__granular__synth_8h_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\+\_\+granular\+\_\+synth\+\_\+set\+\_\+num\+\_\+grains}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em sets number of grains sets number of grains according to \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{c__granular__synth_8h_a4851564c44cc8e0bae53de300c6dec30}{c\+\_\+granular\+\_\+synth\+\_\+adjust\+\_\+current\+\_\+grain\+\_\+index}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em adjusts current grain index adjusts current grain index according to \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{c__granular__synth_8h_af1fcbd7334868a3c94bea99fee01f7ce}{c\+\_\+granular\+\_\+synth\+\_\+populate\+\_\+grain\+\_\+table}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em generates a grain table generates a grain table according to \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{c__granular__synth_8h_a25635e32880f4c39cdf848a5820aa9d9}{grain\+\_\+internal\+\_\+scheduling}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$g, \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$synth)
+\begin{DoxyCompactList}\small\item\em scheduling of grain playback sheduling of grain playback \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{c__granular__synth_8h_a060f85e20b07a46f31a7fb588da39060}{c\+\_\+granular\+\_\+synth\+\_\+properties\+\_\+update}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x, int grain\+\_\+size\+\_\+ms, int start\+\_\+pos, float time\+\_\+stretch\+\_\+factor, int midi\+\_\+pitch, int midi\+\_\+velo, int attack, int decay, float sustain, int release)
+\begin{DoxyCompactList}\small\item\em checks on current input states e.\+g. slider positions and updates correspondent values \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}{calculate\+\_\+adsr\+\_\+value}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em calculates A\+D\+SR envelope as a single value calculates A\+D\+SR envelope as a single value in dependance of the current A\+D\+SR state given by the M\+I\+DI input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{c__granular__synth_8h_afde481be32f7eed2244777b78ca45a40}\label{c__granular__synth_8h_afde481be32f7eed2244777b78ca45a40}} 
+t\+\_\+float {\bfseries S\+A\+M\+P\+L\+E\+R\+A\+TE}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main file header ~\newline
+ ~\newline
+ Main file header. 
+
+\begin{DoxyAuthor}{Author}
+Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
+ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{c__granular__synth_8h_a4851564c44cc8e0bae53de300c6dec30}\label{c__granular__synth_8h_a4851564c44cc8e0bae53de300c6dec30}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_adjust\_current\_grain\_index@{c\_granular\_synth\_adjust\_current\_grain\_index}}
+\index{c\_granular\_synth\_adjust\_current\_grain\_index@{c\_granular\_synth\_adjust\_current\_grain\_index}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_adjust\_current\_grain\_index()}{c\_granular\_synth\_adjust\_current\_grain\_index()}}
+{\footnotesize\ttfamily void c\+\_\+granular\+\_\+synth\+\_\+adjust\+\_\+current\+\_\+grain\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+adjusts current grain index adjusts current grain index according to 
+
+
+\begin{DoxyParams}{Parameters}
+{\em currents\+\_\+start\+\_\+pos} & and\\
+\hline
+{\em grain\+\_\+size\+\_\+samples} & \\
+\hline
+{\em x} & input pointer of c\+\_\+granular\+\_\+synth\+\_\+adjust\+\_\+current\+\_\+grain\+\_\+index object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{c__granular__synth_8h_a43f045161137a5c9940d6efca2d8828c}\label{c__granular__synth_8h_a43f045161137a5c9940d6efca2d8828c}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_new@{c\_granular\_synth\_new}}
+\index{c\_granular\_synth\_new@{c\_granular\_synth\_new}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_new()}{c\_granular\_synth\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}$\ast$ c\+\_\+granular\+\_\+synth\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionword}{t\+\_\+word}} $\ast$}]{soundfile,  }\item[{int}]{soundfile\+\_\+length,  }\item[{int}]{grain\+\_\+size\+\_\+ms,  }\item[{int}]{start\+\_\+pos,  }\item[{float}]{time\+\_\+stretch\+\_\+factor,  }\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{release }\end{DoxyParamCaption})}
+
+
+
+initial setup of soundfile and adjustment silder related variables 
+
+
+\begin{DoxyParams}{Parameters}
+{\em soundfile} & contains the soundfile which can be read in via inlet \\
+\hline
+{\em soundfile\+\_\+length} & lenght of the soundfile as integer variable \\
+\hline
+{\em grain\+\_\+size\+\_\+ms} & size of a grain in milliseconds, adjustable through slider \\
+\hline
+{\em start\+\_\+pos} & position within the soundfile, adjustable through slider \\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider \\
+\hline
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider \\
+\hline
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider \\
+\hline
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider \\
+\hline
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+c\+\_\+granular\+\_\+synth$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{c__granular__synth_8h_af1fcbd7334868a3c94bea99fee01f7ce}\label{c__granular__synth_8h_af1fcbd7334868a3c94bea99fee01f7ce}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_populate\_grain\_table@{c\_granular\_synth\_populate\_grain\_table}}
+\index{c\_granular\_synth\_populate\_grain\_table@{c\_granular\_synth\_populate\_grain\_table}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_populate\_grain\_table()}{c\_granular\_synth\_populate\_grain\_table()}}
+{\footnotesize\ttfamily void c\+\_\+granular\+\_\+synth\+\_\+populate\+\_\+grain\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+generates a grain table generates a grain table according to 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+grain\+\_\+index} & for negative\\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & values samples are read in backwards direction \\
+\hline
+{\em x} & input pointer of c\+\_\+granular\+\_\+synth\+\_\+populate\+\_\+grain\+\_\+table object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{c__granular__synth_8h_ab1c4e09392d873e432cb0edeae71f17c}\label{c__granular__synth_8h_ab1c4e09392d873e432cb0edeae71f17c}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_process@{c\_granular\_synth\_process}}
+\index{c\_granular\_synth\_process@{c\_granular\_synth\_process}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_process()}{c\_granular\_synth\_process()}}
+{\footnotesize\ttfamily void c\+\_\+granular\+\_\+synth\+\_\+process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x,  }\item[{float $\ast$}]{in,  }\item[{float $\ast$}]{out,  }\item[{int}]{vector\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input pointer of c\+\_\+granular\+\_\+synth\+\_\+process object \\
+\hline
+{\em in} & input \\
+\hline
+{\em out} & output \\
+\hline
+{\em vector\+\_\+size} & vectoral size of \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{c__granular__synth_8h_a060f85e20b07a46f31a7fb588da39060}\label{c__granular__synth_8h_a060f85e20b07a46f31a7fb588da39060}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_properties\_update@{c\_granular\_synth\_properties\_update}}
+\index{c\_granular\_synth\_properties\_update@{c\_granular\_synth\_properties\_update}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_properties\_update()}{c\_granular\_synth\_properties\_update()}}
+{\footnotesize\ttfamily void c\+\_\+granular\+\_\+synth\+\_\+properties\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x,  }\item[{int}]{grain\+\_\+size\+\_\+ms,  }\item[{int}]{start\+\_\+pos,  }\item[{float}]{time\+\_\+stretch\+\_\+factor,  }\item[{int}]{midi\+\_\+velo,  }\item[{int}]{midi\+\_\+pitch,  }\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{release }\end{DoxyParamCaption})}
+
+
+
+checks on current input states e.\+g. slider positions and updates correspondent values 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input pointer of c\+\_\+granular\+\_\+synth\+\_\+properties\+\_\+update object \\
+\hline
+{\em midi\+\_\+velo} & M\+I\+DI input velocity value \\
+\hline
+{\em midi\+\_\+pitch} & M\+I\+DI input pitch/key value \\
+\hline
+{\em grain\+\_\+size\+\_\+ms} & size of a grain in milliseconds, adjustable through slider \\
+\hline
+{\em start\+\_\+pos} & position within the soundfile, adjustable through slider \\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider \\
+\hline
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider \\
+\hline
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider \\
+\hline
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider \\
+\hline
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{c__granular__synth_8h_ac8c478d5ad0c8ecd25c13951e8d1a4d6}\label{c__granular__synth_8h_ac8c478d5ad0c8ecd25c13951e8d1a4d6}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!c\_granular\_synth\_set\_num\_grains@{c\_granular\_synth\_set\_num\_grains}}
+\index{c\_granular\_synth\_set\_num\_grains@{c\_granular\_synth\_set\_num\_grains}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{c\_granular\_synth\_set\_num\_grains()}{c\_granular\_synth\_set\_num\_grains()}}
+{\footnotesize\ttfamily void c\+\_\+granular\+\_\+synth\+\_\+set\+\_\+num\+\_\+grains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+sets number of grains sets number of grains according to 
+
+
+\begin{DoxyParams}{Parameters}
+{\em soundfile\+\_\+length} & and\\
+\hline
+{\em grain\+\_\+size\+\_\+samples} & \\
+\hline
+{\em x} & input pointer of c\+\_\+granular\+\_\+synth\+\_\+set\+\_\+num\+\_\+grains object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}\label{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!calculate\_adsr\_value@{calculate\_adsr\_value}}
+\index{calculate\_adsr\_value@{calculate\_adsr\_value}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{calculate\_adsr\_value()}{calculate\_adsr\_value()}}
+{\footnotesize\ttfamily float calculate\+\_\+adsr\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+calculates A\+D\+SR envelope as a single value calculates A\+D\+SR envelope as a single value in dependance of the current A\+D\+SR state given by the M\+I\+DI input 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{c__granular__synth_8h_a25635e32880f4c39cdf848a5820aa9d9}\label{c__granular__synth_8h_a25635e32880f4c39cdf848a5820aa9d9}} 
+\index{c\_granular\_synth.h@{c\_granular\_synth.h}!grain\_internal\_scheduling@{grain\_internal\_scheduling}}
+\index{grain\_internal\_scheduling@{grain\_internal\_scheduling}!c\_granular\_synth.h@{c\_granular\_synth.h}}
+\doxysubsubsection{\texorpdfstring{grain\_internal\_scheduling()}{grain\_internal\_scheduling()}}
+{\footnotesize\ttfamily void grain\+\_\+internal\+\_\+scheduling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{synth }\end{DoxyParamCaption})}
+
+
+
+scheduling of grain playback sheduling of grain playback 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & grain \\
+\hline
+{\em synth} & synthesized output of \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} object \\
+\hline
+\end{DoxyParams}
+$<$
+
+$<$
+
+$<$
+
+$<$
+
+$<$
+
+$<$ sets grain position to start
+
+$<$ checks active state of grain
+
+$<$ sets current position to start

@@ -1,0 +1,22 @@
+digraph "_gpointer"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="_gpointer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_scalar" ];
+  Node2 [label="_scalar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__scalar.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_gobj" ];
+  Node3 [label="_gobj",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__gobj.html",tooltip=" "];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" g_next" ];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_template" ];
+  Node4 [label="_symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__symbol.html",tooltip=" "];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" s_next" ];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sc_vec" ];
+  Node5 [label="word",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unionword.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" w_symbol" ];
+  Node1 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" w_gpointer" ];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_stub" ];
+  Node6 [label="_gstub",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__gstub.html",tooltip=" "];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gp_w" ];
+}

@@ -1,0 +1,84 @@
+\hypertarget{vas__mem_8c}{}\doxysection{vas\+\_\+mem.\+c File Reference}
+\label{vas__mem_8c}\index{vas\_mem.c@{vas\_mem.c}}
+
+
+handles memory allocations  
+
+
+{\ttfamily \#include \char`\"{}vas\+\_\+mem.\+h\char`\"{}}\newline
+Include dependency graph for vas\+\_\+mem.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{vas__mem_8c_ac549a7c59d4bb509d568f9978b916fbb}{vas\+\_\+mem\+\_\+alloc}} (long size)
+\item 
+void $\ast$ \mbox{\hyperlink{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}{vas\+\_\+mem\+\_\+resize}} (void $\ast$ptr, long size)
+\item 
+void \mbox{\hyperlink{vas__mem_8c_a751a5f7552bb2cd98282edf0afe0d059}{vas\+\_\+mem\+\_\+free}} (void $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em frees pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+handles memory allocations 
+
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/09-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{vas__mem_8c_ac549a7c59d4bb509d568f9978b916fbb}\label{vas__mem_8c_ac549a7c59d4bb509d568f9978b916fbb}} 
+\index{vas\_mem.c@{vas\_mem.c}!vas\_mem\_alloc@{vas\_mem\_alloc}}
+\index{vas\_mem\_alloc@{vas\_mem\_alloc}!vas\_mem.c@{vas\_mem.c}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_alloc()}{vas\_mem\_alloc()}}
+{\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+alloc (\begin{DoxyParamCaption}\item[{long}]{size }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vas__mem_8c_a751a5f7552bb2cd98282edf0afe0d059}\label{vas__mem_8c_a751a5f7552bb2cd98282edf0afe0d059}} 
+\index{vas\_mem.c@{vas\_mem.c}!vas\_mem\_free@{vas\_mem\_free}}
+\index{vas\_mem\_free@{vas\_mem\_free}!vas\_mem.c@{vas\_mem.c}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_free()}{vas\_mem\_free()}}
+{\footnotesize\ttfamily void vas\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+frees pointer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}\label{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}} 
+\index{vas\_mem.c@{vas\_mem.c}!vas\_mem\_resize@{vas\_mem\_resize}}
+\index{vas\_mem\_resize@{vas\_mem\_resize}!vas\_mem.c@{vas\_mem.c}}
+\doxysubsubsection{\texorpdfstring{vas\_mem\_resize()}{vas\_mem\_resize()}}
+{\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+resize (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{long}]{size }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer \\
+\hline
+{\em size} & size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
