@@ -41,15 +41,6 @@ float calculate_adsr_value(c_granular_synth *x)
             break;
         case SUSTAIN:
             adsr_val = x->adsr_env->sustain;
-            //x->current_adsr_stage_index++;
-            //if(x->current_adsr_stage_index >= x->adsr_env->key_pressed_samples)
-            /*
-            if(x->midi_velo == 0)
-            {
-                x->current_adsr_stage_index = 0;
-                x->adsr_env->adsr = RELEASE;
-            }
-    */
             break;
         case RELEASE:
             if(x->midi_velo > 0)
@@ -91,11 +82,7 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
     x->attack = attack;
     x->decay = decay;
     x->sustain = sustain;
-    //x->key_pressed = key_pressed;
     x->release = release;
-    //x->duration = x->attack + x->decay + x->key_pressed+ x->release;
-
-    //x->envelope_samples_table = (t_sample *) vas_mem_alloc(x->duration * sizeof(t_sample));
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
     x->decay_samples = get_samples_from_ms(decay, SAMPLERATE);
@@ -103,53 +90,32 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
     return x;
 }
 
-    //int new_coordinate_decay = 0;
-    //int new_coordinate_release = 0;
-/*
-    for(int i =0; i<x->duration;i++)
-    {
-        if(i<attack)
-        {
-            x->envelope_samples_table[i] = ((1*i)/x->attack_samples);
-        }
-        else if (i<attack+decay)
-        {
-            x->envelope_samples_table[i] = 1 + (((x->sustain-1)/x->decay_samples)*new_coordinate_decay);
-            new_coordinate_decay++;
-        }
-        else if (i<attack+decay+key_pressed)
-        {
-            x->envelope_samples_table[i] = 1 * x->sustain;
-        }
-        else
-        {
-            // Release Stage
-            x->envelope_samples_table[i] = sustain - ((sustain/x->release_samples)*new_coordinate_release);
-            new_coordinate_release++;
-        }
-    }
- */
-
-
-/*
-    Create windowing for all Grains by using envelope.h
-    using only A,S,R parameters (3 stages: Fade-In, Full Volume, Fade-Out)
-    Consider Grain Duration (as Input parameter) and maybe take 1/10 of the duration at start for Fade-In
-    1/10 at the end fo Fade-Out and the other 8/10s for full output stage
-*/
-
-float gauss(grain x, int grainindex)
+float gauss(c_granular_synth *x)
 {
-    t_int grain_size = x.grain_size_samples;
+    //t_int grain_size = x.grain_size_samples;
+    if (x->grain_size_samples == 0)
+        return 0;
+    if (x->current_gauss_stage_index >= x->grain_size_samples)
+    {
+        x->current_gauss_stage_index = 0;
+    }
+    float numerator = pow(x->current_gauss_stage_index++ -(x->grain_size_samples/2), 2);
+    float denominatior = x->gauss_q_factor * pow(x->grain_size_samples, 2);
+    float gauss_value = expf(-numerator/denominatior);
+    return gauss_value;
+}
+/*
+float gauss(float q_factor, int grain_size, int grainindex)
+{
+    //t_int grain_size = x.grain_size_samples;
     if (grain_size == 0)
         return 0;
     float numerator = pow(grainindex-(grain_size/2), 2);
-    float denominatior = 0.2*pow(grain_size, 2);
+    float denominatior = q_factor * pow(grain_size, 2);
     float gauss_value = expf(-numerator/denominatior);
-    //float gauss_value = expf(-(pow(grainindex-(grain_size/2), 2) / 0.2* pow(grain_size, 2)));
     return gauss_value;
 }
-
+*/
 
 
 void envelope_free(envelope *x)

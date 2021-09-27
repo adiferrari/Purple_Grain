@@ -34,7 +34,8 @@ typedef struct pd_granular_synth_tilde
                         decay,
                         release;
     t_float             sustain,
-                        time_stretch_factor;
+                        time_stretch_factor,
+                        gauss_q_factor;
     t_word *soundfile;      // Pointer to the soundfile Array
     t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
     int soundfile_length;
@@ -49,7 +50,8 @@ typedef struct pd_granular_synth_tilde
                         *in_attack,
                         *in_decay,
                         *in_sustain,
-                        *in_release;
+                        *in_release,
+                        *in_gauss_q_factor;
     t_outlet            *out;
 } t_pd_granular_synth_tilde;
 
@@ -77,6 +79,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->decay = 500;
     x->sustain = 0.7;
     x->release = 1000;
+    x->gauss_q_factor = 0.2;
     //The main inlet is created automatically
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
@@ -88,6 +91,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->in_decay = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("decay"));
     x->in_sustain = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("sustain"));
     x->in_release = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("release"));
+    x->in_gauss_q_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("gauss_q_factor"));
     
     x->out = outlet_new(&x->x_obj, &s_signal);
     return (void *)x;
@@ -111,7 +115,7 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos < 0) x->start_pos = 0;
     if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor);
 
     c_granular_synth_process(x->synth, in, out, n);
     /* return a pointer to the dataspace for the next dsp-object */
@@ -190,7 +194,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor);
     }
 
     return;
@@ -291,6 +295,13 @@ static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floata
     x->release = (int)new_release;
 }
 
+static void pd_granular_synth_set_gauss_q_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    float new_gauss_q_factor = (float)f;
+    if(new_gauss_q_factor < 0) new_gauss_q_factor = 0;
+    x->gauss_q_factor = (float)new_gauss_q_factor;
+}
+
 static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)
 {
     x->soundfile_arrayname = s;
@@ -335,6 +346,8 @@ void pd_granular_synth_tilde_setup(void)
                     gensym("sustain"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_release,
                     gensym("release"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_gauss_q_factor,
+                    gensym("gauss_q_factor"), A_DEFFLOAT, 0);
     
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_get_arrayname_message,
                         gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);
