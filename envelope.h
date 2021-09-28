@@ -61,7 +61,8 @@ typedef struct window
 
 envelope *envelope_new(int attack, int decay, float sustain, int release);
 
-float gauss(grain x, int sample);
+//float gauss(float q_factor, int grain_size, int sample);
+
 void envelope_free(envelope *x);
 
 #ifdef __cplusplus

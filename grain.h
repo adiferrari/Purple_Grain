@@ -26,10 +26,11 @@ extern "C" {
 
 typedef struct grain
 {
-    struct grain        *next_grain;
+    struct grain        *next_grain,
+                        *previous_grain;
     t_int               grain_size_samples,   // Grain size in samples
-                        grain_index;
-                        
+                        grain_index,
+                        internal_step_count;
     t_float             start,
                         end,
                         time_stretch_factor,
@@ -47,7 +48,7 @@ typedef struct grain
 } grain;
 
 
-grain grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor);
+grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor);
 
 // Include order forced this method to be included in c_granular_synth.h
 //void grain_internal_scheduling(grain* g, c_granular_synth* synth);
