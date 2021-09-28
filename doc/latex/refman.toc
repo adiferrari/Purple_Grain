@@ -1,0 +1,63 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Real Time Audio Programming in C}{1}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Granular Synth}{1}{subsection.1.0.1}%
+\contentsline {chapter}{\numberline {2}Todo List}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Data Structure Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Data Structures}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Data Structure Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}granular\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}synth Struct Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{9}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}envelope Struct Reference}{10}{section.5.2}%
+\contentsline {section}{\numberline {5.3}grain Struct Reference}{10}{section.5.3}%
+\contentsline {section}{\numberline {5.4}pd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}granular\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}synth\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tilde Struct Reference}{10}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Friends And Related Function Documentation}{12}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}pd\_granular\_synth\_tilde\_free()}{12}{subsubsection.5.4.1.1}%
+\contentsline {section}{\numberline {5.5}window Struct Reference}{12}{section.5.5}%
+\contentsline {chapter}{\numberline {6}File Documentation}{13}{chapter.6}%
+\contentsline {section}{\numberline {6.1}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}granular\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}synth.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{13}{section.6.1}%
+\contentsline {section}{\numberline {6.2}c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}granular\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}synth.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{13}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{14}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Function Documentation}{14}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}c\_granular\_synth\_adjust\_current\_grain\_index()}{14}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}c\_granular\_synth\_new()}{15}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.3}c\_granular\_synth\_populate\_grain\_table()}{15}{subsubsection.6.2.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.2.4}c\_granular\_synth\_process()}{16}{subsubsection.6.2.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.2.5}c\_granular\_synth\_properties\_update()}{16}{subsubsection.6.2.2.5}%
+\contentsline {subsubsection}{\numberline {6.2.2.6}c\_granular\_synth\_set\_num\_grains()}{17}{subsubsection.6.2.2.6}%
+\contentsline {subsubsection}{\numberline {6.2.2.7}calculate\_adsr\_value()}{17}{subsubsection.6.2.2.7}%
+\contentsline {subsubsection}{\numberline {6.2.2.8}grain\_internal\_scheduling()}{17}{subsubsection.6.2.2.8}%
+\contentsline {section}{\numberline {6.3}envelope.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{18}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{18}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Function Documentation}{19}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}calculate\_adsr\_value()}{19}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}envelope\_free()}{19}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}envelope\_new()}{19}{subsubsection.6.3.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2.4}gauss()}{20}{subsubsection.6.3.2.4}%
+\contentsline {section}{\numberline {6.4}envelope.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{20}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{21}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Function Documentation}{21}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}envelope\_free()}{21}{subsubsection.6.4.2.1}%
+\contentsline {subsubsection}{\numberline {6.4.2.2}envelope\_new()}{21}{subsubsection.6.4.2.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.3}gauss()}{22}{subsubsection.6.4.2.3}%
+\contentsline {section}{\numberline {6.5}grain.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{22}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{23}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Macro Definition Documentation}{23}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}SAMPLERATE}{23}{subsubsection.6.5.2.1}%
+\contentsline {subsection}{\numberline {6.5.3}Function Documentation}{24}{subsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.1}grain\_free()}{24}{subsubsection.6.5.3.1}%
+\contentsline {subsubsection}{\numberline {6.5.3.2}grain\_internal\_scheduling()}{24}{subsubsection.6.5.3.2}%
+\contentsline {subsubsection}{\numberline {6.5.3.3}grain\_new()}{24}{subsubsection.6.5.3.3}%
+\contentsline {section}{\numberline {6.6}grain.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{25}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{26}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Function Documentation}{26}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}grain\_free()}{26}{subsubsection.6.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.6.2.2}grain\_new()}{26}{subsubsection.6.6.2.2}%
+\contentsline {section}{\numberline {6.7}purple\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{27}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{27}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}Function Documentation}{28}{subsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.1}get\_interpolated\_sample\_value()}{28}{subsubsection.6.7.2.1}%
+\contentsline {subsubsection}{\numberline {6.7.2.2}get\_ms\_from\_samples()}{28}{subsubsection.6.7.2.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.3}get\_samples\_from\_ms()}{28}{subsubsection.6.7.2.3}%
+\contentsline {subsubsection}{\numberline {6.7.2.4}switch\_float\_values()}{30}{subsubsection.6.7.2.4}%

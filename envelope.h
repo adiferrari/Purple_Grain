@@ -1,10 +1,11 @@
 /**
  * @file envelope.h
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief Envelope file header <br>
- * <br>
- * Envelope file header
+ * @brief header file of @a envelope.c file <br>
  */
 
 #ifndef envelope_h

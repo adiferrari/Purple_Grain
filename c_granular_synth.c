@@ -1,8 +1,11 @@
 /**
  * @file c_granular_synth.c
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim 
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief The C Part of the synthesizer's implementation
+ * @brief The C Part of the synthesizer's implementation <br>
  * @version 0.1
  * @date 2021-07-25
  *
@@ -196,7 +199,7 @@ void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocit
 }
 /**
  * @brief sets number of grains
- * sets number of grains according to @param soundfile_length and @param grain_size_samples
+ * sets number of grains according to @a soundfile_length and @a grain_size_samples
  * @param x input pointer of c_granular_synth_set_num_grains object
  */
 void c_granular_synth_set_num_grains(c_granular_synth *x)
@@ -205,7 +208,7 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
 }
 /**
  * @brief adjusts current grain index
- * adjusts current grain index according to @param currents_start_pos and @param grain_size_samples
+ * adjusts current grain index according to @a currents_start_pos and @a grain_size_samples
  * @param x input pointer of c_granular_synth_adjust_current_grain_index object
  */
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
@@ -216,8 +219,8 @@ void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
 }
 /**
  * @brief generates a grain table
- * generates a grain table according to @param current_grain_index
- * for negative @param time_stretch_factor values samples are read in backwards direction
+ * generates a grain table according to @a current_grain_index
+ * for negative @a time_stretch_factor values samples are read in backwards direction
  * @param x input pointer of c_granular_synth_populate_grain_table object
  */
 void c_granular_synth_populate_grain_table(c_granular_synth *x)

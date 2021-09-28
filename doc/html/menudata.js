@@ -36,11 +36,6 @@ var menudata={children:[
 {text:"c",url:"globals.html#index_c"},
 {text:"e",url:"globals.html#index_e"},
 {text:"g",url:"globals.html#index_g"},
-{text:"s",url:"globals.html#index_s"},
-{text:"v",url:"globals.html#index_v"}]},
-{text:"Functions",url:"globals_func.html",children:[
-{text:"c",url:"globals_func.html#index_c"},
-{text:"e",url:"globals_func.html#index_e"},
-{text:"g",url:"globals_func.html#index_g"},
-{text:"v",url:"globals_func.html#index_v"}]},
+{text:"s",url:"globals.html#index_s"}]},
+{text:"Functions",url:"globals_func.html"},
 {text:"Macros",url:"globals_defs.html"}]}]}]}

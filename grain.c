@@ -10,7 +10,10 @@
 // length of the entire sound file [in samples]
 /**
  * @file grain.c
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Nikita Kretschmar
+ * @author Adrian Philipp
+ * @author Micha Strobl
+ * @author Tim Wennemann
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles grain creation
  * @version 0.1
@@ -26,11 +29,15 @@
 #include "vas_mem.h"
 
 //static t_class *grain_class;
-
-#define OVERLAP_DENSITY = 8   ///< To-Do: Set dynamically by user input
 /**
- * @brief generates new grain depending on @param grain_size_samples, @param soundfile_size and @param grain_index
- * 
+ * @brief set maximum amount of simoultaneously playing grains
+ * @todo check if necessary
+ */
+#define OVERLAP_DENSITY = 8   ///< To-Do: Set dynamically by user input
+
+/**
+ * @brief generates new grain
+ * @details generates new grain depending on @a grain_size_samples, @a soundfile_size and @a grain_index
  * @param grain_size_samples size of samples contained in a grain
  * @param soundfile_size size of the soundfile which can be read in via inlet
  * @param grain_index corresponding index of a grain
@@ -76,7 +83,7 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
 }
 /**
  * @brief scheduling of grain playback
- * sheduling of grain playback
+ * @details sheduling of grain playback
  * @param g grain
  * @param synth synthesized output of c_granular_synth object
  */
@@ -175,7 +182,7 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 }
 /**
  * @brief frees grain
- * frees grain
+ * @details frees grain
  * @param x input pointer of grain_fre object
  */
 void grain_free(grain *x)

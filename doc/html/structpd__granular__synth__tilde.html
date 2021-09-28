@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Purple Grain
    </div>
@@ -81,7 +82,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a0f67ba7e323720896d20e84679f0008f"><td class="memItemLeft" align="right" valign="top"><a id="a0f67ba7e323720896d20e84679f0008f"></a>
-<a class="el" href="struct__text.html">t_object</a>&#160;</td><td class="memItemRight" valign="bottom"><b>x_obj</b></td></tr>
+t_object&#160;</td><td class="memItemRight" valign="bottom"><b>x_obj</b></td></tr>
 <tr class="separator:a0f67ba7e323720896d20e84679f0008f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07a8b159fe23c3fec189fbe71e0920c8"><td class="memItemLeft" align="right" valign="top"><a id="a07a8b159fe23c3fec189fbe71e0920c8"></a>
 t_float&#160;</td><td class="memItemRight" valign="bottom"><b>f</b></td></tr>
@@ -120,10 +121,10 @@ t_float&#160;</td><td class="memItemRight" valign="bottom"><b>sustain</b></td></
 t_float&#160;</td><td class="memItemRight" valign="bottom"><b>time_stretch_factor</b></td></tr>
 <tr class="separator:ab7d62515d2dfdb58429c59966e09396b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae1c1ce1c10d37667be6c3d7a8ef831"><td class="memItemLeft" align="right" valign="top"><a id="a9ae1c1ce1c10d37667be6c3d7a8ef831"></a>
-<a class="el" href="unionword.html">t_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile</b></td></tr>
+t_word *&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile</b></td></tr>
 <tr class="separator:a9ae1c1ce1c10d37667be6c3d7a8ef831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a742a4c1c7fc2c03e32fcd858075ac8"><td class="memItemLeft" align="right" valign="top"><a id="a3a742a4c1c7fc2c03e32fcd858075ac8"></a>
-<a class="el" href="struct__symbol.html">t_symbol</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile_arrayname</b></td></tr>
+t_symbol *&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile_arrayname</b></td></tr>
 <tr class="separator:a3a742a4c1c7fc2c03e32fcd858075ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a778cd56ae122e3cfe79f502c09794a42"><td class="memItemLeft" align="right" valign="top"><a id="a778cd56ae122e3cfe79f502c09794a42"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile_length</b></td></tr>
@@ -132,7 +133,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile_length</b></
 float&#160;</td><td class="memItemRight" valign="bottom"><b>soundfile_length_ms</b></td></tr>
 <tr class="separator:aebb056d761c7f1d9860d3756f8f2783a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a580767361ca6d23f0dde257cce4f4f08"><td class="memItemLeft" align="right" valign="top"><a id="a580767361ca6d23f0dde257cce4f4f08"></a>
-<a class="el" href="unionword.html">t_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>envelopeTable</b></td></tr>
+t_word *&#160;</td><td class="memItemRight" valign="bottom"><b>envelopeTable</b></td></tr>
 <tr class="separator:a580767361ca6d23f0dde257cce4f4f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d5d353d48121dbb96ba2fcb1ed3fba0"><td class="memItemLeft" align="right" valign="top"><a id="a1d5d353d48121dbb96ba2fcb1ed3fba0"></a>
 t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><b>in_grain_size</b></td></tr>
@@ -170,18 +171,20 @@ Related Functions</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
 </td></tr>
 <tr class="memitem:a1d620b5fd5e33ac6a1e388eb7b20b8f1"><td class="memItemLeft" align="right" valign="top"><a id="a1d620b5fd5e33ac6a1e388eb7b20b8f1"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1d620b5fd5e33ac6a1e388eb7b20b8f1">pd_granular_synth_tilde_new</a> (<a class="el" href="struct__symbol.html">t_symbol</a> *soundfile_arrayname)</td></tr>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1d620b5fd5e33ac6a1e388eb7b20b8f1">pd_granular_synth_tilde_new</a> (t_symbol *soundfile_arrayname)</td></tr>
 <tr class="memdesc:a1d620b5fd5e33ac6a1e388eb7b20b8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> object.<br  />
  For more information please refer to the <a href="https://github.com/pure-data/externals-howto">Pure Data Docs </a> <br  />
  <br /></td></tr>
 <tr class="separator:a1d620b5fd5e33ac6a1e388eb7b20b8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58e7b5d615cd9c5bc929d37ad5d6a251"><td class="memItemLeft" align="right" valign="top">t_int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a58e7b5d615cd9c5bc929d37ad5d6a251">pd_granular_synth_tilde_perform</a> (t_int *w)</td></tr>
+<tr class="memitem:a58e7b5d615cd9c5bc929d37ad5d6a251"><td class="memItemLeft" align="right" valign="top"><a id="a58e7b5d615cd9c5bc929d37ad5d6a251"></a>
+t_int *&#160;</td><td class="memItemRight" valign="bottom"><b>pd_granular_synth_tilde_perform</b> (t_int *w)</td></tr>
 <tr class="separator:a58e7b5d615cd9c5bc929d37ad5d6a251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19482970f795ba98b5126fe92083e601"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a19482970f795ba98b5126fe92083e601">pd_granular_synth_tilde_free</a> (<a class="el" href="structpd__granular__synth__tilde.html">t_pd_granular_synth_tilde</a> *x)</td></tr>
-<tr class="memdesc:a19482970f795ba98b5126fe92083e601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees object.  <a href="structpd__granular__synth__tilde.html#a19482970f795ba98b5126fe92083e601">More...</a><br /></td></tr>
+<tr class="memdesc:a19482970f795ba98b5126fe92083e601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees our object. <br  />
+  <a href="structpd__granular__synth__tilde.html#a19482970f795ba98b5126fe92083e601">More...</a><br /></td></tr>
 <tr class="separator:a19482970f795ba98b5126fe92083e601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dda6842f095de3ccf12153828f000cd"><td class="memItemLeft" align="right" valign="top"><a id="a1dda6842f095de3ccf12153828f000cd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1dda6842f095de3ccf12153828f000cd">pd_granular_synth_tilde_dsp</a> (<a class="el" href="structpd__granular__synth__tilde.html">t_pd_granular_synth_tilde</a> *x, <a class="el" href="struct__signal.html">t_signal</a> **sp)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1dda6842f095de3ccf12153828f000cd">pd_granular_synth_tilde_dsp</a> (<a class="el" href="structpd__granular__synth__tilde.html">t_pd_granular_synth_tilde</a> *x, t_signal **sp)</td></tr>
 <tr class="memdesc:a1dda6842f095de3ccf12153828f000cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> to the signal chain. <br  />
  <br /></td></tr>
 <tr class="separator:a1dda6842f095de3ccf12153828f000cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,46 +220,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </table>
 </div><div class="memdoc">
 
-<p>Frees object. </p>
+<p>Frees our object. <br  />
+ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>A pointer the <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> object </td></tr>
+    <tr><td class="paramname">x</td><td>A pointer the <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> object <br  />
+ For more information please refer to the <a href="https://github.com/pure-data/externals-howto">Pure Data Docs </a> <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a58e7b5d615cd9c5bc929d37ad5d6a251"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58e7b5d615cd9c5bc929d37ad5d6a251">&#9670;&nbsp;</a></span>pd_granular_synth_tilde_perform()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">t_int * pd_granular_synth_tilde_perform </td>
-          <td>(</td>
-          <td class="paramtype">t_int *&#160;</td>
-          <td class="paramname"><em>w</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">related</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">w</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>t_int* </dd></dl>
 
 </div>
 </div>

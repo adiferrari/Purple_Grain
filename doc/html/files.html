@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Purple Grain
    </div>
@@ -72,7 +73,7 @@ $(function() {
 <tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="c__granular__synth_8h_source.html"><span class="icondoc"></span></a><a class="el" href="c__granular__synth_8h.html" target="_self">c_granular_synth.h</a></td><td class="desc">Main file header <br  />
  <br  />
  Main file header </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="envelope_8c.html" target="_self">envelope.c</a></td><td class="desc">Handles ADSR envelope calculations with grain windowing on MIDI input </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="envelope_8c.html" target="_self">envelope.c</a></td><td class="desc">Handles envelope generation generates ADSR envelope according to adjustable attack, decay, sustain and release parameters </td></tr>
 <tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="envelope_8h_source.html"><span class="icondoc"></span></a><a class="el" href="envelope_8h.html" target="_self">envelope.h</a></td><td class="desc">Envelope file header <br  />
  <br  />
  Envelope file header </td></tr>
@@ -80,13 +81,8 @@ $(function() {
 <tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="grain_8h_source.html"><span class="icondoc"></span></a><a class="el" href="grain_8h.html" target="_self">grain.h</a></td><td class="desc">Grain file header <br  />
  <br  />
  Grain file header </td></tr>
-<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="m__pd_8h_source.html"><span class="icondoc"></span></a><b>m_pd.h</b></td><td class="desc"></td></tr>
-<tr id="row_7_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="purple__utils_8c.html" target="_self">purple_utils.c</a></td><td class="desc">Useful utilities for calculations and conversions </td></tr>
-<tr id="row_8_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="purple__utils_8h_source.html"><span class="icondoc"></span></a><b>purple_utils.h</b></td><td class="desc"></td></tr>
-<tr id="row_9_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="vas__mem_8c.html" target="_self">vas_mem.c</a></td><td class="desc">Handles memory allocations </td></tr>
-<tr id="row_10_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="vas__mem_8h_source.html"><span class="icondoc"></span></a><a class="el" href="vas__mem_8h.html" target="_self">vas_mem.h</a></td><td class="desc">Utilties for dynamic memory allocation <br  />
- <br  />
- Wrapper for memory allocation Max/MSP SDK suggests using the Max/MSP "sysmem_" - routines instead of malloc/calloc/free So for Max/MSP define the Preprocessor macro "MAXMSPSDK" </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="purple__utils_8c.html" target="_self">purple_utils.c</a></td><td class="desc">Useful utilities for value conversion and manipulation useful utilities for value conversion and manipulation outsourced into own .c file for better code readability </td></tr>
+<tr id="row_7_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="purple__utils_8h_source.html"><span class="icondoc"></span></a><b>purple_utils.h</b></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->

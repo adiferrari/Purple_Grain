@@ -9,7 +9,7 @@ digraph "grain.h"
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="c_granular_synth.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$c__granular__synth_8c.html",tooltip="The C Part of the synthesizer's implementation."];
   Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8c.html",tooltip="handles ADSR envelope calculations with grain windowing on MIDI input"];
+  Node4 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8c.html",tooltip="handles envelope generation generates ADSR envelope according to adjustable attack,..."];
   Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node5 [label="grain.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8c.html",tooltip="handles grain creation"];
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
