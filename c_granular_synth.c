@@ -29,7 +29,7 @@
  * @param release release time in the range of 0 - 10000ms, adjustable through slider
  * @return c_granular_synth* 
  */
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -44,6 +44,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->output_buffer = 0.0;
     x->current_start_pos = start_pos;                   // Set by user in pd with slider
     x->current_grain_index = 0;
+    x->current_gauss_stage_index = 0;
     c_granular_synth_adjust_current_grain_index(x);     // Depends on start position slider
     
     c_granular_synth_reset_playback_position(x);
@@ -138,9 +139,9 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         
         grain_internal_scheduling(&x->grains_table[x->current_grain_index], x);
         
-        
-        /*
-        gauss_val = gauss(x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - (fabsf(x->playback_position * x->time_stretch_factor)));
+        //gauss_val = gauss(x->gauss_q_factor, x->grains_table[x->current_grain_index],x->grains_table[x->current_grain_index].end - x->playback_position);
+        gauss_val = gauss(x);
+        //gauss_val = gauss(x->gauss_q_factor, x->grain_size_samples,x->current_grain_index);
         x->output_buffer *= gauss_val;
         */
         
@@ -283,7 +284,7 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
  * @param sustain sustain time in the range of 0 - 1, adjustable through slider
  * @param release release time in the range of 0 - 10000ms, adjustable through slider
  */
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)
+void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release, float gauss_q_factor)
 {
     if(x->grain_size_ms != grain_size_ms || x->current_start_pos != start_pos || x->time_stretch_factor != time_stretch_factor || !x->grains_table)
     {
@@ -335,6 +336,11 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
             x->adsr_env->release = release;
         }
         x->adsr_env = envelope_new(attack, decay, sustain, release);
+    }
+
+    if(x->gauss_q_factor != gauss_q_factor)
+    {
+        x->gauss_q_factor = gauss_q_factor;
     }
 }
 
