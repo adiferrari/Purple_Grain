@@ -2,7 +2,7 @@
 \label{purple__utils_8c}\index{purple\_utils.c@{purple\_utils.c}}
 
 
-useful utilities for calculations and conversions  
+useful utilities for value conversion and manipulation useful utilities for value conversion and manipulation outsourced into own .c file for better code readability  
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -15,20 +15,26 @@ Include dependency graph for purple\+\_\+utils.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
-\begin{DoxyCompactList}\small\item\em Gets the number of samples from given time of a sample in ms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
-\begin{DoxyCompactList}\small\item\em Gets the time of a sample in ms from the number of samples. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
-\begin{DoxyCompactList}\small\item\em Gets an interpolated sample value between. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em calculates interpolated sample value calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}{switch\+\_\+float\+\_\+values}} (float $\ast$a, float $\ast$b)
+\begin{DoxyCompactList}\small\item\em swaps to values swaps to values of float type \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-useful utilities for calculations and conversions 
+useful utilities for value conversion and manipulation useful utilities for value conversion and manipulation outsourced into own .c file for better code readability 
 
 \begin{DoxyAuthor}{Author}
-Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
- Audiocommunication Group, Technische Universität Berlin ~\newline
- 
+Nikita Kretschmar 
+
+Adrian Philipp 
+
+Micha Strobl 
+
+Tim Wennemann 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 0.\+1 
@@ -50,23 +56,19 @@ Copyright (c) 2021
 
 
 
-Gets an interpolated sample value between. 
+calculates interpolated sample value calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em sample\+\_\+left} & and\\
+{\em sample\+\_\+left} & value at the beginning of sample \\
 \hline
-{\em sample\+\_\+right} & \\
-\hline
-{\em sample\+\_\+left} & outer left sample \\
-\hline
-{\em sample\+\_\+right} & outer right sample \\
+{\em sample\+\_\+right} & value at the end of sample \\
 \hline
 {\em frac} & position after decimal point \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float 
+float interpolated sample value 
 \end{DoxyReturn}
 \mbox{\Hypertarget{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}\label{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}} 
 \index{purple\_utils.c@{purple\_utils.c}!get\_ms\_from\_samples@{get\_ms\_from\_samples}}
@@ -76,7 +78,7 @@ float
 
 
 
-Gets the time of a sample in ms from the number of samples. 
+calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} 
 
 
 \begin{DoxyParams}{Parameters}
@@ -86,7 +88,7 @@ Gets the time of a sample in ms from the number of samples.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float time of a sample 
+float sample time 
 \end{DoxyReturn}
 \mbox{\Hypertarget{purple__utils_8c_adedfab0848a63809acd487441d157908}\label{purple__utils_8c_adedfab0848a63809acd487441d157908}} 
 \index{purple\_utils.c@{purple\_utils.c}!get\_samples\_from\_ms@{get\_samples\_from\_ms}}
@@ -96,15 +98,32 @@ float time of a sample
 
 
 
-Gets the number of samples from given time of a sample in ms. 
+calculates number of samples from {\itshape ms} and {\itshape sr} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em ms} & time window in ms \\
+{\em ms} & sample time in ms \\
 \hline
-{\em sr} & defined samplerate \\
+{\em sr} & defined sample rate \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int number of samples 
 \end{DoxyReturn}
+\mbox{\Hypertarget{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}\label{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}} 
+\index{purple\_utils.c@{purple\_utils.c}!switch\_float\_values@{switch\_float\_values}}
+\index{switch\_float\_values@{switch\_float\_values}!purple\_utils.c@{purple\_utils.c}}
+\doxysubsubsection{\texorpdfstring{switch\_float\_values()}{switch\_float\_values()}}
+{\footnotesize\ttfamily void switch\+\_\+float\+\_\+values (\begin{DoxyParamCaption}\item[{float $\ast$}]{a,  }\item[{float $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+swaps to values swaps to values of float type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & first value to swapped with second \\
+\hline
+{\em b} & second value to be swappend with first \\
+\hline
+\end{DoxyParams}

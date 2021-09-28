@@ -2,7 +2,7 @@
 \label{vas__mem_8c}\index{vas\_mem.c@{vas\_mem.c}}
 
 
-handles memory allocations  
+handling of memory operations handling of memory operations, e.\+g. allocation, resize, free  
 
 
 {\ttfamily \#include \char`\"{}vas\+\_\+mem.\+h\char`\"{}}\newline
@@ -12,18 +12,24 @@ Include dependency graph for vas\+\_\+mem.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 void $\ast$ \mbox{\hyperlink{vas__mem_8c_ac549a7c59d4bb509d568f9978b916fbb}{vas\+\_\+mem\+\_\+alloc}} (long size)
-\item 
+\begin{DoxyCompactList}\small\item\em handles memory allocation handles memory allocation according to \end{DoxyCompactList}\item 
 void $\ast$ \mbox{\hyperlink{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}{vas\+\_\+mem\+\_\+resize}} (void $\ast$ptr, long size)
-\item 
+\begin{DoxyCompactList}\small\item\em handles resizing of memory handles resizing of memory according to to \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{vas__mem_8c_a751a5f7552bb2cd98282edf0afe0d059}{vas\+\_\+mem\+\_\+free}} (void $\ast$ptr)
-\begin{DoxyCompactList}\small\item\em frees pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em frees memory frees memory at given \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-handles memory allocations 
+handling of memory operations handling of memory operations, e.\+g. allocation, resize, free 
 
 \begin{DoxyAuthor}{Author}
+Nikita Kretschmar 
 
+Adrian Philipp 
+
+Micha Strobl 
+
+Tim Wennemann 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 0.\+1 
@@ -44,8 +50,14 @@ Copyright (c) 2021
 {\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+alloc (\begin{DoxyParamCaption}\item[{long}]{size }\end{DoxyParamCaption})}
 
 
+
+handles memory allocation handles memory allocation according to 
+
+
 \begin{DoxyParams}{Parameters}
 {\em size} & \\
+\hline
+{\em size} & required memory size \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -59,11 +71,13 @@ void$\ast$
 
 
 
-frees pointer 
+frees memory frees memory at given 
 
 
 \begin{DoxyParams}{Parameters}
-{\em ptr} & pointer \\
+{\em ptr} & \\
+\hline
+{\em ptr} & memory pointer \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}\label{vas__mem_8c_ad6c97252ba29dace27ab0065778b2ba8}} 
@@ -73,10 +87,18 @@ frees pointer
 {\footnotesize\ttfamily void$\ast$ vas\+\_\+mem\+\_\+resize (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{long}]{size }\end{DoxyParamCaption})}
 
 
+
+handles resizing of memory handles resizing of memory according to to 
+
+
 \begin{DoxyParams}{Parameters}
-{\em ptr} & pointer \\
+{\em size} & on given\\
 \hline
-{\em size} & size \\
+{\em ptr} & \\
+\hline
+{\em ptr} & memory pointer \\
+\hline
+{\em size} & memory size \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

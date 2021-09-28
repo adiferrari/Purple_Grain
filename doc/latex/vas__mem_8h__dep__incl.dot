@@ -5,9 +5,9 @@ digraph "vas_mem.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="vas_mem.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Utilties for dynamic memory allocation     Wrapper for memory allocation Max/MSP SDK suggests using t..."];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node2 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8c.html",tooltip="handles ADSR envelope calculations with grain windowing on MIDI input"];
+  Node2 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8c.html",tooltip="handles envelope generation generates ADSR envelope according to adjustable attack,..."];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="grain.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8c.html",tooltip="handles grain creation"];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="vas_mem.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$vas__mem_8c.html",tooltip="handles memory allocations"];
+  Node4 [label="vas_mem.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$vas__mem_8c.html",tooltip="handling of memory operations handling of memory operations, e.g. allocation, resize,..."];
 }

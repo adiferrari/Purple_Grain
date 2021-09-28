@@ -2,7 +2,7 @@
 \label{envelope_8c}\index{envelope.c@{envelope.c}}
 
 
-handles A\+D\+SR envelope calculations with grain windowing on M\+I\+DI input  
+handles envelope generation generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters  
 
 
 {\ttfamily \#include \char`\"{}envelope.\+h\char`\"{}}\newline
@@ -17,20 +17,26 @@ Include dependency graph for envelope.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}{calculate\+\_\+adsr\+\_\+value}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em calculates A\+D\+SR envelope as a single value calculates A\+D\+SR envelope as a single value in dependance of the current A\+D\+SR state given by the M\+I\+DI input \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8c_a5d04622a6c7e4c1e313a47ff907a1155}{envelope\+\_\+new}} (int attack, int decay, float sustain, int key\+\_\+pressed, int release)
-\begin{DoxyCompactList}\small\item\em calculates new A\+D\+SR envelope \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates A\+D\+SR value calculates single atm A\+D\+SR value according to current state \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\+\_\+new}} (int attack, int decay, float sustain, int release)
+\begin{DoxyCompactList}\small\item\em generates new A\+D\+SR envelope \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{envelope_8c_ada53322e75330e22584277e4aab720bc}{gauss}} (\mbox{\hyperlink{structgrain}{grain}} x, int grainindex)
-\item 
+\begin{DoxyCompactList}\small\item\em calculates gauss value calculates gauss value according to \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\_\+free}} (\mbox{\hyperlink{structenvelope}{envelope}} $\ast$x)
 \begin{DoxyCompactList}\small\item\em frees envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-handles A\+D\+SR envelope calculations with grain windowing on M\+I\+DI input 
+handles envelope generation generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters 
 
 \begin{DoxyAuthor}{Author}
+Nikita Kretschmar 
 
+Adrian Philipp 
+
+Micha Strobl 
+
+Tim Wennemann 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 0.\+1 
@@ -52,15 +58,15 @@ Copyright (c) 2021
 
 
 
-calculates A\+D\+SR envelope as a single value calculates A\+D\+SR envelope as a single value in dependance of the current A\+D\+SR state given by the M\+I\+DI input 
+calculates A\+D\+SR value calculates single atm A\+D\+SR value according to current state 
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & \\
+{\em x} & input pointer of calculate\+\_\+adsr\+\_\+value object \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float 
+float A\+D\+SR value 
 \end{DoxyReturn}
 \mbox{\Hypertarget{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}\label{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}} 
 \index{envelope.c@{envelope.c}!envelope\_free@{envelope\_free}}
@@ -74,30 +80,28 @@ frees envelope
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & input variable \\
+{\em x} & input pointer of envelope\+\_\+free object \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{envelope_8c_a5d04622a6c7e4c1e313a47ff907a1155}\label{envelope_8c_a5d04622a6c7e4c1e313a47ff907a1155}} 
+\mbox{\Hypertarget{envelope_8c_a0854138c64859a1f4079feb9b9194786}\label{envelope_8c_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.c@{envelope.c}!envelope\_new@{envelope\_new}}
 \index{envelope\_new@{envelope\_new}!envelope.c@{envelope.c}}
 \doxysubsubsection{\texorpdfstring{envelope\_new()}{envelope\_new()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{key\+\_\+pressed,  }\item[{int}]{release }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{release }\end{DoxyParamCaption})}
 
 
 
-calculates new A\+D\+SR envelope 
+generates new A\+D\+SR envelope 
 
 
 \begin{DoxyParams}{Parameters}
-{\em attack} & \\
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider \\
 \hline
-{\em decay} & \\
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider \\
 \hline
-{\em sustain} & \\
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider \\
 \hline
-{\em key\+\_\+pressed} & \\
-\hline
-{\em release} & \\
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -110,12 +114,18 @@ envelope$\ast$
 {\footnotesize\ttfamily float gauss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}}}]{x,  }\item[{int}]{grainindex }\end{DoxyParamCaption})}
 
 
+
+calculates gauss value calculates gauss value according to 
+
+
 \begin{DoxyParams}{Parameters}
-{\em x} & \\
-\hline
 {\em grainindex} & \\
+\hline
+{\em x} & input pointer of gauss object \\
+\hline
+{\em grainindex} & index of grain \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float 
+float gauss value 
 \end{DoxyReturn}

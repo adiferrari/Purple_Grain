@@ -1,3 +1,18 @@
+/**
+ * @file envelope.c
+ * @author Nikita Kretschmar
+ * @author Adrian Philipp
+ * @author Micha Strobl
+ * @author Tim Wennemann
+ * @brief handles envelope generation
+ * generates ADSR envelope according to adjustable attack, decay, sustain and release parameters
+ * @version 0.1
+ * @date 2021-09-27
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 /*
     ADSR durchläuft Zeitachse (x-Achse) auf y-Achse Werte von 0-1
     y-Werte werden an granular_synth übergeben (an NoteOn Methode?) und dort auf Output Level multipliziert
@@ -12,7 +27,12 @@
 
 
 //static t_class *envelope_class;
-
+/**
+ * @brief calculates ADSR value
+ * calculates single atm ADSR value according to current state
+ * @param x input pointer of calculate_adsr_value object
+ * @return float ADSR value
+ */
 float calculate_adsr_value(c_granular_synth *x)
 {
     float adsr_val = 0;
@@ -78,7 +98,15 @@ float calculate_adsr_value(c_granular_synth *x)
     return adsr_val;
 }
 
-
+/**
+ * @brief generates new ADSR envelope
+ * 
+ * @param attack attack time in the range of 0 - 4000ms, adjustable through slider
+ * @param decay decay time in the range of 0 - 4000ms, adjustable through slider
+ * @param sustain sustain time in the range of 0 - 1, adjustable through slider
+ * @param release release time in the range of 0 - 10000ms, adjustable through slider
+ * @return envelope* 
+ */
 envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 {
@@ -138,6 +166,13 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
     1/10 at the end fo Fade-Out and the other 8/10s for full output stage
 */
 
+/**
+ * @brief calculates gauss value
+ * calculates gauss value according to @param grainindex
+ * @param x input pointer of gauss object
+ * @param grainindex index of grain
+ * @return float gauss value
+ */
 float gauss(grain x, int grainindex)
 {
     t_int grain_size = x.grain_size_samples;
@@ -151,7 +186,11 @@ float gauss(grain x, int grainindex)
 }
 
 
-
+/**
+ * @brief frees envelope
+ * 
+ * @param x input pointer of envelope_free object
+ */
 void envelope_free(envelope *x)
 {
     free(x);

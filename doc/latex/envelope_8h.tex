@@ -51,10 +51,10 @@ enum {\bfseries adsr\+\_\+stage} \{ \newline
 \mbox{\Hypertarget{envelope_8h_a2e76728151010ee93496e3b01cea0bb9}\label{envelope_8h_a2e76728151010ee93496e3b01cea0bb9}} 
 int {\bfseries getsamples\+\_\+from\+\_\+ms} (int ms, float sr)
 \item 
-\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}{envelope\+\_\+new}} (int attack, int decay, float sustain, int key\+\_\+pressed, int release)
-\begin{DoxyCompactList}\small\item\em calculates new A\+D\+SR envelope \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{envelope\+\_\+new}} (int attack, int decay, float sustain, int release)
+\begin{DoxyCompactList}\small\item\em generates new A\+D\+SR envelope \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{envelope_8h_a0a3592cff3c411e98df69da098856168}{gauss}} (\mbox{\hyperlink{structgrain}{grain}} x, int sample)
-\item 
+\begin{DoxyCompactList}\small\item\em calculates gauss value calculates gauss value according to \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\_\+free}} (\mbox{\hyperlink{structenvelope}{envelope}} $\ast$x)
 \begin{DoxyCompactList}\small\item\em frees envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -84,30 +84,28 @@ frees envelope
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & input variable \\
+{\em x} & input pointer of envelope\+\_\+free object \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}\label{envelope_8h_a5d04622a6c7e4c1e313a47ff907a1155}} 
+\mbox{\Hypertarget{envelope_8h_a0854138c64859a1f4079feb9b9194786}\label{envelope_8h_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.h@{envelope.h}!envelope\_new@{envelope\_new}}
 \index{envelope\_new@{envelope\_new}!envelope.h@{envelope.h}}
 \doxysubsubsection{\texorpdfstring{envelope\_new()}{envelope\_new()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{key\+\_\+pressed,  }\item[{int}]{release }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{release }\end{DoxyParamCaption})}
 
 
 
-calculates new A\+D\+SR envelope 
+generates new A\+D\+SR envelope 
 
 
 \begin{DoxyParams}{Parameters}
-{\em attack} & \\
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider \\
 \hline
-{\em decay} & \\
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider \\
 \hline
-{\em sustain} & \\
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider \\
 \hline
-{\em key\+\_\+pressed} & \\
-\hline
-{\em release} & \\
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -120,12 +118,18 @@ envelope$\ast$
 {\footnotesize\ttfamily float gauss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}}}]{x,  }\item[{int}]{grainindex }\end{DoxyParamCaption})}
 
 
+
+calculates gauss value calculates gauss value according to 
+
+
 \begin{DoxyParams}{Parameters}
-{\em x} & \\
-\hline
 {\em grainindex} & \\
+\hline
+{\em x} & input pointer of gauss object \\
+\hline
+{\em grainindex} & index of grain \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float 
+float gauss value 
 \end{DoxyReturn}

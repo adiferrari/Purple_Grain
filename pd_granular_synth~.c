@@ -1,6 +1,9 @@
 /**
  * @file pd_granular_synth_pd.c
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Nikita Kretschmar
+ * @author Adrian Philipp
+ * @author Micha Strobl
+ * @author Tim Wennemann
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief Main file <br>
  * <br>
@@ -20,6 +23,10 @@
 
 static t_class *pd_granular_synth_tilde_class;
 
+/**
+ * @brief 
+ * @details 
+ */
 typedef struct pd_granular_synth_tilde
 {
     t_object  x_obj;
@@ -149,8 +156,8 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
 }
 
 /**
- * @brief Reads the array containing the loaded soundfile. Modified version of a method in the course's repository.
- *
+ * @brief Reads the array containing the loaded soundfile.
+ * @details Reads the array containing the loaded soundfile. Modified version of a method in the course's repository.
  * @param x The granular synth object that uses the soundfile's sample-data.
  */
 static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_symbol *s)
@@ -200,13 +207,17 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
  * @related pd_granular_synth_tilde
  * @brief Adds pd_granular_synth_tilde to the signal chain. <br>
  */
-
 void pd_granular_synth_tilde_dsp(t_pd_granular_synth_tilde *x, t_signal **sp)
 {
     pd_granular_synth_tilde_getArray(x, x->soundfile_arrayname);
     dsp_add(pd_granular_synth_tilde_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_grain_size = (int)f;
@@ -217,7 +228,12 @@ static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_flo
     x->grain_size = (int)new_grain_size;
     // Changes get passed to synth in update properties method
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_start_pos = (int)f;
@@ -228,7 +244,12 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
     x->start_pos = (int)new_start_pos;
     // Changes get passed to synth in update properties method
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     float new_time_stretch_factor = f;
@@ -248,49 +269,84 @@ static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde 
     }
     x->time_stretch_factor = new_time_stretch_factor;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_midi_pitch = (int)f;
     if(new_midi_pitch < 0) new_midi_pitch = 0;
     x->midi_pitch = (int)new_midi_pitch;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_midi_velo = (int)f;
     if(new_midi_velo < 0) new_midi_velo = 0;
     x->midi_velo = (int)new_midi_velo;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_attack(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_attack = (int)f;
     if(new_attack < 0) new_attack = 0;
     x->attack = (int)new_attack;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_decay(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_decay = (int)f;
     if(new_decay < 0) new_decay = 0;
     x->decay = (int)new_decay;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_sustain(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     float new_sustain = (float)f;
     if(new_sustain < 0) new_sustain = 0;
     x->sustain = (float)new_sustain;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param f 
+ */
 static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
     int new_release = (int)f;
     if(new_release < 0) new_release = 0;
     x->release = (int)new_release;
 }
-
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param s 
+ */
 static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)
 {
     x->soundfile_arrayname = s;

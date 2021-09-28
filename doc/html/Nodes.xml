@@ -19,6 +19,10 @@
         </Subnodes>
        </Node>
        <Node>
+        <Name>Todo List</Name>
+        <Path>todo.html</Path>
+       </Node>
+       <Node>
         <Name>Data Structures</Name>
         <Path>annotated.html</Path>
         <Subnodes>
@@ -26,290 +30,6 @@
           <Name>Data Structures</Name>
           <Path>annotated.html</Path>
           <Subnodes>
-           <Node>
-            <Name>_atom</Name>
-            <Path>struct__atom.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>a_type</Name>
-              <Path>struct__atom.html</Path>
-              <Anchor>a3c037c0beca6c0e67830e27598b420c4</Anchor>
-             </Node>
-             <Node>
-              <Name>a_w</Name>
-              <Path>struct__atom.html</Path>
-              <Anchor>aa555b14371e4e988208cd1f0839a10ca</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_gobj</Name>
-            <Path>struct__gobj.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>g_next</Name>
-              <Path>struct__gobj.html</Path>
-              <Anchor>a2a0ed20f16a757b8279bf7b1ac6bd763</Anchor>
-             </Node>
-             <Node>
-              <Name>g_pd</Name>
-              <Path>struct__gobj.html</Path>
-              <Anchor>aa40f7956b1aaa6e3a5f4a6f3b05d4433</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_gpointer</Name>
-            <Path>struct__gpointer.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>gp_scalar</Name>
-              <Path>struct__gpointer.html</Path>
-              <Anchor>a6b6900bd0fc5e1e9ab519b5aeb17338c</Anchor>
-             </Node>
-             <Node>
-              <Name>gp_stub</Name>
-              <Path>struct__gpointer.html</Path>
-              <Anchor>a4f94bf4fd0139b57be52f457c10777b0</Anchor>
-             </Node>
-             <Node>
-              <Name>gp_un</Name>
-              <Path>struct__gpointer.html</Path>
-              <Anchor>a46919265b8e0c7f7c8c086b6fcd0e446</Anchor>
-             </Node>
-             <Node>
-              <Name>gp_valid</Name>
-              <Path>struct__gpointer.html</Path>
-              <Anchor>a520f2e30e49af6e4bee7c163f11b1fde</Anchor>
-             </Node>
-             <Node>
-              <Name>gp_w</Name>
-              <Path>struct__gpointer.html</Path>
-              <Anchor>acce8ceb638d84e73ac62f0ac1011eca7</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_gstub</Name>
-            <Path>struct__gstub.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>gs_array</Name>
-              <Path>struct__gstub.html</Path>
-              <Anchor>ae0ef1e37b9a19cabf8ad3a4532a61e9b</Anchor>
-             </Node>
-             <Node>
-              <Name>gs_glist</Name>
-              <Path>struct__gstub.html</Path>
-              <Anchor>ad782b9e92cc9ef1acb1ecc526eef5a1b</Anchor>
-             </Node>
-             <Node>
-              <Name>gs_refcount</Name>
-              <Path>struct__gstub.html</Path>
-              <Anchor>a5a79aa2dc5b3d394798c4df955d24bb2</Anchor>
-             </Node>
-             <Node>
-              <Name>gs_un</Name>
-              <Path>struct__gstub.html</Path>
-              <Anchor>a998607df7f058dced942aa1b3bc532cf</Anchor>
-             </Node>
-             <Node>
-              <Name>gs_which</Name>
-              <Path>struct__gstub.html</Path>
-              <Anchor>a7dc79951c1c513ee8a1023870e1753e2</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_resample</Name>
-            <Path>struct__resample.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>buffer</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a8fe41b983e1710c3d71afb4fb85f8042</Anchor>
-             </Node>
-             <Node>
-              <Name>bufsize</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a837225771d04d2e70c84d6eca43e6ea7</Anchor>
-             </Node>
-             <Node>
-              <Name>coeffs</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a925b6ec286ecbe3260ad763d00f4af61</Anchor>
-             </Node>
-             <Node>
-              <Name>coefsize</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a2916ee76dceb405a1773c0f590d3a716</Anchor>
-             </Node>
-             <Node>
-              <Name>downsample</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>ab462f9d9539132f38819ff2709cfa8d3</Anchor>
-             </Node>
-             <Node>
-              <Name>method</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a2ca72bdcd3823908ef3b6fa21d68fd47</Anchor>
-             </Node>
-             <Node>
-              <Name>s_n</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a17652d3fbe6dc95ab56f33f2c7181f00</Anchor>
-             </Node>
-             <Node>
-              <Name>s_vec</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a2b9a79574a5d6a949f0fc56ae90dfbcd</Anchor>
-             </Node>
-             <Node>
-              <Name>upsample</Name>
-              <Path>struct__resample.html</Path>
-              <Anchor>a7afa3271b0dfc91eb26266303026fc0b</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_scalar</Name>
-            <Path>struct__scalar.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>sc_gobj</Name>
-              <Path>struct__scalar.html</Path>
-              <Anchor>a4f758ed3ce0f921fb88db061b857d88b</Anchor>
-             </Node>
-             <Node>
-              <Name>sc_template</Name>
-              <Path>struct__scalar.html</Path>
-              <Anchor>a6ecb80a3eac23b970b37f0cfda4f1941</Anchor>
-             </Node>
-             <Node>
-              <Name>sc_vec</Name>
-              <Path>struct__scalar.html</Path>
-              <Anchor>a533d6c370f87108feb5372e2250a1e35</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_signal</Name>
-            <Path>struct__signal.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>s_borrowedfrom</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>a1095871eaed2955ab93b6c8288f1b0fa</Anchor>
-             </Node>
-             <Node>
-              <Name>s_isborrowed</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>ac02b6aa7661223ff2b3ff4f23c6218ab</Anchor>
-             </Node>
-             <Node>
-              <Name>s_n</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>a0d0e7b72191dca06a88700cc5e94a2ad</Anchor>
-             </Node>
-             <Node>
-              <Name>s_nextfree</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>ac753f8f68c6dea6d4e29bf0ff3ae647b</Anchor>
-             </Node>
-             <Node>
-              <Name>s_nextused</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>a0bda36dc54fadc140621be0cf07a3510</Anchor>
-             </Node>
-             <Node>
-              <Name>s_refcount</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>a4ec78f7d0ac3628c430b85584912e1c7</Anchor>
-             </Node>
-             <Node>
-              <Name>s_sr</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>aa61bfff482e30e310308fd46bdf36258</Anchor>
-             </Node>
-             <Node>
-              <Name>s_vec</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>acf6faca61bd24525290381e2ee1361c9</Anchor>
-             </Node>
-             <Node>
-              <Name>s_vecsize</Name>
-              <Path>struct__signal.html</Path>
-              <Anchor>a29f3f9f0e751aee947d063c15217464e</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_symbol</Name>
-            <Path>struct__symbol.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>s_name</Name>
-              <Path>struct__symbol.html</Path>
-              <Anchor>aa0b38e13adc3db2729774f033ec09942</Anchor>
-             </Node>
-             <Node>
-              <Name>s_next</Name>
-              <Path>struct__symbol.html</Path>
-              <Anchor>ace06de86d16fce0811a85434bdc68a89</Anchor>
-             </Node>
-             <Node>
-              <Name>s_thing</Name>
-              <Path>struct__symbol.html</Path>
-              <Anchor>ac128f991da00e1412c5ac1b0065314b8</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>_text</Name>
-            <Path>struct__text.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>te_binbuf</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>abebd2842ec509527382873d1b7ba7b87</Anchor>
-             </Node>
-             <Node>
-              <Name>te_g</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>affbcc6a79109ae39492d7cad05f7f237</Anchor>
-             </Node>
-             <Node>
-              <Name>te_inlet</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>a550e8387d47df6411d4697ef0f087e37</Anchor>
-             </Node>
-             <Node>
-              <Name>te_outlet</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>a8875fac0e5c590b2c3d961415a36c67d</Anchor>
-             </Node>
-             <Node>
-              <Name>te_type</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>a98cdb1763e5ca9f2ed4869ec32985737</Anchor>
-             </Node>
-             <Node>
-              <Name>te_width</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>a7c4008f35f260944ec9e0398a36d50b0</Anchor>
-             </Node>
-             <Node>
-              <Name>te_xpix</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>a4462975da324a0f55db89eca3b55d5fd</Anchor>
-             </Node>
-             <Node>
-              <Name>te_ypix</Name>
-              <Path>struct__text.html</Path>
-              <Anchor>aa12cb888320d6ecbc3bd0bf97a7743e3</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
            <Node>
             <Name>c_granular_synth</Name>
             <Path>structc__granular__synth.html</Path>
@@ -373,6 +93,11 @@
               <Name>playback_position</Name>
               <Path>structc__granular__synth.html</Path>
               <Anchor>a9f10a2ae717bf695c448157ddab09c85</Anchor>
+             </Node>
+             <Node>
+              <Name>reverse_playback</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a11189b409749c9930f477892a71de86d</Anchor>
              </Node>
              <Node>
               <Name>soundfile</Name>
@@ -441,16 +166,6 @@
               <Anchor>abbb9d44b4d5c4c5f989270a01bba5c47</Anchor>
              </Node>
              <Node>
-              <Name>key_pressed</Name>
-              <Path>structenvelope.html</Path>
-              <Anchor>ac84b2aac38a202dabb1ad1cf203255a3</Anchor>
-             </Node>
-             <Node>
-              <Name>key_pressed_samples</Name>
-              <Path>structenvelope.html</Path>
-              <Anchor>a686898c22d7239fabbd397b9c8fb8c4e</Anchor>
-             </Node>
-             <Node>
               <Name>release</Name>
               <Path>structenvelope.html</Path>
               <Anchor>ad39b6e45d776796f9a3329384d236c34</Anchor>
@@ -484,7 +199,7 @@
              <Node>
               <Name>end</Name>
               <Path>structgrain.html</Path>
-              <Anchor>a36ab68e2a37bdac7061c9ea47c96923f</Anchor>
+              <Anchor>a971aaec2d8e0b45df1e364c8e16dda57</Anchor>
              </Node>
              <Node>
               <Name>grain_active</Name>
@@ -514,7 +229,7 @@
              <Node>
               <Name>start</Name>
               <Path>structgrain.html</Path>
-              <Anchor>a9616ae00adf23160c654cd414d7248f7</Anchor>
+              <Anchor>a1f3a346626963438c6b4f934cf2c9011</Anchor>
              </Node>
              <Node>
               <Name>time_stretch_factor</Name>
@@ -715,42 +430,6 @@
              </Node>
             </Subnodes>
            </Node>
-           <Node>
-            <Name>word</Name>
-            <Path>unionword.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>w_array</Name>
-              <Path>unionword.html</Path>
-              <Anchor>a53d574869db7f7b6f80253eb87bf5f4b</Anchor>
-             </Node>
-             <Node>
-              <Name>w_float</Name>
-              <Path>unionword.html</Path>
-              <Anchor>a1a3bbda058e220ce55e1648dd3ab4821</Anchor>
-             </Node>
-             <Node>
-              <Name>w_gpointer</Name>
-              <Path>unionword.html</Path>
-              <Anchor>a6eb7dbaf4035cd229260324ef13de09b</Anchor>
-             </Node>
-             <Node>
-              <Name>w_index</Name>
-              <Path>unionword.html</Path>
-              <Anchor>a4b5c7e7f20b5ef124fd768cf101e1dd3</Anchor>
-             </Node>
-             <Node>
-              <Name>w_list</Name>
-              <Path>unionword.html</Path>
-              <Anchor>a6865b9eac924b93b1b71516aa0a1ccad</Anchor>
-             </Node>
-             <Node>
-              <Name>w_symbol</Name>
-              <Path>unionword.html</Path>
-              <Anchor>af1275a854994a7c2abd89dc178609617</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
           </Subnodes>
          </Node>
          <Node>
@@ -891,6 +570,11 @@
                 <Anchor>a9f10a2ae717bf695c448157ddab09c85</Anchor>
                </Node>
                <Node>
+                <Name>reverse_playback</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a11189b409749c9930f477892a71de86d</Anchor>
+               </Node>
+               <Node>
                 <Name>soundfile</Name>
                 <Path>structc__granular__synth.html</Path>
                 <Anchor>a558aac696a5378e1963a5afcb4f12f18</Anchor>
@@ -1011,7 +695,7 @@
              <Node>
               <Name>envelope_new</Name>
               <Path>envelope_8c.html</Path>
-              <Anchor>a5d04622a6c7e4c1e313a47ff907a1155</Anchor>
+              <Anchor>a0854138c64859a1f4079feb9b9194786</Anchor>
              </Node>
              <Node>
               <Name>gauss</Name>
@@ -1062,16 +746,6 @@
                 <Name>envelope_samples_table</Name>
                 <Path>structenvelope.html</Path>
                 <Anchor>abbb9d44b4d5c4c5f989270a01bba5c47</Anchor>
-               </Node>
-               <Node>
-                <Name>key_pressed</Name>
-                <Path>structenvelope.html</Path>
-                <Anchor>ac84b2aac38a202dabb1ad1cf203255a3</Anchor>
-               </Node>
-               <Node>
-                <Name>key_pressed_samples</Name>
-                <Path>structenvelope.html</Path>
-                <Anchor>a686898c22d7239fabbd397b9c8fb8c4e</Anchor>
                </Node>
                <Node>
                 <Name>release</Name>
@@ -1166,7 +840,7 @@
              <Node>
               <Name>envelope_new</Name>
               <Path>envelope_8h.html</Path>
-              <Anchor>a5d04622a6c7e4c1e313a47ff907a1155</Anchor>
+              <Anchor>a0854138c64859a1f4079feb9b9194786</Anchor>
              </Node>
              <Node>
               <Name>gauss</Name>
@@ -1222,7 +896,7 @@
                <Node>
                 <Name>end</Name>
                 <Path>structgrain.html</Path>
-                <Anchor>a36ab68e2a37bdac7061c9ea47c96923f</Anchor>
+                <Anchor>a971aaec2d8e0b45df1e364c8e16dda57</Anchor>
                </Node>
                <Node>
                 <Name>grain_active</Name>
@@ -1252,7 +926,7 @@
                <Node>
                 <Name>start</Name>
                 <Path>structgrain.html</Path>
-                <Anchor>a9616ae00adf23160c654cd414d7248f7</Anchor>
+                <Anchor>a1f3a346626963438c6b4f934cf2c9011</Anchor>
                </Node>
                <Node>
                 <Name>time_stretch_factor</Name>
@@ -1279,10 +953,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>m_pd.h</Name>
-            <Path>m__pd_8h_source.html</Path>
-           </Node>
-           <Node>
             <Name>purple_utils.c</Name>
             <Path>purple__utils_8c.html</Path>
             <Subnodes>
@@ -1301,58 +971,16 @@
               <Path>purple__utils_8c.html</Path>
               <Anchor>adedfab0848a63809acd487441d157908</Anchor>
              </Node>
+             <Node>
+              <Name>switch_float_values</Name>
+              <Path>purple__utils_8c.html</Path>
+              <Anchor>aa70b6fc905b978c25b15eaa49ddda958</Anchor>
+             </Node>
             </Subnodes>
            </Node>
            <Node>
             <Name>purple_utils.h</Name>
             <Path>purple__utils_8h_source.html</Path>
-           </Node>
-           <Node>
-            <Name>vas_mem.c</Name>
-            <Path>vas__mem_8c.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>vas_memory_c</Name>
-              <Path>vas__mem_8c.html</Path>
-              <Anchor>ac8fbbf7cc30e573e48b0e6e8efd1bdca</Anchor>
-             </Node>
-             <Node>
-              <Name>vas_mem_alloc</Name>
-              <Path>vas__mem_8c.html</Path>
-              <Anchor>ac549a7c59d4bb509d568f9978b916fbb</Anchor>
-             </Node>
-             <Node>
-              <Name>vas_mem_free</Name>
-              <Path>vas__mem_8c.html</Path>
-              <Anchor>a751a5f7552bb2cd98282edf0afe0d059</Anchor>
-             </Node>
-             <Node>
-              <Name>vas_mem_resize</Name>
-              <Path>vas__mem_8c.html</Path>
-              <Anchor>ad6c97252ba29dace27ab0065778b2ba8</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>vas_mem.h</Name>
-            <Path>vas__mem_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>vas_mem_alloc</Name>
-              <Path>vas__mem_8h.html</Path>
-              <Anchor>ac549a7c59d4bb509d568f9978b916fbb</Anchor>
-             </Node>
-             <Node>
-              <Name>vas_mem_free</Name>
-              <Path>vas__mem_8h.html</Path>
-              <Anchor>a751a5f7552bb2cd98282edf0afe0d059</Anchor>
-             </Node>
-             <Node>
-              <Name>vas_mem_resize</Name>
-              <Path>vas__mem_8h.html</Path>
-              <Anchor>ad6c97252ba29dace27ab0065778b2ba8</Anchor>
-             </Node>
-            </Subnodes>
            </Node>
           </Subnodes>
          </Node>

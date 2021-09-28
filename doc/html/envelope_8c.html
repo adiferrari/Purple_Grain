@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Purple Grain
    </div>
@@ -69,11 +70,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>handles ADSR envelope calculations with grain windowing on MIDI input  
+<p>handles envelope generation generates ADSR envelope according to adjustable attack, decay, sustain and release parameters  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="envelope_8h_source.html">envelope.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="grain_8h_source.html">grain.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="vas__mem_8h_source.html">vas_mem.h</a>&quot;</code><br />
+<code>#include &quot;vas_mem.h&quot;</code><br />
 <code>#include &quot;purple_utils.h&quot;</code><br />
 <code>#include &quot;m_pd.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="c__granular__synth_8h_source.html">c_granular_synth.h</a>&quot;</code><br />
@@ -89,20 +90,27 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aaae5d861cb60747af27b39b0658a92bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">calculate_adsr_value</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:aaae5d861cb60747af27b39b0658a92bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates ADSR envelope as a single value calculates ADSR envelope as a single value in dependance of the current ADSR state given by the MIDI input  <a href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">More...</a><br /></td></tr>
+<tr class="memdesc:aaae5d861cb60747af27b39b0658a92bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates ADSR value calculates single atm ADSR value according to current state  <a href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">More...</a><br /></td></tr>
 <tr class="separator:aaae5d861cb60747af27b39b0658a92bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d04622a6c7e4c1e313a47ff907a1155"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structenvelope.html">envelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a5d04622a6c7e4c1e313a47ff907a1155">envelope_new</a> (int attack, int decay, float sustain, int key_pressed, int release)</td></tr>
-<tr class="memdesc:a5d04622a6c7e4c1e313a47ff907a1155"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates new ADSR envelope  <a href="envelope_8c.html#a5d04622a6c7e4c1e313a47ff907a1155">More...</a><br /></td></tr>
-<tr class="separator:a5d04622a6c7e4c1e313a47ff907a1155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0854138c64859a1f4079feb9b9194786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structenvelope.html">envelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a> (int attack, int decay, float sustain, int release)</td></tr>
+<tr class="memdesc:a0854138c64859a1f4079feb9b9194786"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new ADSR envelope  <a href="envelope_8c.html#a0854138c64859a1f4079feb9b9194786">More...</a><br /></td></tr>
+<tr class="separator:a0854138c64859a1f4079feb9b9194786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada53322e75330e22584277e4aab720bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#ada53322e75330e22584277e4aab720bc">gauss</a> (<a class="el" href="structgrain.html">grain</a> x, int grainindex)</td></tr>
+<tr class="memdesc:ada53322e75330e22584277e4aab720bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates gauss value calculates gauss value according to  <a href="envelope_8c.html#ada53322e75330e22584277e4aab720bc">More...</a><br /></td></tr>
 <tr class="separator:ada53322e75330e22584277e4aab720bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a> (<a class="el" href="structenvelope.html">envelope</a> *x)</td></tr>
 <tr class="memdesc:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees envelope  <a href="envelope_8c.html#a1c1368cf5424e9a5ae2dd5d9295661c5">More...</a><br /></td></tr>
 <tr class="separator:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>handles ADSR envelope calculations with grain windowing on MIDI input </p>
-<dl class="section author"><dt>Author</dt><dd></dd></dl>
+<div class="textblock"><p>handles envelope generation generates ADSR envelope according to adjustable attack, decay, sustain and release parameters </p>
+<dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar </dd>
+<dd>
+Adrian Philipp </dd>
+<dd>
+Micha Strobl </dd>
+<dd>
+Tim Wennemann </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
@@ -123,14 +131,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>calculates ADSR envelope as a single value calculates ADSR envelope as a single value in dependance of the current ADSR state given by the MIDI input </p>
+<p>calculates ADSR value calculates single atm ADSR value according to current state </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of calculate_adsr_value object </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float ADSR value </dd></dl>
 
 </div>
 </div>
@@ -153,15 +161,15 @@ Functions</h2></td></tr>
 <p>frees envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input variable </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of envelope_free object </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a5d04622a6c7e4c1e313a47ff907a1155"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d04622a6c7e4c1e313a47ff907a1155">&#9670;&nbsp;</a></span>envelope_new()</h2>
+<a id="a0854138c64859a1f4079feb9b9194786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0854138c64859a1f4079feb9b9194786">&#9670;&nbsp;</a></span>envelope_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,12 +196,6 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>key_pressed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>release</em>&#160;</td>
         </tr>
         <tr>
@@ -204,14 +206,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>calculates new ADSR envelope </p>
+<p>generates new ADSR envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attack</td><td></td></tr>
-    <tr><td class="paramname">decay</td><td></td></tr>
-    <tr><td class="paramname">sustain</td><td></td></tr>
-    <tr><td class="paramname">key_pressed</td><td></td></tr>
-    <tr><td class="paramname">release</td><td></td></tr>
+    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider </td></tr>
+    <tr><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider </td></tr>
+    <tr><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider </td></tr>
+    <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider </td></tr>
   </table>
   </dd>
 </dl>
@@ -244,14 +245,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>calculates gauss value calculates gauss value according to </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
     <tr><td class="paramname">grainindex</td><td></td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of gauss object </td></tr>
+    <tr><td class="paramname">grainindex</td><td>index of grain </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float gauss value </dd></dl>
 
 </div>
 </div>

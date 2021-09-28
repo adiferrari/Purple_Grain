@@ -1,11 +1,17 @@
-//
-//  purple_utils.h
-//  pd_granular_synth~
-//
-//  Created by Micha Strobl on 22.09.21.
-//  Copyright © 2021 Intrinsic Audio. All rights reserved.
-//
-
+/**
+ * @file purple_utils.h
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim 
+ * Audiocommunication Group, Technische Universität Berlin <br>
+ * @brief header file to @a purple_utils.c file
+ * @version 0.1
+ * @date 2021-09-28
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef purple_utils_h
 #define purple_utils_h
 

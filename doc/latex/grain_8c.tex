@@ -15,26 +15,30 @@ Include dependency graph for grain.\+c\+:
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{grain_8c_a538e0cad3acb787a49e16b1e53787610}\label{grain_8c_a538e0cad3acb787a49e16b1e53787610}} 
 \#define \mbox{\hyperlink{grain_8c_a538e0cad3acb787a49e16b1e53787610}{S\+A\+M\+P\+L\+E\+R\+A\+TE}}~44100
-\begin{DoxyCompactList}\small\item\em To-\/\+Do\+: Set dynamically by user input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em set samplerate to 44100 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}{grain\+\_\+new}} (int grain\+\_\+size\+\_\+samples, int soundfile\+\_\+size, int grain\+\_\+index, float time\+\_\+stretch\+\_\+factor)
-\begin{DoxyCompactList}\small\item\em generates new grain depending on \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em generates new grain \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\+\_\+internal\+\_\+scheduling}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$g, \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$synth)
-\begin{DoxyCompactList}\small\item\em scheduling of grain playback sheduling of grain playback \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em scheduling of grain playback \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\+\_\+free}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em frees grain frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 handles grain creation 
 
 \begin{DoxyAuthor}{Author}
-Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
- Audiocommunication Group, Technische Universität Berlin ~\newline
+Nikita Kretschmar 
+
+Adrian Philipp 
+
+Micha Strobl 
+
+Tim Wennemann Audiocommunication Group, Technische Universität Berlin ~\newline
  
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
@@ -48,6 +52,21 @@ Copyright (c) 2021
 \end{DoxyCopyright}
 
 
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{grain_8c_a538e0cad3acb787a49e16b1e53787610}\label{grain_8c_a538e0cad3acb787a49e16b1e53787610}} 
+\index{grain.c@{grain.c}!SAMPLERATE@{SAMPLERATE}}
+\index{SAMPLERATE@{SAMPLERATE}!grain.c@{grain.c}}
+\doxysubsubsection{\texorpdfstring{SAMPLERATE}{SAMPLERATE}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+R\+A\+TE~44100}
+
+
+
+set samplerate to 44100 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]make samplerate adjustable \end{DoxyRefDesc}
+
+
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}\label{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}} 
 \index{grain.c@{grain.c}!grain\_free@{grain\_free}}
@@ -57,9 +76,9 @@ Copyright (c) 2021
 
 
 
-frees grain frees grain 
+frees grain 
 
-
+frees grain 
 \begin{DoxyParams}{Parameters}
 {\em x} & input pointer of grain\+\_\+fre object \\
 \hline
@@ -72,9 +91,9 @@ frees grain frees grain
 
 
 
-scheduling of grain playback sheduling of grain playback 
+scheduling of grain playback 
 
-
+sheduling of grain playback 
 \begin{DoxyParams}{Parameters}
 {\em g} & grain \\
 \hline
@@ -89,13 +108,7 @@ $<$
 
 $<$
 
-$<$
-
-$<$ sets grain position to start
-
-$<$ checks active state of grain
-
-$<$ sets current position to start\mbox{\Hypertarget{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}\label{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}} 
+$<$\mbox{\Hypertarget{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}\label{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}} 
 \index{grain.c@{grain.c}!grain\_new@{grain\_new}}
 \index{grain\_new@{grain\_new}!grain.c@{grain.c}}
 \doxysubsubsection{\texorpdfstring{grain\_new()}{grain\_new()}}
@@ -103,10 +116,19 @@ $<$ sets current position to start\mbox{\Hypertarget{grain_8c_ac42c86512f5fdaa53
 
 
 
-generates new grain depending on 
+generates new grain 
 
-
+generates new grain depending on {\itshape grain\+\_\+size\+\_\+samples}, {\itshape soundfile\+\_\+size} and {\itshape grain\+\_\+index} 
 \begin{DoxyParams}{Parameters}
-{\em grain\+\_\+size\+\_\+samples} & \\
+{\em grain\+\_\+size\+\_\+samples} & size of samples contained in a grain \\
+\hline
+{\em soundfile\+\_\+size} & size of the soundfile which can be read in via inlet \\
+\hline
+{\em grain\+\_\+index} & corresponding index of a grain \\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grain 
+\end{DoxyReturn}
