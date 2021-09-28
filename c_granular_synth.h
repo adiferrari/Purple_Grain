@@ -35,6 +35,7 @@ typedef struct c_granular_synth
     t_word      *soundfile;
     int         soundfile_length,
                 current_start_pos,          // adjustable with dedicated pd slider
+                playback_cycle_end,         // determines when to reset playback_pos to current_start_pos
                 current_grain_index,
                 current_adsr_stage_index,
                 grain_size_ms,
@@ -42,10 +43,10 @@ typedef struct c_granular_synth
                 num_grains,
                 midi_pitch,
                 midi_velo;
-    t_int       playback_position;    // which sample of the grain goes to the output next?
     bool        reverse_playback;
     float       *soundfile_table;     //Array containing the original soundfile
     t_float     output_buffer,          // to sum up the current samples of all active grains
+                playback_position,    // which sample of the grain goes to the output next?
                 time_stretch_factor,
                 sr;
     grain       *grains_table;
@@ -65,6 +66,7 @@ void c_granular_synth_adjust_current_grain_index(c_granular_synth *x);
 void c_granular_synth_populate_grain_table(c_granular_synth *x);
 void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_pitch, int midi_velo, int attack, int decay, float sustain, int release);
+void c_granular_synth_reset_playback_position(c_granular_synth *x);
 extern t_float SAMPLERATE;
 
 float calculate_adsr_value(c_granular_synth *x);
