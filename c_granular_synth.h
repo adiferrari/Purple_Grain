@@ -45,7 +45,8 @@ typedef struct c_granular_synth
                 num_grains,
                 midi_pitch,
                 midi_velo;
-    float       gauss_q_factor;
+    float       gauss_q_factor,
+                pitch_factor;
     t_int       playback_position;    // which sample of the grain goes to the output next?
     bool        reverse_playback;
     float       *soundfile_table;     //Array containing the original soundfile
@@ -58,7 +59,7 @@ typedef struct c_granular_synth
 } c_granular_synth;
 
 void c_granular_synth_free(c_granular_synth *x);
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor);
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, float pitch_factor, int midi_pitch);
 void c_granular_synth_generate_window_function(c_granular_synth *x);
 
 void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size); // Test

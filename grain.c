@@ -46,7 +46,6 @@
  */
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)
 {
-    //pimmel
     grain x;
     grain *next_grain = NULL;
     grain *previous_grain = NULL;
@@ -90,7 +89,7 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
  */
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
-    if(synth->time_stretch_factor <= -1.0)
+    if(synth->pitch_factor <= -1.0)
     {
         //
     }
@@ -130,7 +129,7 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
         weighted = get_interpolated_sample_value(left_sample, right_sample,frac);
         synth->output_buffer += weighted;
         g->current_sample_pos = g->next_sample_pos;
-        g->next_sample_pos += g->time_stretch_factor;
+        g->next_sample_pos += synth->pitch_factor;
         // does the next index exceed the soundfile length? (Forward Playback)
         if(g->next_sample_pos > synth->soundfile_length)
         {
@@ -155,7 +154,7 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
             //g->grain_active = false;
             // Grain wieder auf seinen Startpunkt setzen, wie bei Initialisierung in new-methode
             g->current_sample_pos = g->start;
-            g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
+            g->next_sample_pos = g->current_sample_pos + synth->pitch_factor;
             g->internal_step_count = 0;
             //synth->playback_position = synth->current_start_pos;
         }
@@ -171,7 +170,7 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
         // Grain nicht oder nicht mehr aktiv
         // seine current pos auf seinen start zurücksetzen
         g->current_sample_pos = g->start;
-        g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
+        g->next_sample_pos = g->current_sample_pos + synth->pitch_factor;
         g->internal_step_count = 0;
         /*
         g->current_sample_pos = g->grain_size_samples * g->grain_index * g->time_stretch_factor;

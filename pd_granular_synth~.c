@@ -46,6 +46,7 @@ typedef struct pd_granular_synth_tilde
     t_word *soundfile;      // Pointer to the soundfile Array
     t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
     int soundfile_length;
+    float pitch_faktor;
     float soundfile_length_ms;
     t_word *envelopeTable;
 
@@ -81,6 +82,8 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->grain_size = 50;
     x->start_pos = 0;
     x->time_stretch_factor = 1.0,
+    x->midi_pitch = 48;
+    x->pitch_faktor = 2;//x->time_stretch_factor * x->midi_pitch / 48.0;
     x->midi_velo = 0;
     x->attack = 500;
     x->decay = 500;
@@ -201,7 +204,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->pitch_faktor, x->midi_pitch);
     }
 
     return;
