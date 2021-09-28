@@ -133,7 +133,14 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         x->output_buffer = 0;
         // oder kann man playback jetzt einfach immer +1 hochgehen?
         x->playback_position++;
-        if(x->playback_position >= x->soundfile_length) x->playback_position = x->current_start_pos;
+        if(x->playback_position >= x->soundfile_length)
+        {
+            x->playback_position = 0;
+        }
+        if(x->playback_position >= x->playback_cycle_end)
+        {
+            x->playback_position = x->current_start_pos;
+        }
         //ab hier dann schauen welches grain aktiv ist
         //x->playback_position = x->grains_table[x->current_grain_index].current_sample_pos;
         
@@ -143,7 +150,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x);
         //gauss_val = gauss(x->gauss_q_factor, x->grain_size_samples,x->current_grain_index);
         x->output_buffer *= gauss_val;
-        */
+        
         
         if(x->midi_velo > 0)
         {
@@ -164,8 +171,10 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
                 adsr_val = calculate_adsr_value(x);
             }
         }
-        
         x->output_buffer *= adsr_val;
+        
+        
+        
         *out++ = x->output_buffer;
     }
     
@@ -202,7 +211,7 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
 {
     //int index = x->current_start_pos / x->grain_size_samples;
-    int index = (x->playback_position * fabs(x->time_stretch_factor)) / x->grain_size_samples;
+    int index = ceil((x->current_start_pos * fabs(x->time_stretch_factor)) / x->grain_size_samples);
     x->current_grain_index = index;
 }
 /**
@@ -265,7 +274,8 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     }
     
     // Das stand vorher in der process methode
-    x->playback_position = x->current_start_pos;
+    //x->playback_position = x->current_start_pos;
+    c_granular_synth_reset_playback_position(x);
     
     if(x->grains_table) free(x->grains_table);
     x->grains_table = grains_table;

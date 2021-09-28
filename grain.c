@@ -88,12 +88,22 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
     }
     if(synth->reverse_playback)
     {
-        g->grain_active = (g->start >= (synth->playback_position * synth->time_stretch_factor * -1)) && (g->end <= (synth->playback_position * synth->time_stretch_factor * -1));
+        // ???
+        //g->grain_active = ((int)g->start == synth->current_start_pos) ||
+        g->grain_active = g->grain_index == synth->current_grain_index ||
+        ((((synth->soundfile_length - 1 - synth->playback_position) <= g->start) &&
+          ((synth->soundfile_length - 1 - synth->playback_position) >= g->end)));
+        /*
+        (((g->start * synth->time_stretch_factor * -1) >= synth->playback_position) &&
+        ((g->end * synth->time_stretch_factor * -1) <= (synth->playback_position * synth->time_stretch_factor * -1)));
+         */
     }
     else
     {
-        // is abs necessary?
-        g->grain_active = (g->start <= (synth->playback_position * synth->time_stretch_factor)) && (g->end >= (synth->playback_position * synth->time_stretch_factor));
+        //g->grain_active = ((int)g->start == synth->current_start_pos) ||
+        g->grain_active = g->grain_index == synth->current_grain_index ||
+        ((g->start <= synth->playback_position) &&
+         (g->end >= synth->playback_position));
     }
     
     if(g->grain_active)
@@ -139,11 +149,15 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
             g->current_sample_pos = g->start;
             g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
             g->internal_step_count = 0;
-            synth->playback_position = synth->current_start_pos;
+            //synth->playback_position = synth->current_start_pos;
         }
         
         // checken ob nächstes grain aktiv ist
-        grain_internal_scheduling(g->next_grain, synth);
+        if(g->next_grain)
+        {
+            grain_internal_scheduling(g->next_grain, synth);
+        }
+        
     }
     else {
         // Grain nicht oder nicht mehr aktiv
