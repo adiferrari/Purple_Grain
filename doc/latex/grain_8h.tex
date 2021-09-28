@@ -31,9 +31,9 @@ typedef struct \mbox{\hyperlink{structgrain}{grain}} {\bfseries grain}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8h_ac42c86512f5fdaa5371155efaf4b469e}{grain\+\_\+new}} (int grain\+\_\+size\+\_\+samples, int soundfile\+\_\+size, int grain\+\_\+index, float time\+\_\+stretch\+\_\+factor)
-\begin{DoxyCompactList}\small\item\em generates new grain depending on \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em generates new grain \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\+\_\+free}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em frees grain frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -57,9 +57,9 @@ Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann ~\newline
 
 
 
-frees grain frees grain 
+frees grain 
 
-
+frees grain 
 \begin{DoxyParams}{Parameters}
 {\em x} & input pointer of grain\+\_\+fre object \\
 \hline
@@ -72,10 +72,19 @@ frees grain frees grain
 
 
 
-generates new grain depending on 
+generates new grain 
 
-
+generates new grain depending on {\itshape grain\+\_\+size\+\_\+samples}, {\itshape soundfile\+\_\+size} and {\itshape grain\+\_\+index} 
 \begin{DoxyParams}{Parameters}
-{\em grain\+\_\+size\+\_\+samples} & \\
+{\em grain\+\_\+size\+\_\+samples} & size of samples contained in a grain \\
+\hline
+{\em soundfile\+\_\+size} & size of the soundfile which can be read in via inlet \\
+\hline
+{\em grain\+\_\+index} & corresponding index of a grain \\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grain 
+\end{DoxyReturn}

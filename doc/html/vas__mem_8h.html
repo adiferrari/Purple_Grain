@@ -97,11 +97,13 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac549a7c59d4bb509d568f9978b916fbb"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vas__mem_8h.html#ac549a7c59d4bb509d568f9978b916fbb">vas_mem_alloc</a> (long size)</td></tr>
+<tr class="memdesc:ac549a7c59d4bb509d568f9978b916fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles memory allocation handles memory allocation according to  <a href="vas__mem_8h.html#ac549a7c59d4bb509d568f9978b916fbb">More...</a><br /></td></tr>
 <tr class="separator:ac549a7c59d4bb509d568f9978b916fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c97252ba29dace27ab0065778b2ba8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vas__mem_8h.html#ad6c97252ba29dace27ab0065778b2ba8">vas_mem_resize</a> (void *ptr, long size)</td></tr>
+<tr class="memdesc:ad6c97252ba29dace27ab0065778b2ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles resizing of memory handles resizing of memory according to to  <a href="vas__mem_8h.html#ad6c97252ba29dace27ab0065778b2ba8">More...</a><br /></td></tr>
 <tr class="separator:ad6c97252ba29dace27ab0065778b2ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a751a5f7552bb2cd98282edf0afe0d059"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vas__mem_8h.html#a751a5f7552bb2cd98282edf0afe0d059">vas_mem_free</a> (void *ptr)</td></tr>
-<tr class="memdesc:a751a5f7552bb2cd98282edf0afe0d059"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees pointer  <a href="vas__mem_8h.html#a751a5f7552bb2cd98282edf0afe0d059">More...</a><br /></td></tr>
+<tr class="memdesc:a751a5f7552bb2cd98282edf0afe0d059"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees memory frees memory at given  <a href="vas__mem_8h.html#a751a5f7552bb2cd98282edf0afe0d059">More...</a><br /></td></tr>
 <tr class="separator:a751a5f7552bb2cd98282edf0afe0d059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -130,9 +132,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>handles memory allocation handles memory allocation according to </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td></td></tr>
+    <tr><td class="paramname">size</td><td>required memory size </td></tr>
   </table>
   </dd>
 </dl>
@@ -156,10 +161,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>frees pointer </p>
+<p>frees memory frees memory at given </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ptr</td><td>pointer </td></tr>
+    <tr><td class="paramname">ptr</td><td></td></tr>
+    <tr><td class="paramname">ptr</td><td>memory pointer </td></tr>
   </table>
   </dd>
 </dl>
@@ -191,10 +197,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>handles resizing of memory handles resizing of memory according to to </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ptr</td><td>pointer </td></tr>
-    <tr><td class="paramname">size</td><td>size </td></tr>
+    <tr><td class="paramname">size</td><td>on given</td></tr>
+    <tr><td class="paramname">ptr</td><td></td></tr>
+    <tr><td class="paramname">ptr</td><td>memory pointer </td></tr>
+    <tr><td class="paramname">size</td><td>memory size </td></tr>
   </table>
   </dd>
 </dl>

@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Purple Grain
    </div>
@@ -97,47 +98,44 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structenvelope.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structenvelope.html">envelope</a></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="struct__text.html">t_object</a> x_obj;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    t_object x_obj;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    t_int attack;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    t_int decay;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    t_float sustain;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    t_int key_pressed;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    t_int release;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    t_int duration;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    t_int attack_samples,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            decay_samples,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            key_pressed_samples,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            release_samples;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    t_sample *envelope_samples_table;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">enum</span> adsr_stage adsr;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="structenvelope.html">envelope</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">int</span> getsamples_from_ms(<span class="keywordtype">int</span> ms, <span class="keywordtype">float</span> sr);</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structwindow.html">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structwindow.html">window</a></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="struct__text.html">t_object</a> x_obj;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    t_int q_factor;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    t_sample *window_samples_table;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}<a class="code" href="structwindow.html">window</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    t_int release;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    t_int duration;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    t_int attack_samples,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            decay_samples,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            release_samples;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    t_sample *envelope_samples_table;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">enum</span> adsr_stage adsr;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <a class="code" href="structenvelope.html">envelope</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">int</span> getsamples_from_ms(<span class="keywordtype">int</span> ms, <span class="keywordtype">float</span> sr);</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structwindow.html">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structwindow.html">window</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    t_object x_obj;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    t_int q_factor;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    t_sample *window_samples_table;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}<a class="code" href="structwindow.html">window</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<a class="code" href="structenvelope.html">envelope</a> *<a class="code" href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a>(<span class="keywordtype">int</span> attack, <span class="keywordtype">int</span> decay, <span class="keywordtype">float</span> sustain, <span class="keywordtype">int</span> release);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="structenvelope.html">envelope</a> *<a class="code" href="envelope_8h.html#a5d04622a6c7e4c1e313a47ff907a1155">envelope_new</a>(<span class="keywordtype">int</span> attack, <span class="keywordtype">int</span> decay, <span class="keywordtype">float</span> sustain, <span class="keywordtype">int</span> key_pressed, <span class="keywordtype">int</span> release);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">float</span> <a class="code" href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">gauss</a>(<a class="code" href="structgrain.html">grain</a> x, <span class="keywordtype">int</span> sample);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a>(<a class="code" href="structenvelope.html">envelope</a> *x);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">float</span> <a class="code" href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">gauss</a>(<a class="code" href="structgrain.html">grain</a> x, <span class="keywordtype">int</span> sample);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a>(<a class="code" href="structenvelope.html">envelope</a> *x);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructenvelope_html"><div class="ttname"><a href="structenvelope.html">envelope</a></div><div class="ttdef"><b>Definition:</b> envelope.h:38</div></div>
-<div class="ttc" id="aenvelope_8h_html_a5d04622a6c7e4c1e313a47ff907a1155"><div class="ttname"><a href="envelope_8h.html#a5d04622a6c7e4c1e313a47ff907a1155">envelope_new</a></div><div class="ttdeci">envelope * envelope_new(int attack, int decay, float sustain, int key_pressed, int release)</div><div class="ttdoc">calculates new ADSR envelope</div><div class="ttdef"><b>Definition:</b> envelope.c:104</div></div>
 <div class="ttc" id="agrain_8h_html"><div class="ttname"><a href="grain_8h.html">grain.h</a></div><div class="ttdoc">Grain file header     Grain file header.</div></div>
-<div class="ttc" id="astructwindow_html"><div class="ttname"><a href="structwindow.html">window</a></div><div class="ttdef"><b>Definition:</b> envelope.h:56</div></div>
-<div class="ttc" id="aenvelope_8h_html_a0a3592cff3c411e98df69da098856168"><div class="ttname"><a href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">gauss</a></div><div class="ttdeci">float gauss(grain x, int sample)</div><div class="ttdef"><b>Definition:</b> envelope.c:171</div></div>
-<div class="ttc" id="astruct__text_html"><div class="ttname"><a href="struct__text.html">_text</a></div><div class="ttdef"><b>Definition:</b> m_pd.h:186</div></div>
-<div class="ttc" id="aenvelope_8h_html_a1c1368cf5424e9a5ae2dd5d9295661c5"><div class="ttname"><a href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a></div><div class="ttdeci">void envelope_free(envelope *x)</div><div class="ttdoc">frees envelope</div><div class="ttdef"><b>Definition:</b> envelope.c:189</div></div>
+<div class="ttc" id="astructwindow_html"><div class="ttname"><a href="structwindow.html">window</a></div><div class="ttdef"><b>Definition:</b> envelope.h:54</div></div>
+<div class="ttc" id="aenvelope_8h_html_a0a3592cff3c411e98df69da098856168"><div class="ttname"><a href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">gauss</a></div><div class="ttdeci">float gauss(grain x, int sample)</div><div class="ttdoc">calculates gauss value calculates gauss value according to</div><div class="ttdef"><b>Definition:</b> envelope.c:176</div></div>
+<div class="ttc" id="aenvelope_8h_html_a1c1368cf5424e9a5ae2dd5d9295661c5"><div class="ttname"><a href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a></div><div class="ttdeci">void envelope_free(envelope *x)</div><div class="ttdoc">frees envelope</div><div class="ttdef"><b>Definition:</b> envelope.c:194</div></div>
+<div class="ttc" id="aenvelope_8h_html_a0854138c64859a1f4079feb9b9194786"><div class="ttname"><a href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a></div><div class="ttdeci">envelope * envelope_new(int attack, int decay, float sustain, int release)</div><div class="ttdoc">generates new ADSR envelope</div><div class="ttdef"><b>Definition:</b> envelope.c:110</div></div>
 <div class="ttc" id="astructgrain_html"><div class="ttname"><a href="structgrain.html">grain</a></div><div class="ttdef"><b>Definition:</b> grain.h:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

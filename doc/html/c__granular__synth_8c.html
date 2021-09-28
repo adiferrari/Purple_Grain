@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Purple Grain
    </div>
@@ -85,7 +86,7 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a43f045161137a5c9940d6efca2d8828c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a43f045161137a5c9940d6efca2d8828c">c_granular_synth_new</a> (<a class="el" href="unionword.html">t_word</a> *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release)</td></tr>
+<tr class="memitem:a43f045161137a5c9940d6efca2d8828c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a43f045161137a5c9940d6efca2d8828c">c_granular_synth_new</a> (t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release)</td></tr>
 <tr class="memdesc:a43f045161137a5c9940d6efca2d8828c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial setup of soundfile and adjustment silder related variables  <a href="c__granular__synth_8c.html#a43f045161137a5c9940d6efca2d8828c">More...</a><br /></td></tr>
 <tr class="separator:a43f045161137a5c9940d6efca2d8828c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c4e09392d873e432cb0edeae71f17c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">c_granular_synth_process</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, float *in, float *out, int vector_size)</td></tr>
@@ -95,13 +96,13 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_noteOn</b> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, float frequency, float velocity)</td></tr>
 <tr class="separator:a60d847e30dcce2bbe361871c5ac3ef38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">c_granular_synth_set_num_grains</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains sets number of grains according to  <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
+<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em>  <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
 <tr class="separator:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4851564c44cc8e0bae53de300c6dec30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">c_granular_synth_adjust_current_grain_index</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index adjusts current grain index according to  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
+<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em>  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
 <tr class="separator:a4851564c44cc8e0bae53de300c6dec30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">c_granular_synth_populate_grain_table</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table generates a grain table according to  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
+<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
 <tr class="separator:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae123edef2c228ace563e0cbe4f424860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ae123edef2c228ace563e0cbe4f424860">c_granular_synth_properties_update</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release)</td></tr>
 <tr class="memdesc:ae123edef2c228ace563e0cbe4f424860"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks on current input states e.g. slider positions and updates correspondent values  <a href="c__granular__synth_8c.html#ae123edef2c228ace563e0cbe4f424860">More...</a><br /></td></tr>
@@ -109,8 +110,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_note
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The C Part of the synthesizer's implementation. </p>
-<dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br  />
- Audiocommunication Group, Technische Universität Berlin <br  />
+<dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar </dd>
+<dd>
+Adrian Philipp </dd>
+<dd>
+Micha Strobl </dd>
+<dd>
+Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
  </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-07-25</dd></dl>
@@ -132,11 +138,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_note
       </table>
 </div><div class="memdoc">
 
-<p>adjusts current grain index adjusts current grain index according to </p>
+<p>adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">currents_start_pos</td><td>and</td></tr>
-    <tr><td class="paramname">grain_size_samples</td><td></td></tr>
     <tr><td class="paramname">x</td><td>input pointer of c_granular_synth_adjust_current_grain_index object </td></tr>
   </table>
   </dd>
@@ -153,7 +157,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_note
         <tr>
           <td class="memname"><a class="el" href="structc__granular__synth.html">c_granular_synth</a>* c_granular_synth_new </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="unionword.html">t_word</a> *&#160;</td>
+          <td class="paramtype">t_word *&#160;</td>
           <td class="paramname"><em>soundfile</em>, </td>
         </tr>
         <tr>
@@ -247,11 +251,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_note
       </table>
 </div><div class="memdoc">
 
-<p>generates a grain table generates a grain table according to </p>
+<p>generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">current_grain_index</td><td>for negative</td></tr>
-    <tr><td class="paramname">time_stretch_factor</td><td>values samples are read in backwards direction </td></tr>
     <tr><td class="paramname">x</td><td>input pointer of c_granular_synth_populate_grain_table object </td></tr>
   </table>
   </dd>
@@ -419,11 +421,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>c_granular_synth_note
       </table>
 </div><div class="memdoc">
 
-<p>sets number of grains sets number of grains according to </p>
+<p>sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">soundfile_length</td><td>and</td></tr>
-    <tr><td class="paramname">grain_size_samples</td><td></td></tr>
     <tr><td class="paramname">x</td><td>input pointer of c_granular_synth_set_num_grains object </td></tr>
   </table>
   </dd>

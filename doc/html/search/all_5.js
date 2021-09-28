@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['real_20time_20audio_20programming_20in_20c_41',['Real Time Audio Programming in C',['../md_README.html',1,'']]]
+  ['samplerate_32',['SAMPLERATE',['../grain_8c.html#a538e0cad3acb787a49e16b1e53787610',1,'grain.c']]],
+  ['switch_5ffloat_5fvalues_33',['switch_float_values',['../purple__utils_8c.html#aa70b6fc905b978c25b15eaa49ddda958',1,'purple_utils.c']]]
 ];

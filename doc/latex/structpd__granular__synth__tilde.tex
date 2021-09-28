@@ -8,7 +8,7 @@ Collaboration diagram for pd\+\_\+granular\+\_\+synth\+\_\+tilde\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}\label{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}} 
-\mbox{\hyperlink{struct__text}{t\+\_\+object}} {\bfseries x\+\_\+obj}
+t\+\_\+object {\bfseries x\+\_\+obj}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}\label{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}} 
 t\+\_\+float {\bfseries f}
@@ -47,10 +47,10 @@ t\+\_\+float {\bfseries sustain}
 t\+\_\+float {\bfseries time\+\_\+stretch\+\_\+factor}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}\label{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}} 
-\mbox{\hyperlink{unionword}{t\+\_\+word}} $\ast$ {\bfseries soundfile}
+t\+\_\+word $\ast$ {\bfseries soundfile}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}\label{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}} 
-\mbox{\hyperlink{struct__symbol}{t\+\_\+symbol}} $\ast$ {\bfseries soundfile\+\_\+arrayname}
+t\+\_\+symbol $\ast$ {\bfseries soundfile\+\_\+arrayname}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}\label{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}} 
 int {\bfseries soundfile\+\_\+length}
@@ -59,7 +59,7 @@ int {\bfseries soundfile\+\_\+length}
 float {\bfseries soundfile\+\_\+length\+\_\+ms}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a580767361ca6d23f0dde257cce4f4f08}\label{structpd__granular__synth__tilde_a580767361ca6d23f0dde257cce4f4f08}} 
-\mbox{\hyperlink{unionword}{t\+\_\+word}} $\ast$ {\bfseries envelope\+Table}
+t\+\_\+word $\ast$ {\bfseries envelope\+Table}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}\label{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}} 
 t\+\_\+inlet $\ast$ {\bfseries in\+\_\+grain\+\_\+size}
@@ -95,16 +95,18 @@ t\+\_\+outlet $\ast$ {\bfseries out}
 (Note that these are not member functions.) \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}\label{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}} 
-void $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+new}} (\mbox{\hyperlink{struct__symbol}{t\+\_\+symbol}} $\ast$soundfile\+\_\+arrayname)
+void $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+new}} (t\+\_\+symbol $\ast$soundfile\+\_\+arrayname)
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} object.~\newline
  For more information please refer to the \href{https://github.com/pure-data/externals-howto}{\texttt{ Pure Data Docs }} ~\newline
  \end{DoxyCompactList}\item 
-t\+\_\+int $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+perform}} (t\+\_\+int $\ast$w)
+\mbox{\Hypertarget{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}\label{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}} 
+t\+\_\+int $\ast$ {\bfseries pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+perform} (t\+\_\+int $\ast$w)
 \item 
 void \mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+free}} (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\+\_\+pd\+\_\+granular\+\_\+synth\+\_\+tilde}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em Frees object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Frees our object. ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}\label{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}} 
-void \mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+dsp}} (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\+\_\+pd\+\_\+granular\+\_\+synth\+\_\+tilde}} $\ast$x, \mbox{\hyperlink{struct__signal}{t\+\_\+signal}} $\ast$$\ast$sp)
+void \mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+dsp}} (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\+\_\+pd\+\_\+granular\+\_\+synth\+\_\+tilde}} $\ast$x, t\+\_\+signal $\ast$$\ast$sp)
 \begin{DoxyCompactList}\small\item\em Adds \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} to the signal chain. ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}\label{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}} 
@@ -123,27 +125,16 @@ void \mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd
 
 
 
-Frees object. 
+Frees our object. ~\newline
+ 
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & A pointer the \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} object \\
+{\em x} & A pointer the \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} object ~\newline
+ For more information please refer to the \href{https://github.com/pure-data/externals-howto}{\texttt{ Pure Data Docs }} ~\newline
+ \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}\label{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}} 
-\index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_perform@{pd\_granular\_synth\_tilde\_perform}}
-\index{pd\_granular\_synth\_tilde\_perform@{pd\_granular\_synth\_tilde\_perform}!pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}}
-\doxysubsubsection{\texorpdfstring{pd\_granular\_synth\_tilde\_perform()}{pd\_granular\_synth\_tilde\_perform()}}
-{\footnotesize\ttfamily t\+\_\+int $\ast$ pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+perform (\begin{DoxyParamCaption}\item[{t\+\_\+int $\ast$}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [related]}}
-
-
-\begin{DoxyParams}{Parameters}
-{\em w} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-t\+\_\+int$\ast$ 
-\end{DoxyReturn}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}

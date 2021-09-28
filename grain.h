@@ -1,10 +1,11 @@
 /**
  * @file grain.h
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief Grain file header <br>
- * <br>
- * Grain file header
+ * @brief header file to @a grain.c file
  */
 
 #ifndef grain_h

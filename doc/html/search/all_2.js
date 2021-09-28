@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['envelope_19',['envelope',['../structenvelope.html',1,'']]],
-  ['envelope_2ec_20',['envelope.c',['../envelope_8c.html',1,'']]],
-  ['envelope_2eh_21',['envelope.h',['../envelope_8h.html',1,'']]],
-  ['envelope_5ffree_22',['envelope_free',['../envelope_8c.html#a1c1368cf5424e9a5ae2dd5d9295661c5',1,'envelope_free(envelope *x):&#160;envelope.c'],['../envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5',1,'envelope_free(envelope *x):&#160;envelope.c']]],
-  ['envelope_5fnew_23',['envelope_new',['../envelope_8c.html#a5d04622a6c7e4c1e313a47ff907a1155',1,'envelope_new(int attack, int decay, float sustain, int key_pressed, int release):&#160;envelope.c'],['../envelope_8h.html#a5d04622a6c7e4c1e313a47ff907a1155',1,'envelope_new(int attack, int decay, float sustain, int key_pressed, int release):&#160;envelope.c']]]
+  ['gauss_15',['gauss',['../envelope_8c.html#ada53322e75330e22584277e4aab720bc',1,'gauss(grain x, int grainindex):&#160;envelope.c'],['../envelope_8h.html#a0a3592cff3c411e98df69da098856168',1,'gauss(grain x, int sample):&#160;envelope.c']]],
+  ['get_5finterpolated_5fsample_5fvalue_16',['get_interpolated_sample_value',['../purple__utils_8c.html#a228b2ef6097d375daeea9358a534ce54',1,'purple_utils.c']]],
+  ['get_5fms_5ffrom_5fsamples_17',['get_ms_from_samples',['../purple__utils_8c.html#a4f939b5cdf750d42da571e97fdd1510f',1,'purple_utils.c']]],
+  ['get_5fsamples_5ffrom_5fms_18',['get_samples_from_ms',['../purple__utils_8c.html#adedfab0848a63809acd487441d157908',1,'purple_utils.c']]],
+  ['grain_19',['grain',['../structgrain.html',1,'']]],
+  ['grain_2ec_20',['grain.c',['../grain_8c.html',1,'']]],
+  ['grain_2eh_21',['grain.h',['../grain_8h.html',1,'']]],
+  ['grain_5ffree_22',['grain_free',['../grain_8c.html#a95667aefa8dd361c1f8dfba4ecbbf670',1,'grain_free(grain *x):&#160;grain.c'],['../grain_8h.html#a95667aefa8dd361c1f8dfba4ecbbf670',1,'grain_free(grain *x):&#160;grain.c']]],
+  ['grain_5finternal_5fscheduling_23',['grain_internal_scheduling',['../c__granular__synth_8h.html#a25635e32880f4c39cdf848a5820aa9d9',1,'grain_internal_scheduling(grain *g, c_granular_synth *synth):&#160;grain.c'],['../grain_8c.html#a25635e32880f4c39cdf848a5820aa9d9',1,'grain_internal_scheduling(grain *g, c_granular_synth *synth):&#160;grain.c']]],
+  ['grain_5fnew_24',['grain_new',['../grain_8c.html#ac42c86512f5fdaa5371155efaf4b469e',1,'grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor):&#160;grain.c'],['../grain_8h.html#ac42c86512f5fdaa5371155efaf4b469e',1,'grain_new(int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor):&#160;grain.c']]]
 ];

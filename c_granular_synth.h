@@ -1,10 +1,11 @@
 /**
  * @file c_granular_synth.h
- * @author Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br>
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim 
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief Main file header <br>
- * <br>
- * Main file header
+ * @brief header file of @a granular_synth.c file<br>
  */
 
 #ifndef c_granular_synth_h
@@ -26,7 +27,7 @@ extern "C" {
 
 /**
  * @struct c_granular_synth
- * @brief The Purde Data struct of the c_granular_synth~ object. <br>
+ * @brief The Pure Data struct of the c_granular_synth~ object. <br>
  *
  */
 

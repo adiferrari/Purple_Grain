@@ -30,7 +30,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8c.html</Path>
     <Anchor>ac8c478d5ad0c8ecd25c13951e8d1a4d6</Anchor>
-    <Abstract>sets number of grains sets number of grains according to</Abstract>
+    <Abstract>sets number of grains sets number of grains according to soundfile_length and grain_size_samples</Abstract>
     <DeclaredIn>c_granular_synth.c</DeclaredIn>
   </Token>
   <Token>
@@ -41,7 +41,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8c.html</Path>
     <Anchor>a4851564c44cc8e0bae53de300c6dec30</Anchor>
-    <Abstract>adjusts current grain index adjusts current grain index according to</Abstract>
+    <Abstract>adjusts current grain index adjusts current grain index according to currents_start_pos and grain_siz...</Abstract>
     <DeclaredIn>c_granular_synth.c</DeclaredIn>
   </Token>
   <Token>
@@ -52,7 +52,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8c.html</Path>
     <Anchor>af1fcbd7334868a3c94bea99fee01f7ce</Anchor>
-    <Abstract>generates a grain table generates a grain table according to</Abstract>
+    <Abstract>generates a grain table generates a grain table according to current_grain_index for negative time_st...</Abstract>
     <DeclaredIn>c_granular_synth.c</DeclaredIn>
   </Token>
   <Token>
@@ -96,7 +96,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
     <Anchor>ac8c478d5ad0c8ecd25c13951e8d1a4d6</Anchor>
-    <Abstract>sets number of grains sets number of grains according to</Abstract>
+    <Abstract>sets number of grains sets number of grains according to soundfile_length and grain_size_samples</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
   <Token>
@@ -107,7 +107,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
     <Anchor>a4851564c44cc8e0bae53de300c6dec30</Anchor>
-    <Abstract>adjusts current grain index adjusts current grain index according to</Abstract>
+    <Abstract>adjusts current grain index adjusts current grain index according to currents_start_pos and grain_siz...</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
   <Token>
@@ -118,7 +118,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
     <Anchor>af1fcbd7334868a3c94bea99fee01f7ce</Anchor>
-    <Abstract>generates a grain table generates a grain table according to</Abstract>
+    <Abstract>generates a grain table generates a grain table according to current_grain_index for negative time_st...</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
   <Token>
@@ -129,7 +129,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
     <Anchor>a25635e32880f4c39cdf848a5820aa9d9</Anchor>
-    <Abstract>scheduling of grain playback sheduling of grain playback</Abstract>
+    <Abstract>scheduling of grain playback</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
   <Token>
@@ -151,7 +151,7 @@
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
     <Anchor>aaae5d861cb60747af27b39b0658a92bd</Anchor>
-    <Abstract>calculates ADSR envelope as a single value calculates ADSR envelope as a single value in dependance o...</Abstract>
+    <Abstract>calculates ADSR value calculates single atm ADSR value according to current state</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
   <Token>
@@ -162,7 +162,7 @@
     </TokenIdentifier>
     <Path>envelope_8c.html</Path>
     <Anchor>aaae5d861cb60747af27b39b0658a92bd</Anchor>
-    <Abstract>calculates ADSR envelope as a single value calculates ADSR envelope as a single value in dependance o...</Abstract>
+    <Abstract>calculates ADSR value calculates single atm ADSR value according to current state</Abstract>
     <DeclaredIn>envelope.c</DeclaredIn>
   </Token>
   <Token>
@@ -172,8 +172,8 @@
       <Type>func</Type>
     </TokenIdentifier>
     <Path>envelope_8c.html</Path>
-    <Anchor>a5d04622a6c7e4c1e313a47ff907a1155</Anchor>
-    <Abstract>calculates new ADSR envelope</Abstract>
+    <Anchor>a0854138c64859a1f4079feb9b9194786</Anchor>
+    <Abstract>generates new ADSR envelope</Abstract>
     <DeclaredIn>envelope.c</DeclaredIn>
   </Token>
   <Token>
@@ -184,6 +184,7 @@
     </TokenIdentifier>
     <Path>envelope_8c.html</Path>
     <Anchor>ada53322e75330e22584277e4aab720bc</Anchor>
+    <Abstract>calculates gauss value calculates gauss value according to</Abstract>
     <DeclaredIn>envelope.c</DeclaredIn>
   </Token>
   <Token>
@@ -204,8 +205,8 @@
       <Type>func</Type>
     </TokenIdentifier>
     <Path>envelope_8h.html</Path>
-    <Anchor>a5d04622a6c7e4c1e313a47ff907a1155</Anchor>
-    <Abstract>calculates new ADSR envelope</Abstract>
+    <Anchor>a0854138c64859a1f4079feb9b9194786</Anchor>
+    <Abstract>generates new ADSR envelope</Abstract>
     <DeclaredIn>envelope.h</DeclaredIn>
   </Token>
   <Token>
@@ -216,6 +217,7 @@
     </TokenIdentifier>
     <Path>envelope_8h.html</Path>
     <Anchor>a0a3592cff3c411e98df69da098856168</Anchor>
+    <Abstract>calculates gauss value calculates gauss value according to</Abstract>
     <DeclaredIn>envelope.h</DeclaredIn>
   </Token>
   <Token>
@@ -237,7 +239,7 @@
     </TokenIdentifier>
     <Path>grain_8c.html</Path>
     <Anchor>a538e0cad3acb787a49e16b1e53787610</Anchor>
-    <Abstract>To-Do: Set dynamically by user input.</Abstract>
+    <Abstract>set samplerate to 44100</Abstract>
     <DeclaredIn>grain.c</DeclaredIn>
   </Token>
   <Token>
@@ -248,7 +250,7 @@
     </TokenIdentifier>
     <Path>grain_8c.html</Path>
     <Anchor>ac42c86512f5fdaa5371155efaf4b469e</Anchor>
-    <Abstract>generates new grain depending on</Abstract>
+    <Abstract>generates new grain</Abstract>
     <DeclaredIn>grain.c</DeclaredIn>
   </Token>
   <Token>
@@ -259,7 +261,7 @@
     </TokenIdentifier>
     <Path>grain_8c.html</Path>
     <Anchor>a25635e32880f4c39cdf848a5820aa9d9</Anchor>
-    <Abstract>scheduling of grain playback sheduling of grain playback</Abstract>
+    <Abstract>scheduling of grain playback</Abstract>
     <DeclaredIn>grain.c</DeclaredIn>
   </Token>
   <Token>
@@ -270,7 +272,7 @@
     </TokenIdentifier>
     <Path>grain_8c.html</Path>
     <Anchor>a95667aefa8dd361c1f8dfba4ecbbf670</Anchor>
-    <Abstract>frees grain frees grain</Abstract>
+    <Abstract>frees grain</Abstract>
     <DeclaredIn>grain.c</DeclaredIn>
   </Token>
   <Token>
@@ -281,7 +283,7 @@
     </TokenIdentifier>
     <Path>grain_8h.html</Path>
     <Anchor>ac42c86512f5fdaa5371155efaf4b469e</Anchor>
-    <Abstract>generates new grain depending on</Abstract>
+    <Abstract>generates new grain</Abstract>
     <DeclaredIn>grain.h</DeclaredIn>
   </Token>
   <Token>
@@ -292,7 +294,7 @@
     </TokenIdentifier>
     <Path>grain_8h.html</Path>
     <Anchor>a95667aefa8dd361c1f8dfba4ecbbf670</Anchor>
-    <Abstract>frees grain frees grain</Abstract>
+    <Abstract>frees grain</Abstract>
     <DeclaredIn>grain.h</DeclaredIn>
   </Token>
   <Token>
@@ -303,7 +305,7 @@
     </TokenIdentifier>
     <Path>purple__utils_8c.html</Path>
     <Anchor>adedfab0848a63809acd487441d157908</Anchor>
-    <Abstract>Gets the number of samples from given time of a sample in ms.</Abstract>
+    <Abstract>calculates number of samples from ms and sr</Abstract>
     <DeclaredIn>purple_utils.c</DeclaredIn>
   </Token>
   <Token>
@@ -314,7 +316,7 @@
     </TokenIdentifier>
     <Path>purple__utils_8c.html</Path>
     <Anchor>a4f939b5cdf750d42da571e97fdd1510f</Anchor>
-    <Abstract>Gets the time of a sample in ms from the number of samples.</Abstract>
+    <Abstract>calculates sample time in ms from num_samples and sr</Abstract>
     <DeclaredIn>purple_utils.c</DeclaredIn>
   </Token>
   <Token>
@@ -325,70 +327,19 @@
     </TokenIdentifier>
     <Path>purple__utils_8c.html</Path>
     <Anchor>a228b2ef6097d375daeea9358a534ce54</Anchor>
-    <Abstract>Gets an interpolated sample value between.</Abstract>
+    <Abstract>calculates interpolated sample value calculates interpolated sample value between sample_left and sam...</Abstract>
     <DeclaredIn>purple_utils.c</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>vas_mem_alloc</Name>
+      <Name>switch_float_values</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>
     </TokenIdentifier>
-    <Path>vas__mem_8c.html</Path>
-    <Anchor>ac549a7c59d4bb509d568f9978b916fbb</Anchor>
-    <DeclaredIn>vas_mem.c</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>vas_mem_resize</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>vas__mem_8c.html</Path>
-    <Anchor>ad6c97252ba29dace27ab0065778b2ba8</Anchor>
-    <DeclaredIn>vas_mem.c</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>vas_mem_free</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>vas__mem_8c.html</Path>
-    <Anchor>a751a5f7552bb2cd98282edf0afe0d059</Anchor>
-    <Abstract>frees pointer</Abstract>
-    <DeclaredIn>vas_mem.c</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>vas_mem_alloc</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>vas__mem_8h.html</Path>
-    <Anchor>ac549a7c59d4bb509d568f9978b916fbb</Anchor>
-    <DeclaredIn>vas_mem.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>vas_mem_resize</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>vas__mem_8h.html</Path>
-    <Anchor>ad6c97252ba29dace27ab0065778b2ba8</Anchor>
-    <DeclaredIn>vas_mem.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>vas_mem_free</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>vas__mem_8h.html</Path>
-    <Anchor>a751a5f7552bb2cd98282edf0afe0d059</Anchor>
-    <Abstract>frees pointer</Abstract>
-    <DeclaredIn>vas_mem.h</DeclaredIn>
+    <Path>purple__utils_8c.html</Path>
+    <Anchor>aa70b6fc905b978c25b15eaa49ddda958</Anchor>
+    <Abstract>swaps to values swaps to values of float type</Abstract>
+    <DeclaredIn>purple_utils.c</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -399,84 +350,10 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>_atom</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_atom</Scope>
+      <Name>todo</Name>
+      <APILanguage>unknown</APILanguage>
     </TokenIdentifier>
-    <Path>struct__atom.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_gobj</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_gobj</Scope>
-    </TokenIdentifier>
-    <Path>struct__gobj.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_gpointer</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_gpointer</Scope>
-    </TokenIdentifier>
-    <Path>struct__gpointer.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_gstub</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_gstub</Scope>
-    </TokenIdentifier>
-    <Path>struct__gstub.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_resample</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_resample</Scope>
-    </TokenIdentifier>
-    <Path>struct__resample.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_scalar</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_scalar</Scope>
-    </TokenIdentifier>
-    <Path>struct__scalar.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_signal</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_signal</Scope>
-    </TokenIdentifier>
-    <Path>struct__signal.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_symbol</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_symbol</Scope>
-    </TokenIdentifier>
-    <Path>struct__symbol.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>_text</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>_text</Scope>
-    </TokenIdentifier>
-    <Path>struct__text.html</Path>
+    <Path>todo.html</Path>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -529,16 +406,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>pd_granular_synth_tilde_perform</Name>
-      <APILanguage>cpp</APILanguage>
-      <Type>func</Type>
-      <Scope>pd_granular_synth_tilde</Scope>
-    </TokenIdentifier>
-    <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a58e7b5d615cd9c5bc929d37ad5d6a251</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>pd_granular_synth_tilde_free</Name>
       <APILanguage>cpp</APILanguage>
       <Type>func</Type>
@@ -546,7 +413,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>a19482970f795ba98b5126fe92083e601</Anchor>
-    <Abstract>Frees object.</Abstract>
+    <Abstract>Frees our object.</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -578,14 +445,5 @@
       <Scope>window</Scope>
     </TokenIdentifier>
     <Path>structwindow.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>word</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>word</Scope>
-    </TokenIdentifier>
-    <Path>unionword.html</Path>
   </Token>
 </Tokens>
