@@ -3,9 +3,9 @@
  * @author Kretschmar, Nikita 
  * @author Philipp, Adrian 
  * @author Strobl, Micha 
- * @author Wennemann,Tim 
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief header file of @a granular_synth.c file<br>
+ * @brief header file of @a granular_synth.c file
  */
 
 #ifndef c_granular_synth_h
@@ -27,49 +27,50 @@ extern "C" {
 
 /**
  * @struct c_granular_synth
- * @brief The Pure Data struct of the c_granular_synth~ object. <br>
- *
+ * @brief pure data struct of the @a c_granular_synth object
+ * @details pure data struct of the @a c_granular_synth object, defines all necessary variables for synth operation<br>
  */
 
 typedef struct c_granular_synth
 {
-    t_word      *soundfile;
-    int         soundfile_length,
-                current_start_pos,          // adjustable with dedicated pd slider
-                playback_cycle_end,         // determines when to reset playback_pos to current_start_pos
-                current_grain_index,
-                current_adsr_stage_index,
-                current_gauss_stage_index,
-                grain_size_ms,
-                grain_size_samples,
-                num_grains,
-                midi_pitch,
-                midi_velo;
-    float       gauss_q_factor;
-    t_int       playback_position;    // which sample of the grain goes to the output next?
-    bool        reverse_playback;
-    float       *soundfile_table;     //Array containing the original soundfile
-    t_float     output_buffer,          // to sum up the current samples of all active grains
-                time_stretch_factor,
-                sr;
-    grain       *grains_table;
-    envelope    *adsr_env;
+    t_word      *soundfile;                     ///< pointer towards the soundfile
+    int         soundfile_length,               ///< lenght of the soundfile in samples          
+                current_grain_index,            ///< index of the current grain
+                current_adsr_stage_index,       ///< index of the current ADSR stage
+                current_gauss_stage_index,      ///< index of the current gauss stage
+                grain_size_ms,                  ///< size of a grain in milliseconds, adjustable through slider
+                grain_size_samples,             ///< size of a grain in samples
+                num_grains,                     ///< number of grains
+                midi_pitch,                     ///< pitch/key value given by MIDI input
+                midi_velo,                      ///< velocity value given by MIDI input
+                spray_input;
+    float       gauss_q_factor,                 ///< used to manipulate grain envelope height
+                pitch_factor;
+    t_int       playback_position,              ///< which sample of the grain goes to the output next
+                current_start_pos,              ///< position in the soundfle, determined by slider position
+                sprayed_start_pos,          // start_pos affected by spray offset
+                playback_cycle_end,             ///< determines when to reset @a playback_pos to current_start_pos
+                spray_true_offset;
+    bool        reverse_playback;               ///< used fo switch playback to reverse, depends on @a time_stretch_factor value negativity
+    float       *soundfile_table;               ///< array containing the original soundfile
+    t_float     output_buffer,                  ///< used to sum up the current samples of all active grains
+                time_stretch_factor,            ///< resizes sample length within a grain, adjustable through slider
+                sr;                             ///< defined samplerate
+    grain       *grains_table;                  ///< array containing the grains
+    envelope    *adsr_env;                      ///< ADSR envelope
     //float* windowing_table;  // smoothing window function applied to grain output
 } c_granular_synth;
 
 void c_granular_synth_free(c_granular_synth *x);
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor);
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input, float pitch_factor, int midi_pitch);
 void c_granular_synth_generate_window_function(c_granular_synth *x);
-
-void c_granular_synth_process_alt(c_granular_synth *x, float *in, float *out, int vector_size); // Test
 void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size);
-void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocity);
 void c_granular_synth_set_num_grains(c_granular_synth *x);
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x);
 void c_granular_synth_populate_grain_table(c_granular_synth *x);
 void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 void c_granular_synth_reset_playback_position(c_granular_synth *x);
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_pitch, int midi_velo, int attack, int decay, float sustain, int release, float gauss_q_factor);
+void c_granular_synth_properties_update(c_granular_synth *x, t_int grain_size_ms, t_int start_pos, float time_stretch_factor, t_int midi_velo, t_int midi_pitch, t_int attack, t_int decay, float sustain, t_int release, float gauss_q_factor, t_int spray_input);
 extern t_float SAMPLERATE;
 float calculate_adsr_value(c_granular_synth *x);
 float gauss (c_granular_synth *x);

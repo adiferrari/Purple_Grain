@@ -45,6 +45,11 @@
               <Anchor>a5f71a7137862c5f5e1173bb931b66bc4</Anchor>
              </Node>
              <Node>
+              <Name>current_gauss_stage_index</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a785e130c854174d3a9e7a51190c8e194</Anchor>
+             </Node>
+             <Node>
               <Name>current_grain_index</Name>
               <Path>structc__granular__synth.html</Path>
               <Anchor>a6a4bd1fc4f1624d14cc9bf9e11e1f661</Anchor>
@@ -53,6 +58,11 @@
               <Name>current_start_pos</Name>
               <Path>structc__granular__synth.html</Path>
               <Anchor>a593e2aa931a0a6f337ca502eea1af5ac</Anchor>
+             </Node>
+             <Node>
+              <Name>gauss_q_factor</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>aa164a91c3ebd564ef440719225a15f58</Anchor>
              </Node>
              <Node>
               <Name>grain_size_ms</Name>
@@ -90,6 +100,11 @@
               <Anchor>a3536cd671fe04bd9e84cbdb501ecbe00</Anchor>
              </Node>
              <Node>
+              <Name>playback_cycle_end</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a379cd827e410135cc6d31d17cee130a1</Anchor>
+             </Node>
+             <Node>
               <Name>playback_position</Name>
               <Path>structc__granular__synth.html</Path>
               <Anchor>a9f10a2ae717bf695c448157ddab09c85</Anchor>
@@ -125,6 +140,10 @@
               <Anchor>abb895a6eb0e335be28492b8ddf981d95</Anchor>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>c_granular_synth_tilde_</Name>
+            <Path>structc__granular__synth__tilde__.html</Path>
            </Node>
            <Node>
             <Name>envelope</Name>
@@ -217,6 +236,11 @@
               <Anchor>ac3f579526e827c8e44bbe1e725ec9dc4</Anchor>
              </Node>
              <Node>
+              <Name>internal_step_count</Name>
+              <Path>structgrain.html</Path>
+              <Anchor>a77f7d08ef6d5b0813156e9d47badc914</Anchor>
+             </Node>
+             <Node>
               <Name>next_grain</Name>
               <Path>structgrain.html</Path>
               <Anchor>afbf47a53c6afd71b938b4bb2aa4a8143</Anchor>
@@ -225,6 +249,11 @@
               <Name>next_sample_pos</Name>
               <Path>structgrain.html</Path>
               <Anchor>a915424dcb7cddd180aef2d61da20f693</Anchor>
+             </Node>
+             <Node>
+              <Name>previous_grain</Name>
+              <Path>structgrain.html</Path>
+              <Anchor>aee20eeacfe035db8b13bfe787af5bb6f</Anchor>
              </Node>
              <Node>
               <Name>start</Name>
@@ -242,6 +271,16 @@
             <Name>pd_granular_synth_tilde</Name>
             <Path>structpd__granular__synth__tilde.html</Path>
             <Subnodes>
+             <Node>
+              <Name>c_granular_synth_free</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>ac71179596b1f2169d42c27cb8ea54207</Anchor>
+             </Node>
+             <Node>
+              <Name>c_granular_synth_reset_playback_position</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>aa4bc811658b8df54563de4af0ca045f1</Anchor>
+             </Node>
              <Node>
               <Name>pd_granular_synth_tilde_dsp</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
@@ -288,6 +327,11 @@
               <Anchor>a07a8b159fe23c3fec189fbe71e0920c8</Anchor>
              </Node>
              <Node>
+              <Name>gauss_q_factor</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>a1e83151d2a2da97bca1a65b3fb9ca165</Anchor>
+             </Node>
+             <Node>
               <Name>grain_size</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>a7541f4440303f6fb8a6b5c8b184dbd60</Anchor>
@@ -301,6 +345,11 @@
               <Name>in_decay</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>aad327a7ef8f3c2db1ab782465813749c</Anchor>
+             </Node>
+             <Node>
+              <Name>in_gauss_q_factor</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>a19d63b90678ffd4c0f0b3f50b1319f7c</Anchor>
              </Node>
              <Node>
               <Name>in_grain_size</Name>
@@ -448,6 +497,10 @@
             <Name>Functions</Name>
             <Path>functions_func.html</Path>
            </Node>
+           <Node>
+            <Name>Variables</Name>
+            <Path>functions_vars.html</Path>
+           </Node>
           </Subnodes>
          </Node>
         </Subnodes>
@@ -472,12 +525,7 @@
              <Node>
               <Name>c_granular_synth_new</Name>
               <Path>c__granular__synth_8c.html</Path>
-              <Anchor>a43f045161137a5c9940d6efca2d8828c</Anchor>
-             </Node>
-             <Node>
-              <Name>c_granular_synth_noteOn</Name>
-              <Path>c__granular__synth_8c.html</Path>
-              <Anchor>a60d847e30dcce2bbe361871c5ac3ef38</Anchor>
+              <Anchor>af1a16e5125d6512b3a38b85e9be75d6d</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_populate_grain_table</Name>
@@ -492,7 +540,7 @@
              <Node>
               <Name>c_granular_synth_properties_update</Name>
               <Path>c__granular__synth_8c.html</Path>
-              <Anchor>ae123edef2c228ace563e0cbe4f424860</Anchor>
+              <Anchor>af99ecce451128b29c30bcc32803dbe52</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_set_num_grains</Name>
@@ -520,6 +568,11 @@
                 <Anchor>a5f71a7137862c5f5e1173bb931b66bc4</Anchor>
                </Node>
                <Node>
+                <Name>current_gauss_stage_index</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a785e130c854174d3a9e7a51190c8e194</Anchor>
+               </Node>
+               <Node>
                 <Name>current_grain_index</Name>
                 <Path>structc__granular__synth.html</Path>
                 <Anchor>a6a4bd1fc4f1624d14cc9bf9e11e1f661</Anchor>
@@ -528,6 +581,11 @@
                 <Name>current_start_pos</Name>
                 <Path>structc__granular__synth.html</Path>
                 <Anchor>a593e2aa931a0a6f337ca502eea1af5ac</Anchor>
+               </Node>
+               <Node>
+                <Name>gauss_q_factor</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>aa164a91c3ebd564ef440719225a15f58</Anchor>
                </Node>
                <Node>
                 <Name>grain_size_ms</Name>
@@ -563,6 +621,11 @@
                 <Name>output_buffer</Name>
                 <Path>structc__granular__synth.html</Path>
                 <Anchor>a3536cd671fe04bd9e84cbdb501ecbe00</Anchor>
+               </Node>
+               <Node>
+                <Name>playback_cycle_end</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a379cd827e410135cc6d31d17cee130a1</Anchor>
                </Node>
                <Node>
                 <Name>playback_position</Name>
@@ -629,12 +692,7 @@
              <Node>
               <Name>c_granular_synth_new</Name>
               <Path>c__granular__synth_8h.html</Path>
-              <Anchor>a43f045161137a5c9940d6efca2d8828c</Anchor>
-             </Node>
-             <Node>
-              <Name>c_granular_synth_noteOn</Name>
-              <Path>c__granular__synth_8h.html</Path>
-              <Anchor>a60d847e30dcce2bbe361871c5ac3ef38</Anchor>
+              <Anchor>af1a16e5125d6512b3a38b85e9be75d6d</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_populate_grain_table</Name>
@@ -647,14 +705,14 @@
               <Anchor>ab1c4e09392d873e432cb0edeae71f17c</Anchor>
              </Node>
              <Node>
-              <Name>c_granular_synth_process_alt</Name>
-              <Path>c__granular__synth_8h.html</Path>
-              <Anchor>a40f6a8e44a6be398592efbfbd9bf7d13</Anchor>
-             </Node>
-             <Node>
               <Name>c_granular_synth_properties_update</Name>
               <Path>c__granular__synth_8h.html</Path>
-              <Anchor>a060f85e20b07a46f31a7fb588da39060</Anchor>
+              <Anchor>a406ea44f161b03755e9579b5c99c1d0d</Anchor>
+             </Node>
+             <Node>
+              <Name>c_granular_synth_reset_playback_position</Name>
+              <Path>c__granular__synth_8h.html</Path>
+              <Anchor>aa4bc811658b8df54563de4af0ca045f1</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_set_num_grains</Name>
@@ -665,6 +723,11 @@
               <Name>calculate_adsr_value</Name>
               <Path>c__granular__synth_8h.html</Path>
               <Anchor>aaae5d861cb60747af27b39b0658a92bd</Anchor>
+             </Node>
+             <Node>
+              <Name>gauss</Name>
+              <Path>c__granular__synth_8h.html</Path>
+              <Anchor>a75f7c04e22734cdd5ad2f7684a3fd494</Anchor>
              </Node>
              <Node>
               <Name>grain_internal_scheduling</Name>
@@ -700,7 +763,7 @@
              <Node>
               <Name>gauss</Name>
               <Path>envelope_8c.html</Path>
-              <Anchor>ada53322e75330e22584277e4aab720bc</Anchor>
+              <Anchor>a75f7c04e22734cdd5ad2f7684a3fd494</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -843,11 +906,6 @@
               <Anchor>a0854138c64859a1f4079feb9b9194786</Anchor>
              </Node>
              <Node>
-              <Name>gauss</Name>
-              <Path>envelope_8h.html</Path>
-              <Anchor>a0a3592cff3c411e98df69da098856168</Anchor>
-             </Node>
-             <Node>
               <Name>getsamples_from_ms</Name>
               <Path>envelope_8h.html</Path>
               <Anchor>a2e76728151010ee93496e3b01cea0bb9</Anchor>
@@ -859,9 +917,9 @@
             <Path>grain_8c.html</Path>
             <Subnodes>
              <Node>
-              <Name>SAMPLERATE</Name>
+              <Name>OVERLAP_DENSITY</Name>
               <Path>grain_8c.html</Path>
-              <Anchor>a538e0cad3acb787a49e16b1e53787610</Anchor>
+              <Anchor>a6df8a4f0caf7397fd15879daef804894</Anchor>
              </Node>
              <Node>
               <Name>grain_free</Name>
@@ -876,7 +934,7 @@
              <Node>
               <Name>grain_new</Name>
               <Path>grain_8c.html</Path>
-              <Anchor>ac42c86512f5fdaa5371155efaf4b469e</Anchor>
+              <Anchor>add05c8e2a37126d9bd6f745368b130ed</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -914,6 +972,11 @@
                 <Anchor>ac3f579526e827c8e44bbe1e725ec9dc4</Anchor>
                </Node>
                <Node>
+                <Name>internal_step_count</Name>
+                <Path>structgrain.html</Path>
+                <Anchor>a77f7d08ef6d5b0813156e9d47badc914</Anchor>
+               </Node>
+               <Node>
                 <Name>next_grain</Name>
                 <Path>structgrain.html</Path>
                 <Anchor>afbf47a53c6afd71b938b4bb2aa4a8143</Anchor>
@@ -922,6 +985,11 @@
                 <Name>next_sample_pos</Name>
                 <Path>structgrain.html</Path>
                 <Anchor>a915424dcb7cddd180aef2d61da20f693</Anchor>
+               </Node>
+               <Node>
+                <Name>previous_grain</Name>
+                <Path>structgrain.html</Path>
+                <Anchor>aee20eeacfe035db8b13bfe787af5bb6f</Anchor>
                </Node>
                <Node>
                 <Name>start</Name>
@@ -948,9 +1016,13 @@
              <Node>
               <Name>grain_new</Name>
               <Path>grain_8h.html</Path>
-              <Anchor>ac42c86512f5fdaa5371155efaf4b469e</Anchor>
+              <Anchor>add05c8e2a37126d9bd6f745368b130ed</Anchor>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>pd_granular_synth~.c</Name>
+            <Path>pd__granular__synth~_8c_source.html</Path>
            </Node>
            <Node>
             <Name>purple_utils.c</Name>
@@ -980,7 +1052,29 @@
            </Node>
            <Node>
             <Name>purple_utils.h</Name>
-            <Path>purple__utils_8h_source.html</Path>
+            <Path>purple__utils_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>get_interpolated_sample_value</Name>
+              <Path>purple__utils_8h.html</Path>
+              <Anchor>a228b2ef6097d375daeea9358a534ce54</Anchor>
+             </Node>
+             <Node>
+              <Name>get_ms_from_samples</Name>
+              <Path>purple__utils_8h.html</Path>
+              <Anchor>a4f939b5cdf750d42da571e97fdd1510f</Anchor>
+             </Node>
+             <Node>
+              <Name>get_samples_from_ms</Name>
+              <Path>purple__utils_8h.html</Path>
+              <Anchor>adedfab0848a63809acd487441d157908</Anchor>
+             </Node>
+             <Node>
+              <Name>switch_float_values</Name>
+              <Path>purple__utils_8h.html</Path>
+              <Anchor>aa70b6fc905b978c25b15eaa49ddda958</Anchor>
+             </Node>
+            </Subnodes>
            </Node>
           </Subnodes>
          </Node>

@@ -73,9 +73,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Envelope file header <br  />
- <br  />
- Envelope file header.  
+<p>header file of <em><a class="el" href="envelope_8c.html" title="handles envelope generation">envelope.c</a></em> file <br  />
+  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;m_pd.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="grain_8h_source.html">grain.h</a>&quot;</code><br />
@@ -111,21 +110,21 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a159f982df6bc27a29ac68734579fbd83"><td class="memItemLeft" align="right" valign="top"><a id="a159f982df6bc27a29ac68734579fbd83"></a>
-typedef struct <a class="el" href="structenvelope.html">envelope</a>&#160;</td><td class="memItemRight" valign="bottom"><b>envelope</b></td></tr>
+typedef struct <a class="el" href="structenvelope.html">envelope</a>&#160;</td><td class="memItemRight" valign="bottom"><br>envelope</b></td></tr>
 <tr class="separator:a159f982df6bc27a29ac68734579fbd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac498c9df84b8f23df1cc926bf6bdbd4f"><td class="memItemLeft" align="right" valign="top"><a id="ac498c9df84b8f23df1cc926bf6bdbd4f"></a>
-typedef struct <a class="el" href="structwindow.html">window</a>&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></td></tr>
+typedef struct <a class="el" href="structwindow.html">window</a>&#160;</td><td class="memItemRight" valign="bottom"><br>window</b></td></tr>
 <tr class="separator:ac498c9df84b8f23df1cc926bf6bdbd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a751beb55e4099c89885109d9978de19d"><td class="memItemLeft" align="right" valign="top"><a id="a751beb55e4099c89885109d9978de19d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adsr_stage</b> { <br />
-&#160;&#160;<b>ATTACK</b>, 
-<b>DECAY</b>, 
-<b>SUSTAIN</b>, 
-<b>RELEASE</b>, 
+<tr class="memitem:a751beb55e4099c89885109d9978de19d"><td class="memItemLeft" align="right" valign="top"><a id="a751beb55e4099c89885109d9978de19d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><br>adsr_stage</b> { <br />
+&#160;&#160;<br>ATTACK</b>, 
+<br>DECAY</b>, 
+<br>SUSTAIN</b>, 
+<br>RELEASE</b>, 
 <br />
-&#160;&#160;<b>SILENT</b>
+&#160;&#160;<br>SILENT</b>
 <br />
  }</td></tr>
 <tr class="separator:a751beb55e4099c89885109d9978de19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,25 +132,28 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2e76728151010ee93496e3b01cea0bb9"><td class="memItemLeft" align="right" valign="top"><a id="a2e76728151010ee93496e3b01cea0bb9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getsamples_from_ms</b> (int ms, float sr)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><br>getsamples_from_ms</b> (int ms, float sr)</td></tr>
 <tr class="separator:a2e76728151010ee93496e3b01cea0bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0854138c64859a1f4079feb9b9194786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structenvelope.html">envelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a> (int attack, int decay, float sustain, int release)</td></tr>
 <tr class="memdesc:a0854138c64859a1f4079feb9b9194786"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new ADSR envelope  <a href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">More...</a><br /></td></tr>
 <tr class="separator:a0854138c64859a1f4079feb9b9194786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3592cff3c411e98df69da098856168"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">gauss</a> (<a class="el" href="structgrain.html">grain</a> x, int sample)</td></tr>
-<tr class="memdesc:a0a3592cff3c411e98df69da098856168"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates gauss value calculates gauss value according to  <a href="envelope_8h.html#a0a3592cff3c411e98df69da098856168">More...</a><br /></td></tr>
-<tr class="separator:a0a3592cff3c411e98df69da098856168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a> (<a class="el" href="structenvelope.html">envelope</a> *x)</td></tr>
 <tr class="memdesc:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees envelope  <a href="envelope_8h.html#a1c1368cf5424e9a5ae2dd5d9295661c5">More...</a><br /></td></tr>
 <tr class="separator:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Envelope file header <br  />
- <br  />
- Envelope file header. </p>
-<dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar, Adrian Philipp, Micha Strobl, Tim Wennemann <br  />
- Audiocommunication Group, Technische Universität Berlin <br  />
+<div class="textblock"><p>header file of <em><a class="el" href="envelope_8c.html" title="handles envelope generation">envelope.c</a></em> file <br  />
+ </p>
+<dl class="section author"><dt>Author</dt><dd>Kretschmar, Nikita </dd>
+<dd>
+Philipp, Adrian </dd>
+<dd>
+Strobl, Micha </dd>
+<dd>
+Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
  </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="envelope_8h_source.html">envelope.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1c1368cf5424e9a5ae2dd5d9295661c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1c1368cf5424e9a5ae2dd5d9295661c5">&#9670;&nbsp;</a></span>envelope_free()</h2>
@@ -172,10 +174,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getsamples_from_ms</b>
 <p>frees envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of envelope_free object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>envelope_free</em> object </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00142">142</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
@@ -220,53 +224,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getsamples_from_ms</b>
 <p>generates new ADSR envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider </td></tr>
-    <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider </td></tr>
+    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br> </b></td></tr>
+    <tr><td class="paramname">decay</td><td><br>decay time in the range of 0 - 4000ms, adjustable through slider <br> </b></b></td></tr>
+    <tr><td class="paramname">sustain</td><td><br><br>sustain time in the range of 0 - 1, adjustable through slider <br> </b></b></b></td></tr>
+    <tr><td class="paramname">release</td><td><br><br><br>release time in the range of 0 - 10000ms, adjustable through slider <br> </b></b></b></b></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>envelope* </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><br><br><br><br> envelope* </b></b></b></b></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>muss bei Note on wieder raus -&gt; start mit silent</dd></dl>
 
-</div>
-</div>
-<a id="a0a3592cff3c411e98df69da098856168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a3592cff3c411e98df69da098856168">&#9670;&nbsp;</a></span>gauss()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float gauss </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgrain.html">grain</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>grainindex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>calculates gauss value calculates gauss value according to </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">grainindex</td><td></td></tr>
-    <tr><td class="paramname">x</td><td>input pointer of gauss object </td></tr>
-    <tr><td class="paramname">grainindex</td><td>index of grain </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float gauss value </dd></dl>
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00094">94</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>

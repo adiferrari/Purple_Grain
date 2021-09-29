@@ -3,7 +3,7 @@ digraph "purple_utils.c"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="purple_utils.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="useful utilities for value conversion and manipulation useful utilities for value conversion and mani..."];
+  Node1 [label="purple_utils.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="useful utilities for value conversion and manipulation   useful utilities for value conversion and ma..."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
   Node2 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
@@ -11,5 +11,5 @@ digraph "purple_utils.c"
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
   Node4 [label="m_pd.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
-  Node5 [label="purple_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8h_source.html",tooltip=" "];
+  Node5 [label="purple_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8h.html",tooltip="header file to purple_utils.c file"];
 }

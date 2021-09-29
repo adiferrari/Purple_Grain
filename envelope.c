@@ -1,11 +1,12 @@
 /**
  * @file envelope.c
- * @author Nikita Kretschmar
- * @author Adrian Philipp
- * @author Micha Strobl
- * @author Tim Wennemann
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
+ * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles envelope generation
- * generates ADSR envelope according to adjustable attack, decay, sustain and release parameters
+ * @details generates ADSR envelope according to adjustable attack, decay, sustain and release parameters <br>
  * @version 0.1
  * @date 2021-09-27
  * 
@@ -13,25 +14,17 @@
  * 
  */
 
-/*
-    ADSR durchläuft Zeitachse (x-Achse) auf y-Achse Werte von 0-1
-    y-Werte werden an granular_synth übergeben (an NoteOn Methode?) und dort auf Output Level multipliziert
-*/
-
 #include "envelope.h"
 #include "grain.h"
-#include "vas_mem.h"
 #include "purple_utils.h"
 #include "m_pd.h"
 #include "c_granular_synth.h"
 
-
-//static t_class *envelope_class;
 /**
  * @brief calculates ADSR value
- * calculates single atm ADSR value according to current state
- * @param x input pointer of calculate_adsr_value object
- * @return float ADSR value
+ * @details calculates single atm ADSR value according to current state <br>
+ * @param x input pointer of @a calculate_adsr_value object <br>
+ * @return ADSR value of type float <br>
  */
 float calculate_adsr_value(c_granular_synth *x)
 {
@@ -42,6 +35,7 @@ float calculate_adsr_value(c_granular_synth *x)
         case ATTACK:
             attack_val = (1.0/x->adsr_env->attack_samples);
             adsr_val = x->current_adsr_stage_index++ * attack_val;
+            x->adsr_env->peak = adsr_val;
             if(x->current_adsr_stage_index >= x->adsr_env->attack_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -49,10 +43,8 @@ float calculate_adsr_value(c_granular_synth *x)
             }
             break;
         case DECAY:
-            //decay_val = (x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples;
             adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples*x->current_adsr_stage_index++);
-            //adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)*(x->current_adsr_stage_index++/x->adsr_env->decay_samples));
-            
+            x->adsr_env->peak = adsr_val;
             if(x->current_adsr_stage_index >= x->adsr_env->decay_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -61,6 +53,7 @@ float calculate_adsr_value(c_granular_synth *x)
             break;
         case SUSTAIN:
             adsr_val = x->adsr_env->sustain;
+            if(x->adsr_env->peak != x->adsr_env->sustain) x->adsr_env->peak = x->adsr_env->sustain;
             break;
         case RELEASE:
             if(x->midi_velo > 0)
@@ -69,7 +62,7 @@ float calculate_adsr_value(c_granular_synth *x)
                 x->current_adsr_stage_index = 0;
                 break;
             }
-            adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
+            adsr_val = x->adsr_env->peak - ((x->adsr_env->peak/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
             if(x->current_adsr_stage_index >= x->adsr_env->release_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -84,6 +77,7 @@ float calculate_adsr_value(c_granular_synth *x)
                 break;
             }
             adsr_val = 0;
+            x->adsr_env->peak = 0;
             break;
     }
     return adsr_val;
@@ -92,24 +86,23 @@ float calculate_adsr_value(c_granular_synth *x)
 /**
  * @brief generates new ADSR envelope
  * 
- * @param attack attack time in the range of 0 - 4000ms, adjustable through slider
- * @param decay decay time in the range of 0 - 4000ms, adjustable through slider
- * @param sustain sustain time in the range of 0 - 1, adjustable through slider
- * @param release release time in the range of 0 - 10000ms, adjustable through slider
+ * @param attack attack time in the range of 0 - 4000ms, adjustable through slider <br>
+ * @param decay decay time in the range of 0 - 4000ms, adjustable through slider <br>
+ * @param sustain sustain time in the range of 0 - 1, adjustable through slider <br>
+ * @param release release time in the range of 0 - 10000ms, adjustable through slider <br>
  * @return envelope* 
  */
 envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 {
-    envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
+    envelope *x = (envelope *) malloc(sizeof(envelope));
     t_float SAMPLERATE = sys_getsr();
     
-    //ACHTUNG diese muss bei Note on wieder raus -> start mit silent
     x->adsr = SILENT;
-
     x->attack = attack;
     x->decay = decay;
     x->sustain = sustain;
+    x->peak = 0.0;
     x->release = release;
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
@@ -120,9 +113,9 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 /**
  * @brief calculates gauss value
- * calculates gauss value according to @param grainindex
+ * @details calculates gauss value according to @a grainindex <br>
  * @param x reference to the actual synthesizer
- * @return float gauss value
+ * @return gauss value of type float
  */
 float gauss(c_granular_synth *x)
 {
@@ -141,8 +134,8 @@ float gauss(c_granular_synth *x)
 
 /**
  * @brief frees envelope
- * 
- * @param x input pointer of envelope_free object
+ * @details frees envelope <br>
+ * @param x input pointer of @a envelope_free object
  */
 void envelope_free(envelope *x)
 {

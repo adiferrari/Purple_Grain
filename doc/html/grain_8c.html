@@ -76,8 +76,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="grain_8h_source.html">grain.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="c__granular__synth_8h_source.html">c_granular_synth.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="envelope_8h_source.html">envelope.h</a>&quot;</code><br />
-<code>#include &quot;purple_utils.h&quot;</code><br />
-<code>#include &quot;vas_mem.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="purple__utils_8h_source.html">purple_utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for grain.c:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -86,18 +85,20 @@ $(function() {
 <div class="center"><img src="grain_8c__incl.png" border="0" usemap="#grain_8c" alt=""/></div>
 <!-- MAP 0 -->
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="grain_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a538e0cad3acb787a49e16b1e53787610"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#a538e0cad3acb787a49e16b1e53787610">SAMPLERATE</a>&#160;&#160;&#160;44100</td></tr>
-<tr class="memdesc:a538e0cad3acb787a49e16b1e53787610"><td class="mdescLeft">&#160;</td><td class="mdescRight">set samplerate to 44100  <a href="grain_8c.html#a538e0cad3acb787a49e16b1e53787610">More...</a><br /></td></tr>
-<tr class="separator:a538e0cad3acb787a49e16b1e53787610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df8a4f0caf7397fd15879daef804894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">OVERLAP_DENSITY</a>&#160;&#160;&#160;= 8</td></tr>
+<tr class="memdesc:a6df8a4f0caf7397fd15879daef804894"><td class="mdescLeft">&#160;</td><td class="mdescRight">set maximum amount of simoultaneously playing grains  <a href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">More...</a><br /></td></tr>
+<tr class="separator:a6df8a4f0caf7397fd15879daef804894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac42c86512f5fdaa5371155efaf4b469e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgrain.html">grain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#ac42c86512f5fdaa5371155efaf4b469e">grain_new</a> (int grain_size_samples, int soundfile_size, int grain_index, float time_stretch_factor)</td></tr>
-<tr class="memdesc:ac42c86512f5fdaa5371155efaf4b469e"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new grain  <a href="grain_8c.html#ac42c86512f5fdaa5371155efaf4b469e">More...</a><br /></td></tr>
-<tr class="separator:ac42c86512f5fdaa5371155efaf4b469e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add05c8e2a37126d9bd6f745368b130ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgrain.html">grain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#add05c8e2a37126d9bd6f745368b130ed">grain_new</a> (int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)</td></tr>
+<tr class="memdesc:add05c8e2a37126d9bd6f745368b130ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new grain  <a href="grain_8c.html#add05c8e2a37126d9bd6f745368b130ed">More...</a><br /></td></tr>
+<tr class="separator:add05c8e2a37126d9bd6f745368b130ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25635e32880f4c39cdf848a5820aa9d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#a25635e32880f4c39cdf848a5820aa9d9">grain_internal_scheduling</a> (<a class="el" href="structgrain.html">grain</a> *g, <a class="el" href="structc__granular__synth.html">c_granular_synth</a> *synth)</td></tr>
 <tr class="memdesc:a25635e32880f4c39cdf848a5820aa9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">scheduling of grain playback  <a href="grain_8c.html#a25635e32880f4c39cdf848a5820aa9d9">More...</a><br /></td></tr>
 <tr class="separator:a25635e32880f4c39cdf848a5820aa9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,21 +119,26 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a538e0cad3acb787a49e16b1e53787610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a538e0cad3acb787a49e16b1e53787610">&#9670;&nbsp;</a></span>SAMPLERATE</h2>
+<a id="a6df8a4f0caf7397fd15879daef804894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df8a4f0caf7397fd15879daef804894">&#9670;&nbsp;</a></span>OVERLAP_DENSITY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SAMPLERATE&#160;&#160;&#160;44100</td>
+          <td class="memname">#define OVERLAP_DENSITY&#160;&#160;&#160;= 8</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>set samplerate to 44100 </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>make samplerate adjustable </dd></dl>
+<p>set maximum amount of simoultaneously playing grains </p>
+<dl class="todo"><dt><br><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>check if necessary </dd></dl>
+<p>To-Do: Set dynamically by user input </p>
+
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00035">35</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>
@@ -160,6 +166,8 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00187">187</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>
@@ -193,7 +201,7 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
 <p>sheduling of grain playback </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">g</td><td>grain </td></tr>
-    <tr><td class="paramname">synth</td><td>synthesized output of <a class="el" href="structc__granular__synth.html" title="The Purde Data struct of the c_granular_synth~ object.">c_granular_synth</a> object </td></tr>
+    <tr><td class="paramname">synth</td><td>synthesized output of <a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a> object </td></tr>
   </table>
   </dd>
 </dl>
@@ -203,10 +211,12 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
 <p>&lt;</p>
 <p>&lt;</p>
 
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00089">89</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
+
 </div>
 </div>
-<a id="ac42c86512f5fdaa5371155efaf4b469e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac42c86512f5fdaa5371155efaf4b469e">&#9670;&nbsp;</a></span>grain_new()</h2>
+<a id="add05c8e2a37126d9bd6f745368b130ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add05c8e2a37126d9bd6f745368b130ed">&#9670;&nbsp;</a></span>grain_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,6 +232,12 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>soundfile_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>start_pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -254,6 +270,8 @@ Tim Wennemann Audiocommunication Group, Technische Universität Berlin <br  />
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>grain </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00046">46</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>

@@ -14,7 +14,7 @@
 #X obj 842 278 readsf~;
 #X obj 828 178 line~;
 #X msg 829 125 0 \, 345168 8000;
-#X obj 830 224 tabread4~ sample;
+#X obj 815 217 tabread4~ sample;
 #X obj 822 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 17 154 read -resize resources/amen_break.wav sample;
@@ -28,9 +28,9 @@
 #X floatatom 477 279 5 0 0 0 - - -;
 #X floatatom 519 279 5 0 0 0 - - -;
 #X obj 669 153 vsl 15 128 0.01 1 0 0 empty empty S 0 -9 0 10 -262144
--1 -1 10781 1;
+-1 -1 12195 1;
 #X obj 726 184 vsl 15 128 1 10000 1 0 empty empty R 0 -9 0 10 -262144
--1 -1 9195 1;
+-1 -1 0 1;
 #X floatatom 578 260 5 0 0 0 - - -;
 #X floatatom 625 280 5 0 0 0 - - -;
 #X floatatom 668 307 5 0 0 0 - - -;
@@ -38,14 +38,14 @@
 #X obj 549 136 vsl 15 128 1 3000 1 0 empty empty A 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 613 133 vsl 15 128 1 3000 1 0 empty empty D 0 -9 0 10 -262144
--1 -1 9414 1;
+-1 -1 0 1;
 #X obj 273 36 hsl 128 15 0 127 0 0 empty empty StartPosition(samples)-MIDI_CC_3
--2 -8 0 10 -262144 -1 -1 7900 1;
+-2 -8 0 10 -262144 -1 -1 3100 1;
 #X obj 277 59 / 127;
 #X obj 314 85 *;
 #X obj 95 9 ctlin 2;
 #X obj 97 77 hsl 128 15 0 127 0 0 empty empty GrainSize(ms)-MIDI_CC_2
--2 -8 0 10 -262144 -1 -1 8100 1;
+-2 -8 0 10 -262144 -1 -1 4200 1;
 #X obj 196 10 ctlin 3;
 #X obj 561 44 ctlin 6;
 #X obj 623 44 ctlin 7;
@@ -53,7 +53,7 @@
 #X obj 711 96 ctlin 9;
 #X msg 19 341 s sample.length;
 #X obj 367 113 hsl 128 15 0 127 0 0 empty empty Playback_Speed -2 -8
-0 10 -262144 -1 -1 10000 1;
+0 10 -262144 -1 -1 10100 1;
 #X obj 351 75 ctlin 4;
 #X floatatom 392 245 5 0 0 0 - - -;
 #X obj 418 139 / 127;
@@ -68,16 +68,22 @@
 #X obj 736 154 * 10000;
 #X floatatom 561 405 5 0 0 0 - - -;
 #X obj 702 425 hsl 128 15 0.005 1 1 0 empty empty empty -2 -8 0 10
--262144 -1 -1 9541 1;
+-262144 -1 -1 5753 1;
 #X obj 700 368 ctlin 5;
 #X obj 709 394 / 127;
 #X obj 632 449 + 0.001;
+#X obj 465 487 hsl 128 15 0 127 0 0 empty empty Spray -2 -8 0 10 -262144
+-1 -1 600 1;
+#X floatatom 436 446 5 0 0 0 - - -;
+#X obj 800 275 dac~;
 #X connect 0 0 2 0;
 #X connect 2 0 40 0;
 #X connect 2 0 32 1;
 #X connect 3 0 14 0;
 #X connect 8 0 10 0;
 #X connect 9 0 8 0;
+#X connect 10 0 61 0;
+#X connect 10 0 61 1;
 #X connect 11 0 9 0;
 #X connect 12 0 0 0;
 #X connect 14 0 13 0;
@@ -127,3 +133,5 @@
 #X connect 56 0 57 0;
 #X connect 57 0 55 0;
 #X connect 58 0 54 0;
+#X connect 59 0 60 0;
+#X connect 60 0 15 11;

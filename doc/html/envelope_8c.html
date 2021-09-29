@@ -70,12 +70,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>handles envelope generation generates ADSR envelope according to adjustable attack, decay, sustain and release parameters  
+<p>handles envelope generation  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="envelope_8h_source.html">envelope.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="grain_8h_source.html">grain.h</a>&quot;</code><br />
-<code>#include &quot;vas_mem.h&quot;</code><br />
-<code>#include &quot;purple_utils.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="purple__utils_8h_source.html">purple_utils.h</a>&quot;</code><br />
 <code>#include &quot;m_pd.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="c__granular__synth_8h_source.html">c_granular_synth.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -86,34 +85,39 @@ $(function() {
 <div class="center"><img src="envelope_8c__incl.png" border="0" usemap="#envelope_8c" alt=""/></div>
 <!-- MAP 0 -->
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="envelope_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aaae5d861cb60747af27b39b0658a92bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">calculate_adsr_value</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:aaae5d861cb60747af27b39b0658a92bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates ADSR value calculates single atm ADSR value according to current state  <a href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">More...</a><br /></td></tr>
+<tr class="memdesc:aaae5d861cb60747af27b39b0658a92bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates ADSR value  <a href="envelope_8c.html#aaae5d861cb60747af27b39b0658a92bd">More...</a><br /></td></tr>
 <tr class="separator:aaae5d861cb60747af27b39b0658a92bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0854138c64859a1f4079feb9b9194786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structenvelope.html">envelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a> (int attack, int decay, float sustain, int release)</td></tr>
 <tr class="memdesc:a0854138c64859a1f4079feb9b9194786"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new ADSR envelope  <a href="envelope_8c.html#a0854138c64859a1f4079feb9b9194786">More...</a><br /></td></tr>
 <tr class="separator:a0854138c64859a1f4079feb9b9194786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada53322e75330e22584277e4aab720bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#ada53322e75330e22584277e4aab720bc">gauss</a> (<a class="el" href="structgrain.html">grain</a> x, int grainindex)</td></tr>
-<tr class="memdesc:ada53322e75330e22584277e4aab720bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates gauss value calculates gauss value according to  <a href="envelope_8c.html#ada53322e75330e22584277e4aab720bc">More...</a><br /></td></tr>
-<tr class="separator:ada53322e75330e22584277e4aab720bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f7c04e22734cdd5ad2f7684a3fd494"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a75f7c04e22734cdd5ad2f7684a3fd494">gauss</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
+<tr class="memdesc:a75f7c04e22734cdd5ad2f7684a3fd494"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates gauss value calculates gauss value according to <em>grainindex</em>  <a href="envelope_8c.html#a75f7c04e22734cdd5ad2f7684a3fd494">More...</a><br /></td></tr>
+<tr class="separator:a75f7c04e22734cdd5ad2f7684a3fd494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8c.html#a1c1368cf5424e9a5ae2dd5d9295661c5">envelope_free</a> (<a class="el" href="structenvelope.html">envelope</a> *x)</td></tr>
 <tr class="memdesc:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees envelope  <a href="envelope_8c.html#a1c1368cf5424e9a5ae2dd5d9295661c5">More...</a><br /></td></tr>
 <tr class="separator:a1c1368cf5424e9a5ae2dd5d9295661c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>handles envelope generation generates ADSR envelope according to adjustable attack, decay, sustain and release parameters </p>
+<div class="textblock"><p>handles envelope generation </p>
 <dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar </dd>
 <dd>
 Adrian Philipp </dd>
 <dd>
 Micha Strobl </dd>
 <dd>
-Tim Wennemann </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+Tim Wennemann</dd></dl>
+<p>generates ADSR envelope according to adjustable attack, decay, sustain and release parameters <br> </p><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
+<p></b></p>
+
+<p class="definition">Definition in file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aaae5d861cb60747af27b39b0658a92bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaae5d861cb60747af27b39b0658a92bd">&#9670;&nbsp;</a></span>calculate_adsr_value()</h2>
@@ -131,14 +135,17 @@ Tim Wennemann </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>calculates ADSR value calculates single atm ADSR value according to current state </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>calculates ADSR value </p>
+<p>calculates single atm ADSR value according to current state <br> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of calculate_adsr_value object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>calculate_adsr_value</em> object <br> </b></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float ADSR value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><br> ADSR value of type float <br> </b></b></dd></dl>
+<p></b></p>
+
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00029">29</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
@@ -161,10 +168,12 @@ Tim Wennemann </dd></dl>
 <p>frees envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of envelope_free object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>envelope_free</em> object </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00142">142</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
@@ -209,19 +218,22 @@ Tim Wennemann </dd></dl>
 <p>generates new ADSR envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider </td></tr>
-    <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider </td></tr>
+    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br> </b></td></tr>
+    <tr><td class="paramname">decay</td><td><br>decay time in the range of 0 - 4000ms, adjustable through slider <br> </b></b></td></tr>
+    <tr><td class="paramname">sustain</td><td><br><br>sustain time in the range of 0 - 1, adjustable through slider <br> </b></b></b></td></tr>
+    <tr><td class="paramname">release</td><td><br><br><br>release time in the range of 0 - 10000ms, adjustable through slider <br> </b></b></b></b></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>envelope* </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><br><br><br><br> envelope* </b></b></b></b></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>muss bei Note on wieder raus -&gt; start mit silent</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00094">94</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
-<a id="ada53322e75330e22584277e4aab720bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada53322e75330e22584277e4aab720bc">&#9670;&nbsp;</a></span>gauss()</h2>
+<a id="a75f7c04e22734cdd5ad2f7684a3fd494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f7c04e22734cdd5ad2f7684a3fd494">&#9670;&nbsp;</a></span>gauss()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,33 +241,23 @@ Tim Wennemann </dd></dl>
         <tr>
           <td class="memname">float gauss </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structgrain.html">grain</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>grainindex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>calculates gauss value calculates gauss value according to </p>
+<p>calculates gauss value calculates gauss value according to <em>grainindex</em> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">grainindex</td><td></td></tr>
-    <tr><td class="paramname">x</td><td>input pointer of gauss object </td></tr>
-    <tr><td class="paramname">grainindex</td><td>index of grain </td></tr>
+    <tr><td class="paramname">x</td><td>reference to the actual synthesizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float gauss value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>gauss value of type float </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00122">122</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
