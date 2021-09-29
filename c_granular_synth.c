@@ -301,6 +301,17 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
  */
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release, float gauss_q_factor)
 {
+    if(x->midi_velo != midi_velo)
+    {
+        x->midi_velo = midi_velo;
+    }
+    
+    if(x->midi_pitch != midi_pitch)
+    {
+        x->midi_pitch = midi_pitch;
+        if(x->midi_velo != 0) x->pitch_factor = time_stretch_factor * midi_pitch / 48.0;
+    }
+    
     if(x->grain_size_ms != grain_size_ms || x->current_start_pos != start_pos || x->time_stretch_factor != time_stretch_factor || !x->grains_table)
     {
         if(x->grain_size_ms != grain_size_ms)
@@ -322,17 +333,6 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         c_granular_synth_set_num_grains(x);
         c_granular_synth_adjust_current_grain_index(x);
         c_granular_synth_populate_grain_table(x);
-    }
-    
-    if(x->midi_pitch != midi_pitch)
-    {
-        x->midi_pitch = midi_pitch;
-        x->pitch_factor = time_stretch_factor * midi_pitch / 48.0;
-    }
-    
-    if(x->midi_velo != midi_velo)
-    {
-        x->midi_velo = midi_velo;
     }
     
     if (x->adsr_env->attack != attack || x->adsr_env->decay != decay || x->adsr_env->sustain != sustain || x->adsr_env->release != release)
