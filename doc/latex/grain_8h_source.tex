@@ -1,0 +1,58 @@
+\hypertarget{grain_8h_source}{}\doxysubsection{grain.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00011 \textcolor{preprocessor}{\#ifndef grain\_h}}
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#define grain\_h}}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "m\_pd.h"}}
+\DoxyCodeLine{00015 }
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00022 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{}
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024 }
+\DoxyCodeLine{00025 \textcolor{comment}{//import SAMPLERATE from granular\_synth.h}}
+\DoxyCodeLine{00026 }
+\DoxyCodeLine{\Hypertarget{grain_8h_source_l00027}\mbox{\hyperlink{structgrain}{00027}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgrain}{grain}}}
+\DoxyCodeLine{00028 \{}
+\DoxyCodeLine{00029     \textcolor{keyword}{struct }\mbox{\hyperlink{structgrain}{grain}}        *next\_grain,}
+\DoxyCodeLine{00030                         *previous\_grain;}
+\DoxyCodeLine{00031     t\_int               grain\_size\_samples,   \textcolor{comment}{// Grain size in samples}}
+\DoxyCodeLine{00032                         grain\_index,}
+\DoxyCodeLine{00033                         internal\_step\_count;}
+\DoxyCodeLine{00034     t\_float             start,}
+\DoxyCodeLine{00035                         end,}
+\DoxyCodeLine{00036                         time\_stretch\_factor,}
+\DoxyCodeLine{00037                         current\_sample\_pos,}
+\DoxyCodeLine{00038                         next\_sample\_pos;}
+\DoxyCodeLine{00039     \textcolor{keywordtype}{bool}                grain\_active;}
+\DoxyCodeLine{00040     }
+\DoxyCodeLine{00041     \textcolor{comment}{// statt start nehme source\_read\_position}}
+\DoxyCodeLine{00042     \textcolor{comment}{// dann laufe über so viele Schritte wie grain\_size\_samples groß ist}}
+\DoxyCodeLine{00043     \textcolor{comment}{// Schrittweite modulieren, hochzählen und nach außen zurückgeben}}
+\DoxyCodeLine{00044     }
+\DoxyCodeLine{00045 }
+\DoxyCodeLine{00046     \textcolor{comment}{//grain *next\_grain;          // next and previous pointers have to be passed back and forth}}
+\DoxyCodeLine{00047     \textcolor{comment}{//grain *previous\_grain;      // between instance of granular\_synth and every instantiated grain}}
+\DoxyCodeLine{00048 \} \mbox{\hyperlink{structgrain}{grain}};}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050 }
+\DoxyCodeLine{00051 \mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8h_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(\textcolor{keywordtype}{int} grain\_size\_samples, \textcolor{keywordtype}{int} soundfile\_size, \textcolor{keywordtype}{float} start\_pos, \textcolor{keywordtype}{int} grain\_index, \textcolor{keywordtype}{float} time\_stretch\_factor);}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053 \textcolor{comment}{// Include order forced this method to be included in c\_granular\_synth.h}}
+\DoxyCodeLine{00054 \textcolor{comment}{//void grain\_internal\_scheduling(grain* g, c\_granular\_synth* synth);}}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056 \textcolor{keywordtype}{void} \mbox{\hyperlink{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\_free}}(\mbox{\hyperlink{structgrain}{grain}} *x);}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00059 \}}
+\DoxyCodeLine{00060 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00062 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

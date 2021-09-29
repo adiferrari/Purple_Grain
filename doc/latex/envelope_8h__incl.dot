@@ -3,11 +3,11 @@ digraph "envelope.h"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="envelope.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Envelope file header     Envelope file header."];
+  Node1 [label="envelope.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="header file of envelope.c file"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
   Node2 [label="m_pd.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
-  Node3 [label="grain.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8h.html",tooltip="Grain file header     Grain file header."];
+  Node3 [label="grain.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8h.html",tooltip="header file to grain.c file"];
   Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
   Node4 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];

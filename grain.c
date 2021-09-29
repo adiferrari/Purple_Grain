@@ -26,7 +26,6 @@
 #include "c_granular_synth.h"
 #include "envelope.h"
 #include "purple_utils.h"
-#include "vas_mem.h"
 
 //static t_class *grain_class;
 /**

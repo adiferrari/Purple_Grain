@@ -1,9 +1,8 @@
-\hypertarget{structc__granular__synth}{}\doxysection{c\+\_\+granular\+\_\+synth Struct Reference}
+\hypertarget{structc__granular__synth}{}\doxysubsection{c\+\_\+granular\+\_\+synth Struct Reference}
 \label{structc__granular__synth}\index{c\_granular\_synth@{c\_granular\_synth}}
 
 
-The Purde Data struct of the c\+\_\+granular\+\_\+synth$\sim$ object. ~\newline
-  
+pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object  
 
 
 
@@ -14,68 +13,82 @@ The Purde Data struct of the c\+\_\+granular\+\_\+synth$\sim$ object. ~\newline
 
 Collaboration diagram for c\+\_\+granular\+\_\+synth\+:
 % FIG 0
-\doxysubsection*{Data Fields}
+\doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structc__granular__synth_a558aac696a5378e1963a5afcb4f12f18}\label{structc__granular__synth_a558aac696a5378e1963a5afcb4f12f18}} 
-t\+\_\+word $\ast$ {\bfseries soundfile}
-\item 
+t\+\_\+word $\ast$ \mbox{\hyperlink{structc__granular__synth_a558aac696a5378e1963a5afcb4f12f18}{soundfile}}
+\begin{DoxyCompactList}\small\item\em pointer towards the soundfile \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}\label{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}} 
-int {\bfseries soundfile\+\_\+length}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\+\_\+length}}
+\begin{DoxyCompactList}\small\item\em lenght of the soundfile in samples \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}\label{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}} 
-int {\bfseries current\+\_\+start\+\_\+pos}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}{current\+\_\+start\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em position in the soundfle, determined by slider position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}\label{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}} 
+int \mbox{\hyperlink{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}{playback\+\_\+cycle\+\_\+end}}
+\begin{DoxyCompactList}\small\item\em determines when to reset {\itshape playback\+\_\+pos} to current\+\_\+start\+\_\+pos \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}\label{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}} 
-int {\bfseries current\+\_\+grain\+\_\+index}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\+\_\+grain\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em index of the current grain \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}\label{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}} 
-int {\bfseries current\+\_\+adsr\+\_\+stage\+\_\+index}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\+\_\+adsr\+\_\+stage\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em index of the current A\+D\+SR stage \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}\label{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}} 
+int \mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\+\_\+gauss\+\_\+stage\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em index of the current gauss stage \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a44f20994496035490c7aa24f92147606}\label{structc__granular__synth_a44f20994496035490c7aa24f92147606}} 
-int {\bfseries grain\+\_\+size\+\_\+ms}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\+\_\+size\+\_\+ms}}
+\begin{DoxyCompactList}\small\item\em size of a grain in milliseconds, adjustable through slider \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}\label{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}} 
-int {\bfseries grain\+\_\+size\+\_\+samples}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\+\_\+size\+\_\+samples}}
+\begin{DoxyCompactList}\small\item\em size of a grain in samples \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}\label{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}} 
-int {\bfseries num\+\_\+grains}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\+\_\+grains}}
+\begin{DoxyCompactList}\small\item\em number of grains \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}\label{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}} 
-int {\bfseries midi\+\_\+pitch}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\+\_\+pitch}}
+\begin{DoxyCompactList}\small\item\em pitch/key value given by M\+I\+DI input \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}\label{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}} 
-int {\bfseries midi\+\_\+velo}
-\item 
+int \mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\+\_\+velo}}
+\begin{DoxyCompactList}\small\item\em velocity value given by M\+I\+DI input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}\label{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}} 
+float \mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\+\_\+q\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope height \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}\label{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}} 
-t\+\_\+int {\bfseries playback\+\_\+position}
-\item 
+t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\+\_\+position}}
+\begin{DoxyCompactList}\small\item\em which sample of the grain goes to the output next \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a11189b409749c9930f477892a71de86d}\label{structc__granular__synth_a11189b409749c9930f477892a71de86d}} 
-bool {\bfseries reverse\+\_\+playback}
-\item 
+bool \mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\+\_\+playback}}
+\begin{DoxyCompactList}\small\item\em used fo switch playback to reverse, depends on {\itshape time\+\_\+stretch\+\_\+factor} value negativity \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}\label{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}} 
-float $\ast$ {\bfseries soundfile\+\_\+table}
-\item 
+float $\ast$ \mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em array containing the original soundfile \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}\label{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}} 
-t\+\_\+float {\bfseries output\+\_\+buffer}
-\item 
+t\+\_\+float \mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\+\_\+buffer}}
+\begin{DoxyCompactList}\small\item\em used to sum up the current samples of all active grains \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}\label{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}} 
-t\+\_\+float {\bfseries time\+\_\+stretch\+\_\+factor}
-\item 
+t\+\_\+float \mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\+\_\+stretch\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em resizes sample length within a grain, adjustable through slider \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a3c2dba821ef09dd3229fc8d9c20e7b48}\label{structc__granular__synth_a3c2dba821ef09dd3229fc8d9c20e7b48}} 
-t\+\_\+float {\bfseries sr}
-\item 
+t\+\_\+float \mbox{\hyperlink{structc__granular__synth_a3c2dba821ef09dd3229fc8d9c20e7b48}{sr}}
+\begin{DoxyCompactList}\small\item\em defined samplerate \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}\label{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}} 
-\mbox{\hyperlink{structgrain}{grain}} $\ast$ {\bfseries grains\+\_\+table}
-\item 
+\mbox{\hyperlink{structgrain}{grain}} $\ast$ \mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em array containing the grains \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}\label{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}} 
-\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ {\bfseries adsr\+\_\+env}
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\+\_\+env}}
+\begin{DoxyCompactList}\small\item\em A\+D\+SR envelope. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-The Purde Data struct of the c\+\_\+granular\+\_\+synth$\sim$ object. ~\newline
- 
+\doxysubsubsection{Detailed Description}
+pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object 
+
+pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object, defines all necessary variables for synth operation{\bfseries{ }}
+
+Definition at line \mbox{\hyperlink{c__granular__synth_8h_source_l00034}{34}} of file \mbox{\hyperlink{c__granular__synth_8h_source}{c\+\_\+granular\+\_\+synth.\+h}}.
+
+
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

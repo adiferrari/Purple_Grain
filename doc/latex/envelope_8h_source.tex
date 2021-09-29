@@ -1,0 +1,68 @@
+\hypertarget{envelope_8h_source}{}\doxysubsection{envelope.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00011 \textcolor{preprocessor}{\#ifndef envelope\_h}}
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#define envelope\_h}}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "m\_pd.h"}}
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{00019 }
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00022 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{}
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024 }
+\DoxyCodeLine{00025 \textcolor{comment}{/*}}
+\DoxyCodeLine{00026 \textcolor{comment}{    ADSR Angaben bestimmt in s oder ms?}}
+\DoxyCodeLine{00027 \textcolor{comment}{    Konvertierung in Samples notwendig?}}
+\DoxyCodeLine{00028 \textcolor{comment}{    Check Funktion dass Enveloe Länge nicht länger alsLänge des Soundfiles ist?}}
+\DoxyCodeLine{00029 \textcolor{comment}{ */}}
+\DoxyCodeLine{00030 }
+\DoxyCodeLine{00031 \textcolor{keyword}{enum} adsr\_stage \{}
+\DoxyCodeLine{00032     ATTACK,}
+\DoxyCodeLine{00033     DECAY,}
+\DoxyCodeLine{00034     SUSTAIN,}
+\DoxyCodeLine{00035     RELEASE,}
+\DoxyCodeLine{00036     SILENT}
+\DoxyCodeLine{00037 \};}
+\DoxyCodeLine{00038 }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00039}\mbox{\hyperlink{structenvelope}{00039}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structenvelope}{envelope}}}
+\DoxyCodeLine{00040 \{}
+\DoxyCodeLine{00041     t\_object x\_obj;}
+\DoxyCodeLine{00042     t\_int attack;}
+\DoxyCodeLine{00043     t\_int decay;}
+\DoxyCodeLine{00044     t\_float sustain;}
+\DoxyCodeLine{00045     t\_int release;}
+\DoxyCodeLine{00046     t\_int duration;}
+\DoxyCodeLine{00047     t\_int attack\_samples,}
+\DoxyCodeLine{00048             decay\_samples,}
+\DoxyCodeLine{00049             release\_samples;}
+\DoxyCodeLine{00050     t\_sample *envelope\_samples\_table;}
+\DoxyCodeLine{00051     \textcolor{keyword}{enum} adsr\_stage adsr;}
+\DoxyCodeLine{00052 \} \mbox{\hyperlink{structenvelope}{envelope}};}
+\DoxyCodeLine{00053 }
+\DoxyCodeLine{00054 \textcolor{keywordtype}{int} getsamples\_from\_ms(\textcolor{keywordtype}{int} ms, \textcolor{keywordtype}{float} sr);}
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00055}\mbox{\hyperlink{structwindow}{00055}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwindow}{window}}}
+\DoxyCodeLine{00056 \{}
+\DoxyCodeLine{00057     t\_object x\_obj;}
+\DoxyCodeLine{00058     t\_int q\_factor;}
+\DoxyCodeLine{00059     t\_sample *window\_samples\_table;}
+\DoxyCodeLine{00060 \}\mbox{\hyperlink{structwindow}{window}};}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00062 \mbox{\hyperlink{structenvelope}{envelope}} *\mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(\textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release);}
+\DoxyCodeLine{00063 }
+\DoxyCodeLine{00064 \textcolor{comment}{//float gauss(float q\_factor, int grain\_size, int sample);}}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066 \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x);}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00069 \}}
+\DoxyCodeLine{00070 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00071 }
+\DoxyCodeLine{00072 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

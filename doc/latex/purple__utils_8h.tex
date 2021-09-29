@@ -1,0 +1,154 @@
+\hypertarget{purple__utils_8h}{}\doxysubsection{purple\+\_\+utils.\+h File Reference}
+\label{purple__utils_8h}\index{purple\_utils.h@{purple\_utils.h}}
+
+
+header file to {\itshape \mbox{\hyperlink{purple__utils_8c}{purple\+\_\+utils.\+c}}} file  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{purple__utils_8h_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
+\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+ \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
+\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+ \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{purple__utils_8h_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
+\begin{DoxyCompactList}\small\item\em calculates interpolated sample value ~\newline
+ calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}{switch\+\_\+float\+\_\+values}} (float $\ast$a, float $\ast$b)
+\begin{DoxyCompactList}\small\item\em swaps to values swaps to values of float type \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+header file to {\itshape \mbox{\hyperlink{purple__utils_8c}{purple\+\_\+utils.\+c}}} file 
+
+\begin{DoxyAuthor}{Author}
+Kretschmar, Nikita 
+
+Philipp, Adrian 
+
+Strobl, Micha 
+
+Wennemann,Tim Audiocommunication Group, Technische Universität Berlin ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/09-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{purple__utils_8h_source}{purple\+\_\+utils.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{purple__utils_8h_a228b2ef6097d375daeea9358a534ce54}\label{purple__utils_8h_a228b2ef6097d375daeea9358a534ce54}} 
+\index{purple\_utils.h@{purple\_utils.h}!get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}}
+\index{get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}!purple\_utils.h@{purple\_utils.h}}
+\doxyparagraph{\texorpdfstring{get\_interpolated\_sample\_value()}{get\_interpolated\_sample\_value()}}
+{\footnotesize\ttfamily float get\+\_\+interpolated\+\_\+sample\+\_\+value (\begin{DoxyParamCaption}\item[{float}]{sample\+\_\+left,  }\item[{float}]{sample\+\_\+right,  }\item[{float}]{frac }\end{DoxyParamCaption})}
+
+
+
+calculates interpolated sample value ~\newline
+ calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\+\_\+left} & value at the beginning of sample \\
+\hline
+{\em sample\+\_\+right} & value at the end of sample \\
+\hline
+{\em frac} & position after decimal point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float interpolated sample value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00063}{63}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}\label{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}} 
+\index{purple\_utils.h@{purple\_utils.h}!get\_ms\_from\_samples@{get\_ms\_from\_samples}}
+\index{get\_ms\_from\_samples@{get\_ms\_from\_samples}!purple\_utils.h@{purple\_utils.h}}
+\doxyparagraph{\texorpdfstring{get\_ms\_from\_samples()}{get\_ms\_from\_samples()}}
+{\footnotesize\ttfamily float get\+\_\+ms\+\_\+from\+\_\+samples (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+samples,  }\item[{float}]{sr }\end{DoxyParamCaption})}
+
+
+
+calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+samples} & number of samples \\
+\hline
+{\em sr} & defined samplerate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float sample time 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00045}{45}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{purple__utils_8h_adedfab0848a63809acd487441d157908}\label{purple__utils_8h_adedfab0848a63809acd487441d157908}} 
+\index{purple\_utils.h@{purple\_utils.h}!get\_samples\_from\_ms@{get\_samples\_from\_ms}}
+\index{get\_samples\_from\_ms@{get\_samples\_from\_ms}!purple\_utils.h@{purple\_utils.h}}
+\doxyparagraph{\texorpdfstring{get\_samples\_from\_ms()}{get\_samples\_from\_ms()}}
+{\footnotesize\ttfamily int get\+\_\+samples\+\_\+from\+\_\+ms (\begin{DoxyParamCaption}\item[{int}]{ms,  }\item[{float}]{sr }\end{DoxyParamCaption})}
+
+
+
+calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & sample time in ms \\
+\hline
+{\em sr} & defined sample rate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int number of samples 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00028}{28}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}\label{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}} 
+\index{purple\_utils.h@{purple\_utils.h}!switch\_float\_values@{switch\_float\_values}}
+\index{switch\_float\_values@{switch\_float\_values}!purple\_utils.h@{purple\_utils.h}}
+\doxyparagraph{\texorpdfstring{switch\_float\_values()}{switch\_float\_values()}}
+{\footnotesize\ttfamily void switch\+\_\+float\+\_\+values (\begin{DoxyParamCaption}\item[{float $\ast$}]{a,  }\item[{float $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+swaps to values swaps to values of float type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & first value to swapped with second \\
+\hline
+{\em b} & second value to be swappend with first \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00075}{75}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+

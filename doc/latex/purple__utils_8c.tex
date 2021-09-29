@@ -1,8 +1,11 @@
-\hypertarget{purple__utils_8c}{}\doxysection{purple\+\_\+utils.\+c File Reference}
+\hypertarget{purple__utils_8c}{}\doxysubsection{purple\+\_\+utils.\+c File Reference}
 \label{purple__utils_8c}\index{purple\_utils.c@{purple\_utils.c}}
 
 
-useful utilities for value conversion and manipulation useful utilities for value conversion and manipulation outsourced into own .c file for better code readability  
+useful utilities for value conversion and manipulation ~\newline
+ useful utilities for value conversion and manipulation ~\newline
+ outsourced into own .c file for better code readability ~\newline
+  
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -11,21 +14,28 @@ useful utilities for value conversion and manipulation useful utilities for valu
 {\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
 Include dependency graph for purple\+\_\+utils.\+c\+:
 % FIG 0
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
-\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+ \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
-\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+ \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
-\begin{DoxyCompactList}\small\item\em calculates interpolated sample value calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates interpolated sample value ~\newline
+ calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+ \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}{switch\+\_\+float\+\_\+values}} (float $\ast$a, float $\ast$b)
 \begin{DoxyCompactList}\small\item\em swaps to values swaps to values of float type \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-useful utilities for value conversion and manipulation useful utilities for value conversion and manipulation outsourced into own .c file for better code readability 
+\doxysubsubsection{Detailed Description}
+useful utilities for value conversion and manipulation ~\newline
+ useful utilities for value conversion and manipulation ~\newline
+ outsourced into own .c file for better code readability ~\newline
+ 
 
 \begin{DoxyAuthor}{Author}
 Nikita Kretschmar 
@@ -47,16 +57,22 @@ Copyright (c) 2021
 \end{DoxyCopyright}
 
 
-\doxysubsection{Function Documentation}
+Definition in file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
+
+
+\doxysubsubsection{Function Documentation}
 \mbox{\Hypertarget{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}\label{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}} 
 \index{purple\_utils.c@{purple\_utils.c}!get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}}
 \index{get\_interpolated\_sample\_value@{get\_interpolated\_sample\_value}!purple\_utils.c@{purple\_utils.c}}
-\doxysubsubsection{\texorpdfstring{get\_interpolated\_sample\_value()}{get\_interpolated\_sample\_value()}}
+\doxyparagraph{\texorpdfstring{get\_interpolated\_sample\_value()}{get\_interpolated\_sample\_value()}}
 {\footnotesize\ttfamily float get\+\_\+interpolated\+\_\+sample\+\_\+value (\begin{DoxyParamCaption}\item[{float}]{sample\+\_\+left,  }\item[{float}]{sample\+\_\+right,  }\item[{float}]{frac }\end{DoxyParamCaption})}
 
 
 
-calculates interpolated sample value calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} 
+calculates interpolated sample value ~\newline
+ calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+ 
 
 
 \begin{DoxyParams}{Parameters}
@@ -70,15 +86,20 @@ calculates interpolated sample value calculates interpolated sample value betwee
 \begin{DoxyReturn}{Returns}
 float interpolated sample value 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00063}{63}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
 \mbox{\Hypertarget{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}\label{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}} 
 \index{purple\_utils.c@{purple\_utils.c}!get\_ms\_from\_samples@{get\_ms\_from\_samples}}
 \index{get\_ms\_from\_samples@{get\_ms\_from\_samples}!purple\_utils.c@{purple\_utils.c}}
-\doxysubsubsection{\texorpdfstring{get\_ms\_from\_samples()}{get\_ms\_from\_samples()}}
+\doxyparagraph{\texorpdfstring{get\_ms\_from\_samples()}{get\_ms\_from\_samples()}}
 {\footnotesize\ttfamily float get\+\_\+ms\+\_\+from\+\_\+samples (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+samples,  }\item[{float}]{sr }\end{DoxyParamCaption})}
 
 
 
-calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} 
+calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+ 
 
 
 \begin{DoxyParams}{Parameters}
@@ -90,15 +111,20 @@ calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr}
 \begin{DoxyReturn}{Returns}
 float sample time 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00045}{45}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
 \mbox{\Hypertarget{purple__utils_8c_adedfab0848a63809acd487441d157908}\label{purple__utils_8c_adedfab0848a63809acd487441d157908}} 
 \index{purple\_utils.c@{purple\_utils.c}!get\_samples\_from\_ms@{get\_samples\_from\_ms}}
 \index{get\_samples\_from\_ms@{get\_samples\_from\_ms}!purple\_utils.c@{purple\_utils.c}}
-\doxysubsubsection{\texorpdfstring{get\_samples\_from\_ms()}{get\_samples\_from\_ms()}}
+\doxyparagraph{\texorpdfstring{get\_samples\_from\_ms()}{get\_samples\_from\_ms()}}
 {\footnotesize\ttfamily int get\+\_\+samples\+\_\+from\+\_\+ms (\begin{DoxyParamCaption}\item[{int}]{ms,  }\item[{float}]{sr }\end{DoxyParamCaption})}
 
 
 
-calculates number of samples from {\itshape ms} and {\itshape sr} 
+calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+ 
 
 
 \begin{DoxyParams}{Parameters}
@@ -110,10 +136,14 @@ calculates number of samples from {\itshape ms} and {\itshape sr}
 \begin{DoxyReturn}{Returns}
 int number of samples 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00028}{28}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
 \mbox{\Hypertarget{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}\label{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}} 
 \index{purple\_utils.c@{purple\_utils.c}!switch\_float\_values@{switch\_float\_values}}
 \index{switch\_float\_values@{switch\_float\_values}!purple\_utils.c@{purple\_utils.c}}
-\doxysubsubsection{\texorpdfstring{switch\_float\_values()}{switch\_float\_values()}}
+\doxyparagraph{\texorpdfstring{switch\_float\_values()}{switch\_float\_values()}}
 {\footnotesize\ttfamily void switch\+\_\+float\+\_\+values (\begin{DoxyParamCaption}\item[{float $\ast$}]{a,  }\item[{float $\ast$}]{b }\end{DoxyParamCaption})}
 
 
@@ -127,3 +157,7 @@ swaps to values swaps to values of float type
 {\em b} & second value to be swappend with first \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00075}{75}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+

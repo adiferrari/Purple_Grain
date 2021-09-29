@@ -5,10 +5,10 @@ digraph "pd_granular_synth_tilde"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="pd_granular_synth_tilde",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" synth" ];
-  Node2 [label="c_granular_synth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structc__granular__synth.html",tooltip="The Purde Data struct of the c_granular_synth~ object."];
+  Node2 [label="c_granular_synth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structc__granular__synth.html",tooltip="pure data struct of the c_granular_synth object"];
   Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" grains_table" ];
   Node3 [label="grain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrain.html",tooltip=" "];
-  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next_grain" ];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" previous_grain\nnext_grain" ];
   Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" adsr_env" ];
   Node4 [label="envelope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structenvelope.html",tooltip=" "];
 }

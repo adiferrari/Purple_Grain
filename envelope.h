@@ -22,12 +22,6 @@
 extern "C" {
 #endif
 
-/*
-    ADSR Angaben bestimmt in s oder ms?
-    Konvertierung in Samples notwendig?
-    Check Funktion dass Enveloe Länge nicht länger alsLänge des Soundfiles ist?
- */
-
 enum adsr_stage {
     ATTACK,
     DECAY,
@@ -36,33 +30,47 @@ enum adsr_stage {
     SILENT
 };
 
+/**
+ * @struct envelope
+ * @brief pure data struct of the @a envelope object
+ * @details pure data struct of the @a envelope object, defines all necessary variables for enevelope generation <b>
+ */
+
 typedef struct envelope
 {
-    t_object x_obj;
-    t_int attack;
-    t_int decay;
-    t_float sustain;
-    t_int release;
-    t_int duration;
-    t_int attack_samples,
-            decay_samples,
-            release_samples;
-    t_sample *envelope_samples_table;
-    enum adsr_stage adsr;
+    t_object x_obj;                     ///< object used for method input/output handling <b>
+    t_int attack;                       ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
+    t_int decay;                        ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
+    t_float sustain;                    ///< sustain time in the range of 0 - 1, adjustable through slider <br>
+    t_int release;                      ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
+    t_int duration;                     ///< duration time from @a attack to @a release  <b>
+    t_int attack_samples,               ///< attack time in samples <b>
+          decay_samples,                ///< decay time in samples <b>
+          release_samples;              ///< release time in samples <b>
+    t_sample *envelope_samples_table;   ///< array containing the envelope samples <b>
+    enum adsr_stage adsr;               ///< current ADSR stage <b>
 } envelope;
 
 int getsamples_from_ms(int ms, float sr);
+/**
+ * @struct window
+ * @brief pure data struct of the @a window object
+ * @details pure data struct of the @a window object, defines all necessary variables for windowing <b>
+ */
 typedef struct window
 {
-    t_object x_obj;
-    t_int q_factor;
-    t_sample *window_samples_table;
+    t_object x_obj;                     ///< object used for method input/output handling <b>
+    t_int q_factor;                     ///< q factor of the gauss distribution <b>
+    t_sample *window_samples_table;     ///< array containing the window samples <b>
 }window;
 
 envelope *envelope_new(int attack, int decay, float sustain, int release);
 
-//float gauss(float q_factor, int grain_size, int sample);
-
+/**
+ * @brief frees envelope
+ * @details frees envelope
+ * @param x input pointer of @a envelope_free object
+ */
 void envelope_free(envelope *x);
 
 #ifdef __cplusplus
