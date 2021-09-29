@@ -1,11 +1,12 @@
 /**
  * @file envelope.c
- * @author Nikita Kretschmar
- * @author Adrian Philipp
- * @author Micha Strobl
- * @author Tim Wennemann
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
+ * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles envelope generation
- * generates ADSR envelope according to adjustable attack, decay, sustain and release parameters
+ * @details generates ADSR envelope according to adjustable attack, decay, sustain and release parameters <br>
  * @version 0.1
  * @date 2021-09-27
  * 
@@ -15,16 +16,15 @@
 
 #include "envelope.h"
 #include "grain.h"
-#include "vas_mem.h"
 #include "purple_utils.h"
 #include "m_pd.h"
 #include "c_granular_synth.h"
 
 /**
  * @brief calculates ADSR value
- * calculates single atm ADSR value according to current state
- * @param x input pointer of calculate_adsr_value object
- * @return float ADSR value
+ * @details calculates single atm ADSR value according to current state <br>
+ * @param x input pointer of @a calculate_adsr_value object <br>
+ * @return ADSR value of type float <br>
  */
 float calculate_adsr_value(c_granular_synth *x)
 {
@@ -86,10 +86,10 @@ float calculate_adsr_value(c_granular_synth *x)
 /**
  * @brief generates new ADSR envelope
  * 
- * @param attack attack time in the range of 0 - 4000ms, adjustable through slider
- * @param decay decay time in the range of 0 - 4000ms, adjustable through slider
- * @param sustain sustain time in the range of 0 - 1, adjustable through slider
- * @param release release time in the range of 0 - 10000ms, adjustable through slider
+ * @param attack attack time in the range of 0 - 4000ms, adjustable through slider <br>
+ * @param decay decay time in the range of 0 - 4000ms, adjustable through slider <br>
+ * @param sustain sustain time in the range of 0 - 1, adjustable through slider <br>
+ * @param release release time in the range of 0 - 10000ms, adjustable through slider <br>
  * @return envelope* 
  */
 envelope *envelope_new(int attack, int decay, float sustain, int release)
@@ -113,9 +113,9 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 /**
  * @brief calculates gauss value
- * calculates gauss value according to @param grainindex
+ * @details calculates gauss value according to @a grainindex <br>
  * @param x reference to the actual synthesizer
- * @return float gauss value
+ * @return gauss value of type float
  */
 float gauss(c_granular_synth *x)
 {
@@ -134,8 +134,8 @@ float gauss(c_granular_synth *x)
 
 /**
  * @brief frees envelope
- * 
- * @param x input pointer of envelope_free object
+ * @details frees envelope <br>
+ * @param x input pointer of @a envelope_free object
  */
 void envelope_free(envelope *x)
 {

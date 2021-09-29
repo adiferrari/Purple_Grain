@@ -1,33 +1,32 @@
-\hypertarget{envelope_8c}{}\doxysection{envelope.\+c File Reference}
+\hypertarget{envelope_8c}{}\doxysubsection{envelope.\+c File Reference}
 \label{envelope_8c}\index{envelope.c@{envelope.c}}
 
 
-handles envelope generation generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters  
+handles envelope generation  
 
 
 {\ttfamily \#include \char`\"{}envelope.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}grain.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}vas\+\_\+mem.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}c\+\_\+granular\+\_\+synth.\+h\char`\"{}}\newline
 Include dependency graph for envelope.\+c\+:
 % FIG 0
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}{calculate\+\_\+adsr\+\_\+value}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em calculates A\+D\+SR value calculates single atm A\+D\+SR value according to current state \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates A\+D\+SR value \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\+\_\+new}} (int attack, int decay, float sustain, int release)
 \begin{DoxyCompactList}\small\item\em generates new A\+D\+SR envelope \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{envelope_8c_ada53322e75330e22584277e4aab720bc}{gauss}} (\mbox{\hyperlink{structgrain}{grain}} x, int grainindex)
-\begin{DoxyCompactList}\small\item\em calculates gauss value calculates gauss value according to \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em calculates gauss value calculates gauss value according to {\itshape grainindex} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\_\+free}} (\mbox{\hyperlink{structenvelope}{envelope}} $\ast$x)
 \begin{DoxyCompactList}\small\item\em frees envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-handles envelope generation generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters 
+\doxysubsubsection{Detailed Description}
+handles envelope generation 
 
 \begin{DoxyAuthor}{Author}
 Nikita Kretschmar 
@@ -36,9 +35,9 @@ Adrian Philipp
 
 Micha Strobl 
 
-Tim Wennemann 
+Tim Wennemann
 \end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
+generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters {\bfseries{ \begin{DoxyVersion}{Version}
 0.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
@@ -47,31 +46,39 @@ Tim Wennemann
 \begin{DoxyCopyright}{Copyright}
 Copyright (c) 2021 
 \end{DoxyCopyright}
+}}
+
+Definition in file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 
-\doxysubsection{Function Documentation}
+
+\doxysubsubsection{Function Documentation}
 \mbox{\Hypertarget{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}\label{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}} 
 \index{envelope.c@{envelope.c}!calculate\_adsr\_value@{calculate\_adsr\_value}}
 \index{calculate\_adsr\_value@{calculate\_adsr\_value}!envelope.c@{envelope.c}}
-\doxysubsubsection{\texorpdfstring{calculate\_adsr\_value()}{calculate\_adsr\_value()}}
+\doxyparagraph{\texorpdfstring{calculate\_adsr\_value()}{calculate\_adsr\_value()}}
 {\footnotesize\ttfamily float calculate\+\_\+adsr\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
 
 
 
-calculates A\+D\+SR value calculates single atm A\+D\+SR value according to current state 
+calculates A\+D\+SR value 
 
-
+calculates single atm A\+D\+SR value according to current state {\bfseries{ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of calculate\+\_\+adsr\+\_\+value object \\
+{\em x} & input pointer of {\itshape calculate\+\_\+adsr\+\_\+value} object {\bfseries{ }}\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float A\+D\+SR value 
+{\bfseries{ A\+D\+SR value of type float {\bfseries{ }}}}
 \end{DoxyReturn}
+}}
+
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00029}{29}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+
 \mbox{\Hypertarget{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}\label{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}} 
 \index{envelope.c@{envelope.c}!envelope\_free@{envelope\_free}}
 \index{envelope\_free@{envelope\_free}!envelope.c@{envelope.c}}
-\doxysubsubsection{\texorpdfstring{envelope\_free()}{envelope\_free()}}
+\doxyparagraph{\texorpdfstring{envelope\_free()}{envelope\_free()}}
 {\footnotesize\ttfamily void envelope\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structenvelope}{envelope}} $\ast$}]{x }\end{DoxyParamCaption})}
 
 
@@ -80,13 +87,17 @@ frees envelope
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of envelope\+\_\+free object \\
+{\em x} & input pointer of {\itshape envelope\+\_\+free} object \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00142}{142}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+
 \mbox{\Hypertarget{envelope_8c_a0854138c64859a1f4079feb9b9194786}\label{envelope_8c_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.c@{envelope.c}!envelope\_new@{envelope\_new}}
 \index{envelope\_new@{envelope\_new}!envelope.c@{envelope.c}}
-\doxysubsubsection{\texorpdfstring{envelope\_new()}{envelope\_new()}}
+\doxyparagraph{\texorpdfstring{envelope\_new()}{envelope\_new()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structenvelope}{envelope}}$\ast$ envelope\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{decay,  }\item[{float}]{sustain,  }\item[{int}]{release }\end{DoxyParamCaption})}
 
 
@@ -95,37 +106,44 @@ generates new A\+D\+SR envelope
 
 
 \begin{DoxyParams}{Parameters}
-{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider \\
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}\\
 \hline
-{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider \\
+{\em decay} & {\bfseries{decay time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}}}\\
 \hline
-{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider \\
+{\em sustain} & {\bfseries{{\bfseries{sustain time in the range of 0 -\/ 1, adjustable through slider {\bfseries{ }}}}}}\\
 \hline
-{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider \\
+{\em release} & {\bfseries{{\bfseries{{\bfseries{release time in the range of 0 -\/ 10000ms, adjustable through slider {\bfseries{ }}}}}}}}\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-envelope$\ast$ 
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{ envelope$\ast$ }}}}}}}}
 \end{DoxyReturn}
-\mbox{\Hypertarget{envelope_8c_ada53322e75330e22584277e4aab720bc}\label{envelope_8c_ada53322e75330e22584277e4aab720bc}} 
+\begin{DoxyNote}{Note}
+muss bei Note on wieder raus -\/$>$ start mit silent
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00094}{94}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+
+\mbox{\Hypertarget{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}\label{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}} 
 \index{envelope.c@{envelope.c}!gauss@{gauss}}
 \index{gauss@{gauss}!envelope.c@{envelope.c}}
-\doxysubsubsection{\texorpdfstring{gauss()}{gauss()}}
-{\footnotesize\ttfamily float gauss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}}}]{x,  }\item[{int}]{grainindex }\end{DoxyParamCaption})}
+\doxyparagraph{\texorpdfstring{gauss()}{gauss()}}
+{\footnotesize\ttfamily float gauss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{x }\end{DoxyParamCaption})}
 
 
 
-calculates gauss value calculates gauss value according to 
+calculates gauss value calculates gauss value according to {\itshape grainindex} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em grainindex} & \\
-\hline
-{\em x} & input pointer of gauss object \\
-\hline
-{\em grainindex} & index of grain \\
+{\em x} & reference to the actual synthesizer \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float gauss value 
+gauss value of type float 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00122}{122}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+

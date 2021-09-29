@@ -1,13 +1,12 @@
 /**
- * @file pd_granular_synth_pd.c
- * @author Nikita Kretschmar
- * @author Adrian Philipp
- * @author Micha Strobl
- * @author Tim Wennemann
+ * @file pd_granular_synth_tilde.c
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
- * @brief Main file <br>
- * <br>
- * Main file
+ * @brief Main file of the pure data external
+ * @details Main file of the pure data external, generates in- and outlets of the pure data granular synth object, updates values corresponding to input slider states <br>
  */
 
 #include "c_granular_synth.h"
@@ -16,45 +15,45 @@
 static t_class *pd_granular_synth_tilde_class;
 
 /**
- * @brief 
- * @details 
+ * @struct c_granular_synth_tilde_
+ * @brief pure data struct of the @a c_granular_synth_tilde object
+ * @details pure data struct of the @a c_granular_synth_tilde object, sets all necessary in- and outlets and defines corresponding variables for synth operation <br>
  */
 typedef struct pd_granular_synth_tilde
 {
-    t_object  x_obj;
-    t_float f;
-    t_float sr;
-    c_granular_synth *synth;
-    t_int               grain_size,
-                        start_pos,
-                        midi_pitch,
-                        midi_velo,
-                        attack,
-                        decay,
-                        release,
+    t_object  x_obj;                                    ///< object used for method input/output handling
+    t_float f;                                          ///< of type float, used for various input handling
+    t_float sr;                                         ///< defined samplerate
+    c_granular_synth *synth;                            ///< pure data garnular synth object
+    t_int               grain_size,                     ///< size of a grain in milliseconds, adjustable through slider <br>
+                        start_pos,                      ///< position within the soundfile, adjustable through slider <br>
+                        midi_pitch,                     ///< pitch/key value given by MIDI input <br>
+                        midi_velo,                      ///< velocity value given by MIDI input <br>
+                        attack,                         ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
+                        decay,                          ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
+                        release,                        ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
                         spray_input;
-    t_float             sustain,
-                        time_stretch_factor,
-                        gauss_q_factor;
-    t_word *soundfile;      // Pointer to the soundfile Array
-    t_symbol *soundfile_arrayname;  // String used in pd to identify array that holds the soundfile
-    int soundfile_length;
-    float pitch_faktor;
-    float soundfile_length_ms;
-    t_word *envelopeTable;
+    t_float             sustain,                        ///< sustain time in the range of 0 - 1, adjustable through slider <br>
+                        time_stretch_factor,            ///< resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider <br>
+                        gauss_q_factor;                 ///< used to manipulate grain envelope height <br>
+    t_word              *soundfile;                     ///< Pointer to the soundfile Array <br>
+    t_symbol            *soundfile_arrayname;                      ///< String used in pd to identify array that holds the soundfile <br>
+    int                 soundfile_length;                               ///< lenght of the soundfile in samples
+    float               pitch_faktor,
+                        soundfile_length_ms;                          ///< lenght of the soundfile in milliseconds
 
-    t_inlet             *in_grain_size,
-                        *in_start_pos,
-                        *in_time_stretch_factor,
-                        *in_midi_pitch,
-                        *in_midi_velo,
-                        *in_attack,
-                        *in_decay,
-                        *in_sustain,
-                        *in_release,
-                        *in_gauss_q_factor,
+    t_inlet             *in_grain_size,                 ///< inlet for grain size slider <br>
+                        *in_start_pos,                  ///< inlet for start position slider <br>
+                        *in_time_stretch_factor,        ///< inlet for time stretch factor slider <br>
+                        *in_midi_pitch,                 ///< inlet for MIDI input pitch/key value <br>
+                        *in_midi_velo,                  ///< inlet for MIDI input velocity value <br>
+                        *in_attack,                     ///< inlet attack slider <br>
+                        *in_decay,                      ///< inlet for decay slider <br>
+                        *in_sustain,                    ///< inlet for sustain slider <br>
+                        *in_release,                    ///< inlet for release slider <br>
+                        *in_gauss_q_factor,             ///< inlet for gauss q factor slider <br>
                         *in_spray;
-    t_outlet            *out;
+    t_outlet            *out;                           ///< main outlet <br>
 } t_pd_granular_synth_tilde;
 
 /** 
@@ -71,22 +70,22 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->soundfile = 0;
     x->soundfile_arrayname = soundfile_arrayname;
 
-    x->soundfile_length = 0;
-    x->soundfile_length_ms = 0;
-    x->grain_size = 50;
-    x->start_pos = 0;
-    x->time_stretch_factor = 1.0,
-    x->midi_pitch = 48;
+    x->soundfile_length = 0;                            ///< default value for soundfile length in samples
+    x->soundfile_length_ms = 0;                         ///< default value for soundfile length in ms
+    x->grain_size = 50;                                 ///< default value for grain size, before adjustment through slider
+    x->start_pos = 0;                                   ///< default value for starting position, before adjustment through slider
+    x->time_stretch_factor = 1.0,                       ///< default value for time stretch factor, before adjustment through slider
     x->pitch_faktor = 1;
-    x->midi_velo = 0;
-    x->attack = 500;
-    x->decay = 500;
-    x->sustain = 0.7;
-    x->release = 1000;
-    x->gauss_q_factor = 0.2;
+    x->midi_velo = 0;                                   ///< default value for MIDI input velocity, equals noteoff event
+    x->midi_pitch = 48;
+    x->attack = 500;                                    ///< default value for attack time, before adjustment through slider
+    x->decay = 500;                                     ///< default value for decay time, before adjustment through slider
+    x->sustain = 0.7;                                   ///< default value for sustain time, before adjustment through slider
+    x->release = 1000;                                  ///< default value for release time, before adjustment through slider
+    x->gauss_q_factor = 0.2;                            ///< default value for gauss q factor, before adjustment through slider
     x->spray_input = 0;
-    //The main inlet is created automatically
     
+    /// @note The main inlet is created automatically
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
     x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
     x->in_time_stretch_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("time_stretch_factor"));
@@ -106,7 +105,8 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
 
 /**
  * @related pd_granular_synth_tilde
- *
+ * @brief performs @a pd_granular_synth_tilde
+ * @param w main input for performing pd_granular_synth_tilde
  */
 
 t_int *pd_granular_synth_tilde_perform(t_int *w)
@@ -121,23 +121,17 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos < 0) x->start_pos = 0;
     if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->spray_input);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->spray_input); ///< passes all (slider) changes to synth
 
-    c_granular_synth_process(x->synth, in, out, n);
-    /* return a pointer to the dataspace for the next dsp-object */
-    /*
-        the return argument equals the argument of the perform-routine plus the
-        number of pointer variables (as declared as the second argument of dsp_add)
-        plus one
-    */
-    return (w+5);
+    c_granular_synth_process(x->synth, in, out, n); ///< return a pointer to the dataspace for the next dsp-object
+
+    return (w+5); ///< return argument equals the argument of the perform-routine plus the number of pointer variables +1
 }
 
 /**
  * @related pd_granular_synth_tilde
- * @brief Frees our object. <br>
- * @param x A pointer the pd_granular_synth_tilde object <br>
- * For more information please refer to the <a href = "https://github.com/pure-data/externals-howto" > Pure Data Docs </a> <br>
+ * @brief frees inlets of @a pd_granular_synth_tilde
+ * @param x input pointer of @a pd_granular_synth_tilde object <br>
  */
 
 void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
@@ -161,9 +155,9 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
 }
 
 /**
- * @brief Reads the array containing the loaded soundfile.
- * @details Reads the array containing the loaded soundfile. Modified version of a method in the course's repository.
- * @param x The granular synth object that uses the soundfile's sample-data.
+ * @brief reads the array containing the loaded soundfile
+ * @details reads the array containing the loaded soundfile, modified version of a method in the course's repository <br>
+ * @param x granular synth object that uses the soundfile's sample-data <br>
  */
 static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_symbol *s)
 {
@@ -172,21 +166,22 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
     
     if (!(a = (t_garray *)pd_findbyclass(x->soundfile_arrayname, garray_class)))
     {
-        
+    /**
+     * @warning pd_error(x, "vas_binaural~: %s: no such array", x->soundfile_arrayname->s_name);
+     */
         if (*s->s_name)
         {
-        //pd_error(x, "vas_binaural~: %s: no such array", x->soundfile_arrayname->s_name);
         post("Inner if-condition reached");
         x->soundfile = 0;
         }
         post("Get Array method if block reached");
     }
-
+    /**
+    * @warning pd_error(x, "%s: bad template for pd_granular_synth~", x->soundfile_arrayname->s_name);
+    */
     else if (!garray_getfloatwords(a, &x->soundfile_length, &x->soundfile))
     {
-        //pd_error(x, "%s: bad template for pd_granular_synth~", x->soundfile_arrayname->s_name);
-        //x->soundfile = 0;
-        post("Get Array method else if block reached");
+        post("Get Array method else if block reached"); 
     }
     else {
         garray_usedindsp(a);
@@ -210,7 +205,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
 
 /**
  * @related pd_granular_synth_tilde
- * @brief Adds pd_granular_synth_tilde to the signal chain. <br>
+ * @brief adds @a pd_granular_synth_tilde to the signal processing chain <br>
  */
 void pd_granular_synth_tilde_dsp(t_pd_granular_synth_tilde *x, t_signal **sp)
 {
@@ -218,10 +213,11 @@ void pd_granular_synth_tilde_dsp(t_pd_granular_synth_tilde *x, t_signal **sp)
     dsp_add(pd_granular_synth_tilde_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets grain size
+ * @details sets size of a grain in samples, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_grain_size object <br>
+ * @param f argument of type float for handling grain size input <br>
  */
 static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -231,13 +227,13 @@ static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_flo
         new_grain_size = x->soundfile_length;
         }
     x->grain_size = (int)new_grain_size;
-    // Changes get passed to synth in update properties method
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets starting position
+ * @details sets the starting position within the soundfile, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_start_pos object <br>
+ * @param f argument of type float for handling starting position input <br>
  */
 static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -247,13 +243,13 @@ static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floa
         new_start_pos = x->soundfile_length;
         }
     x->start_pos = (int)new_start_pos;
-    // Changes get passed to synth in update properties method
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets time stretch factor
+ * @details sets time stretch factor used to resize sample length within a grain, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_time_stretch_factor object <br>
+ * @param f argument of type float for handling time stretch factor input <br>
  */
 static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -263,22 +259,20 @@ static void pd_granular_synth_set_time_stretch_factor(t_pd_granular_synth_tilde 
         if((!x->synth->reverse_playback && new_time_stretch_factor < 0)
            || (x->synth->reverse_playback && new_time_stretch_factor > 0)
            || fabsf(new_time_stretch_factor) < 0.1)
-        {
-            // Was tun wenn der Faktor 0 ist ???
-            // war die Richtung zuvor positiv setze jetzt auf -0.1 und umgekehrt
+        { 
             x->time_stretch_factor = (x->time_stretch_factor > 0) ? -0.1 : 0.1;
-            // drehe reverse playback status um
-            x->synth->reverse_playback = !x->synth->reverse_playback;
+            x->synth->reverse_playback = !x->synth->reverse_playback; ///< inverts reverse playback state
             return;
         }
     }
     x->time_stretch_factor = new_time_stretch_factor;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets MIDI pitch/key
+ * @details MIDI input pitch/key value, usable through virtual or external MIDI device <br>
+ * @param x input pointer of the @a pd_granular_synth_set_midi_pitch
+ * @param f argument of type float for handling MIDI pitch/key input
  */
 static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -287,10 +281,11 @@ static void pd_granular_synth_set_midi_pitch(t_pd_granular_synth_tilde *x, t_flo
     x->midi_pitch = (int)new_midi_pitch;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets MIDI velocity
+ * @details MIDI input velocity value, usable through virtual or external MIDI device, also used for noteon detection <br>
+ * @param x input pointer of the @a pd_granular_synth_set_midi_velo <br>
+ * @param f argument of type float for handling MIDI velocity input <br>
  */
 static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -299,10 +294,11 @@ static void pd_granular_synth_set_midi_velo(t_pd_granular_synth_tilde *x, t_floa
     x->midi_velo = (int)new_midi_velo;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets attack
+ * @details sets the attack time component of the ADSR, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_attack object <br>
+ * @param f argument of type float for handling attack slider input <br>
  */
 static void pd_granular_synth_set_attack(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -311,10 +307,11 @@ static void pd_granular_synth_set_attack(t_pd_granular_synth_tilde *x, t_floatar
     x->attack = (int)new_attack;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets decay
+ * @details sets the decay time component of the ADSR, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_decay object <br>
+ * @param f argument of type float for handling decay slider input <br>
  */
 static void pd_granular_synth_set_decay(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -323,10 +320,11 @@ static void pd_granular_synth_set_decay(t_pd_granular_synth_tilde *x, t_floatarg
     x->decay = (int)new_decay;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets sustain time
+ * @details sets the sustain time component of the ADSR, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_sustain object <br>
+ * @param f argument of type float for handling sustain slider input <br>
  */
 static void pd_granular_synth_set_sustain(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -335,10 +333,11 @@ static void pd_granular_synth_set_sustain(t_pd_granular_synth_tilde *x, t_floata
     x->sustain = (float)new_sustain;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets release time
+ * @details sets the release time component of the ADSR, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_release object <br>
+ * @param f argument of type float for handling release slider input <br>
  */
 static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -348,10 +347,11 @@ static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floata
 }
 
 /**
- * @brief 
- * 
- * @param x 
- * @param f 
+ * @related t_pd_granular_synth_tilde
+ * @brief sets gauss q factor
+ * @details sets the gauss q factor for manipulating grain envelopes, adjustable through slider <br>
+ * @param x input pointer of the @a pd_granular_synth_set_gauss_q_factor object <br>
+ * @param f argument of type float for handling gauss q factor slider input <br>
  */
 static void pd_granular_synth_set_gauss_q_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
@@ -373,20 +373,9 @@ static void pd_granular_synth_set_spray_input(t_pd_granular_synth_tilde *x, t_fl
 }
 
 /**
- * @brief 
- * 
- * @param x 
- * @param s 
- */
-static void pd_granular_synth_get_arrayname_message(t_pd_granular_synth_tilde *x, t_symbol *s)
-{
-    x->soundfile_arrayname = s;
-}
-
-/**
  * @related pd_granular_synth_tilde
  * @brief Setup of pd_granular_synth_tilde <br>
- * For more information please refer to the <a href = "https://github.com/pure-data/externals-howto" > Pure Data Docs </a> <br>
+ * @details
  */
 
 void pd_granular_synth_tilde_setup(void)
@@ -431,19 +420,9 @@ void pd_granular_synth_tilde_setup(void)
                         gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);
 
       CLASS_MAINSIGNALIN(pd_granular_synth_tilde_class, t_pd_granular_synth_tilde, f);
-
-      /*
-      class_sethelpsymbol(pd_granular_synth_tilde_class, gensym("pd_granular_synth~"));
-
-      Das hier oben haben die Grainmaker Leute bei sich am Ende der Setup Methode auch stehen...
-      Wenn de aufgerufen wird (bei uns) kommt im pd-Project die Warnung "sample multiply defined"
-      "sample" ist im Projekt der Name des Arrays in dem das soundfile ist. DasArray wird dann auch nicht geladen...
-      */
+    /**
+    * @warning "sample multiply defined" error
+    * class_sethelpsymbol(pd_granular_synth_tilde_class, gensym("pd_granular_synth~"));
+    */
       
-}
-
-// Obsolete?
-void pd_granular_synth_noteOn(t_pd_granular_synth_tilde *x, float frequency, float velocity)
-{
-    c_granular_synth_noteOn(x->synth, frequency, velocity);
 }

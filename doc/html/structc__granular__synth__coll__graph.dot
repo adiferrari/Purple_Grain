@@ -3,10 +3,10 @@ digraph "c_granular_synth"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="c_granular_synth",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The Purde Data struct of the c_granular_synth~ object."];
+  Node1 [label="c_granular_synth",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="pure data struct of the c_granular_synth object"];
   Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" grains_table" ,fontname="Helvetica"];
   Node2 [label="grain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrain.html",tooltip=" "];
-  Node2 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next_grain" ,fontname="Helvetica"];
+  Node2 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" previous_grain\nnext_grain" ,fontname="Helvetica"];
   Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" adsr_env" ,fontname="Helvetica"];
   Node3 [label="envelope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structenvelope.html",tooltip=" "];
 }

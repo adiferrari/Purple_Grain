@@ -1,12 +1,11 @@
 /**
  * @file purple_utils.c
- * @author Nikita Kretschmar
- * @author Adrian Philipp
- * @author Micha Strobl
- * @author Tim Wennemann
- * @brief useful utilities for value conversion and manipulation
- * useful utilities for value conversion and manipulation
- * outsourced into own .c file for better code readability
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
+ * @brief useful utilities for value conversion and manipulation <br>
+ * useful utilities for value conversion and manipulation, outsourced into own .c file for better code readability <br>
  * @version 0.1
  * @date 2021-09-27
  * 
@@ -20,8 +19,8 @@
 #include "m_pd.h"
 #include "purple_utils.h"
 /**
- * @brief calculates number of samples from @a ms and @a sr
- * 
+ * @brief calculates number of samples
+ * @details calculates number of samples from @a ms according to defined @a sr <br>
  * @param ms sample time in ms
  * @param sr defined sample rate
  * @return int number of samples
@@ -37,8 +36,8 @@ int get_samples_from_ms(int ms, float sr)
     }
 }
 /**
- * @brief calculates sample time in ms from @a num_samples and @a sr
- * 
+ * @brief calculates sample time in ms
+ * @details calculates sample time from @a num_samples according to defined @a sr <br>
  * @param num_samples number of samples
  * @param sr defined samplerate
  * @return float sample time
@@ -54,8 +53,8 @@ float get_ms_from_samples(int num_samples, float sr)
     }
 }
 /**
- * @brief calculates interpolated sample value
- * calculates interpolated sample value between @a sample_left and @a sample_right
+ * @brief calculates interpolated sample value <br>
+ * @details calculates interpolated sample value between @a sample_left and @a sample_right <br>
  * @param sample_left value at the beginning of sample
  * @param sample_right value at the end of sample
  * @param frac position after decimal point
@@ -69,7 +68,7 @@ float get_interpolated_sample_value(float sample_left, float sample_right, float
 }
 /**
  * @brief swaps to values
- * swaps to values of float type
+ * @details swaps to values @a a with @a b using a temporary third pointer <br>
  * @param a first value to swapped with second
  * @param b second value to be swappend with first
  */

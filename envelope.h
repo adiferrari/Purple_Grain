@@ -3,7 +3,7 @@
  * @author Kretschmar, Nikita 
  * @author Philipp, Adrian 
  * @author Strobl, Micha 
- * @author Wennemann,Tim
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file of @a envelope.c file <br>
  */
@@ -22,12 +22,6 @@
 extern "C" {
 #endif
 
-/*
-    ADSR Angaben bestimmt in s oder ms?
-    Konvertierung in Samples notwendig?
-    Check Funktion dass Enveloe Länge nicht länger alsLänge des Soundfiles ist?
- */
-
 enum adsr_stage {
     ATTACK,
     DECAY,
@@ -36,34 +30,46 @@ enum adsr_stage {
     SILENT
 };
 
+/**
+ * @struct envelope
+ * @brief pure data struct of the @a envelope object
+ * @details pure data struct of the @a envelope object, defines all necessary variables for enevelope generation <br>
+ */
+
 typedef struct envelope
 {
-    t_object x_obj;
-    t_int attack;
-    t_int decay;
+    t_object x_obj;                     ///< object used for method input/output handling <br>
+    t_int attack;                       ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
+    t_int decay;                        ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
     t_float peak,
-            sustain;
-    t_int release;
-    t_int duration;
-    t_int attack_samples,
-            decay_samples,
-            release_samples;
-    t_sample *envelope_samples_table;
-    enum adsr_stage adsr;
+         sustain;                    ///< sustain time in the range of 0 - 1, adjustable through slider <br>
+    t_int release;                      ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
+    t_int attack_samples,               ///< attack time in samples <br>
+          decay_samples,                ///< decay time in samples <br>
+          release_samples;              ///< release time in samples <br>
+    enum adsr_stage adsr;               ///< current ADSR stage <br>
 } envelope;
 
 int getsamples_from_ms(int ms, float sr);
+/**
+ * @struct window
+ * @brief pure data struct of the @a window object
+ * @details pure data struct of the @a window object, defines all necessary variables for windowing <br>
+ */
 typedef struct window
 {
-    t_object x_obj;
-    t_int q_factor;
-    t_sample *window_samples_table;
+    t_object x_obj;                     ///< object used for method input/output handling <br>
+    t_int q_factor;                     ///< q factor of the gauss distribution <br>
+    t_sample *window_samples_table;     ///< array containing the window samples <br>
 }window;
 
 envelope *envelope_new(int attack, int decay, float sustain, int release);
 
-//float gauss(float q_factor, int grain_size, int sample);
-
+/**
+ * @brief frees envelope
+ * @details frees envelope, necessary reset for further instances of envelope generation <br>
+ * @param x input pointer of @a envelope_free object
+ */
 void envelope_free(envelope *x);
 
 #ifdef __cplusplus

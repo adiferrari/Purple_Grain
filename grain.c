@@ -1,11 +1,12 @@
 /**
  * @file grain.c
- * @author Nikita Kretschmar
- * @author Adrian Philipp
- * @author Micha Strobl
- * @author Tim Wennemann
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles grain creation
+ * @details handles grain creation according to set input parameters<br>
  * @version 0.1
  * @date 2021-09-27
  * 
@@ -16,22 +17,21 @@
 #include "c_granular_synth.h"
 #include "envelope.h"
 #include "purple_utils.h"
-#include "vas_mem.h"
 
-//static t_class *grain_class;
 /**
  * @brief set maximum amount of simoultaneously playing grains
- * @todo check if necessary
+ * @todo check if necessary, set dynamically by user input
  */
-#define OVERLAP_DENSITY = 8   ///< To-Do: Set dynamically by user input
+#define OVERLAP_DENSITY = 8
 
 /**
  * @brief generates new grain
- * @details generates new grain depending on @a grain_size_samples, @a soundfile_size and @a grain_index
+ * @details  generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size
  * @param grain_size_samples size of samples contained in a grain
- * @param soundfile_size size of the soundfile which can be read in via inlet
- * @param grain_index corresponding index of a grain
- * @param time_stretch_factor resizes sample length within a grain, adjustable through slider 
+ * @param soundfile_size size of the soundfile which can be read in via inlet <br>
+ * @param start_pos starting position within the soundfile, adjustable through slider <br>
+ * @param grain_index corresponding index of a grain <br>
+ * @param time_stretch_factor resizes sample length within a grain, adjustable through slider <br>
  * @return grain 
  */
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)

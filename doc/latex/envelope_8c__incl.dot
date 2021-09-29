@@ -3,13 +3,13 @@ digraph "envelope.c"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="handles envelope generation generates ADSR envelope according to adjustable attack,..."];
+  Node1 [label="envelope.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="handles envelope generation"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
-  Node2 [label="envelope.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8h.html",tooltip="Envelope file header     Envelope file header."];
+  Node2 [label="envelope.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$envelope_8h.html",tooltip="header file of envelope.c file"];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="m_pd.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="grain.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8h.html",tooltip="Grain file header     Grain file header."];
+  Node4 [label="grain.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$grain_8h.html",tooltip="header file to grain.c file"];
   Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
   Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
   Node5 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
@@ -24,20 +24,15 @@ digraph "envelope.c"
   Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
   Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
-  Node9 [label="vas_mem.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
-  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
-  Node10 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
-  Node11 [label="purple_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8h_source.html",tooltip=" "];
+  Node9 [label="purple_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8h.html",tooltip="header file to purple_utils.c file"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
-  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 [label="c_granular_synth.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$c__granular__synth_8h.html",tooltip="Main file header     Main file header."];
-  Node12 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
-  Node12 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="c_granular_synth.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$c__granular__synth_8h.html",tooltip="header file of granular_synth.c file"];
+  Node10 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
 }

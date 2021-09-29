@@ -1,4 +1,4 @@
-\hypertarget{grain_8c}{}\doxysection{grain.\+c File Reference}
+\hypertarget{grain_8c}{}\doxysubsection{grain.\+c File Reference}
 \label{grain_8c}\index{grain.c@{grain.c}}
 
 
@@ -9,18 +9,17 @@ handles grain creation
 {\ttfamily \#include \char`\"{}c\+\_\+granular\+\_\+synth.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}envelope.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}vas\+\_\+mem.\+h\char`\"{}}\newline
 Include dependency graph for grain.\+c\+:
 % FIG 0
-\doxysubsection*{Macros}
+\doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{grain_8c_a538e0cad3acb787a49e16b1e53787610}{S\+A\+M\+P\+L\+E\+R\+A\+TE}}~44100
-\begin{DoxyCompactList}\small\item\em set samplerate to 44100 \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\#define \mbox{\hyperlink{grain_8c_a6df8a4f0caf7397fd15879daef804894}{O\+V\+E\+R\+L\+A\+P\+\_\+\+D\+E\+N\+S\+I\+TY}}~= 8
+\begin{DoxyCompactList}\small\item\em set maximum amount of simoultaneously playing grains \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}{grain\+\_\+new}} (int grain\+\_\+size\+\_\+samples, int soundfile\+\_\+size, int grain\+\_\+index, float time\+\_\+stretch\+\_\+factor)
+\mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\+\_\+new}} (int grain\+\_\+size\+\_\+samples, int soundfile\+\_\+size, float start\+\_\+pos, int grain\+\_\+index, float time\+\_\+stretch\+\_\+factor)
 \begin{DoxyCompactList}\small\item\em generates new grain \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\+\_\+internal\+\_\+scheduling}} (\mbox{\hyperlink{structgrain}{grain}} $\ast$g, \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$synth)
 \begin{DoxyCompactList}\small\item\em scheduling of grain playback \end{DoxyCompactList}\item 
@@ -28,7 +27,7 @@ void \mbox{\hyperlink{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\+\_\+fre
 \begin{DoxyCompactList}\small\item\em frees grain \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsubsection{Detailed Description}
 handles grain creation 
 
 \begin{DoxyAuthor}{Author}
@@ -52,26 +51,34 @@ Copyright (c) 2021
 \end{DoxyCopyright}
 
 
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{grain_8c_a538e0cad3acb787a49e16b1e53787610}\label{grain_8c_a538e0cad3acb787a49e16b1e53787610}} 
-\index{grain.c@{grain.c}!SAMPLERATE@{SAMPLERATE}}
-\index{SAMPLERATE@{SAMPLERATE}!grain.c@{grain.c}}
-\doxysubsubsection{\texorpdfstring{SAMPLERATE}{SAMPLERATE}}
-{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+R\+A\+TE~44100}
+Definition in file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 
 
-set samplerate to 44100 
+\doxysubsubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{grain_8c_a6df8a4f0caf7397fd15879daef804894}\label{grain_8c_a6df8a4f0caf7397fd15879daef804894}} 
+\index{grain.c@{grain.c}!OVERLAP\_DENSITY@{OVERLAP\_DENSITY}}
+\index{OVERLAP\_DENSITY@{OVERLAP\_DENSITY}!grain.c@{grain.c}}
+\doxyparagraph{\texorpdfstring{OVERLAP\_DENSITY}{OVERLAP\_DENSITY}}
+{\footnotesize\ttfamily \#define O\+V\+E\+R\+L\+A\+P\+\_\+\+D\+E\+N\+S\+I\+TY~= 8}
+
+
+
+set maximum amount of simoultaneously playing grains 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]make samplerate adjustable \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]check if necessary \end{DoxyRefDesc}
+To-\/\+Do\+: Set dynamically by user input 
+
+Definition at line \mbox{\hyperlink{grain_8c_source_l00035}{35}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 
-\doxysubsection{Function Documentation}
+
+\doxysubsubsection{Function Documentation}
 \mbox{\Hypertarget{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}\label{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}} 
 \index{grain.c@{grain.c}!grain\_free@{grain\_free}}
 \index{grain\_free@{grain\_free}!grain.c@{grain.c}}
-\doxysubsubsection{\texorpdfstring{grain\_free()}{grain\_free()}}
+\doxyparagraph{\texorpdfstring{grain\_free()}{grain\_free()}}
 {\footnotesize\ttfamily void grain\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}} $\ast$}]{x }\end{DoxyParamCaption})}
 
 
@@ -83,10 +90,14 @@ frees grain
 {\em x} & input pointer of grain\+\_\+fre object \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{grain_8c_source_l00187}{187}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+
 \mbox{\Hypertarget{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}\label{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}} 
 \index{grain.c@{grain.c}!grain\_internal\_scheduling@{grain\_internal\_scheduling}}
 \index{grain\_internal\_scheduling@{grain\_internal\_scheduling}!grain.c@{grain.c}}
-\doxysubsubsection{\texorpdfstring{grain\_internal\_scheduling()}{grain\_internal\_scheduling()}}
+\doxyparagraph{\texorpdfstring{grain\_internal\_scheduling()}{grain\_internal\_scheduling()}}
 {\footnotesize\ttfamily void grain\+\_\+internal\+\_\+scheduling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrain}{grain}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$}]{synth }\end{DoxyParamCaption})}
 
 
@@ -108,11 +119,15 @@ $<$
 
 $<$
 
-$<$\mbox{\Hypertarget{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}\label{grain_8c_ac42c86512f5fdaa5371155efaf4b469e}} 
+$<$
+
+Definition at line \mbox{\hyperlink{grain_8c_source_l00089}{89}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+
+\mbox{\Hypertarget{grain_8c_add05c8e2a37126d9bd6f745368b130ed}\label{grain_8c_add05c8e2a37126d9bd6f745368b130ed}} 
 \index{grain.c@{grain.c}!grain\_new@{grain\_new}}
 \index{grain\_new@{grain\_new}!grain.c@{grain.c}}
-\doxysubsubsection{\texorpdfstring{grain\_new()}{grain\_new()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structgrain}{grain}} grain\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{grain\+\_\+size\+\_\+samples,  }\item[{int}]{soundfile\+\_\+size,  }\item[{int}]{grain\+\_\+index,  }\item[{float}]{time\+\_\+stretch\+\_\+factor }\end{DoxyParamCaption})}
+\doxyparagraph{\texorpdfstring{grain\_new()}{grain\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgrain}{grain}} grain\+\_\+new (\begin{DoxyParamCaption}\item[{int}]{grain\+\_\+size\+\_\+samples,  }\item[{int}]{soundfile\+\_\+size,  }\item[{float}]{start\+\_\+pos,  }\item[{int}]{grain\+\_\+index,  }\item[{float}]{time\+\_\+stretch\+\_\+factor }\end{DoxyParamCaption})}
 
 
 
@@ -132,3 +147,7 @@ generates new grain depending on {\itshape grain\+\_\+size\+\_\+samples}, {\itsh
 \begin{DoxyReturn}{Returns}
 grain 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{grain_8c_source_l00046}{46}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+
