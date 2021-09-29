@@ -1,13 +1,3 @@
-// duration in ms and/or samples
-// dur_in_ms * (samplerate/1000) = dur_in_samples
-
-// fade in/out -> hanning fenster in main file?
-
-// start point [in samples] relative to the sound file -> PASS IN original playback point
-// endpoint = startpoint + duration
-// overlap
-
-// length of the entire sound file [in samples]
 /**
  * @file grain.c
  * @author Nikita Kretschmar
@@ -47,21 +37,23 @@
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)
 {
     grain x;
-    grain *next_grain = NULL;
-    grain *previous_grain = NULL;
+    //grain *next_grain = NULL;
+    //grain *previous_grain = NULL;
     x.grain_active = false;
     x.grain_size_samples = grain_size_samples;
     x.grain_index = grain_index;
     x.internal_step_count = 0;
     x.time_stretch_factor = time_stretch_factor;
+    bool reverse_playback = x.time_stretch_factor < 0.0;
     
     
     //x.start = fabsf(x.grain_size_samples * grain_index * x.time_stretch_factor);
     x.start = start_pos;
+    if(x.start < 0) x.start += (soundfile_size - 1);
     x.end = x.start + ((x.grain_size_samples - 1) * x.time_stretch_factor);
     
-    if(x.end < 0) x.end = soundfile_size - 1 - x.end;
-    if(x.end > soundfile_size - 1) x.end = soundfile_size - 1;
+    if(x.end < 0) x.end += soundfile_size - 1;
+    if(x.end > soundfile_size - 1) x.end -= (soundfile_size - 1);
     
     /*
     if(time_stretch_factor < 0.0)
@@ -72,12 +64,18 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
     
     x.current_sample_pos = x.start;
     x.next_sample_pos = x.current_sample_pos + x.time_stretch_factor;
-    if(x.next_sample_pos < 0) x.next_sample_pos = soundfile_size - 1 - x.next_sample_pos;
-    if(x.next_sample_pos >= x.end) x.next_sample_pos = x.end;
     
-    // If the endpoint exceeds the soundfile length in positive or negative direction
-    // clamp the grain length to a point the size of the file
-    // maybe just use fabsf(x.end) < soundfile_size
+    if(reverse_playback)
+    {
+        if(x.next_sample_pos < 0) x.next_sample_pos += (soundfile_size - 1);
+        if(x.next_sample_pos < x.end && x.start > x.end) x.next_sample_pos = x.end;
+ 
+    }
+    else
+    {
+        if(x.next_sample_pos > (soundfile_size - 1)) x.next_sample_pos -= (soundfile_size - 1);
+        if(x.next_sample_pos >= x.end && x.start < x.end) x.next_sample_pos = x.end;
+    }
 
     return x;
 }
@@ -127,15 +125,14 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
         g->current_sample_pos = g->next_sample_pos;
         g->next_sample_pos += synth->pitch_factor;
         // does the next index exceed the soundfile length? (Forward Playback)
-        if(g->next_sample_pos > synth->soundfile_length)
+        if(g->next_sample_pos > (synth->soundfile_length - 1))
         {
-            float diff = g->next_sample_pos - synth->soundfile_length;
-            g->next_sample_pos = diff;
+            g->next_sample_pos -= (synth->soundfile_length - 1);
         }
         // Or does it go negatively past 0 (Reverse Playback)
         if(g->next_sample_pos < 0.0)
         {
-            g->next_sample_pos += synth->soundfile_length - 1;
+            g->next_sample_pos += (synth->soundfile_length - 1);
         }
         g->internal_step_count++;
         

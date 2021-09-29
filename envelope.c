@@ -13,11 +13,6 @@
  * 
  */
 
-/*
-    ADSR durchläuft Zeitachse (x-Achse) auf y-Achse Werte von 0-1
-    y-Werte werden an granular_synth übergeben (an NoteOn Methode?) und dort auf Output Level multipliziert
-*/
-
 #include "envelope.h"
 #include "grain.h"
 #include "vas_mem.h"
@@ -25,8 +20,6 @@
 #include "m_pd.h"
 #include "c_granular_synth.h"
 
-
-//static t_class *envelope_class;
 /**
  * @brief calculates ADSR value
  * calculates single atm ADSR value according to current state
@@ -49,10 +42,7 @@ float calculate_adsr_value(c_granular_synth *x)
             }
             break;
         case DECAY:
-            //decay_val = (x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples;
             adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples*x->current_adsr_stage_index++);
-            //adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)*(x->current_adsr_stage_index++/x->adsr_env->decay_samples));
-            
             if(x->current_adsr_stage_index >= x->adsr_env->decay_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -101,12 +91,10 @@ float calculate_adsr_value(c_granular_synth *x)
 envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 {
-    envelope *x = (envelope *) vas_mem_alloc(sizeof(envelope));
+    envelope *x = (envelope *) malloc(sizeof(envelope));
     t_float SAMPLERATE = sys_getsr();
     
-    //ACHTUNG diese muss bei Note on wieder raus -> start mit silent
     x->adsr = SILENT;
-
     x->attack = attack;
     x->decay = decay;
     x->sustain = sustain;

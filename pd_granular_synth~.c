@@ -13,14 +13,6 @@
 #include "c_granular_synth.h"
 #include "purple_utils.h"
 
-
-// Absolute playback point [in samples]
-// aendert sich nie, nur die Grainstartpunkte werden relativ zu diesem angesetzt
-// implementieren mit skaliertem phasor~ object [0:1]->[0:length]
-
-// entweder bekommen Grain Fade In/Out Parameter oder allen ein Hanning Fenster überlagert
-// jeweils um Clicks am Start/Ende zu glaetten
-
 static t_class *pd_granular_synth_tilde_class;
 
 /**
