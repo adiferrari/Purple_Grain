@@ -3,7 +3,7 @@
  * @author Kretschmar, Nikita 
  * @author Philipp, Adrian 
  * @author Strobl, Micha 
- * @author Wennemann,Tim
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file to @a grain.c file
  */
@@ -22,37 +22,40 @@
 extern "C" {
 #endif
 
-//import SAMPLERATE from granular_synth.h
-
+/**
+ * @struct grain
+ * @brief pure data struct of the @a grain object
+ * @details pure data struct of the @a grain object, defines all necessary variables for grain management<br>
+ */
 typedef struct grain
 {
-    struct grain        *next_grain,
-                        *previous_grain;
-    t_int               grain_size_samples,   // Grain size in samples
-                        grain_index,
-                        internal_step_count;
-    t_float             start,
-                        end,
-                        time_stretch_factor,
-                        current_sample_pos,
-                        next_sample_pos;
-    bool                grain_active;
-    
-    // statt start nehme source_read_position
-    // dann laufe über so viele Schritte wie grain_size_samples groß ist
-    // Schrittweite modulieren, hochzählen und nach außen zurückgeben
-    
-
-    //grain *next_grain;          // next and previous pointers have to be passed back and forth
-    //grain *previous_grain;      // between instance of granular_synth and every instantiated grain
+    struct grain        *next_grain,            ///< next grain according to the current one, passed back and forth between instances of @a granular_synth and every instantiated grain <br>
+                        *previous_grain;        ///< previous grain according to the current one, passed back and forth between instances of @a granular_synth and every instantiated grain <br>
+    t_int               grain_size_samples,     ///< size of the grain in samples <br>
+                        grain_index,            ///< index of the current grain <br>
+                        internal_step_count;    ///< count of steps <br>
+    t_float             start,                  ///< starting point <br>
+                        end,                    ///< ending point <br>
+                        time_stretch_factor,    ///< resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider <br>
+                        current_sample_pos,     ///< position of the current sample <br>
+                        next_sample_pos;        ///< position of the next sample according to the current one <br>
+    bool                grain_active;           ///< current state of the grain, inactive or active <br>
+        
 } grain;
 
-
+/**
+ * @brief generates new grain
+ * @details generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size
+ * @note include order forced this method to be included in c_granular_synth.h <br>
+ */
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor);
 
-// Include order forced this method to be included in c_granular_synth.h
-//void grain_internal_scheduling(grain* g, c_granular_synth* synth);
 
+/**
+ * @brief  frees grain
+ * @details frees grain, necessary reset for further instances of grain genration <br>
+ * @param  x input pointer of @a grain_free object 
+ */
 void grain_free(grain *x);
 
 #ifdef __cplusplus

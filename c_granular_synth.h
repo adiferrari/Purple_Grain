@@ -3,7 +3,7 @@
  * @author Kretschmar, Nikita 
  * @author Philipp, Adrian 
  * @author Strobl, Micha 
- * @author Wennemann,Tim 
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file of @a granular_synth.c file
  */
@@ -28,7 +28,7 @@ extern "C" {
 /**
  * @struct c_granular_synth
  * @brief pure data struct of the @a c_granular_synth object
- * @details pure data struct of the @a c_granular_synth object, defines all necessary variables for synth operation<b>
+ * @details pure data struct of the @a c_granular_synth object, defines all necessary variables for synth operation<br>
  */
 
 typedef struct c_granular_synth

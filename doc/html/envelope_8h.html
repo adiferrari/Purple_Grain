@@ -110,21 +110,21 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a159f982df6bc27a29ac68734579fbd83"><td class="memItemLeft" align="right" valign="top"><a id="a159f982df6bc27a29ac68734579fbd83"></a>
-typedef struct <a class="el" href="structenvelope.html">envelope</a>&#160;</td><td class="memItemRight" valign="bottom"><b>envelope</b></td></tr>
+typedef struct <a class="el" href="structenvelope.html">envelope</a>&#160;</td><td class="memItemRight" valign="bottom"><br>envelope</b></td></tr>
 <tr class="separator:a159f982df6bc27a29ac68734579fbd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac498c9df84b8f23df1cc926bf6bdbd4f"><td class="memItemLeft" align="right" valign="top"><a id="ac498c9df84b8f23df1cc926bf6bdbd4f"></a>
-typedef struct <a class="el" href="structwindow.html">window</a>&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></td></tr>
+typedef struct <a class="el" href="structwindow.html">window</a>&#160;</td><td class="memItemRight" valign="bottom"><br>window</b></td></tr>
 <tr class="separator:ac498c9df84b8f23df1cc926bf6bdbd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a751beb55e4099c89885109d9978de19d"><td class="memItemLeft" align="right" valign="top"><a id="a751beb55e4099c89885109d9978de19d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>adsr_stage</b> { <br />
-&#160;&#160;<b>ATTACK</b>, 
-<b>DECAY</b>, 
-<b>SUSTAIN</b>, 
-<b>RELEASE</b>, 
+<tr class="memitem:a751beb55e4099c89885109d9978de19d"><td class="memItemLeft" align="right" valign="top"><a id="a751beb55e4099c89885109d9978de19d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><br>adsr_stage</b> { <br />
+&#160;&#160;<br>ATTACK</b>, 
+<br>DECAY</b>, 
+<br>SUSTAIN</b>, 
+<br>RELEASE</b>, 
 <br />
-&#160;&#160;<b>SILENT</b>
+&#160;&#160;<br>SILENT</b>
 <br />
  }</td></tr>
 <tr class="separator:a751beb55e4099c89885109d9978de19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,7 +132,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2e76728151010ee93496e3b01cea0bb9"><td class="memItemLeft" align="right" valign="top"><a id="a2e76728151010ee93496e3b01cea0bb9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getsamples_from_ms</b> (int ms, float sr)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><br>getsamples_from_ms</b> (int ms, float sr)</td></tr>
 <tr class="separator:a2e76728151010ee93496e3b01cea0bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0854138c64859a1f4079feb9b9194786"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structenvelope.html">envelope</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">envelope_new</a> (int attack, int decay, float sustain, int release)</td></tr>
 <tr class="memdesc:a0854138c64859a1f4079feb9b9194786"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates new ADSR envelope  <a href="envelope_8h.html#a0854138c64859a1f4079feb9b9194786">More...</a><br /></td></tr>
@@ -224,14 +224,14 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
 <p>generates new ADSR envelope </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <b> </b></td></tr>
-    <tr><td class="paramname">decay</td><td><b>decay time in the range of 0 - 4000ms, adjustable through slider <b> </b></b></td></tr>
-    <tr><td class="paramname">sustain</td><td><b><b>sustain time in the range of 0 - 1, adjustable through slider <b> </b></b></b></td></tr>
-    <tr><td class="paramname">release</td><td><b><b><b>release time in the range of 0 - 10000ms, adjustable through slider <b> </b></b></b></b></td></tr>
+    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br> </b></td></tr>
+    <tr><td class="paramname">decay</td><td><br>decay time in the range of 0 - 4000ms, adjustable through slider <br> </b></b></td></tr>
+    <tr><td class="paramname">sustain</td><td><br><br>sustain time in the range of 0 - 1, adjustable through slider <br> </b></b></b></td></tr>
+    <tr><td class="paramname">release</td><td><br><br><br>release time in the range of 0 - 10000ms, adjustable through slider <br> </b></b></b></b></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><b><b><b><b> envelope* </b></b></b></b></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><br><br><br><br> envelope* </b></b></b></b></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>muss bei Note on wieder raus -&gt; start mit silent</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00094">94</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
