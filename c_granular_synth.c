@@ -86,7 +86,7 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
     int i = vector_size;
     float gauss_val, adsr_val;
     
-    while(i--)
+     while(i--)
     {
         x->output_buffer = 0;
         
@@ -136,8 +136,12 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
             // Must be in Release State
             else
             {
-                if(x->adsr_env->adsr != RELEASE) x->current_adsr_stage_index = 0;
+                if(x->adsr_env->adsr != RELEASE)
+                {
+                    x->current_adsr_stage_index = 0;
+                }
                 x->adsr_env->adsr = RELEASE;
+
                 //x->current_adsr_stage_index = 0;
                 adsr_val = calculate_adsr_value(x);
             }
@@ -178,8 +182,11 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
  */
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
 {
-    int index = ceil((x->sprayed_start_pos * fabs(x->pitch_factor)) / x->grain_size_samples);
-    x->current_grain_index = index % x->num_grains;
+    if(x->num_grains > 0)
+    {
+        int index = ceil((x->sprayed_start_pos * fabs(x->pitch_factor)) / x->grain_size_samples);
+        x->current_grain_index = (index == 0) ? 0 : index % x->num_grains;
+    }
 }
 /**
  * @brief generates a grain table

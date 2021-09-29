@@ -41,7 +41,8 @@ typedef struct envelope
     t_object x_obj;
     t_int attack;
     t_int decay;
-    t_float sustain;
+    t_float peak,
+            sustain;
     t_int release;
     t_int duration;
     t_int attack_samples,

@@ -35,6 +35,7 @@ float calculate_adsr_value(c_granular_synth *x)
         case ATTACK:
             attack_val = (1.0/x->adsr_env->attack_samples);
             adsr_val = x->current_adsr_stage_index++ * attack_val;
+            x->adsr_env->peak = adsr_val;
             if(x->current_adsr_stage_index >= x->adsr_env->attack_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -43,6 +44,7 @@ float calculate_adsr_value(c_granular_synth *x)
             break;
         case DECAY:
             adsr_val = 1.0 + ((x->adsr_env->sustain-1.0)/x->adsr_env->decay_samples*x->current_adsr_stage_index++);
+            x->adsr_env->peak = adsr_val;
             if(x->current_adsr_stage_index >= x->adsr_env->decay_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -51,6 +53,7 @@ float calculate_adsr_value(c_granular_synth *x)
             break;
         case SUSTAIN:
             adsr_val = x->adsr_env->sustain;
+            if(x->adsr_env->peak != x->adsr_env->sustain) x->adsr_env->peak = x->adsr_env->sustain;
             break;
         case RELEASE:
             if(x->midi_velo > 0)
@@ -59,7 +62,7 @@ float calculate_adsr_value(c_granular_synth *x)
                 x->current_adsr_stage_index = 0;
                 break;
             }
-            adsr_val = x->adsr_env->sustain - ((x->adsr_env->sustain/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
+            adsr_val = x->adsr_env->peak - ((x->adsr_env->peak/x->adsr_env->release_samples)*x->current_adsr_stage_index++);
             if(x->current_adsr_stage_index >= x->adsr_env->release_samples)
             {
                 x->current_adsr_stage_index = 0;
@@ -74,6 +77,7 @@ float calculate_adsr_value(c_granular_synth *x)
                 break;
             }
             adsr_val = 0;
+            x->adsr_env->peak = 0;
             break;
     }
     return adsr_val;
@@ -98,6 +102,7 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
     x->attack = attack;
     x->decay = decay;
     x->sustain = sustain;
+    x->peak = 0.0;
     x->release = release;
     
     x->attack_samples = get_samples_from_ms(attack, SAMPLERATE);
