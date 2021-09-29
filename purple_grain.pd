@@ -1,4 +1,4 @@
-#N canvas 224 628 1366 671 12;
+#N canvas 103 651 1366 671 12;
 #X declare -stdpath soundfiler;
 #X obj 106 51 soundfiler;
 #X obj 535 17 declare -stdpath soundfiler;
@@ -6,11 +6,10 @@
 #X obj 20 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sample 345168 float 2;
-#X coords 0 1 345168 -1 200 140 1;
+#X array sample 363825 float 2;
+#X coords 0 1 363825 -1 200 140 1;
 #X restore 703 122 graph;
 #X obj 176 526 dac~;
-#X msg 107 18 read -resize resources/amen_break.wav sample;
 #X msg 50 154 soundfile_arrayname sample;
 #X obj 48 39 t b b;
 #X obj 188 498 pd_granular_synth~ sample;
@@ -18,21 +17,21 @@
 #X floatatom 130 337 5 0 0 0 - - -;
 #X obj 257 453 notein;
 #X obj 551 138 vsl 15 128 0.01 1 0 0 empty empty S 0 -9 0 10 -262144
--1 -1 6538 1;
+-1 -1 5629 1;
 #X obj 617 136 vsl 15 128 1 10000 1 0 empty empty R 0 -9 0 10 -262144
--1 -1 8283 1;
+-1 -1 8952 1;
 #X floatatom 443 278 5 0 0 0 - - -;
 #X floatatom 497 278 5 0 0 0 - - -;
 #X floatatom 551 278 5 0 0 0 - - -;
 #X floatatom 611 278 5 0 0 0 - - -;
 #X obj 443 137 vsl 15 128 1 3000 1 0 empty empty A 0 -9 0 10 -262144
--1 -1 5599 1;
+-1 -1 10463 1;
 #X obj 497 137 vsl 15 128 1 3000 1 0 empty empty D 0 -9 0 10 -262144
--1 -1 5355 1;
+-1 -1 7971 1;
 #X obj 705 282 hsl 200 15 0 127 0 0 empty empty StartPosition(samples)-MIDI_CC_3
--2 -8 0 10 -262144 -1 -1 313 1;
-#X obj 82 285 hsl 128 15 0 500 0 0 empty empty GrainSize(ms)-MIDI_CC_2
--2 -8 0 10 -262144 -1 -1 2500 1;
+-2 -8 0 10 -262144 -1 -1 5328 1;
+#X obj 82 285 hsl 128 15 0 300 0 0 empty empty GrainSize(ms)-MIDI_CC_2
+-2 -8 0 10 -262144 -1 -1 3900 1;
 #X obj 699 84 ctlin 3;
 #X msg 105 114 s sample.length;
 #X obj 281 277 hsl 128 15 -2 4 0 0 empty empty Playback_Speed -2 -8
@@ -42,7 +41,7 @@
 #X obj 609 363 hsl 128 15 0.001 1 0 0 empty empty empty -2 -8 0 10
 -262144 -1 -1 9810 1;
 #X obj 577 462 hsl 128 15 0 75 0 0 empty empty Spray -2 -8 0 10 -262144
--1 -1 10800 1;
+-1 -1 9900 1;
 #X floatatom 574 485 5 0 0 0 - - -;
 #N canvas 692 247 450 300 Attack 0;
 #X obj 27 242 outlet;
@@ -179,7 +178,7 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X connect 7 0 8 1;
 #X connect 8 0 0 0;
 #X restore 252 96 pd StartPosition;
-#N canvas 1419 414 450 300 Playback_Speed 0;
+#N canvas 1419 414 450 300 Spray 0;
 #X obj 27 242 outlet;
 #X obj 136 144 ctlin;
 #X floatatom 136 190 5 0 0 3 - - -;
@@ -194,42 +193,44 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X connect 5 0 7 0;
 #X connect 6 0 5 0;
 #X connect 7 0 0 0;
-#X restore 566 428 pd Playback_Speed;
+#X restore 566 428 pd Spray;
+#X msg 113 17 read -resize resources/samples/SYNTH-Brilliance.wav sample
+;
 #X connect 0 0 2 0;
-#X connect 2 0 24 0;
-#X connect 2 0 38 0;
-#X connect 3 0 8 0;
-#X connect 6 0 0 0;
-#X connect 8 0 7 0;
-#X connect 8 1 6 0;
-#X connect 9 0 5 0;
-#X connect 9 0 5 1;
-#X connect 10 0 3 0;
-#X connect 11 0 9 1;
-#X connect 12 0 9 4;
-#X connect 12 1 9 5;
+#X connect 2 0 23 0;
+#X connect 2 0 37 0;
+#X connect 3 0 7 0;
+#X connect 7 0 6 0;
+#X connect 7 1 39 0;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;
+#X connect 9 0 3 0;
+#X connect 10 0 8 1;
+#X connect 11 0 8 4;
+#X connect 11 1 8 5;
+#X connect 12 0 16 0;
 #X connect 13 0 17 0;
-#X connect 14 0 18 0;
-#X connect 15 0 9 6;
-#X connect 16 0 9 7;
-#X connect 17 0 9 8;
-#X connect 18 0 9 9;
+#X connect 14 0 8 6;
+#X connect 15 0 8 7;
+#X connect 16 0 8 8;
+#X connect 17 0 8 9;
+#X connect 18 0 14 0;
 #X connect 19 0 15 0;
-#X connect 20 0 16 0;
-#X connect 22 0 11 0;
-#X connect 23 0 21 0;
-#X connect 25 0 26 0;
-#X connect 26 0 9 3;
-#X connect 27 0 9 10;
-#X connect 28 0 27 0;
-#X connect 29 0 30 0;
-#X connect 30 0 9 11;
+#X connect 21 0 10 0;
+#X connect 22 0 20 0;
+#X connect 24 0 25 0;
+#X connect 25 0 8 3;
+#X connect 26 0 8 10;
+#X connect 27 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 0 8 11;
+#X connect 30 0 18 0;
 #X connect 31 0 19 0;
-#X connect 32 0 20 0;
+#X connect 32 0 12 0;
 #X connect 33 0 13 0;
-#X connect 34 0 14 0;
-#X connect 35 0 28 0;
-#X connect 36 0 22 0;
-#X connect 37 0 25 0;
-#X connect 38 0 9 2;
-#X connect 39 0 29 0;
+#X connect 34 0 27 0;
+#X connect 35 0 21 0;
+#X connect 36 0 24 0;
+#X connect 37 0 8 2;
+#X connect 38 0 28 0;
+#X connect 39 0 0 0;
