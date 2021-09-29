@@ -89,10 +89,6 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
  */
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
-    if(synth->time_stretch_factor <= -1.0)
-    {
-        //
-    }
     if(synth->reverse_playback)
     {
         // ???
@@ -156,6 +152,8 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
             g->current_sample_pos = g->start;
             g->next_sample_pos = g->current_sample_pos + g->time_stretch_factor;
             g->internal_step_count = 0;
+            synth->spray_true_offset = 0;
+            c_granular_synth_reset_playback_position(synth);
             //synth->playback_position = synth->current_start_pos;
         }
         

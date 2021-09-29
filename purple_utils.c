@@ -15,6 +15,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "m_pd.h"
 #include "purple_utils.h"
@@ -78,4 +79,11 @@ void switch_float_values(float *a, float *b)
     a = b;
     b = temp_ptr;
     return;
+}
+
+int spray_dependant_playback_nudge(int spray_input)
+{
+    if(spray_input == 0) return 0;
+    int off = rand() % (2 * spray_input);
+    return off - spray_input;
 }

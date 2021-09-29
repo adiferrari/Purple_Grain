@@ -39,7 +39,8 @@ typedef struct pd_granular_synth_tilde
                         midi_velo,
                         attack,
                         decay,
-                        release;
+                        release,
+                        spray_input;
     t_float             sustain,
                         time_stretch_factor,
                         gauss_q_factor;
@@ -58,7 +59,8 @@ typedef struct pd_granular_synth_tilde
                         *in_decay,
                         *in_sustain,
                         *in_release,
-                        *in_gauss_q_factor;
+                        *in_gauss_q_factor,
+                        *in_spray;
     t_outlet            *out;
 } t_pd_granular_synth_tilde;
 
@@ -87,6 +89,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->sustain = 0.7;
     x->release = 1000;
     x->gauss_q_factor = 0.2;
+    x->spray_input = 0;
     //The main inlet is created automatically
     
     x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
@@ -99,6 +102,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->in_sustain = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("sustain"));
     x->in_release = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("release"));
     x->in_gauss_q_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("gauss_q_factor"));
+    x->in_spray = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("spray"));
     
     x->out = outlet_new(&x->x_obj, &s_signal);
     return (void *)x;
@@ -122,7 +126,7 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
     if(x->start_pos < 0) x->start_pos = 0;
     if(x->start_pos > (int)x->soundfile_length) x->start_pos = x->soundfile_length - 1;
 
-    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor);
+    c_granular_synth_properties_update(x->synth, x->grain_size, x->start_pos, x->time_stretch_factor, x->midi_velo, x->midi_pitch, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->spray_input);
 
     c_granular_synth_process(x->synth, in, out, n);
     /* return a pointer to the dataspace for the next dsp-object */
@@ -153,6 +157,8 @@ void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
         inlet_free(x->in_decay);
         inlet_free(x->in_sustain);
         inlet_free(x->in_release);
+        inlet_free(x->in_gauss_q_factor);
+        inlet_free(x->in_spray);
         outlet_free(x->out);
         c_granular_synth_free(x->synth);
         free(x);
@@ -201,7 +207,7 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->spray_input);
     }
 
     return;
@@ -354,9 +360,21 @@ static void pd_granular_synth_set_release(t_pd_granular_synth_tilde *x, t_floata
  */
 static void pd_granular_synth_set_gauss_q_factor(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
-    float new_gauss_q_factor = (float)f;
+    float new_gauss_q_factor = f;
     if(new_gauss_q_factor < 0) new_gauss_q_factor = 0;
     x->gauss_q_factor = (float)new_gauss_q_factor;
+}
+
+/**
+ * @brief
+ *
+ * @param x
+ * @param f
+ */
+static void pd_granular_synth_set_spray_input(t_pd_granular_synth_tilde *x, t_floatarg f)
+{
+    int new_spray = (int)f;
+    x->spray_input = get_samples_from_ms(new_spray, x->sr);     // Pass Spray Slider value as ms->samples converted
 }
 
 /**
@@ -411,6 +429,8 @@ void pd_granular_synth_tilde_setup(void)
                     gensym("release"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_gauss_q_factor,
                     gensym("gauss_q_factor"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_spray_input,
+                  gensym("spray"), A_DEFFLOAT, 0);
     
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_get_arrayname_message,
                         gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);
