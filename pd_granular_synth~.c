@@ -83,7 +83,7 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->start_pos = 0;
     x->time_stretch_factor = 1.0,
     x->midi_pitch = 48;
-    x->pitch_faktor = 2;//x->time_stretch_factor * x->midi_pitch / 48.0;
+    x->pitch_faktor = 1;
     x->midi_velo = 0;
     x->attack = 500;
     x->decay = 500;
