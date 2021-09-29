@@ -1,4 +1,4 @@
-#N canvas 488 656 1366 671 12;
+#N canvas 224 628 1366 671 12;
 #X declare -stdpath soundfiler;
 #X obj 106 51 soundfiler;
 #X obj 535 17 declare -stdpath soundfiler;
@@ -18,21 +18,21 @@
 #X floatatom 130 337 5 0 0 0 - - -;
 #X obj 257 453 notein;
 #X obj 551 138 vsl 15 128 0.01 1 0 0 empty empty S 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6538 1;
 #X obj 617 136 vsl 15 128 1 10000 1 0 empty empty R 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 8283 1;
 #X floatatom 443 278 5 0 0 0 - - -;
 #X floatatom 497 278 5 0 0 0 - - -;
 #X floatatom 551 278 5 0 0 0 - - -;
 #X floatatom 611 278 5 0 0 0 - - -;
 #X obj 443 137 vsl 15 128 1 3000 1 0 empty empty A 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5599 1;
 #X obj 497 137 vsl 15 128 1 3000 1 0 empty empty D 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5355 1;
 #X obj 705 282 hsl 200 15 0 127 0 0 empty empty StartPosition(samples)-MIDI_CC_3
--2 -8 0 10 -262144 -1 -1 12379 1;
+-2 -8 0 10 -262144 -1 -1 313 1;
 #X obj 82 285 hsl 128 15 0 500 0 0 empty empty GrainSize(ms)-MIDI_CC_2
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 2500 1;
 #X obj 699 84 ctlin 3;
 #X msg 105 114 s sample.length;
 #X obj 281 277 hsl 128 15 -2 4 0 0 empty empty Playback_Speed -2 -8
@@ -40,9 +40,9 @@
 #X floatatom 282 305 5 0 0 0 - - -;
 #X floatatom 606 383 5 0 0 0 - - -;
 #X obj 609 363 hsl 128 15 0.001 1 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 9810 1;
 #X obj 577 462 hsl 128 15 0 75 0 0 empty empty Spray -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 10800 1;
 #X floatatom 574 485 5 0 0 0 - - -;
 #N canvas 692 247 450 300 Attack 0;
 #X obj 27 242 outlet;
@@ -141,7 +141,7 @@ are currently turning.;
 preferd midi-knob. Get the cc-number from the object below.;
 #X obj 27 52 ctlin 2;
 #X obj 27 155 / 127;
-#X obj 27 196 * 500;
+#X obj 27 196 * 300;
 #X connect 1 1 2 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;

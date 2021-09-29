@@ -415,9 +415,6 @@ void pd_granular_synth_tilde_setup(void)
                     gensym("gauss_q_factor"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_spray_input,
                   gensym("spray"), A_DEFFLOAT, 0);
-    
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_get_arrayname_message,
-                        gensym("soundfile_arrayname"), A_DEFSYMBOL, 0);
 
       CLASS_MAINSIGNALIN(pd_granular_synth_tilde_class, t_pd_granular_synth_tilde, f);
     /**

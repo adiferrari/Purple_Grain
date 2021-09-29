@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A31E06126FBA2AE001B9217 /* purple_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A31E05F26FBA2AE001B9217 /* purple_utils.h */; };
-		3A31E06226FBA2AE001B9217 /* purple_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A31E06026FBA2AE001B9217 /* purple_utils.c */; };
 		3A486F6926FA2AF0000657F1 /* envelope.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A486F6826FA2AF0000657F1 /* envelope.h */; };
 		3A486F6C26FA2B1A000657F1 /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A486F6B26FA2B1A000657F1 /* envelope.c */; };
 		3A486F6F26FA2B3D000657F1 /* grain.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A486F6E26FA2B3D000657F1 /* grain.c */; };
-		3A486F7326FA2D80000657F1 /* vas_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A486F7126FA2D80000657F1 /* vas_mem.h */; };
-		3A486F7426FA2D80000657F1 /* vas_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A486F7226FA2D80000657F1 /* vas_mem.c */; };
 		841712CC2091E46A00B02D54 /* c_granular_synth.c in Sources */ = {isa = PBXBuildFile; fileRef = 841712CB2091E46A00B02D54 /* c_granular_synth.c */; };
 		844237661FB4A69E005ACA50 /* m_pd.h in Headers */ = {isa = PBXBuildFile; fileRef = 844237651FB4A69D005ACA50 /* m_pd.h */; };
 		84AEDB7920C2A91900256DE2 /* pd_granular_synth~.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AEDB7720C2A91900256DE2 /* pd_granular_synth~.c */; };
@@ -28,8 +24,6 @@
 		3A486F6826FA2AF0000657F1 /* envelope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = envelope.h; sourceTree = "<group>"; };
 		3A486F6B26FA2B1A000657F1 /* envelope.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = envelope.c; sourceTree = "<group>"; };
 		3A486F6E26FA2B3D000657F1 /* grain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = grain.c; sourceTree = "<group>"; };
-		3A486F7126FA2D80000657F1 /* vas_mem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vas_mem.h; sourceTree = "<group>"; };
-		3A486F7226FA2D80000657F1 /* vas_mem.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vas_mem.c; sourceTree = "<group>"; };
 		841712CB2091E46A00B02D54 /* c_granular_synth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = c_granular_synth.c; sourceTree = "<group>"; };
 		844237651FB4A69D005ACA50 /* m_pd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_pd.h; sourceTree = "<group>"; };
 		84AEDB7720C2A91900256DE2 /* pd_granular_synth~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "pd_granular_synth~.c"; sourceTree = "<group>"; };
@@ -61,8 +55,6 @@
 		FA2927E31A899B4C005A2BA9 = {
 			isa = PBXGroup;
 			children = (
-				3A486F7126FA2D80000657F1 /* vas_mem.h */,
-				3A486F7226FA2D80000657F1 /* vas_mem.c */,
 				3A486F6E26FA2B3D000657F1 /* grain.c */,
 				3A486F6B26FA2B1A000657F1 /* envelope.c */,
 				3A486F6826FA2AF0000657F1 /* envelope.h */,
@@ -99,7 +91,6 @@
 				844237661FB4A69E005ACA50 /* m_pd.h in Headers */,
 				EC0FB0DF26FBA3FF0065ACE0 /* purple_utils.h in Headers */,
 				84AEDB7A20C2A91900256DE2 /* grain.h in Headers */,
-				3A486F7326FA2D80000657F1 /* vas_mem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A486F7426FA2D80000657F1 /* vas_mem.c in Sources */,
 				84AEDB7920C2A91900256DE2 /* pd_granular_synth~.c in Sources */,
 				3A486F6F26FA2B3D000657F1 /* grain.c in Sources */,
 				EC0FB0DE26FBA3FF0065ACE0 /* purple_utils.c in Sources */,
