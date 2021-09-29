@@ -32,7 +32,7 @@
  * @param release release time in the range of 0 - 10000ms, adjustable through slider
  * @return c_granular_synth* 
  */
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input, float pitch_factor, int midi_pitch)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -43,7 +43,9 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     //x->soundfile_table = (float *) vas_mem_alloc(x->soundfile_length * sizeof(float));
     x->soundfile_table = (float *) malloc(x->soundfile_length * sizeof(float));
     x->time_stretch_factor = time_stretch_factor;
-    x->reverse_playback = (x->time_stretch_factor < 0);
+    x->midi_pitch = midi_pitch;
+    x->pitch_factor =  time_stretch_factor * (float)midi_pitch/48.0;
+    x->reverse_playback = (x->pitch_factor < 0);
     x->output_buffer = 0.0;
     x->current_start_pos = start_pos;                   // Set by user in pd with slider
     x->sprayed_start_pos = start_pos;
@@ -169,7 +171,7 @@ void c_granular_synth_noteOn(c_granular_synth *x, float frequency, float velocit
  */
 void c_granular_synth_set_num_grains(c_granular_synth *x)
 {
-    x->num_grains = (int)ceilf(fabsf(x->soundfile_length * x->time_stretch_factor) / x->grain_size_samples);
+    x->num_grains = (int)ceilf(fabsf(x->soundfile_length * x->pitch_factor) / x->grain_size_samples);
 }
 /**
  * @brief adjusts current grain index
@@ -179,7 +181,7 @@ void c_granular_synth_set_num_grains(c_granular_synth *x)
 void c_granular_synth_adjust_current_grain_index(c_granular_synth *x)
 {
     //int index = x->current_start_pos / x->grain_size_samples;
-    int index = ceil((x->sprayed_start_pos * fabs(x->time_stretch_factor)) / x->grain_size_samples);
+    int index = ceil((x->sprayed_start_pos * fabs(x->pitch_factor)) / x->grain_size_samples);
     x->current_grain_index = index;
 }
 /**
@@ -199,16 +201,16 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
     // Muss als Ring Buffer auch die ersten Grains befüllen!!
     
     
-    
     // For negative time_stretch_factor values read samples in backwards direction
     if(x->reverse_playback)
     {
         for(j = x->current_grain_index; j >= 0; j--)
         {
+            
             grains_table[j] = grain_new(x->grain_size_samples,
                                         x->soundfile_length,
-                                        (x->sprayed_start_pos + x->grain_size_samples + start_offset), // ???
-                                        j, x->time_stretch_factor);
+                                        (x->sprayed_start_pos + x->grain_size_samples + start_offset),
+                                        j, x->pitch_factor);
             if(j < x->current_grain_index) grains_table[j+1].next_grain = &grains_table[j];
             /*
             if(grains_table[j].start >= x->playback_position &&  grains_table[j].end <= x->playback_position)
@@ -216,7 +218,7 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
                 grains_table[j].grain_active = true;
             }
              */
-            start_offset += x->time_stretch_factor * x->grain_size_samples;
+            start_offset += x->pitch_factor * x->grain_size_samples;
         }
         grains_table[0].next_grain = &grains_table[x->num_grains - 1];
     }
@@ -227,8 +229,8 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
         {
             grains_table[j] = grain_new(x->grain_size_samples,
                                         x->soundfile_length,
-                                        (x->sprayed_start_pos + start_offset), // ???
-                                        j, x->time_stretch_factor);
+                                        (x->sprayed_start_pos + start_offset),
+                                        j, x->pitch_factor);
             if(j > 0) grains_table[j-1].next_grain = &grains_table[j];
             /*
             if(grains_table[j].start <= x->playback_position &&  grains_table[j].end >= x->playback_position)
@@ -236,7 +238,7 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
                 grains_table[j].grain_active = true;
             }
              */
-            start_offset += x->time_stretch_factor * x->grain_size_samples;
+            start_offset += x->pitch_factor * x->grain_size_samples;
         }
         grains_table[x->num_grains - 1].next_grain = &grains_table[0];
     }
@@ -264,6 +266,18 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
  */
 void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input)
 {
+    
+    if(x->midi_velo != midi_velo)
+    {
+        x->midi_velo = midi_velo;
+    }
+    
+    if(x->midi_pitch != midi_pitch)
+    {
+        x->midi_pitch = midi_pitch;
+        if(x->midi_velo != 0) x->pitch_factor = time_stretch_factor * midi_pitch / 48.0;
+    }
+    
     if(x->grain_size_ms != grain_size_ms ||
        x->current_start_pos != start_pos ||
        x->time_stretch_factor != time_stretch_factor ||
@@ -287,20 +301,12 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         if(x->time_stretch_factor != time_stretch_factor)
         {
             x->time_stretch_factor = time_stretch_factor;
+            x->pitch_factor = time_stretch_factor * midi_pitch / 48.0;
+            
         }
         c_granular_synth_set_num_grains(x);
         c_granular_synth_adjust_current_grain_index(x);
         c_granular_synth_populate_grain_table(x);
-    }
-    
-    if(x->midi_pitch != midi_pitch)
-    {
-        x->midi_pitch = midi_pitch;
-    }
-    
-    if(x->midi_velo != midi_velo)
-    {
-        x->midi_velo = midi_velo;
     }
     
     if (x->adsr_env->attack != attack || x->adsr_env->decay != decay || x->adsr_env->sustain != sustain || x->adsr_env->release != release)
