@@ -1,21 +1,12 @@
-// duration in ms and/or samples
-// dur_in_ms * (samplerate/1000) = dur_in_samples
-
-// fade in/out -> hanning fenster in main file?
-
-// start point [in samples] relative to the sound file -> PASS IN original playback point
-// endpoint = startpoint + duration
-// overlap
-
-// length of the entire sound file [in samples]
 /**
  * @file grain.c
  * @author Nikita Kretschmar
  * @author Adrian Philipp
  * @author Micha Strobl
- * @author Tim Wennemann
+ * @author Tim Wennemann <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles grain creation
+ * @details 
  * @version 0.1
  * @date 2021-09-27
  * 
@@ -27,12 +18,11 @@
 #include "envelope.h"
 #include "purple_utils.h"
 
-//static t_class *grain_class;
 /**
  * @brief set maximum amount of simoultaneously playing grains
- * @todo check if necessary
+ * @todo check if necessary, set dynamically by user input
  */
-#define OVERLAP_DENSITY = 8   ///< To-Do: Set dynamically by user input
+#define OVERLAP_DENSITY = 8
 
 /**
  * @brief generates new grain
