@@ -32,12 +32,12 @@
  * @param release release time in the range of 0 - 10000ms, adjustable through slider
  * @return c_granular_synth* 
  */
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, t_int grain_size_ms, t_int start_pos, float time_stretch_factor, t_int attack, t_int decay, float sustain, t_int release, float gauss_q_factor, t_int spray_input)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
     x->sr = sys_getsr();
-    x->grain_size_ms = grain_size_ms;
+    x->grain_size_ms = (int)grain_size_ms;
     x->grain_size_samples = get_samples_from_ms(x->grain_size_ms, x->sr);
     // diese vas_mem_alloc funktion hat die ganze zeit alles crashen lassen...
     //x->soundfile_table = (float *) vas_mem_alloc(x->soundfile_length * sizeof(float));
@@ -49,14 +49,14 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->sprayed_start_pos = start_pos;
     x->current_grain_index = 0;
     x->current_gauss_stage_index = 0;
-    x->spray_input = spray_input;                       // Set by user in pd with slider
+    x->spray_input = (int)spray_input;                       // Set by user in pd with slider
     x->spray_true_offset = 0;                           // The actual Start Position Offset calculated on run-time
     c_granular_synth_adjust_current_grain_index(x);     // Depends on start position slider
     
     c_granular_synth_reset_playback_position(x);
     
     x->current_adsr_stage_index = 0;
-    x->adsr_env = envelope_new(attack, decay, sustain, release);
+    x->adsr_env = envelope_new((int)attack, (int)decay, (int)sustain, (int)release);
     
     // Retrigger when user sets different grain size
     c_granular_synth_set_num_grains(x);
@@ -262,7 +262,8 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
  * @param sustain sustain time in the range of 0 - 1, adjustable through slider
  * @param release release time in the range of 0 - 10000ms, adjustable through slider
  */
-void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input)
+
+void c_granular_synth_properties_update(c_granular_synth *x, t_int grain_size_ms, t_int start_pos, float time_stretch_factor, t_int midi_pitch, t_int midi_velo, t_int attack, t_int decay, float sustain, t_int release, float gauss_q_factor, t_int spray_input)
 {
     if(x->grain_size_ms != grain_size_ms ||
        x->current_start_pos != start_pos ||
@@ -272,8 +273,8 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     {
         if(x->grain_size_ms != grain_size_ms)
         {
-            x->grain_size_ms = grain_size_ms;
-            int grain_size_samples = get_samples_from_ms(grain_size_ms, x->sr);
+            x->grain_size_ms = (int)grain_size_ms;
+            int grain_size_samples = get_samples_from_ms((int)grain_size_ms, x->sr);
             x->grain_size_samples = grain_size_samples;
         }
         if(x->current_start_pos != start_pos)
@@ -282,7 +283,7 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
         }
         if(x->spray_input != spray_input)
         {
-            x->spray_input = spray_input;
+            x->spray_input = (int)spray_input;
         }
         if(x->time_stretch_factor != time_stretch_factor)
         {
@@ -295,33 +296,33 @@ void c_granular_synth_properties_update(c_granular_synth *x, int grain_size_ms, 
     
     if(x->midi_pitch != midi_pitch)
     {
-        x->midi_pitch = midi_pitch;
+        x->midi_pitch = (int)midi_pitch;
     }
     
     if(x->midi_velo != midi_velo)
     {
-        x->midi_velo = midi_velo;
+        x->midi_velo = (int)midi_velo;
     }
     
     if (x->adsr_env->attack != attack || x->adsr_env->decay != decay || x->adsr_env->sustain != sustain || x->adsr_env->release != release)
     {
         if(x->adsr_env->attack != attack)
         {
-            x->adsr_env->attack = attack;
+            x->adsr_env->attack = (int)attack;
         }
         if(x->adsr_env->decay != decay)
         {
-            x->adsr_env->decay = decay;
+            x->adsr_env->decay = (int)decay;
         }
         if(x->adsr_env->sustain != sustain)
         {
-            x->adsr_env->sustain = sustain;
+            x->adsr_env->sustain = (int)sustain;
         }
         if(x->adsr_env->release != release)
         {
-            x->adsr_env->release = release;
+            x->adsr_env->release = (int)release;
         }
-        x->adsr_env = envelope_new(attack, decay, sustain, release);
+        x->adsr_env = envelope_new((int)attack, (int)decay, (int)sustain, (int)release);
     }
 
     if(x->gauss_q_factor != gauss_q_factor)

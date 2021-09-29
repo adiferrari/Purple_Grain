@@ -47,8 +47,8 @@
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)
 {
     grain x;
-    grain *next_grain = NULL;
-    grain *previous_grain = NULL;
+    //grain *next_grain = NULL;
+    //grain *previous_grain = NULL;
     x.grain_active = false;
     x.grain_size_samples = grain_size_samples;
     x.grain_index = grain_index;
