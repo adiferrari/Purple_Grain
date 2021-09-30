@@ -1,4 +1,4 @@
-#N canvas 103 651 1366 671 12;
+#N canvas 571 410 1366 671 12;
 #X declare -stdpath soundfiler;
 #X obj 106 51 soundfiler;
 #X obj 535 17 declare -stdpath soundfiler;
@@ -6,10 +6,10 @@
 #X obj 20 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sample 363825 float 2;
-#X coords 0 1 363825 -1 200 140 1;
+#X array sample 345168 float 2;
+#X coords 0 1 345168 -1 200 140 1;
 #X restore 703 122 graph;
-#X obj 176 526 dac~;
+#X obj 171 618 dac~;
 #X msg 50 154 soundfile_arrayname sample;
 #X obj 48 39 t b b;
 #X obj 188 498 pd_granular_synth~ sample;
@@ -17,31 +17,31 @@
 #X floatatom 130 337 5 0 0 0 - - -;
 #X obj 257 453 notein;
 #X obj 551 138 vsl 15 128 0.01 1 0 0 empty empty S 0 -9 0 10 -262144
--1 -1 5629 1;
+-1 -1 0 1;
 #X obj 617 136 vsl 15 128 1 10000 1 0 empty empty R 0 -9 0 10 -262144
--1 -1 8952 1;
+-1 -1 0 1;
 #X floatatom 443 278 5 0 0 0 - - -;
 #X floatatom 497 278 5 0 0 0 - - -;
 #X floatatom 551 278 5 0 0 0 - - -;
 #X floatatom 611 278 5 0 0 0 - - -;
 #X obj 443 137 vsl 15 128 1 3000 1 0 empty empty A 0 -9 0 10 -262144
--1 -1 10463 1;
+-1 -1 0 1;
 #X obj 497 137 vsl 15 128 1 3000 1 0 empty empty D 0 -9 0 10 -262144
--1 -1 7971 1;
+-1 -1 0 1;
 #X obj 705 282 hsl 200 15 0 127 0 0 empty empty StartPosition(samples)-MIDI_CC_3
--2 -8 0 10 -262144 -1 -1 5328 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 82 285 hsl 128 15 0 300 0 0 empty empty GrainSize(ms)-MIDI_CC_2
--2 -8 0 10 -262144 -1 -1 3900 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 699 84 ctlin 3;
 #X msg 105 114 s sample.length;
 #X obj 281 277 hsl 128 15 -2 4 0 0 empty empty Playback_Speed -2 -8
-0 10 -262144 -1 -1 6350 1;
+0 10 -262144 -1 -1 0 1;
 #X floatatom 282 305 5 0 0 0 - - -;
 #X floatatom 606 383 5 0 0 0 - - -;
 #X obj 609 363 hsl 128 15 0.001 1 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 9810 1;
+-262144 -1 -1 0 1;
 #X obj 577 462 hsl 128 15 0 75 0 0 empty empty Spray -2 -8 0 10 -262144
--1 -1 9900 1;
+-1 -1 0 1;
 #X floatatom 574 485 5 0 0 0 - - -;
 #N canvas 692 247 450 300 Attack 0;
 #X obj 27 242 outlet;
@@ -194,16 +194,69 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X connect 6 0 5 0;
 #X connect 7 0 0 0;
 #X restore 566 428 pd Spray;
-#X msg 113 17 read -resize resources/samples/SYNTH-Brilliance.wav sample
+#X msg 116 14 read -resize resources/samples/amen_break.wav sample
 ;
+#N canvas 145 457 547 511 record_sample 0;
+#X obj 27 72 *~;
+#X floatatom 64 48 5 0 20 1 Input_Gain - -;
+#X obj 117 101 env~;
+#X obj 270 137 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 27 183 clip~ -1 1;
+#X obj 60 158 * -1;
+#X floatatom 97 130 5 0 1 1 Clipping_Amount - -;
+#X floatatom 94 222 5 0 4 1 Output_Gain - -;
+#X obj 22 337 dac~;
+#X obj 24 253 *~;
+#X obj 88 392 writesf~ 1;
+#X msg 159 294 open recorded_sample.wav;
+#X msg 189 323 start;
+#X msg 177 363 stop;
+#X obj 269 95 - 100;
+#X obj 28 24 adc~;
+#X connect 0 0 2 0;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 2 0 14 0;
+#X connect 2 0 3 1;
+#X connect 4 0 9 0;
+#X connect 5 0 4 1;
+#X connect 6 0 4 2;
+#X connect 6 0 5 0;
+#X connect 7 0 9 1;
+#X connect 9 0 8 0;
+#X connect 9 0 8 1;
+#X connect 9 0 10 0;
+#X connect 11 0 10 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 0;
+#X connect 15 0 0 0;
+#X restore 813 32 pd record_sample;
+#X obj 21 605 tabwrite~ output;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array output 100 float 5;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 775 490 graph;
+#X obj 25 454 metro 100;
+#X msg 34 425 tempo 44100 persec;
+#X obj 177 574 lop~;
+#X floatatom 522 635 5 0 22000 2 Cutoff - -;
+#X obj 523 601 mtof;
+#X obj 527 574 hsl 128 15 0 127 0 0 empty empty Simple_LP_Filter -2
+-8 0 10 -262144 -1 -1 0 1;
+#X floatatom 275 531 5 1 5 1 Output_Volume - -;
+#X obj 177 547 *~ 0.5;
 #X connect 0 0 2 0;
 #X connect 2 0 23 0;
 #X connect 2 0 37 0;
 #X connect 3 0 7 0;
 #X connect 7 0 6 0;
 #X connect 7 1 39 0;
-#X connect 8 0 5 0;
-#X connect 8 0 5 1;
+#X connect 7 1 43 0;
+#X connect 8 0 50 0;
 #X connect 9 0 3 0;
 #X connect 10 0 8 1;
 #X connect 11 0 8 4;
@@ -234,3 +287,13 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X connect 37 0 8 2;
 #X connect 38 0 28 0;
 #X connect 39 0 0 0;
+#X connect 43 0 41 0;
+#X connect 44 0 43 0;
+#X connect 45 0 41 0;
+#X connect 45 0 5 0;
+#X connect 45 0 5 1;
+#X connect 46 0 45 1;
+#X connect 47 0 46 0;
+#X connect 48 0 47 0;
+#X connect 49 0 50 1;
+#X connect 50 0 45 0;
