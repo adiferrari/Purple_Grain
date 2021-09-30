@@ -86,22 +86,21 @@
 \DoxyCodeLine{00113 }
 \DoxyCodeLine{\Hypertarget{envelope_8c_source_l00120}\mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{00120}} \textcolor{keywordtype}{float} \mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
 \DoxyCodeLine{00121 \{}
-\DoxyCodeLine{00122     \textcolor{comment}{//t\_int grain\_size = x.grain\_size\_samples;}}
-\DoxyCodeLine{00123     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} == 0)}
-\DoxyCodeLine{00124         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{00125     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}})}
-\DoxyCodeLine{00126     \{}
-\DoxyCodeLine{00127         x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} = 0;}
-\DoxyCodeLine{00128     \}}
-\DoxyCodeLine{00129     \textcolor{keywordtype}{float} numerator = pow(x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}}++ -\/(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}/2), 2);}
-\DoxyCodeLine{00130     \textcolor{keywordtype}{float} denominatior = x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} * pow(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}, 2);}
-\DoxyCodeLine{00131     \textcolor{keywordtype}{float} gauss\_value = expf(-\/numerator/denominatior);}
-\DoxyCodeLine{00132     \textcolor{keywordflow}{return} gauss\_value;}
-\DoxyCodeLine{00133 \}}
-\DoxyCodeLine{00134 }
-\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00140}\mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{00140}} \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x)}
-\DoxyCodeLine{00141 \{}
-\DoxyCodeLine{00142     free(x);}
-\DoxyCodeLine{00143 \}}
+\DoxyCodeLine{00122     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} == 0)}
+\DoxyCodeLine{00123         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00124     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}})}
+\DoxyCodeLine{00125     \{}
+\DoxyCodeLine{00126         x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} = 0;}
+\DoxyCodeLine{00127     \}}
+\DoxyCodeLine{00128     \textcolor{keywordtype}{float} numerator = pow(x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}}++ -\/(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}/2), 2);}
+\DoxyCodeLine{00129     \textcolor{keywordtype}{float} denominatior = x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} * pow(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}, 2);}
+\DoxyCodeLine{00130     \textcolor{keywordtype}{float} gauss\_value = expf(-\/numerator/denominatior);}
+\DoxyCodeLine{00131     \textcolor{keywordflow}{return} gauss\_value;}
+\DoxyCodeLine{00132 \}}
+\DoxyCodeLine{00133 }
+\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00139}\mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{00139}} \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x)}
+\DoxyCodeLine{00140 \{}
+\DoxyCodeLine{00141     free(x);}
+\DoxyCodeLine{00142 \}}
 
 \end{DoxyCode}

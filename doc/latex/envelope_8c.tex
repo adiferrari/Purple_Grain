@@ -41,7 +41,7 @@ Wennemann,Tim ~\newline
 \end{DoxyAuthor}
 generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters ~\newline
  \begin{DoxyVersion}{Version}
-0.\+1 
+1.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
 2021-\/09-\/27
@@ -66,7 +66,7 @@ Definition in file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 calculates A\+D\+SR value 
 
-calculates single atm A\+D\+SR value according to current state ~\newline
+calculates single momentary A\+D\+SR value according to current state ~\newline
  
 \begin{DoxyParams}{Parameters}
 {\em x} & input pointer of {\itshape calculate\+\_\+adsr\+\_\+value} object ~\newline
@@ -99,7 +99,7 @@ frees envelope ~\newline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00140}{140}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00139}{139}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 \mbox{\Hypertarget{envelope_8c_a0854138c64859a1f4079feb9b9194786}\label{envelope_8c_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.c@{envelope.c}!envelope\_new@{envelope\_new}}
@@ -111,7 +111,8 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00140}{140}} of file \mb
 
 generates new A\+D\+SR envelope 
 
-
+generates new A\+D\+SR envelope according to its four components ~\newline
+ 
 \begin{DoxyParams}{Parameters}
 {\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
  \\
@@ -143,14 +144,14 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00095}{95}} of file \mbo
 
 calculates gauss value 
 
-calculates gauss value according to {\itshape grainindex} ~\newline
+calculates gauss value according to {\itshape grain} index ~\newline
  
 \begin{DoxyParams}{Parameters}
-{\em x} & reference to the actual synthesizer \\
+{\em x} & reference to the actual synthesizer {\bfseries{ }}\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-gauss value of type float 
+{\bfseries{ gauss value of type float {\bfseries{ }}}}
 \end{DoxyReturn}
 
 

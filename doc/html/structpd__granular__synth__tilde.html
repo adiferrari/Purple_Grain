@@ -149,7 +149,7 @@ t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <tr class="separator:ab7d62515d2dfdb58429c59966e09396b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="memItemLeft" align="right" valign="top"><a id="a1e83151d2a2da97bca1a65b3fb9ca165"></a>
 t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1e83151d2a2da97bca1a65b3fb9ca165">gauss_q_factor</a></td></tr>
-<tr class="memdesc:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope slope <br  />
+<tr class="memdesc:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope slope in the range of , adjustable through slider <br  />
  <br /></td></tr>
 <tr class="separator:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae1c1ce1c10d37667be6c3d7a8ef831"><td class="memItemLeft" align="right" valign="top"><a id="a9ae1c1ce1c10d37667be6c3d7a8ef831"></a>
@@ -242,7 +242,7 @@ Related Functions</h2></td></tr>
 <tr class="memdesc:aa4bc811658b8df54563de4af0ca045f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets playback position  <a href="structpd__granular__synth__tilde.html#aa4bc811658b8df54563de4af0ca045f1">More...</a><br /></td></tr>
 <tr class="separator:aa4bc811658b8df54563de4af0ca045f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac71179596b1f2169d42c27cb8ea54207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#ac71179596b1f2169d42c27cb8ea54207">c_granular_synth_free</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:ac71179596b1f2169d42c27cb8ea54207"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees granular_synth object  <a href="structpd__granular__synth__tilde.html#ac71179596b1f2169d42c27cb8ea54207">More...</a><br /></td></tr>
+<tr class="memdesc:ac71179596b1f2169d42c27cb8ea54207"><td class="mdescLeft">&#160;</td><td class="mdescRight">frees <em>granular_synth</em> object  <a href="structpd__granular__synth__tilde.html#ac71179596b1f2169d42c27cb8ea54207">More...</a><br /></td></tr>
 <tr class="separator:ac71179596b1f2169d42c27cb8ea54207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d620b5fd5e33ac6a1e388eb7b20b8f1"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1d620b5fd5e33ac6a1e388eb7b20b8f1">pd_granular_synth_tilde_new</a> (t_symbol *<a class="el" href="structpd__granular__synth__tilde.html#a3a742a4c1c7fc2c03e32fcd858075ac8">soundfile_arrayname</a>)</td></tr>
 <tr class="memdesc:a1d620b5fd5e33ac6a1e388eb7b20b8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> object.<br  />
@@ -289,15 +289,17 @@ Related Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>frees granular_synth object </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>frees <em>granular_synth</em> object </p>
+<p>frees <em>granular_synth</em> object <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_free</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_free</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00351">351</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00352">352</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -326,14 +328,16 @@ Related Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>resets playback position </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>resets playback position <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_reset_playback_position</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_reset_playback_position</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00324">324</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00325">325</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>

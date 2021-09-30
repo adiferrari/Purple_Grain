@@ -92,17 +92,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:a60a0c75d365a663c411871d56757e624"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial setup of soundfile and adjustment silder related variables  <a href="c__granular__synth_8c.html#a60a0c75d365a663c411871d56757e624">More...</a><br /></td></tr>
 <tr class="separator:a60a0c75d365a663c411871d56757e624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c4e09392d873e432cb0edeae71f17c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">c_granular_synth_process</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, float *in, float *out, int vector_size)</td></tr>
-<tr class="memdesc:ab1c4e09392d873e432cb0edeae71f17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output  <a href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">More...</a><br /></td></tr>
+<tr class="memdesc:ab1c4e09392d873e432cb0edeae71f17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">main synthesizer process  <a href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">More...</a><br /></td></tr>
 <tr class="separator:ab1c4e09392d873e432cb0edeae71f17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">c_granular_synth_set_num_grains</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br  />
-  <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
+<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains  <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
 <tr class="separator:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4851564c44cc8e0bae53de300c6dec30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">c_granular_synth_adjust_current_grain_index</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em>  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
+<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
 <tr class="separator:a4851564c44cc8e0bae53de300c6dec30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">c_granular_synth_populate_grain_table</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
+<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
 <tr class="separator:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a878c6a0073df67b10d63b5e819eaad74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a878c6a0073df67b10d63b5e819eaad74">c_granular_synth_properties_update</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, t_int grain_size_ms, t_int start_pos, float time_stretch_factor, t_int midi_velo, t_int midi_pitch, t_int attack, t_int decay, float sustain, t_int release, float gauss_q_factor, t_int spray_input)</td></tr>
 <tr class="memdesc:a878c6a0073df67b10d63b5e819eaad74"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks on current input states  <a href="c__granular__synth_8c.html#a878c6a0073df67b10d63b5e819eaad74">More...</a><br /></td></tr>
@@ -141,15 +140,16 @@ Wennemann,Tim <br  />
       </table>
 </div><div class="memdoc">
 
-<p>adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em> </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>adjusts current grain index </p>
+<p>adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_adjust_current_grain_index</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_adjust_current_grain_index</em> object <b> </b></td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00174">174</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00176">176</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Wennemann,Tim <br  />
 
 <p>initial setup of soundfile and adjustment silder related variables </p>
 <p>initial setup of soundfile and adjustment silder related variables <br  />
-* </p><dl class="params"><dt>Parameters</dt><dd>
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">soundfile</td><td>contains the soundfile which can be read in via inlet <br  />
  </td></tr>
@@ -267,14 +267,19 @@ Wennemann,Tim <br  />
  </td></tr>
     <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider <br  />
  </td></tr>
-    <tr><td class="paramname">gauss_q_factor</td><td>used to manipulate grain envelope slope in the range of , adjustable through slider<b> </b></td></tr>
-    <tr><td class="paramname">spray_input</td><td><b>randomizes the start position of each grain, actual starting position offset (initally set to 0) calculated on the run <b> </b></b></td></tr>
-    <tr><td class="paramname">pitch_factor</td><td><b><b>multiplicator of MIDI input pitch/key value, adjustable through slider<b> </b></b></b></td></tr>
-    <tr><td class="paramname">midi_pitch</td><td><b><b><b>MIDI input pitch/key value, usable through virtual or external MIDI device <b> </b></b></b></b></td></tr>
+    <tr><td class="paramname">gauss_q_factor</td><td>used to manipulate grain envelope slope in the range of 0.01 - 1, adjustable through slider<br  />
+ </td></tr>
+    <tr><td class="paramname">spray_input</td><td>randomizes the start position of each grain, actual starting position offset (initally set to 0) calculated on the run <br  />
+ </td></tr>
+    <tr><td class="paramname">pitch_factor</td><td>multiplicator of MIDI input pitch/key value, adjustable through slider<br  />
+ </td></tr>
+    <tr><td class="paramname">midi_pitch</td><td>MIDI input pitch/key value, usable through virtual or external MIDI device <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><b><b><b><b> c_granular_synth* </b></b></b></b></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>c_granular_synth* </dd></dl>
+<p>Construct a new c granular synth set num grains object </p><dl class="section note"><dt>Note</dt><dd>retriggerd when user sets different grain size <b></b></dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00039">39</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
@@ -296,15 +301,17 @@ Wennemann,Tim <br  />
       </table>
 </div><div class="memdoc">
 
-<p>generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>generates a grain table </p>
+<p>generates a grain table according to <em>current_grain_index</em>, for negative <em>time_stretch_factor</em> values samples are read in backwards direction <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_populate_grain_table</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_populate_grain_table</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00188">188</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00189">189</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -346,18 +353,25 @@ Wennemann,Tim <br  />
       </table>
 </div><div class="memdoc">
 
-<p>refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>main synthesizer process </p>
+<p>refreshs plaback positions, starts grain scheduleing, sets gauss value, generates ADSR value according to current state <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of c_granular_synth_process object </td></tr>
-    <tr><td class="paramname">in</td><td>input </td></tr>
-    <tr><td class="paramname">out</td><td>output </td></tr>
-    <tr><td class="paramname">vector_size</td><td>vectoral size of </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">in</td><td>input pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">out</td><td>output pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">vector_size</td><td>size of the input vector <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>adsr must be in release state <br  />
+ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00089">89</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00093">93</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -473,11 +487,13 @@ Wennemann,Tim <br  />
  </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">gauss_q_factor</td><td>envelope manipulation value in the range of 0.01 - 1, adjustable through slider <br  />
  </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">spray_input</td><td>randomizes the start position of each grain, adjustable through slider <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00246">246</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00247">247</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -497,16 +513,17 @@ Wennemann,Tim <br  />
       </table>
 </div><div class="memdoc">
 
-<p>sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br  />
- </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>sets number of grains </p>
+<p>sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_set_num_grains</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_set_num_grains</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00165">165</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00167">167</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>

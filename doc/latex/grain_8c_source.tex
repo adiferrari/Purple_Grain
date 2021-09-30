@@ -92,7 +92,7 @@
 \DoxyCodeLine{00123         weighted = \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\_interpolated\_sample\_value}}(left\_sample, right\_sample,frac);}
 \DoxyCodeLine{00124         synth-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} += weighted;}
 \DoxyCodeLine{00125         g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}};}
-\DoxyCodeLine{00126         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} += synth-\/>pitch\_factor;}
+\DoxyCodeLine{00126         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} += synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
 \DoxyCodeLine{00127         \textcolor{comment}{// does the next index exceed the soundfile length? (Forward Playback)}}
 \DoxyCodeLine{00128         \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} > (synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1))}
 \DoxyCodeLine{00129         \{}
@@ -116,9 +116,9 @@
 \DoxyCodeLine{00147             \textcolor{comment}{//g-\/>grain\_active = false;}}
 \DoxyCodeLine{00148             \textcolor{comment}{// Grain wieder auf seinen Startpunkt setzen, wie bei Initialisierung in new-\/methode}}
 \DoxyCodeLine{00149             g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}};}
-\DoxyCodeLine{00150             g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>pitch\_factor;}
+\DoxyCodeLine{00150             g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
 \DoxyCodeLine{00151             g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} = 0;}
-\DoxyCodeLine{00152             synth-\/>spray\_true\_offset = 0;}
+\DoxyCodeLine{00152             synth-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} = 0;}
 \DoxyCodeLine{00153             \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(synth);}
 \DoxyCodeLine{00154             \textcolor{comment}{//synth-\/>playback\_position = synth-\/>current\_start\_pos;}}
 \DoxyCodeLine{00155         \}}
@@ -134,7 +134,7 @@
 \DoxyCodeLine{00165         \textcolor{comment}{// Grain nicht oder nicht mehr aktiv}}
 \DoxyCodeLine{00166         \textcolor{comment}{// seine current pos auf seinen start zurücksetzen}}
 \DoxyCodeLine{00167         g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}};}
-\DoxyCodeLine{00168         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>pitch\_factor;}
+\DoxyCodeLine{00168         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
 \DoxyCodeLine{00169         g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} = 0;}
 \DoxyCodeLine{00170         \textcolor{comment}{/*}}
 \DoxyCodeLine{00171 \textcolor{comment}{        g-\/>current\_sample\_pos = g-\/>grain\_size\_samples * g-\/>grain\_index * g-\/>time\_stretch\_factor;}}

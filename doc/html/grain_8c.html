@@ -91,7 +91,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a6df8a4f0caf7397fd15879daef804894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">OVERLAP_DENSITY</a>&#160;&#160;&#160;= 8</td></tr>
-<tr class="memdesc:a6df8a4f0caf7397fd15879daef804894"><td class="mdescLeft">&#160;</td><td class="mdescRight">set maximum amount of simoultaneously playing grains  <a href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">More...</a><br /></td></tr>
+<tr class="memdesc:a6df8a4f0caf7397fd15879daef804894"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets maximum amount of simoultaneously playing grains  <a href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">More...</a><br /></td></tr>
 <tr class="separator:a6df8a4f0caf7397fd15879daef804894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -118,7 +118,7 @@ Wennemann,Tim <br  />
  Audiocommunication Group, Technische Universität Berlin <br  />
 </dd></dl>
 <p>handles grain creation according to set input parameters<br  />
- </p><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+ </p><dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
@@ -136,7 +136,7 @@ Wennemann,Tim <br  />
       </table>
 </div><div class="memdoc">
 
-<p>set maximum amount of simoultaneously playing grains </p>
+<p>sets maximum amount of simoultaneously playing grains </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>check if necessary, set dynamically by user input </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00025">25</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
@@ -161,9 +161,11 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>frees grain </p>
-<p>frees grain </p><dl class="params"><dt>Parameters</dt><dd>
+<p>frees grain <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of grain_fre object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of grain_fre object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
@@ -199,10 +201,13 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>scheduling of grain playback </p>
-<p>sheduling of grain playback </p><dl class="params"><dt>Parameters</dt><dd>
+<p>sheduling of grain playback <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">g</td><td>grain </td></tr>
-    <tr><td class="paramname">synth</td><td>synthesized output of <a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a> object </td></tr>
+    <tr><td class="paramname">g</td><td>grain <br  />
+ </td></tr>
+    <tr><td class="paramname">synth</td><td>synthesized output of <a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
@@ -261,9 +266,11 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>generates new grain </p>
-<p>generates new grain with <em>grain_index</em> according to set <em>grain_size_samples</em>, <em>start_pos</em>, <em>time_stretch_factor</em> based on <em>soundfile_size</em> </p><dl class="params"><dt>Parameters</dt><dd>
+<p>generates new grain with <em>grain_index</em> according to set <em>grain_size_samples</em>, <em>start_pos</em>, <em>time_stretch_factor</em> based on <em>soundfile_size</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">grain_size_samples</td><td>size of samples contained in a grain </td></tr>
+    <tr><td class="paramname">grain_size_samples</td><td>size of samples contained in a grain <br  />
+ </td></tr>
     <tr><td class="paramname">soundfile_size</td><td>size of the soundfile which can be read in via inlet <br  />
  </td></tr>
     <tr><td class="paramname">start_pos</td><td>starting position within the soundfile, adjustable through slider <br  />

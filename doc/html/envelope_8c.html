@@ -115,7 +115,7 @@ Wennemann,Tim <br  />
  Audiocommunication Group, Technische Universität Berlin <br  />
 </dd></dl>
 <p>generates ADSR envelope according to adjustable attack, decay, sustain and release parameters <br  />
- </p><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+ </p><dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
@@ -138,7 +138,7 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>calculates ADSR value </p>
-<p>calculates single atm ADSR value according to current state <br  />
+<p>calculates single momentary ADSR value according to current state <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>input pointer of <em>calculate_adsr_value</em> object <br  />
@@ -178,7 +178,7 @@ Wennemann,Tim <br  />
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00140">140</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00139">139</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 
 </div>
 </div>
@@ -221,7 +221,8 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>generates new ADSR envelope </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>generates new ADSR envelope according to its four components <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br  />
  </td></tr>
@@ -257,14 +258,14 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>calculates gauss value </p>
-<p>calculates gauss value according to <em>grainindex</em> <br  />
+<p>calculates gauss value according to <em>grain</em> index <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>reference to the actual synthesizer </td></tr>
+    <tr><td class="paramname">x</td><td>reference to the actual synthesizer <b> </b></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>gauss value of type float </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><b> gauss value of type float <b> </b></b></dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="envelope_8c_source.html#l00120">120</a> of file <a class="el" href="envelope_8c_source.html">envelope.c</a>.</p>
 

@@ -61,7 +61,7 @@ t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}\label{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}} 
 t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\+\_\+q\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope slope ~\newline
+\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope slope in the range of , adjustable through slider ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}\label{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}} 
 t\+\_\+word $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}
@@ -133,7 +133,7 @@ t\+\_\+outlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c8
 void \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\+\_\+granular\+\_\+synth\+\_\+reset\+\_\+playback\+\_\+position}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
 \begin{DoxyCompactList}\small\item\em resets playback position \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{c\+\_\+granular\+\_\+synth\+\_\+free}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em frees granular\+\_\+synth object \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em frees {\itshape granular\+\_\+synth} object \end{DoxyCompactList}\item 
 void $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+new}} (t\+\_\+symbol $\ast$\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\+\_\+arrayname}})
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} object.~\newline
  \end{DoxyCompactList}\item 
@@ -163,16 +163,18 @@ Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00022}{22}} 
 
 
 
-frees granular\+\_\+synth object 
+frees {\itshape granular\+\_\+synth} object 
 
-
+frees {\itshape granular\+\_\+synth} object ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of {\itshape c\+\_\+granular\+\_\+synth\+\_\+free} object \\
+{\em x} & input pointer of {\itshape c\+\_\+granular\+\_\+synth\+\_\+free} object ~\newline
+ \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00351}{351}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
+Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00352}{352}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}\label{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!c\_granular\_synth\_reset\_playback\_position@{c\_granular\_synth\_reset\_playback\_position}}
@@ -184,14 +186,16 @@ Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00351}{351}} o
 
 resets playback position 
 
-
+resets playback position ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of {\itshape c\+\_\+granular\+\_\+synth\+\_\+reset\+\_\+playback\+\_\+position} object \\
+{\em x} & input pointer of {\itshape c\+\_\+granular\+\_\+synth\+\_\+reset\+\_\+playback\+\_\+position} object ~\newline
+ \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00324}{324}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
+Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00325}{325}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}\label{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_dsp@{pd\_granular\_synth\_tilde\_dsp}}
