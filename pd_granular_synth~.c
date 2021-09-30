@@ -69,7 +69,6 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->sr  = sys_getsr();
     x->soundfile = 0;
     x->soundfile_arrayname = soundfile_arrayname;
-
     x->soundfile_length = 0;                            ///< default value for soundfile length in samples
     x->soundfile_length_ms = 0;                         ///< default value for soundfile length in ms
     x->grain_size = 50;                                 ///< default value for grain size, before adjustment through slider
@@ -166,9 +165,6 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
     
     if (!(a = (t_garray *)pd_findbyclass(x->soundfile_arrayname, garray_class)))
     {
-    /**
-     * @warning pd_error(x, "vas_binaural~: %s: no such array", x->soundfile_arrayname->s_name);
-     */
         if (*s->s_name)
         {
         post("Inner if-condition reached");
@@ -176,9 +172,6 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
         }
         post("Get Array method if block reached");
     }
-    /**
-    * @warning pd_error(x, "%s: bad template for pd_granular_synth~", x->soundfile_arrayname->s_name);
-    */
     else if (!garray_getfloatwords(a, &x->soundfile_length, &x->soundfile))
     {
         post("Get Array method else if block reached"); 
@@ -186,18 +179,9 @@ static void pd_granular_synth_tilde_getArray(t_pd_granular_synth_tilde *x, t_sym
     else {
         garray_usedindsp(a);
 
-        /* int len = garray_npoints(a);
-        if(len == 0)
-        {
-            post("empty array");
-        }
-        else
-        {
-            post("Array Length = %d", len);
-        } */
         x->soundfile_length = garray_npoints(a);
         x->soundfile_length_ms = get_ms_from_samples(x->soundfile_length, x->sr);
-        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, x->attack, x->decay, x->sustain, x->release, x->gauss_q_factor, x->spray_input, x->pitch_faktor, x->midi_pitch);
+        x->synth = c_granular_synth_new(x->soundfile, x->soundfile_length, x->grain_size, x->start_pos, x->time_stretch_factor, (int)x->attack, (int)x->decay, x->sustain, (int)x->release, x->gauss_q_factor, (int)x->spray_input, x->pitch_faktor, (int)x->midi_pitch);
     }
 
     return;
@@ -237,12 +221,12 @@ static void pd_granular_synth_set_grain_size(t_pd_granular_synth_tilde *x, t_flo
  */
 static void pd_granular_synth_set_start_pos(t_pd_granular_synth_tilde *x, t_floatarg f)
 {
-    int new_start_pos = (int)f;
+    t_int new_start_pos = (t_int)f;
     if(new_start_pos < 0) new_start_pos = 0;
     if(x->soundfile_length && new_start_pos > x->soundfile_length) {
         new_start_pos = x->soundfile_length;
         }
-    x->start_pos = (int)new_start_pos;
+    x->start_pos = new_start_pos;
 }
 /**
  * @related t_pd_granular_synth_tilde

@@ -32,7 +32,7 @@
  * @param release release time in the range of 0 - 10000ms, adjustable through slider <br>
  * @return c_granular_synth* 
  */
-c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input, float pitch_factor, int midi_pitch)
+c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, int grain_size_ms, t_int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input, float pitch_factor, int midi_pitch)
 {
     c_granular_synth *x = (c_granular_synth *)malloc(sizeof(c_granular_synth));
     x->soundfile_length = soundfile_length;
@@ -259,7 +259,7 @@ void c_granular_synth_properties_update(c_granular_synth *x, t_int grain_size_ms
         }
         if(x->current_start_pos != start_pos)
         {
-            x->current_start_pos = (int)start_pos;
+            x->current_start_pos = start_pos;
         }
         
         if(x->time_stretch_factor != time_stretch_factor)
