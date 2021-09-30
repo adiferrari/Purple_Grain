@@ -40,19 +40,19 @@ typedef struct pd_granular_synth_tilde
     int                 grain_size,                     ///< size of a grain in milliseconds, adjustable through slider <br>
                         soundfile_length;                               ///< lenght of the soundfile in samples
     float               pitch_faktor,
-                        soundfile_length_ms;                          ///< lenght of the soundfile in milliseconds
+                        soundfile_length_ms;            ///< lenght of the soundfile in milliseconds
 
-    t_inlet             *in_grain_size,                 ///< inlet for grain size slider <br>
-                        *in_start_pos,                  ///< inlet for start position slider <br>
-                        *in_time_stretch_factor,        ///< inlet for time stretch factor slider <br>
-                        *in_midi_pitch,                 ///< inlet for MIDI input pitch/key value <br>
+    t_inlet             *in_midi_pitch,                 ///< inlet for MIDI input pitch/key value <br>
                         *in_midi_velo,                  ///< inlet for MIDI input velocity value <br>
+                        *in_start_pos,                  ///< inlet for start position slider <br>
+                        *in_grain_size,                 ///< inlet for grain size slider <br> 
+                        *in_time_stretch_factor,        ///< inlet for time stretch factor slider <br>
+                        *in_gauss_q_factor,             ///< inlet for gauss q factor slider <br>
+                        *in_spray,                      ///< inlet for spray slider <br>
                         *in_attack,                     ///< inlet attack slider <br>
                         *in_decay,                      ///< inlet for decay slider <br>
                         *in_sustain,                    ///< inlet for sustain slider <br>
-                        *in_release,                    ///< inlet for release slider <br>
-                        *in_gauss_q_factor,             ///< inlet for gauss q factor slider <br>
-                        *in_spray;
+                        *in_release;                    ///< inlet for release slider <br>;
     t_outlet            *out;                           ///< main outlet <br>
 } t_pd_granular_synth_tilde;
 
@@ -86,17 +86,17 @@ void *pd_granular_synth_tilde_new(t_symbol *soundfile_arrayname)
     x->spray_input = 0;
     
     /// @note The main inlet is created automatically
-    x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
-    x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
-    x->in_time_stretch_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("time_stretch_factor"));
     x->in_midi_pitch = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_pitch"));
     x->in_midi_velo = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("midi_velo"));
+    x->in_start_pos = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("start_pos"));
+    x->in_grain_size = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("grain_size"));
+    x->in_time_stretch_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("time_stretch_factor"));
+    x->in_gauss_q_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("gauss_q_factor"));
+    x->in_spray = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("spray"));
     x->in_attack = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("attack"));
     x->in_decay = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("decay"));
     x->in_sustain = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("sustain"));
     x->in_release = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("release"));
-    x->in_gauss_q_factor = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("gauss_q_factor"));
-    x->in_spray = inlet_new(&x->x_obj,  &x->x_obj.ob_pd, &s_float, gensym("spray"));
     
     x->out = outlet_new(&x->x_obj, &s_signal);
     return (void *)x;
@@ -137,17 +137,17 @@ t_int *pd_granular_synth_tilde_perform(t_int *w)
 void pd_granular_synth_tilde_free(t_pd_granular_synth_tilde *x)
 {
     if(x){
-        inlet_free(x->in_grain_size);
-        inlet_free(x->in_start_pos);
-        inlet_free(x->in_time_stretch_factor);
         inlet_free(x->in_midi_velo);
         inlet_free(x->in_midi_pitch);
+        inlet_free(x->in_start_pos);
+        inlet_free(x->in_grain_size);
+        inlet_free(x->in_time_stretch_factor);
+        inlet_free(x->in_gauss_q_factor);
+        inlet_free(x->in_spray);
         inlet_free(x->in_attack);
         inlet_free(x->in_decay);
         inlet_free(x->in_sustain);
         inlet_free(x->in_release);
-        inlet_free(x->in_gauss_q_factor);
-        inlet_free(x->in_spray);
         outlet_free(x->out);
         c_granular_synth_free(x->synth);
         free(x);
@@ -393,16 +393,20 @@ void pd_granular_synth_tilde_setup(void)
       class_addcreator((t_newmethod)pd_granular_synth_tilde_new, gensym("purple_grain"),
                         A_DEFSYMBOL, 0);
 
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_grain_size,
-                    gensym("grain_size"), A_DEFFLOAT, 0);
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
-                    gensym("start_pos"), A_DEFFLOAT, 0);
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_time_stretch_factor,
-                  gensym("time_stretch_factor"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_pitch,
                     gensym("midi_pitch"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_midi_velo,
                     gensym("midi_velo"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_start_pos,
+                    gensym("start_pos"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_grain_size,
+                    gensym("grain_size"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_time_stretch_factor,
+                  gensym("time_stretch_factor"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_gauss_q_factor,
+                    gensym("gauss_q_factor"), A_DEFFLOAT, 0);
+      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_spray_input,
+                  gensym("spray"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_attack,
                     gensym("attack"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_decay,
@@ -411,10 +415,6 @@ void pd_granular_synth_tilde_setup(void)
                     gensym("sustain"), A_DEFFLOAT, 0);
       class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_release,
                     gensym("release"), A_DEFFLOAT, 0);
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_gauss_q_factor,
-                    gensym("gauss_q_factor"), A_DEFFLOAT, 0);
-      class_addmethod(pd_granular_synth_tilde_class, (t_method)pd_granular_synth_set_spray_input,
-                  gensym("spray"), A_DEFFLOAT, 0);
 
       CLASS_MAINSIGNALIN(pd_granular_synth_tilde_class, t_pd_granular_synth_tilde, f);
     /**
