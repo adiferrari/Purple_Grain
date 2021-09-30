@@ -21,6 +21,10 @@
 #include "c_granular_synth.h"
 
 /**
+ * @author Kretschmar, Nikita 
+ * @author Philipp, Adrian 
+ * @author Strobl, Micha 
+ * @author Wennemann,Tim <br>
  * @brief calculates ADSR value
  * @details calculates single momentary ADSR value according to current state <br>
  * @param x input pointer of @a c_granular_synth object <br>

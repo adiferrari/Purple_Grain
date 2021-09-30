@@ -63,6 +63,7 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
     return x;
 }
 /**
+ * @author Strobl, Micha <br>
  * @brief scheduling of grain playback
  * @details recursive scheduling of successive grain playback with time and/or start position shifts <br>
  * @param g grain <br>

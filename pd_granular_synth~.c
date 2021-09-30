@@ -7,6 +7,11 @@
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief Main file of the pure data external
  * @details Main file of the pure data external, generates in- and outlets of the pure data granular synth object, updates values corresponding to input slider states <br>
+ * @todo Incorporate pointers to previous grains <br>
+ * @todo Define maximum grain scheduling as grain density <br>
+ * @todo Smoothen output buffer values when grains overlap <br>
+ * @todo Incorporate more windowing functions apart from Gauss <br>
+ * @todo Pitch detection of samples <br>
  */
 
 #include "c_granular_synth.h"
@@ -31,15 +36,15 @@ typedef struct pd_granular_synth_tilde
                         attack,                         ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
                         decay,                          ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
                         release,                        ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
-                        spray_input;                   ///< randomizes the start position of each grain in the range of , adjustable through slider <br>
+                        spray_input;                    ///< randomizes the start position of each grain in the range of 0 - 75, adjustable through slider <br>
     t_float             sustain,                        ///< sustain time in the range of 0 - 1, adjustable through slider <br>
                         time_stretch_factor,            ///< resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider <br>
-                        gauss_q_factor;                ///< used to manipulate grain envelope slope in the range of , adjustable through slider <br>
+                        gauss_q_factor;                 ///< used to manipulate grain envelope slope in the range of 0.01 - 1, adjustable through slider <br>
     t_word              *soundfile;                     ///< Pointer to the soundfile Array <br>
     t_symbol            *soundfile_arrayname;           ///< String used in pd to identify array that holds the soundfile <br>
     int                 grain_size,                     ///< size of a grain in milliseconds, adjustable through slider <br>          
                         soundfile_length;               ///< lenght of the soundfile in samples <b>
-    float               pitch_factor,                  ///< in the range of
+    float               pitch_factor,                   ///< scaled by pitch/key value given by MIDI input <br>
                         soundfile_length_ms;            ///< lenght of the soundfile in milliseconds <b>
 
     t_inlet             *in_midi_pitch,                 ///< inlet for MIDI input pitch/key value <br>
