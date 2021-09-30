@@ -13,7 +13,6 @@ lib.name = granular_synth
 class.sources = pd_granular_synth~.c
 pd_granular_synth~.class.sources += c_granular_synth.c
 pd_granular_synth~.class.sources += grain.c
-pd_granular_synth~.class.sources += vas_mem.c
 pd_granular_synth~.class.sources += envelope.c
 pd_granular_synth~.class.sources += purple_utils.c
 
