@@ -7,12 +7,8 @@
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief Main file of the pure data external
  * @details Main file of the pure data external, generates in- and outlets of the pure data granular synth object, updates values corresponding to input slider states <br>
- * @todo Incorporate pointers to previous grains <br>
- * @todo Define maximum grain scheduling as grain density <br>
- * @todo Smoothen output buffer values when grains overlap <br>
- * @todo Incorporate more windowing functions apart from Gauss <br>
- * @todo Pitch detection of samples <br>
  */
+
 
 #include "c_granular_synth.h"
 #include "purple_utils.h"

@@ -8,9 +8,12 @@
  * @brief main file of the synthesizer's implementation
  * @version 1.1
  * @date 2021-07-25
- *
  * @copyright Copyright (c) 2021
- *
+ * @todo Incorporate pointers to previous grains <br>
+ * Define maximum grain scheduling as grain density <br>
+ * Smoothen output buffer values when grains overlap <br>
+ * Incorporate more windowing functions apart from Gauss <br>
+ * Pitch detection of samples <br>
  */
 
 #include "c_granular_synth.h"

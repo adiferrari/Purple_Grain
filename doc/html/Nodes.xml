@@ -19,6 +19,10 @@
         </Subnodes>
        </Node>
        <Node>
+        <Name>Todo List</Name>
+        <Path>todo.html</Path>
+       </Node>
+       <Node>
         <Name>Data Structures</Name>
         <Path>annotated.html</Path>
         <Subnodes>
