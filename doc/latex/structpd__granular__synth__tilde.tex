@@ -18,11 +18,7 @@ t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f0
 \begin{DoxyCompactList}\small\item\em defined samplerate {\bfseries{ }}\end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}\label{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}} 
 \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}
-\begin{DoxyCompactList}\small\item\em pure data garnular synth object {\bfseries{ }}\end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}\label{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}} 
-t\+\_\+int \mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\+\_\+size}}
-\begin{DoxyCompactList}\small\item\em size of a grain in milliseconds, adjustable through slider ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em pure data granular synth object {\bfseries{ }}\end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}\label{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}} 
 t\+\_\+int \mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\+\_\+pos}}
 \begin{DoxyCompactList}\small\item\em position within the soundfile, adjustable through slider ~\newline
@@ -49,7 +45,7 @@ t\+\_\+int \mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce8
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}\label{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}} 
 t\+\_\+int \mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\+\_\+input}}
-\begin{DoxyCompactList}\small\item\em randomizes the start position of each grain in the range of , adjustable through slider ~\newline
+\begin{DoxyCompactList}\small\item\em randomizes the start position of each grain in the range of 0 -\/ 75, adjustable through slider ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}\label{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}} 
 t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}}
@@ -61,7 +57,7 @@ t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}\label{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}} 
 t\+\_\+float \mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\+\_\+q\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope slope in the range of , adjustable through slider ~\newline
+\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope slope in the range of 0.\+01 -\/ 1, adjustable through slider ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}\label{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}} 
 t\+\_\+word $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}
@@ -71,34 +67,48 @@ t\+\_\+word $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c
 t\+\_\+symbol $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\+\_\+arrayname}}
 \begin{DoxyCompactList}\small\item\em String used in pd to identify array that holds the soundfile ~\newline
  \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_a62f55889465ff31e02f50697bf1433a7}\label{structpd__granular__synth__tilde_a62f55889465ff31e02f50697bf1433a7}} 
+int \mbox{\hyperlink{structpd__granular__synth__tilde_a62f55889465ff31e02f50697bf1433a7}{grain\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em size of a grain in milliseconds, adjustable through slider ~\newline
+ ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}\label{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}} 
 int \mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\+\_\+length}}
 \begin{DoxyCompactList}\small\item\em lenght of the soundfile in samples {\bfseries{ }}\end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}\label{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}} 
 float \mbox{\hyperlink{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}{pitch\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em in the range of \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em scaled by pitch/key value given by M\+I\+DI input ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}\label{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}} 
 float \mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\+\_\+length\+\_\+ms}}
 \begin{DoxyCompactList}\small\item\em lenght of the soundfile in milliseconds {\bfseries{ }}\end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}\label{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\+\_\+grain\+\_\+size}}
-\begin{DoxyCompactList}\small\item\em inlet for grain size slider ~\newline
- \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}\label{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\+\_\+start\+\_\+pos}}
-\begin{DoxyCompactList}\small\item\em inlet for start position slider ~\newline
- \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}\label{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\+\_\+time\+\_\+stretch\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em inlet for time stretch factor slider ~\newline
- \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}\label{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\+\_\+midi\+\_\+pitch}}
+\mbox{\Hypertarget{structpd__granular__synth__tilde_a1e2060bd4d869dcfe477b9adf7e14eda}\label{structpd__granular__synth__tilde_a1e2060bd4d869dcfe477b9adf7e14eda}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1e2060bd4d869dcfe477b9adf7e14eda}{in\+\_\+midi\+\_\+pitch}}
 \begin{DoxyCompactList}\small\item\em inlet for M\+I\+DI input pitch/key value ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}\label{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}} 
 t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\+\_\+midi\+\_\+velo}}
 \begin{DoxyCompactList}\small\item\em inlet for M\+I\+DI input velocity value ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}\label{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\+\_\+start\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em inlet for start position slider ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_abafdf3c414759420728e8730e45bdf5e}\label{structpd__granular__synth__tilde_abafdf3c414759420728e8730e45bdf5e}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_abafdf3c414759420728e8730e45bdf5e}{in\+\_\+grain\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em inlet for grain size slider ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}\label{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\+\_\+time\+\_\+stretch\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em inlet for time stretch factor slider ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}\label{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\+\_\+gauss\+\_\+q\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em inlet for gauss q factor slider ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}\label{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}} 
+t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{in\+\_\+spray}}
+\begin{DoxyCompactList}\small\item\em inlet for spray slider ~\newline
  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}\label{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}} 
 t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\+\_\+attack}}
@@ -115,14 +125,7 @@ t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3
 \mbox{\Hypertarget{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}\label{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}} 
 t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\+\_\+release}}
 \begin{DoxyCompactList}\small\item\em inlet for release slider ~\newline
- \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}\label{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\+\_\+gauss\+\_\+q\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em inlet for gauss q factor slider ~\newline
- \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}\label{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}} 
-t\+\_\+inlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{in\+\_\+spray}}
-\begin{DoxyCompactList}\small\item\em inlet for spray slider {\bfseries{ }}\end{DoxyCompactList}\item 
+; \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}\label{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}} 
 t\+\_\+outlet $\ast$ \mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}}
 \begin{DoxyCompactList}\small\item\em main outlet ~\newline
@@ -150,7 +153,7 @@ void \mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd
 \doxysubsubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00022}{22}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00027}{27}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 
 
@@ -174,7 +177,7 @@ frees {\itshape granular\+\_\+synth} object ~\newline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00352}{352}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
+Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00361}{361}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}\label{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!c\_granular\_synth\_reset\_playback\_position@{c\_granular\_synth\_reset\_playback\_position}}
@@ -186,6 +189,9 @@ Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00352}{352}} o
 
 resets playback position 
 
+\begin{DoxyAuthor}{Author}
+Kretschmar, Nikita
+\end{DoxyAuthor}
 resets playback position ~\newline
  
 \begin{DoxyParams}{Parameters}
@@ -195,7 +201,7 @@ resets playback position ~\newline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00325}{325}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
+Definition at line \mbox{\hyperlink{c__granular__synth_8c_source_l00334}{334}} of file \mbox{\hyperlink{c__granular__synth_8c_source}{c\+\_\+granular\+\_\+synth.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}\label{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_dsp@{pd\_granular\_synth\_tilde\_dsp}}
@@ -210,7 +216,7 @@ adds {\itshape \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granul
 adds {\itshape \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}}} to the signal processing chain, activate in pd window by checking the mark at \textquotesingle{}D\+SP\textquotesingle{} option~\newline
  
 
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00212}{212}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00201}{201}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}\label{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_free@{pd\_granular\_synth\_tilde\_free}}
@@ -230,7 +236,7 @@ frees inlets of {\itshape \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\
 \end{DoxyParams}
 }}
 
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00138}{138}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00143}{143}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}\label{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_new@{pd\_granular\_synth\_tilde\_new}}
@@ -276,7 +282,7 @@ The main inlet is created automatically
 \end{DoxyNote}
 }}}}}}}}}}}}}}}}}}}}}}}}}}}}
 
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00065}{65}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00070}{70}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}\label{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_perform@{pd\_granular\_synth\_tilde\_perform}}
@@ -299,7 +305,7 @@ $<$ returns pointer to dataspace for the next dsp-\/object
 
 $<$ returns argument equal to argument of the perform-\/routine plus the number of pointer variables +1
 
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00112}{112}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00117}{117}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 \mbox{\Hypertarget{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}\label{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}} 
 \index{pd\_granular\_synth\_tilde@{pd\_granular\_synth\_tilde}!pd\_granular\_synth\_tilde\_setup@{pd\_granular\_synth\_tilde\_setup}}
@@ -312,12 +318,9 @@ Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00112}{112}}
 setup of \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}} 
 
 setup of \mbox{\hyperlink{structpd__granular__synth__tilde}{pd\+\_\+granular\+\_\+synth\+\_\+tilde}}, with alternative constructor for using the name \textquotesingle{}purple grain\textquotesingle{} in puredata ~\newline
- \begin{DoxyWarning}{Warning}
-\char`\"{}sample multiply defined\char`\"{} error in class\+\_\+sethelpsymbol(pd\+\_\+granular\+\_\+synth\+\_\+tilde\+\_\+class, gensym(\char`\"{}pd\+\_\+granular\+\_\+synth$\sim$\char`\"{})); 
-\end{DoxyWarning}
+ 
 
-
-Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00384}{384}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
+Definition at line \mbox{\hyperlink{pd__granular__synth~_8c_source_l00372}{372}} of file \mbox{\hyperlink{pd__granular__synth~_8c_source}{pd\+\_\+granular\+\_\+synth$\sim$.\+c}}.
 
 
 

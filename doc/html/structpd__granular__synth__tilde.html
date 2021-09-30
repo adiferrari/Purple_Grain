@@ -95,13 +95,8 @@ t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <tr class="separator:a577568b930a5b7f097d02fcfaa5ce346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0edb455a1ae471a1533b223c2fa70d"><td class="memItemLeft" align="right" valign="top"><a id="a0c0edb455a1ae471a1533b223c2fa70d"></a>
 <a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a0c0edb455a1ae471a1533b223c2fa70d">synth</a></td></tr>
-<tr class="memdesc:a0c0edb455a1ae471a1533b223c2fa70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure data garnular synth object <b> </b><br /></td></tr>
+<tr class="memdesc:a0c0edb455a1ae471a1533b223c2fa70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure data granular synth object <b> </b><br /></td></tr>
 <tr class="separator:a0c0edb455a1ae471a1533b223c2fa70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7541f4440303f6fb8a6b5c8b184dbd60"><td class="memItemLeft" align="right" valign="top"><a id="a7541f4440303f6fb8a6b5c8b184dbd60"></a>
-t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a7541f4440303f6fb8a6b5c8b184dbd60">grain_size</a></td></tr>
-<tr class="memdesc:a7541f4440303f6fb8a6b5c8b184dbd60"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of a grain in milliseconds, adjustable through slider <br  />
- <br /></td></tr>
-<tr class="separator:a7541f4440303f6fb8a6b5c8b184dbd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fa512278dfeb27f53f9fd50f5aaae5b"><td class="memItemLeft" align="right" valign="top"><a id="a5fa512278dfeb27f53f9fd50f5aaae5b"></a>
 t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a5fa512278dfeb27f53f9fd50f5aaae5b">start_pos</a></td></tr>
 <tr class="memdesc:a5fa512278dfeb27f53f9fd50f5aaae5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">position within the soundfile, adjustable through slider <br  />
@@ -134,7 +129,7 @@ t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str
 <tr class="separator:a3bf42c53fbc6686ce84cffe630eb1d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68d0cd58cc26f59c3fe84d2c0b6e33b1"><td class="memItemLeft" align="right" valign="top"><a id="a68d0cd58cc26f59c3fe84d2c0b6e33b1"></a>
 t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a68d0cd58cc26f59c3fe84d2c0b6e33b1">spray_input</a></td></tr>
-<tr class="memdesc:a68d0cd58cc26f59c3fe84d2c0b6e33b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">randomizes the start position of each grain in the range of , adjustable through slider <br  />
+<tr class="memdesc:a68d0cd58cc26f59c3fe84d2c0b6e33b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">randomizes the start position of each grain in the range of 0 - 75, adjustable through slider <br  />
  <br /></td></tr>
 <tr class="separator:a68d0cd58cc26f59c3fe84d2c0b6e33b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb9bb7013de98ab5d9e47c1590a9a2b3"><td class="memItemLeft" align="right" valign="top"><a id="afb9bb7013de98ab5d9e47c1590a9a2b3"></a>
@@ -149,7 +144,7 @@ t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <tr class="separator:ab7d62515d2dfdb58429c59966e09396b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="memItemLeft" align="right" valign="top"><a id="a1e83151d2a2da97bca1a65b3fb9ca165"></a>
 t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1e83151d2a2da97bca1a65b3fb9ca165">gauss_q_factor</a></td></tr>
-<tr class="memdesc:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope slope in the range of , adjustable through slider <br  />
+<tr class="memdesc:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope slope in the range of 0.01 - 1, adjustable through slider <br  />
  <br /></td></tr>
 <tr class="separator:a1e83151d2a2da97bca1a65b3fb9ca165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae1c1ce1c10d37667be6c3d7a8ef831"><td class="memItemLeft" align="right" valign="top"><a id="a9ae1c1ce1c10d37667be6c3d7a8ef831"></a>
@@ -162,43 +157,60 @@ t_symbol *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="memdesc:a3a742a4c1c7fc2c03e32fcd858075ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">String used in pd to identify array that holds the soundfile <br  />
  <br /></td></tr>
 <tr class="separator:a3a742a4c1c7fc2c03e32fcd858075ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f55889465ff31e02f50697bf1433a7"><td class="memItemLeft" align="right" valign="top"><a id="a62f55889465ff31e02f50697bf1433a7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a62f55889465ff31e02f50697bf1433a7">grain_size</a></td></tr>
+<tr class="memdesc:a62f55889465ff31e02f50697bf1433a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of a grain in milliseconds, adjustable through slider <br  />
+ <br  />
+ <br /></td></tr>
+<tr class="separator:a62f55889465ff31e02f50697bf1433a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a778cd56ae122e3cfe79f502c09794a42"><td class="memItemLeft" align="right" valign="top"><a id="a778cd56ae122e3cfe79f502c09794a42"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a778cd56ae122e3cfe79f502c09794a42">soundfile_length</a></td></tr>
 <tr class="memdesc:a778cd56ae122e3cfe79f502c09794a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">lenght of the soundfile in samples <b> </b><br /></td></tr>
 <tr class="separator:a778cd56ae122e3cfe79f502c09794a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cef9588a88f74c0f17b5d4694a404fb"><td class="memItemLeft" align="right" valign="top"><a id="a6cef9588a88f74c0f17b5d4694a404fb"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a6cef9588a88f74c0f17b5d4694a404fb">pitch_factor</a></td></tr>
-<tr class="memdesc:a6cef9588a88f74c0f17b5d4694a404fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">in the range of <br /></td></tr>
+<tr class="memdesc:a6cef9588a88f74c0f17b5d4694a404fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">scaled by pitch/key value given by MIDI input <br  />
+ <br /></td></tr>
 <tr class="separator:a6cef9588a88f74c0f17b5d4694a404fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebb056d761c7f1d9860d3756f8f2783a"><td class="memItemLeft" align="right" valign="top"><a id="aebb056d761c7f1d9860d3756f8f2783a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#aebb056d761c7f1d9860d3756f8f2783a">soundfile_length_ms</a></td></tr>
 <tr class="memdesc:aebb056d761c7f1d9860d3756f8f2783a"><td class="mdescLeft">&#160;</td><td class="mdescRight">lenght of the soundfile in milliseconds <b> </b><br /></td></tr>
 <tr class="separator:aebb056d761c7f1d9860d3756f8f2783a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d5d353d48121dbb96ba2fcb1ed3fba0"><td class="memItemLeft" align="right" valign="top"><a id="a1d5d353d48121dbb96ba2fcb1ed3fba0"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1d5d353d48121dbb96ba2fcb1ed3fba0">in_grain_size</a></td></tr>
-<tr class="memdesc:a1d5d353d48121dbb96ba2fcb1ed3fba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for grain size slider <br  />
+<tr class="memitem:a1e2060bd4d869dcfe477b9adf7e14eda"><td class="memItemLeft" align="right" valign="top"><a id="a1e2060bd4d869dcfe477b9adf7e14eda"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1e2060bd4d869dcfe477b9adf7e14eda">in_midi_pitch</a></td></tr>
+<tr class="memdesc:a1e2060bd4d869dcfe477b9adf7e14eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for MIDI input pitch/key value <br  />
  <br /></td></tr>
-<tr class="separator:a1d5d353d48121dbb96ba2fcb1ed3fba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="memItemLeft" align="right" valign="top"><a id="afa0071ff6ccc3e80a3923ef5c92483ab"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#afa0071ff6ccc3e80a3923ef5c92483ab">in_start_pos</a></td></tr>
-<tr class="memdesc:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for start position slider <br  />
- <br /></td></tr>
-<tr class="separator:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2347e0739aced46a352f0501a3652a8"><td class="memItemLeft" align="right" valign="top"><a id="af2347e0739aced46a352f0501a3652a8"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#af2347e0739aced46a352f0501a3652a8">in_time_stretch_factor</a></td></tr>
-<tr class="memdesc:af2347e0739aced46a352f0501a3652a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for time stretch factor slider <br  />
- <br /></td></tr>
-<tr class="separator:af2347e0739aced46a352f0501a3652a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0f944404dc59f1a42d3713d99335c42"><td class="memItemLeft" align="right" valign="top"><a id="ad0f944404dc59f1a42d3713d99335c42"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#ad0f944404dc59f1a42d3713d99335c42">in_midi_pitch</a></td></tr>
-<tr class="memdesc:ad0f944404dc59f1a42d3713d99335c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for MIDI input pitch/key value <br  />
- <br /></td></tr>
-<tr class="separator:ad0f944404dc59f1a42d3713d99335c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a1e2060bd4d869dcfe477b9adf7e14eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08bda0c513d778d119ce0890c81f8000"><td class="memItemLeft" align="right" valign="top"><a id="a08bda0c513d778d119ce0890c81f8000"></a>
 t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a08bda0c513d778d119ce0890c81f8000">in_midi_velo</a></td></tr>
 <tr class="memdesc:a08bda0c513d778d119ce0890c81f8000"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for MIDI input velocity value <br  />
  <br /></td></tr>
 <tr class="separator:a08bda0c513d778d119ce0890c81f8000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="memItemLeft" align="right" valign="top"><a id="afa0071ff6ccc3e80a3923ef5c92483ab"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#afa0071ff6ccc3e80a3923ef5c92483ab">in_start_pos</a></td></tr>
+<tr class="memdesc:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for start position slider <br  />
+ <br /></td></tr>
+<tr class="separator:afa0071ff6ccc3e80a3923ef5c92483ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abafdf3c414759420728e8730e45bdf5e"><td class="memItemLeft" align="right" valign="top"><a id="abafdf3c414759420728e8730e45bdf5e"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#abafdf3c414759420728e8730e45bdf5e">in_grain_size</a></td></tr>
+<tr class="memdesc:abafdf3c414759420728e8730e45bdf5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for grain size slider <br  />
+ <br /></td></tr>
+<tr class="separator:abafdf3c414759420728e8730e45bdf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2347e0739aced46a352f0501a3652a8"><td class="memItemLeft" align="right" valign="top"><a id="af2347e0739aced46a352f0501a3652a8"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#af2347e0739aced46a352f0501a3652a8">in_time_stretch_factor</a></td></tr>
+<tr class="memdesc:af2347e0739aced46a352f0501a3652a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for time stretch factor slider <br  />
+ <br /></td></tr>
+<tr class="separator:af2347e0739aced46a352f0501a3652a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="memItemLeft" align="right" valign="top"><a id="a19d63b90678ffd4c0f0b3f50b1319f7c"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a19d63b90678ffd4c0f0b3f50b1319f7c">in_gauss_q_factor</a></td></tr>
+<tr class="memdesc:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for gauss q factor slider <br  />
+ <br /></td></tr>
+<tr class="separator:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="memItemLeft" align="right" valign="top"><a id="a275ca19a1bb7f04fd0d7bdc4c4af8850"></a>
+t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a275ca19a1bb7f04fd0d7bdc4c4af8850">in_spray</a></td></tr>
+<tr class="memdesc:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for spray slider <br  />
+ <br /></td></tr>
+<tr class="separator:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1858a3748c8598d6c49926047a056d0c"><td class="memItemLeft" align="right" valign="top"><a id="a1858a3748c8598d6c49926047a056d0c"></a>
 t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a1858a3748c8598d6c49926047a056d0c">in_attack</a></td></tr>
 <tr class="memdesc:a1858a3748c8598d6c49926047a056d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet attack slider <br  />
@@ -217,17 +229,8 @@ t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 <tr class="memitem:ab3bb9be8f4918b42a86b34dea5f74a16"><td class="memItemLeft" align="right" valign="top"><a id="ab3bb9be8f4918b42a86b34dea5f74a16"></a>
 t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#ab3bb9be8f4918b42a86b34dea5f74a16">in_release</a></td></tr>
 <tr class="memdesc:ab3bb9be8f4918b42a86b34dea5f74a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for release slider <br  />
- <br /></td></tr>
+; <br /></td></tr>
 <tr class="separator:ab3bb9be8f4918b42a86b34dea5f74a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="memItemLeft" align="right" valign="top"><a id="a19d63b90678ffd4c0f0b3f50b1319f7c"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a19d63b90678ffd4c0f0b3f50b1319f7c">in_gauss_q_factor</a></td></tr>
-<tr class="memdesc:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for gauss q factor slider <br  />
- <br /></td></tr>
-<tr class="separator:a19d63b90678ffd4c0f0b3f50b1319f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="memItemLeft" align="right" valign="top"><a id="a275ca19a1bb7f04fd0d7bdc4c4af8850"></a>
-t_inlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#a275ca19a1bb7f04fd0d7bdc4c4af8850">in_spray</a></td></tr>
-<tr class="memdesc:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="mdescLeft">&#160;</td><td class="mdescRight">inlet for spray slider <b> </b><br /></td></tr>
-<tr class="separator:a275ca19a1bb7f04fd0d7bdc4c4af8850"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad9fb0c87b0533a422bf8cce988bebea"><td class="memItemLeft" align="right" valign="top"><a id="aad9fb0c87b0533a422bf8cce988bebea"></a>
 t_outlet *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpd__granular__synth__tilde.html#aad9fb0c87b0533a422bf8cce988bebea">out</a></td></tr>
 <tr class="memdesc:aad9fb0c87b0533a422bf8cce988bebea"><td class="mdescLeft">&#160;</td><td class="mdescRight">main outlet <br  />
@@ -263,7 +266,7 @@ Related Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00022">22</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00027">27</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 </div><h2 class="groupheader">Friends And Related Function Documentation</h2>
 <a id="ac71179596b1f2169d42c27cb8ea54207"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac71179596b1f2169d42c27cb8ea54207">&#9670;&nbsp;</a></span>c_granular_synth_free()</h2>
@@ -299,7 +302,7 @@ Related Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00352">352</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00361">361</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -328,6 +331,7 @@ Related Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>resets playback position </p>
+<dl class="section author"><dt>Author</dt><dd>Kretschmar, Nikita</dd></dl>
 <p>resets playback position <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -337,7 +341,7 @@ Related Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00325">325</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00334">334</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -379,7 +383,7 @@ Related Functions</h2></td></tr>
 <p>adds <em><a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a></em> to the signal processing chain, activate in pd window by checking the mark at 'DSP' option<br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00212">212</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00201">201</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 
 </div>
 </div>
@@ -417,7 +421,7 @@ Related Functions</h2></td></tr>
 </dl>
 <p></b></p>
 
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00138">138</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00143">143</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 
 </div>
 </div>
@@ -464,7 +468,7 @@ Related Functions</h2></td></tr>
 <p><b><b><b><b><b><b><b><b><b><b><b><b><b><b></p><dl class="section note"><dt>Note</dt><dd>The main inlet is created automatically</dd></dl>
 <p></b></b></b></b></b></b></b></b></b></b></b></b></b></b></p>
 
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00065">65</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00070">70</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 
 </div>
 </div>
@@ -503,7 +507,7 @@ Related Functions</h2></td></tr>
 <p>&lt; returns pointer to dataspace for the next dsp-object</p>
 <p>&lt; returns argument equal to argument of the perform-routine plus the number of pointer variables +1</p>
 
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00112">112</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00117">117</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 
 </div>
 </div>
@@ -533,9 +537,9 @@ Related Functions</h2></td></tr>
 
 <p>setup of <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a> </p>
 <p>setup of <a class="el" href="structpd__granular__synth__tilde.html">pd_granular_synth_tilde</a>, with alternative constructor for using the name 'purple grain' in puredata <br  />
- </p><dl class="section warning"><dt>Warning</dt><dd>"sample multiply defined" error in class_sethelpsymbol(pd_granular_synth_tilde_class, gensym("pd_granular_synth~")); </dd></dl>
+ </p>
 
-<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00384">384</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pd__granular__synth~_8c_source.html#l00372">372</a> of file <a class="el" href="pd__granular__synth~_8c_source.html">pd_granular_synth~.c</a>.</p>
 
 </div>
 </div>

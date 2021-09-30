@@ -11,11 +11,6 @@ handles grain creation
 {\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
 Include dependency graph for grain.\+c\+:
 % FIG 0
-\doxysubsubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{grain_8c_a6df8a4f0caf7397fd15879daef804894}{O\+V\+E\+R\+L\+A\+P\+\_\+\+D\+E\+N\+S\+I\+TY}}~= 8
-\begin{DoxyCompactList}\small\item\em sets maximum amount of simoultaneously playing grains \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,7 +36,7 @@ Wennemann,Tim ~\newline
  Audiocommunication Group, Technische Universität Berlin ~\newline
 
 \end{DoxyAuthor}
-handles grain creation according to set input parameters~\newline
+handles grain creation and basic scheduling according to input parameters set by the synthesizer~\newline
  \begin{DoxyVersion}{Version}
 1.\+1 
 \end{DoxyVersion}
@@ -54,25 +49,6 @@ Copyright (c) 2021
 
 
 Definition in file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
-
-
-
-\doxysubsubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{grain_8c_a6df8a4f0caf7397fd15879daef804894}\label{grain_8c_a6df8a4f0caf7397fd15879daef804894}} 
-\index{grain.c@{grain.c}!OVERLAP\_DENSITY@{OVERLAP\_DENSITY}}
-\index{OVERLAP\_DENSITY@{OVERLAP\_DENSITY}!grain.c@{grain.c}}
-\doxyparagraph{\texorpdfstring{OVERLAP\_DENSITY}{OVERLAP\_DENSITY}}
-{\footnotesize\ttfamily \#define O\+V\+E\+R\+L\+A\+P\+\_\+\+D\+E\+N\+S\+I\+TY~= 8}
-
-
-
-sets maximum amount of simoultaneously playing grains 
-
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]check if necessary, set dynamically by user input \end{DoxyRefDesc}
-
-
-Definition at line \mbox{\hyperlink{grain_8c_source_l00025}{25}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 
 
@@ -90,13 +66,13 @@ frees grain
 frees grain ~\newline
  
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of grain\+\_\+fre object ~\newline
+{\em x} & input pointer of grain object ~\newline
  \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{grain_8c_source_l00183}{183}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+Definition at line \mbox{\hyperlink{grain_8c_source_l00142}{142}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 \mbox{\Hypertarget{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}\label{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}} 
 \index{grain.c@{grain.c}!grain\_internal\_scheduling@{grain\_internal\_scheduling}}
@@ -108,27 +84,23 @@ Definition at line \mbox{\hyperlink{grain_8c_source_l00183}{183}} of file \mbox{
 
 scheduling of grain playback 
 
-sheduling of grain playback ~\newline
+\begin{DoxyAuthor}{Author}
+Strobl, Micha ~\newline
+
+\end{DoxyAuthor}
+recursive scheduling of successive grain playback with time and/or start position shifts ~\newline
  
 \begin{DoxyParams}{Parameters}
 {\em g} & grain ~\newline
  \\
 \hline
-{\em synth} & synthesized output of \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} object ~\newline
+{\em synth} & pointer to \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} object that schedules the grain ~\newline
  \\
 \hline
 \end{DoxyParams}
-$<$
 
-$<$
 
-$<$
-
-$<$
-
-$<$
-
-Definition at line \mbox{\hyperlink{grain_8c_source_l00088}{88}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+Definition at line \mbox{\hyperlink{grain_8c_source_l00072}{72}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 \mbox{\Hypertarget{grain_8c_add05c8e2a37126d9bd6f745368b130ed}\label{grain_8c_add05c8e2a37126d9bd6f745368b130ed}} 
 \index{grain.c@{grain.c}!grain\_new@{grain\_new}}
@@ -143,10 +115,10 @@ generates new grain
 generates new grain with {\itshape grain\+\_\+index} according to set {\itshape grain\+\_\+size\+\_\+samples}, {\itshape start\+\_\+pos}, {\itshape time\+\_\+stretch\+\_\+factor} based on {\itshape soundfile\+\_\+size} ~\newline
  
 \begin{DoxyParams}{Parameters}
-{\em grain\+\_\+size\+\_\+samples} & size of samples contained in a grain ~\newline
+{\em grain\+\_\+size\+\_\+samples} & size of a grain as amount of contained samples ~\newline
  \\
 \hline
-{\em soundfile\+\_\+size} & size of the soundfile which can be read in via inlet ~\newline
+{\em soundfile\+\_\+size} & size of the soundfile in samples ~\newline
  \\
 \hline
 {\em start\+\_\+pos} & starting position within the soundfile, adjustable through slider ~\newline
@@ -164,5 +136,5 @@ grain
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{grain_8c_source_l00037}{37}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+Definition at line \mbox{\hyperlink{grain_8c_source_l00031}{31}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 

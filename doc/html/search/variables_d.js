@@ -11,6 +11,6 @@ var searchData=
   ['sr_199',['sr',['../structc__granular__synth.html#a3c2dba821ef09dd3229fc8d9c20e7b48',1,'c_granular_synth::sr()'],['../structpd__granular__synth__tilde.html#a577568b930a5b7f097d02fcfaa5ce346',1,'pd_granular_synth_tilde::sr()']]],
   ['start_200',['start',['../structgrain.html#a1f3a346626963438c6b4f934cf2c9011',1,'grain']]],
   ['start_5fpos_201',['start_pos',['../structpd__granular__synth__tilde.html#a5fa512278dfeb27f53f9fd50f5aaae5b',1,'pd_granular_synth_tilde']]],
-  ['sustain_202',['sustain',['../structenvelope.html#a76111f8cc917bab1a80fbd30893c05bc',1,'envelope::sustain()'],['../structpd__granular__synth__tilde.html#afb9bb7013de98ab5d9e47c1590a9a2b3',1,'pd_granular_synth_tilde::sustain()']]],
+  ['sustain_202',['sustain',['../structenvelope.html#aa10d3e71a1373857929796c382494afe',1,'envelope::sustain()'],['../structpd__granular__synth__tilde.html#afb9bb7013de98ab5d9e47c1590a9a2b3',1,'pd_granular_synth_tilde::sustain()']]],
   ['synth_203',['synth',['../structpd__granular__synth__tilde.html#a0c0edb455a1ae471a1533b223c2fa70d',1,'pd_granular_synth_tilde']]]
 ];

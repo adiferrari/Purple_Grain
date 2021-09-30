@@ -7,7 +7,7 @@
       <Type>func</Type>
     </TokenIdentifier>
     <Path>c__granular__synth_8c.html</Path>
-    <Anchor>a60a0c75d365a663c411871d56757e624</Anchor>
+    <Anchor>a97ade448d3c461937245056428a158fc</Anchor>
     <Abstract>initial setup of soundfile and adjustment silder related variables</Abstract>
     <DeclaredIn>c_granular_synth.c</DeclaredIn>
   </Token>
@@ -73,7 +73,7 @@
       <Type>func</Type>
     </TokenIdentifier>
     <Path>c__granular__synth_8h.html</Path>
-    <Anchor>a60a0c75d365a663c411871d56757e624</Anchor>
+    <Anchor>a97ade448d3c461937245056428a158fc</Anchor>
     <Abstract>initial setup of soundfile and adjustment silder related variables</Abstract>
     <DeclaredIn>c_granular_synth.h</DeclaredIn>
   </Token>
@@ -230,17 +230,6 @@
     <Anchor>a1c1368cf5424e9a5ae2dd5d9295661c5</Anchor>
     <Abstract>frees envelope</Abstract>
     <DeclaredIn>envelope.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>OVERLAP_DENSITY</Name>
-      <APILanguage>unknown</APILanguage>
-      <Type>macro</Type>
-    </TokenIdentifier>
-    <Path>grain_8c.html</Path>
-    <Anchor>a6df8a4f0caf7397fd15879daef804894</Anchor>
-    <Abstract>sets maximum amount of simoultaneously playing grains</Abstract>
-    <DeclaredIn>grain.c</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -416,13 +405,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>todo</Name>
-      <APILanguage>unknown</APILanguage>
-    </TokenIdentifier>
-    <Path>todo.html</Path>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>c_granular_synth</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
@@ -573,7 +555,7 @@
     </TokenIdentifier>
     <Path>structc__granular__synth.html</Path>
     <Anchor>a5d91e370701d04209bc69e60a84ff402</Anchor>
-    <Abstract>multiplicator of MIDI input pitch/key value</Abstract>
+    <Abstract>scaled by pitch/key value given by MIDI input</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -705,7 +687,7 @@
     </TokenIdentifier>
     <Path>structc__granular__synth.html</Path>
     <Anchor>ac23fc892366143927bb8bf45a94b862b</Anchor>
-    <Abstract>ADSR envelope.</Abstract>
+    <Abstract>ADSR envelope</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -747,7 +729,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>a9b07827e09a449d7d625093567f9b63e</Anchor>
+    <Anchor>a45b0cf896dd79b16b180428fd010d960</Anchor>
     <Abstract>attack time in the range of 0 - 4000ms, adjustable through slider</Abstract>
   </Token>
   <Token>
@@ -758,8 +740,19 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>ae6decb28291ea6014fd65a2ba5c7c57f</Anchor>
+    <Anchor>aaa0f6c6117d3b74d90f43736b2820de8</Anchor>
     <Abstract>decay time in the range of 0 - 4000ms, adjustable through slider</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>peak</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>data</Type>
+      <Scope>envelope</Scope>
+    </TokenIdentifier>
+    <Path>structenvelope.html</Path>
+    <Anchor>af58cdf289c9db30c99c90453632b346d</Anchor>
+    <Abstract>maximum value reached within one adsr cycle</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -769,7 +762,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>a76111f8cc917bab1a80fbd30893c05bc</Anchor>
+    <Anchor>aa10d3e71a1373857929796c382494afe</Anchor>
     <Abstract>sustain time in the range of 0 - 1, adjustable through slider</Abstract>
   </Token>
   <Token>
@@ -780,7 +773,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>ad39b6e45d776796f9a3329384d236c34</Anchor>
+    <Anchor>a59f3f35440dd9fd04b3063dcf4482c5e</Anchor>
     <Abstract>release time in the range of 0 - 10000ms, adjustable through slider</Abstract>
   </Token>
   <Token>
@@ -791,7 +784,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>a75aab461d84714b0952a55ed586eb047</Anchor>
+    <Anchor>ae1c285d05cdf978f940ade97d5fd9ba8</Anchor>
     <Abstract>attack time in samples</Abstract>
   </Token>
   <Token>
@@ -802,7 +795,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>a30ec5b0e049d60ddf8cd1c908b0790f3</Anchor>
+    <Anchor>af8bfed7e60f92481f1bd8842f59aee17</Anchor>
     <Abstract>decay time in samples</Abstract>
   </Token>
   <Token>
@@ -813,7 +806,7 @@
       <Scope>envelope</Scope>
     </TokenIdentifier>
     <Path>structenvelope.html</Path>
-    <Anchor>a8e5491047fb2b191ebf9dbb24859acda</Anchor>
+    <Anchor>a63b8d4763d52b647553bf2a22ee89f60</Anchor>
     <Abstract>release time in samples</Abstract>
   </Token>
   <Token>
@@ -1010,18 +1003,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>a0c0edb455a1ae471a1533b223c2fa70d</Anchor>
-    <Abstract>pure data garnular synth object</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>grain_size</Name>
-      <APILanguage>cpp</APILanguage>
-      <Type>data</Type>
-      <Scope>pd_granular_synth_tilde</Scope>
-    </TokenIdentifier>
-    <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a7541f4440303f6fb8a6b5c8b184dbd60</Anchor>
-    <Abstract>size of a grain in milliseconds, adjustable through slider</Abstract>
+    <Abstract>pure data granular synth object</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1098,7 +1080,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>a68d0cd58cc26f59c3fe84d2c0b6e33b1</Anchor>
-    <Abstract>randomizes the start position of each grain in the range of , adjustable through slider</Abstract>
+    <Abstract>randomizes the start position of each grain in the range of 0 - 75, adjustable through slider</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1131,7 +1113,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>a1e83151d2a2da97bca1a65b3fb9ca165</Anchor>
-    <Abstract>used to manipulate grain envelope slope in the range of , adjustable through slider</Abstract>
+    <Abstract>used to manipulate grain envelope slope in the range of 0.01 - 1, adjustable through slider</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1157,6 +1139,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>grain_size</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>data</Type>
+      <Scope>pd_granular_synth_tilde</Scope>
+    </TokenIdentifier>
+    <Path>structpd__granular__synth__tilde.html</Path>
+    <Anchor>a62f55889465ff31e02f50697bf1433a7</Anchor>
+    <Abstract>size of a grain in milliseconds, adjustable through slider</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>soundfile_length</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>
@@ -1175,7 +1168,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>a6cef9588a88f74c0f17b5d4694a404fb</Anchor>
-    <Abstract>in the range of</Abstract>
+    <Abstract>scaled by pitch/key value given by MIDI input</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1190,14 +1183,25 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>in_grain_size</Name>
+      <Name>in_midi_pitch</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>
       <Scope>pd_granular_synth_tilde</Scope>
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a1d5d353d48121dbb96ba2fcb1ed3fba0</Anchor>
-    <Abstract>inlet for grain size slider</Abstract>
+    <Anchor>a1e2060bd4d869dcfe477b9adf7e14eda</Anchor>
+    <Abstract>inlet for MIDI input pitch/key value</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>in_midi_velo</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>data</Type>
+      <Scope>pd_granular_synth_tilde</Scope>
+    </TokenIdentifier>
+    <Path>structpd__granular__synth__tilde.html</Path>
+    <Anchor>a08bda0c513d778d119ce0890c81f8000</Anchor>
+    <Abstract>inlet for MIDI input velocity value</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1212,6 +1216,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>in_grain_size</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>data</Type>
+      <Scope>pd_granular_synth_tilde</Scope>
+    </TokenIdentifier>
+    <Path>structpd__granular__synth__tilde.html</Path>
+    <Anchor>abafdf3c414759420728e8730e45bdf5e</Anchor>
+    <Abstract>inlet for grain size slider</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>in_time_stretch_factor</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>
@@ -1223,25 +1238,25 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>in_midi_pitch</Name>
+      <Name>in_gauss_q_factor</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>
       <Scope>pd_granular_synth_tilde</Scope>
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>ad0f944404dc59f1a42d3713d99335c42</Anchor>
-    <Abstract>inlet for MIDI input pitch/key value</Abstract>
+    <Anchor>a19d63b90678ffd4c0f0b3f50b1319f7c</Anchor>
+    <Abstract>inlet for gauss q factor slider</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>in_midi_velo</Name>
+      <Name>in_spray</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>
       <Scope>pd_granular_synth_tilde</Scope>
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a08bda0c513d778d119ce0890c81f8000</Anchor>
-    <Abstract>inlet for MIDI input velocity value</Abstract>
+    <Anchor>a275ca19a1bb7f04fd0d7bdc4c4af8850</Anchor>
+    <Abstract>inlet for spray slider</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1285,29 +1300,7 @@
     </TokenIdentifier>
     <Path>structpd__granular__synth__tilde.html</Path>
     <Anchor>ab3bb9be8f4918b42a86b34dea5f74a16</Anchor>
-    <Abstract>inlet for release slider</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>in_gauss_q_factor</Name>
-      <APILanguage>cpp</APILanguage>
-      <Type>data</Type>
-      <Scope>pd_granular_synth_tilde</Scope>
-    </TokenIdentifier>
-    <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a19d63b90678ffd4c0f0b3f50b1319f7c</Anchor>
-    <Abstract>inlet for gauss q factor slider</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>in_spray</Name>
-      <APILanguage>cpp</APILanguage>
-      <Type>data</Type>
-      <Scope>pd_granular_synth_tilde</Scope>
-    </TokenIdentifier>
-    <Path>structpd__granular__synth__tilde.html</Path>
-    <Anchor>a275ca19a1bb7f04fd0d7bdc4c4af8850</Anchor>
-    <Abstract>inlet for spray slider</Abstract>
+    <Abstract>inlet for release slider  ;</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>

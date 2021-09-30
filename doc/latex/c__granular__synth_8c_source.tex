@@ -7,7 +7,7 @@
 \DoxyCodeLine{00018 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
 \DoxyCodeLine{00019 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
 \DoxyCodeLine{00020 }
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00039}\mbox{\hyperlink{c__granular__synth_8h_a60a0c75d365a663c411871d56757e624}{00039}} \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *\mbox{\hyperlink{c__granular__synth_8c_a60a0c75d365a663c411871d56757e624}{c\_granular\_synth\_new}}(t\_word *soundfile, \textcolor{keywordtype}{int} soundfile\_length, \textcolor{keywordtype}{int} grain\_size\_ms, \textcolor{keywordtype}{int} start\_pos, \textcolor{keywordtype}{float} time\_stretch\_factor, \textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release, \textcolor{keywordtype}{float} gauss\_q\_factor, \textcolor{keywordtype}{int} spray\_input, \textcolor{keywordtype}{float} pitch\_factor, \textcolor{keywordtype}{int} midi\_pitch)}
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00039}\mbox{\hyperlink{c__granular__synth_8h_a97ade448d3c461937245056428a158fc}{00039}} \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *\mbox{\hyperlink{c__granular__synth_8c_a97ade448d3c461937245056428a158fc}{c\_granular\_synth\_new}}(t\_word *soundfile, \textcolor{keywordtype}{int} soundfile\_length, \textcolor{keywordtype}{int} grain\_size\_ms, t\_int start\_pos, \textcolor{keywordtype}{float} time\_stretch\_factor, \textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release, \textcolor{keywordtype}{float} gauss\_q\_factor, \textcolor{keywordtype}{int} spray\_input, \textcolor{keywordtype}{float} pitch\_factor, \textcolor{keywordtype}{int} midi\_pitch)}
 \DoxyCodeLine{00040 \{}
 \DoxyCodeLine{00041     \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x = (\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}}));}
 \DoxyCodeLine{00042     x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} = soundfile\_length;}
@@ -33,246 +33,246 @@
 \DoxyCodeLine{00062     x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
 \DoxyCodeLine{00063     x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}} = \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(attack, decay, sustain, release);}
 \DoxyCodeLine{00064 }
-\DoxyCodeLine{00069     \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(x);}
-\DoxyCodeLine{00070     post(\textcolor{stringliteral}{"C main file -\/ new method -\/ number of grains = \%d"}, x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}});}
-\DoxyCodeLine{00071     \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
+\DoxyCodeLine{00065     \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(x);}
+\DoxyCodeLine{00066     \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
+\DoxyCodeLine{00067     }
+\DoxyCodeLine{00068     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i<soundfile\_length;i++)}
+\DoxyCodeLine{00069     \{}
+\DoxyCodeLine{00070         x-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[i] = soundfile[i].w\_float;}
+\DoxyCodeLine{00071     \}}
 \DoxyCodeLine{00072     }
-\DoxyCodeLine{00073     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i<soundfile\_length;i++)}
-\DoxyCodeLine{00074     \{}
-\DoxyCodeLine{00075         x-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[i] = soundfile[i].w\_float;}
-\DoxyCodeLine{00076     \}}
-\DoxyCodeLine{00077     }
-\DoxyCodeLine{00078     x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}} = NULL;}
-\DoxyCodeLine{00079     \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
-\DoxyCodeLine{00080 }
-\DoxyCodeLine{00081     \textcolor{keywordflow}{return} x;}
-\DoxyCodeLine{00082 \}}
-\DoxyCodeLine{00083 }
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00093}\mbox{\hyperlink{c__granular__synth_8h_ab1c4e09392d873e432cb0edeae71f17c}{00093}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_ab1c4e09392d873e432cb0edeae71f17c}{c\_granular\_synth\_process}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x, \textcolor{keywordtype}{float} *in, \textcolor{keywordtype}{float} *out, \textcolor{keywordtype}{int} vector\_size)}
-\DoxyCodeLine{00094 \{}
-\DoxyCodeLine{00095     \textcolor{keywordtype}{int} i = vector\_size;}
-\DoxyCodeLine{00096     \textcolor{keywordtype}{float} gauss\_val, adsr\_val;}
-\DoxyCodeLine{00097     }
-\DoxyCodeLine{00098      \textcolor{keywordflow}{while}(i-\/-\/)}
-\DoxyCodeLine{00099     \{}
-\DoxyCodeLine{00100         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} = 0;}
-\DoxyCodeLine{00101         }
-\DoxyCodeLine{00102         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} != 0 \&\& x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} == 0 \&\& x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != 0)}
-\DoxyCodeLine{00103         \{}
-\DoxyCodeLine{00104             x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} = \mbox{\hyperlink{purple__utils_8c_a6a5f0b499868877a5f59c0b0f86ba1b7}{spray\_dependant\_playback\_nudge}}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}});}
-\DoxyCodeLine{00105             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} != 0)}
-\DoxyCodeLine{00106             \{     }
-\DoxyCodeLine{00107                 \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(x);}
-\DoxyCodeLine{00108                 \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
-\DoxyCodeLine{00109                 \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
-\DoxyCodeLine{00110             \}}
-\DoxyCodeLine{00111         \}}
-\DoxyCodeLine{00112         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00113         \{}
-\DoxyCodeLine{00114             x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}++;}
-\DoxyCodeLine{00115             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
-\DoxyCodeLine{00116             \{}
-\DoxyCodeLine{00117                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = 0;}
-\DoxyCodeLine{00118             \}}
-\DoxyCodeLine{00119             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} < 0)}
-\DoxyCodeLine{00120             \{}
-\DoxyCodeLine{00121                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 + x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}};}
-\DoxyCodeLine{00122             \}}
-\DoxyCodeLine{00123             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}})}
-\DoxyCodeLine{00124             \{}
-\DoxyCodeLine{00125                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}};}
-\DoxyCodeLine{00126             \}}
-\DoxyCodeLine{00127         \}}
-\DoxyCodeLine{00128 }
-\DoxyCodeLine{00129         \mbox{\hyperlink{c__granular__synth_8h_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(\&x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}}[x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}], x);}
-\DoxyCodeLine{00130         }
-\DoxyCodeLine{00131         gauss\_val = \mbox{\hyperlink{c__granular__synth_8h_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}}(x);}
-\DoxyCodeLine{00132         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} *= gauss\_val;}
-\DoxyCodeLine{00133         }
-\DoxyCodeLine{00134         }
-\DoxyCodeLine{00135         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} > 0)}
-\DoxyCodeLine{00136         \{}
-\DoxyCodeLine{00137             adsr\_val = \mbox{\hyperlink{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}{calculate\_adsr\_value}}(x);}
-\DoxyCodeLine{00138         \}}
-\DoxyCodeLine{00139         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00140         \{}
-\DoxyCodeLine{00141             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} == SILENT)}
-\DoxyCodeLine{00142             \{}
-\DoxyCodeLine{00143                 adsr\_val = 0;}
-\DoxyCodeLine{00144             \}}
-\DoxyCodeLine{00145             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00146             \{}
-\DoxyCodeLine{00147                 \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} != RELEASE)}
-\DoxyCodeLine{00148                 \{}
-\DoxyCodeLine{00149                     x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
-\DoxyCodeLine{00150                 \}}
-\DoxyCodeLine{00151                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = RELEASE;}
-\DoxyCodeLine{00152 }
-\DoxyCodeLine{00153                 adsr\_val = \mbox{\hyperlink{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}{calculate\_adsr\_value}}(x);}
-\DoxyCodeLine{00154             \}}
-\DoxyCodeLine{00155         \}}
-\DoxyCodeLine{00156         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} *= adsr\_val;}
-\DoxyCodeLine{00157         *out++ = x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}};}
-\DoxyCodeLine{00158     \}}
-\DoxyCodeLine{00159     }
-\DoxyCodeLine{00160 \}}
-\DoxyCodeLine{00161 }
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00167}\mbox{\hyperlink{c__granular__synth_8h_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{00167}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00168 \{}
-\DoxyCodeLine{00169     x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} = (int)ceilf(fabsf(x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} * x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}}) / x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}});}
-\DoxyCodeLine{00170 \}}
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00176}\mbox{\hyperlink{c__granular__synth_8h_a4851564c44cc8e0bae53de300c6dec30}{00176}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00177 \{}
-\DoxyCodeLine{00178     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} > 0)}
-\DoxyCodeLine{00179     \{}
-\DoxyCodeLine{00180         \textcolor{keywordtype}{int} index = ceil((x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} * fabs(x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}})) / x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}});}
-\DoxyCodeLine{00181         x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} = (index == 0) ? 0 : index \% x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}};}
-\DoxyCodeLine{00182     \}}
-\DoxyCodeLine{00183 \}}
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00189}\mbox{\hyperlink{c__granular__synth_8h_af1fcbd7334868a3c94bea99fee01f7ce}{00189}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00190 \{}
-\DoxyCodeLine{00191     \mbox{\hyperlink{structgrain}{grain}} *grains\_table;}
-\DoxyCodeLine{00192     grains\_table = (\mbox{\hyperlink{structgrain}{grain}} *) calloc(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}}, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structgrain}{grain}}));}
-\DoxyCodeLine{00193     \textcolor{keywordtype}{int} j;}
-\DoxyCodeLine{00194     \textcolor{keywordtype}{float} start\_offset = 0;}
-\DoxyCodeLine{00195     }
-\DoxyCodeLine{00196     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}})}
-\DoxyCodeLine{00197     \{}
-\DoxyCodeLine{00198         \textcolor{keywordflow}{for}(j = x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}; j >= 0; j-\/-\/)}
-\DoxyCodeLine{00199         \{}
-\DoxyCodeLine{00200             }
-\DoxyCodeLine{00201             grains\_table[j] = \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}},}
-\DoxyCodeLine{00202                                         x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}},}
-\DoxyCodeLine{00203                                         (x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} + x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} + start\_offset),}
-\DoxyCodeLine{00204                                         j, x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}});}
-\DoxyCodeLine{00205             \textcolor{keywordflow}{if}(j < x-\/>current\_grain\_index) grains\_table[j+1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[j];}
-\DoxyCodeLine{00206 }
-\DoxyCodeLine{00207             start\_offset += x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} * x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
-\DoxyCodeLine{00208         \}}
-\DoxyCodeLine{00209         grains\_table[0].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} -\/ 1];}
-\DoxyCodeLine{00210     \}}
-\DoxyCodeLine{00211     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00212     \{}
-\DoxyCodeLine{00213         \textcolor{keywordflow}{for}(j = x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}; j<x-\/>num\_grains; j++)}
-\DoxyCodeLine{00214         \{}
-\DoxyCodeLine{00215             grains\_table[j] = \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}},}
-\DoxyCodeLine{00216                                         x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}},}
-\DoxyCodeLine{00217                                         (x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} + start\_offset),}
-\DoxyCodeLine{00218                                         j, x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}});}
-\DoxyCodeLine{00219             \textcolor{keywordflow}{if}(j > 0) grains\_table[j-\/1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[j];}
-\DoxyCodeLine{00220 }
-\DoxyCodeLine{00221             start\_offset += x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} * x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
-\DoxyCodeLine{00222         \}}
-\DoxyCodeLine{00223         grains\_table[x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} -\/ 1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[0];}
-\DoxyCodeLine{00224     \}}
-\DoxyCodeLine{00225     }
-\DoxyCodeLine{00226     \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(x);}
-\DoxyCodeLine{00227     }
-\DoxyCodeLine{00228     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}}) free(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}});}
-\DoxyCodeLine{00229     x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}} = grains\_table;}
-\DoxyCodeLine{00230 \}}
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00247}\mbox{\hyperlink{c__granular__synth_8h_a878c6a0073df67b10d63b5e819eaad74}{00247}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_a878c6a0073df67b10d63b5e819eaad74}{c\_granular\_synth\_properties\_update}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x, t\_int grain\_size\_ms, t\_int start\_pos, \textcolor{keywordtype}{float} time\_stretch\_factor, t\_int midi\_velo, t\_int midi\_pitch, t\_int attack, t\_int decay, \textcolor{keywordtype}{float} sustain, t\_int release, \textcolor{keywordtype}{float} gauss\_q\_factor, t\_int spray\_input)}
-\DoxyCodeLine{00248 \{}
-\DoxyCodeLine{00249     }
-\DoxyCodeLine{00250     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != midi\_velo)}
-\DoxyCodeLine{00251     \{}
-\DoxyCodeLine{00252         x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} = (int)midi\_velo;}
-\DoxyCodeLine{00253     \}}
+\DoxyCodeLine{00073     x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}} = NULL;}
+\DoxyCodeLine{00074     \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076     \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{00077 \}}
+\DoxyCodeLine{00078 }
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00092}\mbox{\hyperlink{c__granular__synth_8h_ab1c4e09392d873e432cb0edeae71f17c}{00092}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_ab1c4e09392d873e432cb0edeae71f17c}{c\_granular\_synth\_process}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x, \textcolor{keywordtype}{float} *in, \textcolor{keywordtype}{float} *out, \textcolor{keywordtype}{int} vector\_size)}
+\DoxyCodeLine{00093 \{}
+\DoxyCodeLine{00094     \textcolor{keywordtype}{int} i = vector\_size;}
+\DoxyCodeLine{00095     \textcolor{keywordtype}{float} gauss\_val, adsr\_val;}
+\DoxyCodeLine{00096     }
+\DoxyCodeLine{00097      \textcolor{keywordflow}{while}(i-\/-\/)}
+\DoxyCodeLine{00098     \{}
+\DoxyCodeLine{00099         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} = 0;}
+\DoxyCodeLine{00100         }
+\DoxyCodeLine{00101         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} != 0 \&\& x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} == 0 \&\& x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != 0)}
+\DoxyCodeLine{00102         \{}
+\DoxyCodeLine{00103             x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} = \mbox{\hyperlink{purple__utils_8c_a6a5f0b499868877a5f59c0b0f86ba1b7}{spray\_dependant\_playback\_nudge}}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}});}
+\DoxyCodeLine{00104             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} != 0)}
+\DoxyCodeLine{00105             \{     }
+\DoxyCodeLine{00106                 \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(x);}
+\DoxyCodeLine{00107                 \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
+\DoxyCodeLine{00108                 \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
+\DoxyCodeLine{00109             \}}
+\DoxyCodeLine{00110         \}}
+\DoxyCodeLine{00111         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00112         \{}
+\DoxyCodeLine{00113             x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}++;}
+\DoxyCodeLine{00114             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
+\DoxyCodeLine{00115             \{}
+\DoxyCodeLine{00116                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = 0;}
+\DoxyCodeLine{00117             \}}
+\DoxyCodeLine{00118             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} < 0)}
+\DoxyCodeLine{00119             \{}
+\DoxyCodeLine{00120                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 + x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}};}
+\DoxyCodeLine{00121             \}}
+\DoxyCodeLine{00122             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}})}
+\DoxyCodeLine{00123             \{}
+\DoxyCodeLine{00124                 x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}};}
+\DoxyCodeLine{00125             \}}
+\DoxyCodeLine{00126         \}}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128         \mbox{\hyperlink{c__granular__synth_8h_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(\&x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}}[x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}], x);}
+\DoxyCodeLine{00129         }
+\DoxyCodeLine{00130         gauss\_val = \mbox{\hyperlink{c__granular__synth_8h_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}}(x);}
+\DoxyCodeLine{00131         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} *= gauss\_val;}
+\DoxyCodeLine{00132         }
+\DoxyCodeLine{00133         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} > 0)}
+\DoxyCodeLine{00134         \{}
+\DoxyCodeLine{00135             adsr\_val = \mbox{\hyperlink{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}{calculate\_adsr\_value}}(x);}
+\DoxyCodeLine{00136         \}}
+\DoxyCodeLine{00137         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00138         \{}
+\DoxyCodeLine{00139             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} == SILENT)}
+\DoxyCodeLine{00140             \{}
+\DoxyCodeLine{00141                 adsr\_val = 0;}
+\DoxyCodeLine{00142             \}}
+\DoxyCodeLine{00143             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00144             \{}
+\DoxyCodeLine{00145                 \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} != RELEASE)}
+\DoxyCodeLine{00146                 \{}
+\DoxyCodeLine{00147                     x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
+\DoxyCodeLine{00148                     x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = RELEASE;}
+\DoxyCodeLine{00149                 \}}
+\DoxyCodeLine{00150                 adsr\_val = \mbox{\hyperlink{c__granular__synth_8h_aaae5d861cb60747af27b39b0658a92bd}{calculate\_adsr\_value}}(x);}
+\DoxyCodeLine{00151             \}}
+\DoxyCodeLine{00152         \}}
+\DoxyCodeLine{00153         x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} *= adsr\_val;}
+\DoxyCodeLine{00154         *out++ = x-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}};}
+\DoxyCodeLine{00155     \}}
+\DoxyCodeLine{00156     }
+\DoxyCodeLine{00157 \}}
+\DoxyCodeLine{00158 }
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00166}\mbox{\hyperlink{c__granular__synth_8h_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{00166}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00167 \{}
+\DoxyCodeLine{00168     x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} = (int)ceilf(fabsf(x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} * x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}}) / x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}});}
+\DoxyCodeLine{00169 \}}
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00177}\mbox{\hyperlink{c__granular__synth_8h_a4851564c44cc8e0bae53de300c6dec30}{00177}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00178 \{}
+\DoxyCodeLine{00179     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} > 0)}
+\DoxyCodeLine{00180     \{}
+\DoxyCodeLine{00181         \textcolor{keywordtype}{int} index = ceil((x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} * fabs(x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}})) / x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}});}
+\DoxyCodeLine{00182         x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} = (index == 0) ? 0 : index \% x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}};}
+\DoxyCodeLine{00183     \}}
+\DoxyCodeLine{00184 \}}
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00192}\mbox{\hyperlink{c__granular__synth_8h_af1fcbd7334868a3c94bea99fee01f7ce}{00192}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00193 \{}
+\DoxyCodeLine{00194     \mbox{\hyperlink{structgrain}{grain}} *grains\_table;}
+\DoxyCodeLine{00195     grains\_table = (\mbox{\hyperlink{structgrain}{grain}} *) calloc(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}}, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structgrain}{grain}}));}
+\DoxyCodeLine{00196     \textcolor{keywordtype}{int} j;}
+\DoxyCodeLine{00197     \textcolor{keywordtype}{float} start\_offset = 0;}
+\DoxyCodeLine{00198     }
+\DoxyCodeLine{00199     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}})}
+\DoxyCodeLine{00200     \{}
+\DoxyCodeLine{00201         \textcolor{keywordflow}{for}(j = x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}; j >= 0; j-\/-\/)}
+\DoxyCodeLine{00202         \{}
+\DoxyCodeLine{00203             }
+\DoxyCodeLine{00204             grains\_table[j] = \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}},}
+\DoxyCodeLine{00205                                         x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}},}
+\DoxyCodeLine{00206                                         (x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} + x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} + start\_offset),}
+\DoxyCodeLine{00207                                         j, x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}});}
+\DoxyCodeLine{00208             \textcolor{keywordflow}{if}(j < x-\/>current\_grain\_index) grains\_table[j+1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[j];}
+\DoxyCodeLine{00209 }
+\DoxyCodeLine{00210             start\_offset += x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} * x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
+\DoxyCodeLine{00211         \}}
+\DoxyCodeLine{00212         grains\_table[0].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} -\/ 1];}
+\DoxyCodeLine{00213     \}}
+\DoxyCodeLine{00214     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00215     \{}
+\DoxyCodeLine{00216         \textcolor{keywordflow}{for}(j = x-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}}; j<x-\/>num\_grains; j++)}
+\DoxyCodeLine{00217         \{}
+\DoxyCodeLine{00218             grains\_table[j] = \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}},}
+\DoxyCodeLine{00219                                         x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}},}
+\DoxyCodeLine{00220                                         (x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} + start\_offset),}
+\DoxyCodeLine{00221                                         j, x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}});}
+\DoxyCodeLine{00222             \textcolor{keywordflow}{if}(j > 0) grains\_table[j-\/1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[j];}
+\DoxyCodeLine{00223 }
+\DoxyCodeLine{00224             start\_offset += x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} * x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
+\DoxyCodeLine{00225         \}}
+\DoxyCodeLine{00226         grains\_table[x-\/>\mbox{\hyperlink{structc__granular__synth_a7e73f03cc3082965881f96a058ed1f6b}{num\_grains}} -\/ 1].\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}} = \&grains\_table[0];}
+\DoxyCodeLine{00227     \}}
+\DoxyCodeLine{00228     }
+\DoxyCodeLine{00229     \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(x);}
+\DoxyCodeLine{00230     }
+\DoxyCodeLine{00231     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}}) free(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}});}
+\DoxyCodeLine{00232     x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}} = grains\_table;}
+\DoxyCodeLine{00233 \}}
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00252}\mbox{\hyperlink{c__granular__synth_8h_a878c6a0073df67b10d63b5e819eaad74}{00252}} \textcolor{keywordtype}{void} \mbox{\hyperlink{c__granular__synth_8c_a878c6a0073df67b10d63b5e819eaad74}{c\_granular\_synth\_properties\_update}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x, t\_int grain\_size\_ms, t\_int start\_pos, \textcolor{keywordtype}{float} time\_stretch\_factor, t\_int midi\_velo, t\_int midi\_pitch, t\_int attack, t\_int decay, \textcolor{keywordtype}{float} sustain, t\_int release, \textcolor{keywordtype}{float} gauss\_q\_factor, t\_int spray\_input)}
+\DoxyCodeLine{00253 \{}
 \DoxyCodeLine{00254     }
-\DoxyCodeLine{00255     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} != midi\_pitch)}
+\DoxyCodeLine{00255     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != midi\_velo)}
 \DoxyCodeLine{00256     \{}
-\DoxyCodeLine{00257         x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} = (int)midi\_pitch;}
-\DoxyCodeLine{00258         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != 0) x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} = time\_stretch\_factor * x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} / 48.0;}
-\DoxyCodeLine{00259     \}}
-\DoxyCodeLine{00260     }
-\DoxyCodeLine{00261     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} != grain\_size\_ms ||}
-\DoxyCodeLine{00262        x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} != start\_pos ||}
-\DoxyCodeLine{00263        x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} != time\_stretch\_factor ||}
-\DoxyCodeLine{00264        !x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}})}
-\DoxyCodeLine{00265     \{}
-\DoxyCodeLine{00266         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} != grain\_size\_ms)}
-\DoxyCodeLine{00267         \{}
-\DoxyCodeLine{00268             x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} = (int)grain\_size\_ms;}
-\DoxyCodeLine{00269             \textcolor{keywordtype}{int} grain\_size\_samples = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}((\textcolor{keywordtype}{int})grain\_size\_ms, x-\/>\mbox{\hyperlink{structc__granular__synth_a3c2dba821ef09dd3229fc8d9c20e7b48}{sr}});}
-\DoxyCodeLine{00270             x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} = grain\_size\_samples;}
-\DoxyCodeLine{00271         \}}
-\DoxyCodeLine{00272         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} != start\_pos)}
-\DoxyCodeLine{00273         \{}
-\DoxyCodeLine{00274             x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} = (int)start\_pos;}
-\DoxyCodeLine{00275         \}}
-\DoxyCodeLine{00276         }
-\DoxyCodeLine{00277         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} != time\_stretch\_factor)}
+\DoxyCodeLine{00257         x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} = (int)midi\_velo;}
+\DoxyCodeLine{00258     \}}
+\DoxyCodeLine{00259     }
+\DoxyCodeLine{00260     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} != midi\_pitch)}
+\DoxyCodeLine{00261     \{}
+\DoxyCodeLine{00262         x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} = (int)midi\_pitch;}
+\DoxyCodeLine{00263         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} != 0) x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} = time\_stretch\_factor * x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} / 48.0;}
+\DoxyCodeLine{00264     \}}
+\DoxyCodeLine{00265     }
+\DoxyCodeLine{00266     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} != grain\_size\_ms ||}
+\DoxyCodeLine{00267        x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} != start\_pos ||}
+\DoxyCodeLine{00268        x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} != time\_stretch\_factor ||}
+\DoxyCodeLine{00269        !x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}})}
+\DoxyCodeLine{00270     \{}
+\DoxyCodeLine{00271         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} != grain\_size\_ms)}
+\DoxyCodeLine{00272         \{}
+\DoxyCodeLine{00273             x-\/>\mbox{\hyperlink{structc__granular__synth_a44f20994496035490c7aa24f92147606}{grain\_size\_ms}} = (int)grain\_size\_ms;}
+\DoxyCodeLine{00274             \textcolor{keywordtype}{int} grain\_size\_samples = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}((\textcolor{keywordtype}{int})grain\_size\_ms, x-\/>\mbox{\hyperlink{structc__granular__synth_a3c2dba821ef09dd3229fc8d9c20e7b48}{sr}});}
+\DoxyCodeLine{00275             x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} = grain\_size\_samples;}
+\DoxyCodeLine{00276         \}}
+\DoxyCodeLine{00277         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} != start\_pos)}
 \DoxyCodeLine{00278         \{}
-\DoxyCodeLine{00279             x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} = time\_stretch\_factor;}
-\DoxyCodeLine{00280             x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} = time\_stretch\_factor * x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} / 48.0;}
-\DoxyCodeLine{00281             }
-\DoxyCodeLine{00282         \}}
-\DoxyCodeLine{00283         \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(x);}
-\DoxyCodeLine{00284         \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
-\DoxyCodeLine{00285         \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
-\DoxyCodeLine{00286     \}}
-\DoxyCodeLine{00287     }
-\DoxyCodeLine{00288     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} != spray\_input)}
-\DoxyCodeLine{00289     \{}
-\DoxyCodeLine{00290         x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} = (int)spray\_input;}
+\DoxyCodeLine{00279             x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} = start\_pos;}
+\DoxyCodeLine{00280         \}}
+\DoxyCodeLine{00281         }
+\DoxyCodeLine{00282         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} != time\_stretch\_factor)}
+\DoxyCodeLine{00283         \{}
+\DoxyCodeLine{00284             x-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} = time\_stretch\_factor;}
+\DoxyCodeLine{00285             x-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}} = time\_stretch\_factor * x-\/>\mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}{midi\_pitch}} / 48.0;}
+\DoxyCodeLine{00286             }
+\DoxyCodeLine{00287         \}}
+\DoxyCodeLine{00288         \mbox{\hyperlink{c__granular__synth_8c_ac8c478d5ad0c8ecd25c13951e8d1a4d6}{c\_granular\_synth\_set\_num\_grains}}(x);}
+\DoxyCodeLine{00289         \mbox{\hyperlink{c__granular__synth_8c_a4851564c44cc8e0bae53de300c6dec30}{c\_granular\_synth\_adjust\_current\_grain\_index}}(x);}
+\DoxyCodeLine{00290         \mbox{\hyperlink{c__granular__synth_8c_af1fcbd7334868a3c94bea99fee01f7ce}{c\_granular\_synth\_populate\_grain\_table}}(x);}
 \DoxyCodeLine{00291     \}}
 \DoxyCodeLine{00292     }
-\DoxyCodeLine{00293     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}} != attack || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}} != decay || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}} != sustain || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}} != release)}
+\DoxyCodeLine{00293     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} != spray\_input)}
 \DoxyCodeLine{00294     \{}
-\DoxyCodeLine{00295         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}} != attack)}
-\DoxyCodeLine{00296         \{}
-\DoxyCodeLine{00297             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}} = (int)attack;}
-\DoxyCodeLine{00298         \}}
-\DoxyCodeLine{00299         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}} != decay)}
-\DoxyCodeLine{00300         \{}
-\DoxyCodeLine{00301             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}} = (int)decay;}
-\DoxyCodeLine{00302         \}}
-\DoxyCodeLine{00303         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}} != sustain)}
-\DoxyCodeLine{00304         \{}
-\DoxyCodeLine{00305             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}} = sustain;}
-\DoxyCodeLine{00306         \}}
-\DoxyCodeLine{00307         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}} != release)}
-\DoxyCodeLine{00308         \{}
-\DoxyCodeLine{00309             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}} = (int)release;}
-\DoxyCodeLine{00310         \}}
-\DoxyCodeLine{00311         x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}} = \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}}, decay, sustain, release);}
-\DoxyCodeLine{00312     \}}
-\DoxyCodeLine{00313 }
-\DoxyCodeLine{00314     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} != gauss\_q\_factor)}
-\DoxyCodeLine{00315     \{}
-\DoxyCodeLine{00316         x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} = gauss\_q\_factor;}
-\DoxyCodeLine{00317     \}}
-\DoxyCodeLine{00318 \}}
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00325}\mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{00325}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00326 \{}
-\DoxyCodeLine{00327     x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} + x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}};}
-\DoxyCodeLine{00328     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} < 0)}
-\DoxyCodeLine{00329     \{}
-\DoxyCodeLine{00330         x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} += (x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1);}
-\DoxyCodeLine{00331     \}}
-\DoxyCodeLine{00332     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
-\DoxyCodeLine{00333     \{}
-\DoxyCodeLine{00334         x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} -\/= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}};}
-\DoxyCodeLine{00335     \}}
-\DoxyCodeLine{00336     x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}};}
-\DoxyCodeLine{00337     }
-\DoxyCodeLine{00338 }
-\DoxyCodeLine{00339     x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} + x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
-\DoxyCodeLine{00340     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
-\DoxyCodeLine{00341     \{}
-\DoxyCodeLine{00342         x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} -\/= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}};}
-\DoxyCodeLine{00343     \}}
-\DoxyCodeLine{00344 \}}
-\DoxyCodeLine{00345 }
-\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00352}\mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{00352}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{c\_granular\_synth\_free}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00353 \{}
-\DoxyCodeLine{00354     \textcolor{keywordflow}{if}(x)}
-\DoxyCodeLine{00355     \{}
-\DoxyCodeLine{00356         free(x-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}});}
-\DoxyCodeLine{00357         free(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}});}
-\DoxyCodeLine{00358         \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}});}
-\DoxyCodeLine{00359         free(x);}
-\DoxyCodeLine{00360     \}}
-\DoxyCodeLine{00361 \}}
+\DoxyCodeLine{00295         x-\/>\mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\_input}} = (int)spray\_input;}
+\DoxyCodeLine{00296     \}}
+\DoxyCodeLine{00297     }
+\DoxyCodeLine{00298     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a45b0cf896dd79b16b180428fd010d960}{attack}} != attack || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaa0f6c6117d3b74d90f43736b2820de8}{decay}} != decay || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aa10d3e71a1373857929796c382494afe}{sustain}} != sustain || x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a59f3f35440dd9fd04b3063dcf4482c5e}{release}} != release)}
+\DoxyCodeLine{00299     \{}
+\DoxyCodeLine{00300         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a45b0cf896dd79b16b180428fd010d960}{attack}} != attack)}
+\DoxyCodeLine{00301         \{}
+\DoxyCodeLine{00302             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a45b0cf896dd79b16b180428fd010d960}{attack}} = (int)attack;}
+\DoxyCodeLine{00303         \}}
+\DoxyCodeLine{00304         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaa0f6c6117d3b74d90f43736b2820de8}{decay}} != decay)}
+\DoxyCodeLine{00305         \{}
+\DoxyCodeLine{00306             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaa0f6c6117d3b74d90f43736b2820de8}{decay}} = (int)decay;}
+\DoxyCodeLine{00307         \}}
+\DoxyCodeLine{00308         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aa10d3e71a1373857929796c382494afe}{sustain}} != sustain)}
+\DoxyCodeLine{00309         \{}
+\DoxyCodeLine{00310             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aa10d3e71a1373857929796c382494afe}{sustain}} = sustain;}
+\DoxyCodeLine{00311         \}}
+\DoxyCodeLine{00312         \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a59f3f35440dd9fd04b3063dcf4482c5e}{release}} != release)}
+\DoxyCodeLine{00313         \{}
+\DoxyCodeLine{00314             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a59f3f35440dd9fd04b3063dcf4482c5e}{release}} = (int)release;}
+\DoxyCodeLine{00315         \}}
+\DoxyCodeLine{00316         x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}} = \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a45b0cf896dd79b16b180428fd010d960}{attack}},}
+\DoxyCodeLine{00317                                    x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaa0f6c6117d3b74d90f43736b2820de8}{decay}},}
+\DoxyCodeLine{00318                                    x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aa10d3e71a1373857929796c382494afe}{sustain}},}
+\DoxyCodeLine{00319                                    x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a59f3f35440dd9fd04b3063dcf4482c5e}{release}});}
+\DoxyCodeLine{00320     \}}
+\DoxyCodeLine{00321 }
+\DoxyCodeLine{00322     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} != gauss\_q\_factor)}
+\DoxyCodeLine{00323     \{}
+\DoxyCodeLine{00324         x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} = gauss\_q\_factor;}
+\DoxyCodeLine{00325     \}}
+\DoxyCodeLine{00326 \}}
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00334}\mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{00334}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00335 \{}
+\DoxyCodeLine{00336     x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\_start\_pos}} + x-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}};}
+\DoxyCodeLine{00337     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} < 0)}
+\DoxyCodeLine{00338     \{}
+\DoxyCodeLine{00339         x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} += (x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1);}
+\DoxyCodeLine{00340     \}}
+\DoxyCodeLine{00341     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
+\DoxyCodeLine{00342     \{}
+\DoxyCodeLine{00343         x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}} -\/= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}};}
+\DoxyCodeLine{00344     \}}
+\DoxyCodeLine{00345     x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\_start\_pos}};}
+\DoxyCodeLine{00346     }
+\DoxyCodeLine{00347 }
+\DoxyCodeLine{00348     x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} = x-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}} + x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}};}
+\DoxyCodeLine{00349     \textcolor{keywordflow}{while}(x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
+\DoxyCodeLine{00350     \{}
+\DoxyCodeLine{00351         x-\/>\mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\_cycle\_end}} -\/= x-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}};}
+\DoxyCodeLine{00352     \}}
+\DoxyCodeLine{00353 \}}
+\DoxyCodeLine{00354 }
+\DoxyCodeLine{\Hypertarget{c__granular__synth_8c_source_l00361}\mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{00361}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{c\_granular\_synth\_free}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00362 \{}
+\DoxyCodeLine{00363     \textcolor{keywordflow}{if}(x)}
+\DoxyCodeLine{00364     \{}
+\DoxyCodeLine{00365         free(x-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}});}
+\DoxyCodeLine{00366         free(x-\/>\mbox{\hyperlink{structc__granular__synth_a8e8e0ead288803885bda3b639cc7ef9b}{grains\_table}});}
+\DoxyCodeLine{00367         \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}});}
+\DoxyCodeLine{00368         free(x);}
+\DoxyCodeLine{00369     \}}
+\DoxyCodeLine{00370 \}}
 
 \end{DoxyCode}

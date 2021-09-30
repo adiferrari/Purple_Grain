@@ -64,7 +64,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">grain.c File Reference</div>  </div>
@@ -88,12 +87,6 @@ $(function() {
 </div>
 <p><a href="grain_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a6df8a4f0caf7397fd15879daef804894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">OVERLAP_DENSITY</a>&#160;&#160;&#160;= 8</td></tr>
-<tr class="memdesc:a6df8a4f0caf7397fd15879daef804894"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets maximum amount of simoultaneously playing grains  <a href="grain_8c.html#a6df8a4f0caf7397fd15879daef804894">More...</a><br /></td></tr>
-<tr class="separator:a6df8a4f0caf7397fd15879daef804894"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:add05c8e2a37126d9bd6f745368b130ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgrain.html">grain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grain_8c.html#add05c8e2a37126d9bd6f745368b130ed">grain_new</a> (int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)</td></tr>
@@ -117,33 +110,13 @@ Strobl, Micha </dd>
 Wennemann,Tim <br  />
  Audiocommunication Group, Technische Universität Berlin <br  />
 </dd></dl>
-<p>handles grain creation according to set input parameters<br  />
+<p>handles grain creation and basic scheduling according to input parameters set by the synthesizer<br  />
  </p><dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a6df8a4f0caf7397fd15879daef804894"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6df8a4f0caf7397fd15879daef804894">&#9670;&nbsp;</a></span>OVERLAP_DENSITY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OVERLAP_DENSITY&#160;&#160;&#160;= 8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>sets maximum amount of simoultaneously playing grains </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>check if necessary, set dynamically by user input </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00025">25</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a95667aefa8dd361c1f8dfba4ecbbf670"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95667aefa8dd361c1f8dfba4ecbbf670">&#9670;&nbsp;</a></span>grain_free()</h2>
 
@@ -164,13 +137,13 @@ Wennemann,Tim <br  />
 <p>frees grain <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of grain_fre object <br  />
+    <tr><td class="paramname">x</td><td>input pointer of grain object <br  />
  </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00183">183</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00142">142</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>
@@ -201,23 +174,20 @@ Wennemann,Tim <br  />
 </div><div class="memdoc">
 
 <p>scheduling of grain playback </p>
-<p>sheduling of grain playback <br  />
+<dl class="section author"><dt>Author</dt><dd>Strobl, Micha <br  />
+</dd></dl>
+<p>recursive scheduling of successive grain playback with time and/or start position shifts <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">g</td><td>grain <br  />
  </td></tr>
-    <tr><td class="paramname">synth</td><td>synthesized output of <a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a> object <br  />
+    <tr><td class="paramname">synth</td><td>pointer to <a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a> object that schedules the grain <br  />
  </td></tr>
   </table>
   </dd>
 </dl>
-<p>&lt;</p>
-<p>&lt;</p>
-<p>&lt;</p>
-<p>&lt;</p>
-<p>&lt;</p>
 
-<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00088">88</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00072">72</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>
@@ -269,9 +239,9 @@ Wennemann,Tim <br  />
 <p>generates new grain with <em>grain_index</em> according to set <em>grain_size_samples</em>, <em>start_pos</em>, <em>time_stretch_factor</em> based on <em>soundfile_size</em> <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">grain_size_samples</td><td>size of samples contained in a grain <br  />
+    <tr><td class="paramname">grain_size_samples</td><td>size of a grain as amount of contained samples <br  />
  </td></tr>
-    <tr><td class="paramname">soundfile_size</td><td>size of the soundfile which can be read in via inlet <br  />
+    <tr><td class="paramname">soundfile_size</td><td>size of the soundfile in samples <br  />
  </td></tr>
     <tr><td class="paramname">start_pos</td><td>starting position within the soundfile, adjustable through slider <br  />
  </td></tr>
@@ -284,7 +254,7 @@ Wennemann,Tim <br  />
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>grain </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00037">37</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grain_8c_source.html#l00031">31</a> of file <a class="el" href="grain_8c_source.html">grain.c</a>.</p>
 
 </div>
 </div>
