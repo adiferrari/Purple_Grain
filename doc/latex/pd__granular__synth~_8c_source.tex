@@ -5,290 +5,288 @@
 \DoxyCodeLine{00012 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{c__granular__synth_8h}{c\_granular\_synth.h}}"}}
 \DoxyCodeLine{00013 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
 \DoxyCodeLine{00014 }
-\DoxyCodeLine{00015 }
-\DoxyCodeLine{00016 \textcolor{comment}{// Absolute playback point [in samples]}}
-\DoxyCodeLine{00017 \textcolor{comment}{// aendert sich nie, nur die Grainstartpunkte werden relativ zu diesem angesetzt}}
-\DoxyCodeLine{00018 \textcolor{comment}{// implementieren mit skaliertem phasor\string~ object [0:1]-\/>[0:length]}}
-\DoxyCodeLine{00019 }
-\DoxyCodeLine{00020 \textcolor{comment}{// entweder bekommen Grain Fade In/Out Parameter oder allen ein Hanning Fenster überlagert}}
-\DoxyCodeLine{00021 \textcolor{comment}{// jeweils um Clicks am Start/Ende zu glaetten}}
-\DoxyCodeLine{00022 }
-\DoxyCodeLine{00023 \textcolor{keyword}{static} t\_class *pd\_granular\_synth\_tilde\_class;}
-\DoxyCodeLine{00024 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00030}\mbox{\hyperlink{structpd__granular__synth__tilde}{00030}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structpd__granular__synth__tilde}{pd\_granular\_synth\_tilde}}}
-\DoxyCodeLine{00031 \{}
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00032}\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{00032}}     t\_object  \mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}};                                    }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00033}\mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{00033}}     t\_float \mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{f}};                                          }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00034}\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{00034}}     t\_float \mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}};                                         }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00035}\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{00035}}     \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}};                            }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00036}\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{00036}}     t\_int               \mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}},                     }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00037}\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{00037}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}},                      }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00038}\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{00038}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}},                     }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00039}\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{00039}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}},                      }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00040}\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{00040}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}},                         }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00041}\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{00041}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}},                          }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00042}\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{00042}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}};                        }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00043}\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{00043}}     t\_float             \mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}},                        }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00044}\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{00044}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}},            }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00045}\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{00045}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}};                 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00046}\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{00046}}     t\_word *\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}};                                  }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00047}\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{00047}}     t\_symbol *\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}};                      }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00048}\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{00048}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};                               }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00049}\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{00049}}     \textcolor{keywordtype}{float} \mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}};                          }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00050}\mbox{\hyperlink{structpd__granular__synth__tilde_a580767361ca6d23f0dde257cce4f4f08}{00050}}     t\_word *\mbox{\hyperlink{structpd__granular__synth__tilde_a580767361ca6d23f0dde257cce4f4f08}{envelopeTable}};                              }
-\DoxyCodeLine{00051 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00052}\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{00052}}     t\_inlet             *\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}},                 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00053}\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{00053}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}},                  }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00054}\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{00054}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}},        }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00055}\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{00055}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}},                 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00056}\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{00056}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}},                  }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00057}\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{00057}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}},                     }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00058}\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{00058}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}},                      }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00059}\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{00059}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}},                    }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00060}\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{00060}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}},                    }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00061}\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{00061}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\_gauss\_q\_factor}};             }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00062}\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{00062}}     t\_outlet            *\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}};                           }
-\DoxyCodeLine{00063 \} \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}};}
-\DoxyCodeLine{00064 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00071}\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{00071}} \textcolor{keywordtype}{void} *\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}}(t\_symbol *soundfile\_arrayname)}
-\DoxyCodeLine{00072 \{}
-\DoxyCodeLine{00073     \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x = (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *)pd\_new(pd\_granular\_synth\_tilde\_class);}
-\DoxyCodeLine{00074     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{f}} = 0;}
-\DoxyCodeLine{00075     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}}  = sys\_getsr();}
-\DoxyCodeLine{00076     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}} = 0;}
-\DoxyCodeLine{00077     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}} = soundfile\_arrayname;}
-\DoxyCodeLine{00078 }
-\DoxyCodeLine{00079     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} = 0;                            }
-\DoxyCodeLine{00080     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}} = 0;                         }
-\DoxyCodeLine{00081     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = 50;                                 }
-\DoxyCodeLine{00082     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = 0;                                   }
-\DoxyCodeLine{00083     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = 1.0,                       }
-\DoxyCodeLine{00084     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}} = 0;                                   }
-\DoxyCodeLine{00085     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}} = 500;                                    }
-\DoxyCodeLine{00086     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}} = 500;                                     }
-\DoxyCodeLine{00087     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}} = 0.7;                                   }
-\DoxyCodeLine{00088     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}} = 1000;                                  }
-\DoxyCodeLine{00089     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}} = 0.2;                            }
-\DoxyCodeLine{00090     }
-\DoxyCodeLine{00092     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"grain\_size"}));}
-\DoxyCodeLine{00093     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"start\_pos"}));}
-\DoxyCodeLine{00094     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"time\_stretch\_factor"}));}
-\DoxyCodeLine{00095     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"midi\_pitch"}));}
-\DoxyCodeLine{00096     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"midi\_velo"}));}
-\DoxyCodeLine{00097     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"attack"}));}
-\DoxyCodeLine{00098     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"decay"}));}
-\DoxyCodeLine{00099     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"sustain"}));}
-\DoxyCodeLine{00100     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"release"}));}
-\DoxyCodeLine{00101     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\_gauss\_q\_factor}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"gauss\_q\_factor"}));}
-\DoxyCodeLine{00102     }
-\DoxyCodeLine{00103     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}} = outlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}, \&s\_signal);}
-\DoxyCodeLine{00104     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)x;}
-\DoxyCodeLine{00105 \}}
-\DoxyCodeLine{00106 }
-\DoxyCodeLine{00107 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00114}\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{00114}} t\_int *\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{pd\_granular\_synth\_tilde\_perform}}(t\_int *w)}
-\DoxyCodeLine{00115 \{}
-\DoxyCodeLine{00116     \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x = (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *)(w[1]);}
-\DoxyCodeLine{00117     t\_sample  *in = (t\_sample *)(w[2]);}
-\DoxyCodeLine{00118     t\_sample  *out =  (t\_sample *)(w[3]);}
-\DoxyCodeLine{00119     \textcolor{keywordtype}{int} n =  (int)(w[4]);}
-\DoxyCodeLine{00120 }
-\DoxyCodeLine{00121     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} < 1) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = 1;}
-\DoxyCodeLine{00122     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} >  (\textcolor{keywordtype}{int})x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
-\DoxyCodeLine{00123     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} < 0) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = 0;}
-\DoxyCodeLine{00124     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} > (\textcolor{keywordtype}{int})x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} -\/ 1;}
+\DoxyCodeLine{00015 \textcolor{keyword}{static} t\_class *pd\_granular\_synth\_tilde\_class;}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00022}\mbox{\hyperlink{structpd__granular__synth__tilde}{00022}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structpd__granular__synth__tilde}{pd\_granular\_synth\_tilde}}}
+\DoxyCodeLine{00023 \{}
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00024}\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{00024}}     t\_object  \mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}};                                    }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00025}\mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{00025}}     t\_float \mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{f}};                                          }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00026}\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{00026}}     t\_float \mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}};                                         }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00027}\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{00027}}     \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}};                            }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00028}\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{00028}}     t\_int               \mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}},                     }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00029}\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{00029}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}},                      }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00030}\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{00030}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}},                     }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00031}\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{00031}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}},                      }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00032}\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{00032}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}},                         }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00033}\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{00033}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}},                          }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00034}\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{00034}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}},                        }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00035}\mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{00035}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\_input}};                   }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00036}\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{00036}}     t\_float             \mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}},                        }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00037}\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{00037}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}},            }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00038}\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{00038}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}};                }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00039}\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{00039}}     t\_word              *\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}};                     }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00040}\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{00040}}     t\_symbol            *\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}};           }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00041}\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{00041}}     \textcolor{keywordtype}{int}                 \mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};               }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00042}\mbox{\hyperlink{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}{00042}}     \textcolor{keywordtype}{float}               \mbox{\hyperlink{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}{pitch\_factor}},                  }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00043}\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{00043}}                         \mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}};            }
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00045}\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{00045}}     t\_inlet             *\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}},                 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00046}\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{00046}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}},                  }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00047}\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{00047}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}},        }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00048}\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{00048}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}},                 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00049}\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{00049}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}},                  }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00050}\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{00050}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}},                     }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00051}\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{00051}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}},                      }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00052}\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{00052}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}},                    }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00053}\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{00053}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}},                    }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00054}\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{00054}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\_gauss\_q\_factor}},             }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00055}\mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{00055}}                         *\mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{in\_spray}};                      }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00056}\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{00056}}     t\_outlet            *\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}};                           }
+\DoxyCodeLine{00057 \} \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}};}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00065}\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{00065}} \textcolor{keywordtype}{void} *\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}}(t\_symbol *soundfile\_arrayname)}
+\DoxyCodeLine{00066 \{}
+\DoxyCodeLine{00067     \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x = (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *)pd\_new(pd\_granular\_synth\_tilde\_class);}
+\DoxyCodeLine{00068     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a07a8b159fe23c3fec189fbe71e0920c8}{f}} = 0;}
+\DoxyCodeLine{00069     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}}  = sys\_getsr();}
+\DoxyCodeLine{00070     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}} = 0;}
+\DoxyCodeLine{00071     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}} = soundfile\_arrayname;}
+\DoxyCodeLine{00072 }
+\DoxyCodeLine{00073     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} = 0;                            }
+\DoxyCodeLine{00074     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}} = 0;                         }
+\DoxyCodeLine{00075     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = 50;                                 }
+\DoxyCodeLine{00076     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = 0;                                   }
+\DoxyCodeLine{00077     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = 1.0,                       }
+\DoxyCodeLine{00078     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}{pitch\_factor}} = 1;                                }
+\DoxyCodeLine{00079     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}} = 0;                                   }
+\DoxyCodeLine{00080     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}} = 48;                                 }
+\DoxyCodeLine{00081     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}} = 500;                                    }
+\DoxyCodeLine{00082     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}} = 500;                                     }
+\DoxyCodeLine{00083     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}} = 0.7;                                   }
+\DoxyCodeLine{00084     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}} = 1000;                                  }
+\DoxyCodeLine{00085     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}} = 0.2;                            }
+\DoxyCodeLine{00086     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\_input}} = 0;                                 }
+\DoxyCodeLine{00087     }
+\DoxyCodeLine{00089     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"grain\_size"}));}
+\DoxyCodeLine{00090     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"start\_pos"}));}
+\DoxyCodeLine{00091     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"time\_stretch\_factor"}));}
+\DoxyCodeLine{00092     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"midi\_pitch"}));}
+\DoxyCodeLine{00093     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"midi\_velo"}));}
+\DoxyCodeLine{00094     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"attack"}));}
+\DoxyCodeLine{00095     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"decay"}));}
+\DoxyCodeLine{00096     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"sustain"}));}
+\DoxyCodeLine{00097     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"release"}));}
+\DoxyCodeLine{00098     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\_gauss\_q\_factor}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"gauss\_q\_factor"}));}
+\DoxyCodeLine{00099     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{in\_spray}} = inlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}},  \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}.ob\_pd, \&s\_float, gensym(\textcolor{stringliteral}{"spray"}));}
+\DoxyCodeLine{00100     }
+\DoxyCodeLine{00101     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}} = outlet\_new(\&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0f67ba7e323720896d20e84679f0008f}{x\_obj}}, \&s\_signal);}
+\DoxyCodeLine{00102     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)x;}
+\DoxyCodeLine{00103 \}}
+\DoxyCodeLine{00104 }
+\DoxyCodeLine{00105 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00112}\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{00112}} t\_int *\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{pd\_granular\_synth\_tilde\_perform}}(t\_int *w)}
+\DoxyCodeLine{00113 \{}
+\DoxyCodeLine{00114     \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x = (\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *)(w[1]);}
+\DoxyCodeLine{00115     t\_sample  *in = (t\_sample *)(w[2]);}
+\DoxyCodeLine{00116     t\_sample  *out =  (t\_sample *)(w[3]);}
+\DoxyCodeLine{00117     \textcolor{keywordtype}{int} n =  (int)(w[4]);}
+\DoxyCodeLine{00118 }
+\DoxyCodeLine{00119     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} < 1) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = 1;}
+\DoxyCodeLine{00120     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} >  (\textcolor{keywordtype}{int})x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
+\DoxyCodeLine{00121     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} < 0) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = 0;}
+\DoxyCodeLine{00122     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} > (\textcolor{keywordtype}{int})x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} -\/ 1;}
+\DoxyCodeLine{00123 }
+\DoxyCodeLine{00124     \mbox{\hyperlink{c__granular__synth_8c_a878c6a0073df67b10d63b5e819eaad74}{c\_granular\_synth\_properties\_update}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\_input}}); }
 \DoxyCodeLine{00125 }
-\DoxyCodeLine{00126     \mbox{\hyperlink{c__granular__synth_8c_af99ecce451128b29c30bcc32803dbe52}{c\_granular\_synth\_properties\_update}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}}); }
+\DoxyCodeLine{00126     \mbox{\hyperlink{c__granular__synth_8c_ab1c4e09392d873e432cb0edeae71f17c}{c\_granular\_synth\_process}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}, in, out, n); }
 \DoxyCodeLine{00127 }
-\DoxyCodeLine{00128     \mbox{\hyperlink{c__granular__synth_8c_ab1c4e09392d873e432cb0edeae71f17c}{c\_granular\_synth\_process}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}, in, out, n); }
-\DoxyCodeLine{00129 }
-\DoxyCodeLine{00130     \textcolor{keywordflow}{return} (w+5); }
-\DoxyCodeLine{00131 \}}
-\DoxyCodeLine{00132 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00139}\mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{00139}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{pd\_granular\_synth\_tilde\_free}}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x)}
-\DoxyCodeLine{00140 \{}
-\DoxyCodeLine{00141     \textcolor{keywordflow}{if}(x)\{}
-\DoxyCodeLine{00142         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}});}
-\DoxyCodeLine{00143         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}});}
-\DoxyCodeLine{00144         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}});}
-\DoxyCodeLine{00145         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}});}
-\DoxyCodeLine{00146         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}});}
-\DoxyCodeLine{00147         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}});}
-\DoxyCodeLine{00148         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}});}
-\DoxyCodeLine{00149         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}});}
-\DoxyCodeLine{00150         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}});}
-\DoxyCodeLine{00151         outlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}});}
-\DoxyCodeLine{00152         \mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{c\_granular\_synth\_free}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}});}
-\DoxyCodeLine{00153         free(x);}
-\DoxyCodeLine{00154     \}}
-\DoxyCodeLine{00155 \}}
-\DoxyCodeLine{00156 }
-\DoxyCodeLine{00162 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_tilde\_getArray(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_symbol *s)}
-\DoxyCodeLine{00163 \{}
-\DoxyCodeLine{00164     t\_garray *a;}
-\DoxyCodeLine{00165     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}} = s;}
-\DoxyCodeLine{00166     }
-\DoxyCodeLine{00167     \textcolor{keywordflow}{if} (!(a = (t\_garray *)pd\_findbyclass(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}}, garray\_class)))}
-\DoxyCodeLine{00168     \{}
-\DoxyCodeLine{00172         \textcolor{keywordflow}{if} (*s-\/>s\_name)}
-\DoxyCodeLine{00173         \{}
-\DoxyCodeLine{00174         post(\textcolor{stringliteral}{"Inner if-\/condition reached"});}
-\DoxyCodeLine{00175         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}} = 0;}
-\DoxyCodeLine{00176         \}}
-\DoxyCodeLine{00177         post(\textcolor{stringliteral}{"Get Array method if block reached"});}
-\DoxyCodeLine{00178     \}}
-\DoxyCodeLine{00182     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!garray\_getfloatwords(a, \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}))}
-\DoxyCodeLine{00183     \{}
-\DoxyCodeLine{00184         post(\textcolor{stringliteral}{"Get Array method else if block reached"}); }
-\DoxyCodeLine{00185     \}}
-\DoxyCodeLine{00186     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00187         garray\_usedindsp(a);}
-\DoxyCodeLine{00188 }
-\DoxyCodeLine{00189         \textcolor{comment}{/* int len = garray\_npoints(a);}}
-\DoxyCodeLine{00190 \textcolor{comment}{        if(len == 0)}}
-\DoxyCodeLine{00191 \textcolor{comment}{        \{}}
-\DoxyCodeLine{00192 \textcolor{comment}{            post("empty array");}}
-\DoxyCodeLine{00193 \textcolor{comment}{        \}}}
-\DoxyCodeLine{00194 \textcolor{comment}{        else}}
-\DoxyCodeLine{00195 \textcolor{comment}{        \{}}
-\DoxyCodeLine{00196 \textcolor{comment}{            post("Array Length = \%d", len);}}
-\DoxyCodeLine{00197 \textcolor{comment}{        \} */}}
-\DoxyCodeLine{00198         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} = garray\_npoints(a);}
-\DoxyCodeLine{00199         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}} = \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\_ms\_from\_samples}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}});}
-\DoxyCodeLine{00200         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}} = \mbox{\hyperlink{c__granular__synth_8c_af1a16e5125d6512b3a38b85e9be75d6d}{c\_granular\_synth\_new}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}});}
-\DoxyCodeLine{00201     \}}
-\DoxyCodeLine{00202 }
-\DoxyCodeLine{00203     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00204 \}}
-\DoxyCodeLine{00205 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00210}\mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{00210}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\_granular\_synth\_tilde\_dsp}}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_signal **sp)}
-\DoxyCodeLine{00211 \{}
-\DoxyCodeLine{00212     pd\_granular\_synth\_tilde\_getArray(x, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}});}
-\DoxyCodeLine{00213     dsp\_add(\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{pd\_granular\_synth\_tilde\_perform}}, 4, x, sp[0]-\/>s\_vec, sp[1]-\/>s\_vec, sp[0]-\/>s\_n);}
-\DoxyCodeLine{00214 \}}
-\DoxyCodeLine{00222 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_grain\_size(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00223 \{}
-\DoxyCodeLine{00224     \textcolor{keywordtype}{int} new\_grain\_size = (int)f;}
-\DoxyCodeLine{00225     \textcolor{keywordflow}{if}(new\_grain\_size < 1) new\_grain\_size = 1;}
-\DoxyCodeLine{00226     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} \&\& new\_grain\_size > x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) \{}
-\DoxyCodeLine{00227         new\_grain\_size = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
-\DoxyCodeLine{00228         \}}
-\DoxyCodeLine{00229     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = (int)new\_grain\_size;     }
-\DoxyCodeLine{00230 \}}
-\DoxyCodeLine{00238 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_start\_pos(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00239 \{}
-\DoxyCodeLine{00240     \textcolor{keywordtype}{int} new\_start\_pos = (int)f;}
-\DoxyCodeLine{00241     \textcolor{keywordflow}{if}(new\_start\_pos < 0) new\_start\_pos = 0;}
-\DoxyCodeLine{00242     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} \&\& new\_start\_pos > x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) \{}
-\DoxyCodeLine{00243         new\_start\_pos = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
-\DoxyCodeLine{00244         \}}
-\DoxyCodeLine{00245     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = (int)new\_start\_pos;      }
-\DoxyCodeLine{00246 \}}
-\DoxyCodeLine{00254 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_time\_stretch\_factor(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00255 \{}
-\DoxyCodeLine{00256     \textcolor{keywordtype}{float} new\_time\_stretch\_factor = f;}
-\DoxyCodeLine{00257     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}})}
-\DoxyCodeLine{00258     \{}
-\DoxyCodeLine{00259         \textcolor{keywordflow}{if}((!x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} \&\& new\_time\_stretch\_factor < 0)}
-\DoxyCodeLine{00260            || (x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} \&\& new\_time\_stretch\_factor > 0)}
-\DoxyCodeLine{00261            || fabsf(new\_time\_stretch\_factor) < 0.1)}
-\DoxyCodeLine{00262         \{ }
-\DoxyCodeLine{00263             x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = (x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} > 0) ? -\/0.1 : 0.1; }
-\DoxyCodeLine{00264             x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} = !x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}}; }
-\DoxyCodeLine{00265             \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00266         \}}
-\DoxyCodeLine{00267     \}}
-\DoxyCodeLine{00268     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = new\_time\_stretch\_factor;}
-\DoxyCodeLine{00269 \}}
-\DoxyCodeLine{00277 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_midi\_pitch(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00278 \{}
-\DoxyCodeLine{00279     \textcolor{keywordtype}{int} new\_midi\_pitch = (int)f;}
-\DoxyCodeLine{00280     \textcolor{keywordflow}{if}(new\_midi\_pitch < 0) new\_midi\_pitch = 0;}
-\DoxyCodeLine{00281     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}} = (int)new\_midi\_pitch;}
-\DoxyCodeLine{00282 \}}
-\DoxyCodeLine{00290 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_midi\_velo(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00291 \{}
-\DoxyCodeLine{00292     \textcolor{keywordtype}{int} new\_midi\_velo = (int)f;}
-\DoxyCodeLine{00293     \textcolor{keywordflow}{if}(new\_midi\_velo < 0) new\_midi\_velo = 0;}
-\DoxyCodeLine{00294     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}} = (int)new\_midi\_velo;}
-\DoxyCodeLine{00295 \}}
-\DoxyCodeLine{00303 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_attack(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00304 \{}
-\DoxyCodeLine{00305     \textcolor{keywordtype}{int} new\_attack = (int)f;}
-\DoxyCodeLine{00306     \textcolor{keywordflow}{if}(new\_attack < 0) new\_attack = 0;}
-\DoxyCodeLine{00307     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}} = (int)new\_attack;}
-\DoxyCodeLine{00308 \}}
-\DoxyCodeLine{00316 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_decay(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00317 \{}
-\DoxyCodeLine{00318     \textcolor{keywordtype}{int} new\_decay = (int)f;}
-\DoxyCodeLine{00319     \textcolor{keywordflow}{if}(new\_decay < 0) new\_decay = 0;}
-\DoxyCodeLine{00320     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}} = (int)new\_decay;}
-\DoxyCodeLine{00321 \}}
-\DoxyCodeLine{00329 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_sustain(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00330 \{}
-\DoxyCodeLine{00331     \textcolor{keywordtype}{float} new\_sustain = (float)f;}
-\DoxyCodeLine{00332     \textcolor{keywordflow}{if}(new\_sustain < 0) new\_sustain = 0;}
-\DoxyCodeLine{00333     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}} = (float)new\_sustain;}
-\DoxyCodeLine{00334 \}}
-\DoxyCodeLine{00342 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_release(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00343 \{}
-\DoxyCodeLine{00344     \textcolor{keywordtype}{int} new\_release = (int)f;}
-\DoxyCodeLine{00345     \textcolor{keywordflow}{if}(new\_release < 0) new\_release = 0;}
-\DoxyCodeLine{00346     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}} = (int)new\_release;}
-\DoxyCodeLine{00347 \}}
-\DoxyCodeLine{00348 }
-\DoxyCodeLine{00356 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_gauss\_q\_factor(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
-\DoxyCodeLine{00357 \{}
-\DoxyCodeLine{00358     \textcolor{keywordtype}{float} new\_gauss\_q\_factor = (float)f;}
-\DoxyCodeLine{00359     \textcolor{keywordflow}{if}(new\_gauss\_q\_factor < 0) new\_gauss\_q\_factor = 0;}
-\DoxyCodeLine{00360     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}} = (float)new\_gauss\_q\_factor;}
-\DoxyCodeLine{00361 \}}
-\DoxyCodeLine{00362 }
-\DoxyCodeLine{00370 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_get\_arrayname\_message(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_symbol *s)}
-\DoxyCodeLine{00371 \{}
-\DoxyCodeLine{00372     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}} = s;}
-\DoxyCodeLine{00373 \}}
-\DoxyCodeLine{00374 }
-\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00381}\mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}{00381}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}{pd\_granular\_synth\_tilde\_setup}}(\textcolor{keywordtype}{void})}
-\DoxyCodeLine{00382 \{}
-\DoxyCodeLine{00383       pd\_granular\_synth\_tilde\_class = class\_new(gensym(\textcolor{stringliteral}{"pd\_granular\_synth\string~"}),}
-\DoxyCodeLine{00384             (t\_newmethod)\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}},}
-\DoxyCodeLine{00385             (t\_method)\mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{pd\_granular\_synth\_tilde\_free}},}
-\DoxyCodeLine{00386         \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}}),}
-\DoxyCodeLine{00387             CLASS\_DEFAULT,}
-\DoxyCodeLine{00388             A\_DEFSYM, 0);}
-\DoxyCodeLine{00389 }
-\DoxyCodeLine{00390       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)\mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\_granular\_synth\_tilde\_dsp}},}
-\DoxyCodeLine{00391                         gensym(\textcolor{stringliteral}{"dsp"}), A\_CANT, 0);}
-\DoxyCodeLine{00392       \textcolor{comment}{// Alternative Constructor for use of the name"purple grain" in PureData}}
-\DoxyCodeLine{00393       class\_addcreator((t\_newmethod)\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}}, gensym(\textcolor{stringliteral}{"purple\_grain"}),}
-\DoxyCodeLine{00394                         A\_DEFSYMBOL, 0);}
-\DoxyCodeLine{00395 }
-\DoxyCodeLine{00396       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_grain\_size,}
-\DoxyCodeLine{00397                     gensym(\textcolor{stringliteral}{"grain\_size"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00398       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_start\_pos,}
-\DoxyCodeLine{00399                     gensym(\textcolor{stringliteral}{"start\_pos"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00400       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_time\_stretch\_factor,}
-\DoxyCodeLine{00401                   gensym(\textcolor{stringliteral}{"time\_stretch\_factor"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00402       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_midi\_pitch,}
-\DoxyCodeLine{00403                     gensym(\textcolor{stringliteral}{"midi\_pitch"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00404       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_midi\_velo,}
-\DoxyCodeLine{00405                     gensym(\textcolor{stringliteral}{"midi\_velo"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00406       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_attack,}
-\DoxyCodeLine{00407                     gensym(\textcolor{stringliteral}{"attack"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00408       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_decay,}
-\DoxyCodeLine{00409                     gensym(\textcolor{stringliteral}{"decay"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00410       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_sustain,}
-\DoxyCodeLine{00411                     gensym(\textcolor{stringliteral}{"sustain"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00412       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_release,}
-\DoxyCodeLine{00413                     gensym(\textcolor{stringliteral}{"release"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00414       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_gauss\_q\_factor,}
-\DoxyCodeLine{00415                     gensym(\textcolor{stringliteral}{"gauss\_q\_factor"}), A\_DEFFLOAT, 0);}
-\DoxyCodeLine{00416     }
-\DoxyCodeLine{00417       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_get\_arrayname\_message,}
-\DoxyCodeLine{00418                         gensym(\textcolor{stringliteral}{"soundfile\_arrayname"}), A\_DEFSYMBOL, 0);}
+\DoxyCodeLine{00128     \textcolor{keywordflow}{return} (w+5); }
+\DoxyCodeLine{00129 \}}
+\DoxyCodeLine{00130 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00138}\mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{00138}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{pd\_granular\_synth\_tilde\_free}}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x)}
+\DoxyCodeLine{00139 \{}
+\DoxyCodeLine{00140     \textcolor{keywordflow}{if}(x)\{}
+\DoxyCodeLine{00141         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1d5d353d48121dbb96ba2fcb1ed3fba0}{in\_grain\_size}});}
+\DoxyCodeLine{00142         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afa0071ff6ccc3e80a3923ef5c92483ab}{in\_start\_pos}});}
+\DoxyCodeLine{00143         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af2347e0739aced46a352f0501a3652a8}{in\_time\_stretch\_factor}});}
+\DoxyCodeLine{00144         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a08bda0c513d778d119ce0890c81f8000}{in\_midi\_velo}});}
+\DoxyCodeLine{00145         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ad0f944404dc59f1a42d3713d99335c42}{in\_midi\_pitch}});}
+\DoxyCodeLine{00146         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1858a3748c8598d6c49926047a056d0c}{in\_attack}});}
+\DoxyCodeLine{00147         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad327a7ef8f3c2db1ab782465813749c}{in\_decay}});}
+\DoxyCodeLine{00148         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_af156991b3321fee82035ace484f30bd7}{in\_sustain}});}
+\DoxyCodeLine{00149         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab3bb9be8f4918b42a86b34dea5f74a16}{in\_release}});}
+\DoxyCodeLine{00150         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a19d63b90678ffd4c0f0b3f50b1319f7c}{in\_gauss\_q\_factor}});}
+\DoxyCodeLine{00151         inlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a275ca19a1bb7f04fd0d7bdc4c4af8850}{in\_spray}});}
+\DoxyCodeLine{00152         outlet\_free(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aad9fb0c87b0533a422bf8cce988bebea}{out}});}
+\DoxyCodeLine{00153         \mbox{\hyperlink{structpd__granular__synth__tilde_ac71179596b1f2169d42c27cb8ea54207}{c\_granular\_synth\_free}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}});}
+\DoxyCodeLine{00154         free(x);}
+\DoxyCodeLine{00155     \}}
+\DoxyCodeLine{00156 \}}
+\DoxyCodeLine{00157 }
+\DoxyCodeLine{00163 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_tilde\_getArray(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_symbol *s)}
+\DoxyCodeLine{00164 \{}
+\DoxyCodeLine{00165     t\_garray *a;}
+\DoxyCodeLine{00166     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}} = s;}
+\DoxyCodeLine{00167     }
+\DoxyCodeLine{00168     \textcolor{keywordflow}{if} (!(a = (t\_garray *)pd\_findbyclass(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}}, garray\_class)))}
+\DoxyCodeLine{00169     \{}
+\DoxyCodeLine{00173         \textcolor{keywordflow}{if} (*s-\/>s\_name)}
+\DoxyCodeLine{00174         \{}
+\DoxyCodeLine{00175         post(\textcolor{stringliteral}{"Inner if-\/condition reached"});}
+\DoxyCodeLine{00176         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}} = 0;}
+\DoxyCodeLine{00177         \}}
+\DoxyCodeLine{00178         post(\textcolor{stringliteral}{"Get Array method if block reached"});}
+\DoxyCodeLine{00179     \}}
+\DoxyCodeLine{00183     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!garray\_getfloatwords(a, \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, \&x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}))}
+\DoxyCodeLine{00184     \{}
+\DoxyCodeLine{00185         post(\textcolor{stringliteral}{"Get Array method else if block reached"}); }
+\DoxyCodeLine{00186     \}}
+\DoxyCodeLine{00187     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00188         garray\_usedindsp(a);}
+\DoxyCodeLine{00189 }
+\DoxyCodeLine{00190         \textcolor{comment}{/* int len = garray\_npoints(a);}}
+\DoxyCodeLine{00191 \textcolor{comment}{        if(len == 0)}}
+\DoxyCodeLine{00192 \textcolor{comment}{        \{}}
+\DoxyCodeLine{00193 \textcolor{comment}{            post("empty array");}}
+\DoxyCodeLine{00194 \textcolor{comment}{        \}}}
+\DoxyCodeLine{00195 \textcolor{comment}{        else}}
+\DoxyCodeLine{00196 \textcolor{comment}{        \{}}
+\DoxyCodeLine{00197 \textcolor{comment}{            post("Array Length = \%d", len);}}
+\DoxyCodeLine{00198 \textcolor{comment}{        \} */}}
+\DoxyCodeLine{00199         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} = garray\_npoints(a);}
+\DoxyCodeLine{00200         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_aebb056d761c7f1d9860d3756f8f2783a}{soundfile\_length\_ms}} = \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\_ms\_from\_samples}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}});}
+\DoxyCodeLine{00201         x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}} = \mbox{\hyperlink{c__granular__synth_8c_a60a0c75d365a663c411871d56757e624}{c\_granular\_synth\_new}}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a9ae1c1ce1c10d37667be6c3d7a8ef831}{soundfile}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\_input}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6cef9588a88f74c0f17b5d4694a404fb}{pitch\_factor}}, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}});}
+\DoxyCodeLine{00202     \}}
+\DoxyCodeLine{00203 }
+\DoxyCodeLine{00204     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00205 \}}
+\DoxyCodeLine{00206 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00212}\mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{00212}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\_granular\_synth\_tilde\_dsp}}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_signal **sp)}
+\DoxyCodeLine{00213 \{}
+\DoxyCodeLine{00214     pd\_granular\_synth\_tilde\_getArray(x, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3a742a4c1c7fc2c03e32fcd858075ac8}{soundfile\_arrayname}});}
+\DoxyCodeLine{00215     dsp\_add(\mbox{\hyperlink{structpd__granular__synth__tilde_a58e7b5d615cd9c5bc929d37ad5d6a251}{pd\_granular\_synth\_tilde\_perform}}, 4, x, sp[0]-\/>s\_vec, sp[1]-\/>s\_vec, sp[0]-\/>s\_n);}
+\DoxyCodeLine{00216 \}}
+\DoxyCodeLine{00224 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_grain\_size(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00225 \{}
+\DoxyCodeLine{00226     \textcolor{keywordtype}{int} new\_grain\_size = (int)f;}
+\DoxyCodeLine{00227     \textcolor{keywordflow}{if}(new\_grain\_size < 1) new\_grain\_size = 1;}
+\DoxyCodeLine{00228     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} \&\& new\_grain\_size > x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) \{}
+\DoxyCodeLine{00229         new\_grain\_size = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
+\DoxyCodeLine{00230         \}}
+\DoxyCodeLine{00231     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a7541f4440303f6fb8a6b5c8b184dbd60}{grain\_size}} = (int)new\_grain\_size;}
+\DoxyCodeLine{00232 \}}
+\DoxyCodeLine{00240 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_start\_pos(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00241 \{}
+\DoxyCodeLine{00242     \textcolor{keywordtype}{int} new\_start\_pos = (int)f;}
+\DoxyCodeLine{00243     \textcolor{keywordflow}{if}(new\_start\_pos < 0) new\_start\_pos = 0;}
+\DoxyCodeLine{00244     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}} \&\& new\_start\_pos > x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}}) \{}
+\DoxyCodeLine{00245         new\_start\_pos = x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a778cd56ae122e3cfe79f502c09794a42}{soundfile\_length}};}
+\DoxyCodeLine{00246         \}}
+\DoxyCodeLine{00247     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a5fa512278dfeb27f53f9fd50f5aaae5b}{start\_pos}} = (int)new\_start\_pos;}
+\DoxyCodeLine{00248 \}}
+\DoxyCodeLine{00256 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_time\_stretch\_factor(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00257 \{}
+\DoxyCodeLine{00258     \textcolor{keywordtype}{float} new\_time\_stretch\_factor = f;}
+\DoxyCodeLine{00259     \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}})}
+\DoxyCodeLine{00260     \{}
+\DoxyCodeLine{00261         \textcolor{keywordflow}{if}((!x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} \&\& new\_time\_stretch\_factor < 0)}
+\DoxyCodeLine{00262            || (x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} \&\& new\_time\_stretch\_factor > 0)}
+\DoxyCodeLine{00263            || fabsf(new\_time\_stretch\_factor) < 0.1)}
+\DoxyCodeLine{00264         \{ }
+\DoxyCodeLine{00265             x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = (x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} > 0) ? -\/0.1 : 0.1;}
+\DoxyCodeLine{00266             x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}} = !x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a0c0edb455a1ae471a1533b223c2fa70d}{synth}}-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}}; }
+\DoxyCodeLine{00267             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00268         \}}
+\DoxyCodeLine{00269     \}}
+\DoxyCodeLine{00270     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ab7d62515d2dfdb58429c59966e09396b}{time\_stretch\_factor}} = new\_time\_stretch\_factor;}
+\DoxyCodeLine{00271 \}}
+\DoxyCodeLine{00279 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_midi\_pitch(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00280 \{}
+\DoxyCodeLine{00281     \textcolor{keywordtype}{int} new\_midi\_pitch = (int)f;}
+\DoxyCodeLine{00282     \textcolor{keywordflow}{if}(new\_midi\_pitch < 0) new\_midi\_pitch = 0;}
+\DoxyCodeLine{00283     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_ada27be2478f0ef2e135da05106b5cc1f}{midi\_pitch}} = (int)new\_midi\_pitch;}
+\DoxyCodeLine{00284 \}}
+\DoxyCodeLine{00292 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_midi\_velo(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00293 \{}
+\DoxyCodeLine{00294     \textcolor{keywordtype}{int} new\_midi\_velo = (int)f;}
+\DoxyCodeLine{00295     \textcolor{keywordflow}{if}(new\_midi\_velo < 0) new\_midi\_velo = 0;}
+\DoxyCodeLine{00296     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_adccc9949b9cae8502c63dec1245318bf}{midi\_velo}} = (int)new\_midi\_velo;}
+\DoxyCodeLine{00297 \}}
+\DoxyCodeLine{00305 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_attack(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00306 \{}
+\DoxyCodeLine{00307     \textcolor{keywordtype}{int} new\_attack = (int)f;}
+\DoxyCodeLine{00308     \textcolor{keywordflow}{if}(new\_attack < 0) new\_attack = 0;}
+\DoxyCodeLine{00309     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a6320a3b03f0a2d9558f3aaa2b0a435fd}{attack}} = (int)new\_attack;}
+\DoxyCodeLine{00310 \}}
+\DoxyCodeLine{00318 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_decay(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00319 \{}
+\DoxyCodeLine{00320     \textcolor{keywordtype}{int} new\_decay = (int)f;}
+\DoxyCodeLine{00321     \textcolor{keywordflow}{if}(new\_decay < 0) new\_decay = 0;}
+\DoxyCodeLine{00322     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a8bf991875ff7337fcc6e8058da547de6}{decay}} = (int)new\_decay;}
+\DoxyCodeLine{00323 \}}
+\DoxyCodeLine{00331 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_sustain(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00332 \{}
+\DoxyCodeLine{00333     \textcolor{keywordtype}{float} new\_sustain = (float)f;}
+\DoxyCodeLine{00334     \textcolor{keywordflow}{if}(new\_sustain < 0) new\_sustain = 0;}
+\DoxyCodeLine{00335     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_afb9bb7013de98ab5d9e47c1590a9a2b3}{sustain}} = (float)new\_sustain;}
+\DoxyCodeLine{00336 \}}
+\DoxyCodeLine{00344 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_release(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00345 \{}
+\DoxyCodeLine{00346     \textcolor{keywordtype}{int} new\_release = (int)f;}
+\DoxyCodeLine{00347     \textcolor{keywordflow}{if}(new\_release < 0) new\_release = 0;}
+\DoxyCodeLine{00348     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a3bf42c53fbc6686ce84cffe630eb1d02}{release}} = (int)new\_release;}
+\DoxyCodeLine{00349 \}}
+\DoxyCodeLine{00350 }
+\DoxyCodeLine{00358 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_gauss\_q\_factor(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00359 \{}
+\DoxyCodeLine{00360     \textcolor{keywordtype}{float} new\_gauss\_q\_factor = f;}
+\DoxyCodeLine{00361     \textcolor{keywordflow}{if}(new\_gauss\_q\_factor < 0) new\_gauss\_q\_factor = 0;}
+\DoxyCodeLine{00362     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a1e83151d2a2da97bca1a65b3fb9ca165}{gauss\_q\_factor}} = (float)new\_gauss\_q\_factor;}
+\DoxyCodeLine{00363 \}}
+\DoxyCodeLine{00364 }
+\DoxyCodeLine{00371 \textcolor{keyword}{static} \textcolor{keywordtype}{void} pd\_granular\_synth\_set\_spray\_input(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}} *x, t\_floatarg f)}
+\DoxyCodeLine{00372 \{}
+\DoxyCodeLine{00373     \textcolor{keywordtype}{int} new\_spray = (int)f;}
+\DoxyCodeLine{00374     x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a68d0cd58cc26f59c3fe84d2c0b6e33b1}{spray\_input}} = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(new\_spray, x-\/>\mbox{\hyperlink{structpd__granular__synth__tilde_a577568b930a5b7f097d02fcfaa5ce346}{sr}});}
+\DoxyCodeLine{00375 \}}
+\DoxyCodeLine{00376 }
+\DoxyCodeLine{\Hypertarget{pd__granular__synth~_8c_source_l00384}\mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}{00384}} \textcolor{keywordtype}{void} \mbox{\hyperlink{structpd__granular__synth__tilde_a0258ab05601a93bc7cb39bdd1b1f398a}{pd\_granular\_synth\_tilde\_setup}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00385 \{}
+\DoxyCodeLine{00386       pd\_granular\_synth\_tilde\_class = class\_new(gensym(\textcolor{stringliteral}{"pd\_granular\_synth\string~"}),}
+\DoxyCodeLine{00387             (t\_newmethod)\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}},}
+\DoxyCodeLine{00388             (t\_method)\mbox{\hyperlink{structpd__granular__synth__tilde_a19482970f795ba98b5126fe92083e601}{pd\_granular\_synth\_tilde\_free}},}
+\DoxyCodeLine{00389         \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}}),}
+\DoxyCodeLine{00390             CLASS\_DEFAULT,}
+\DoxyCodeLine{00391             A\_DEFSYM, 0);}
+\DoxyCodeLine{00392 }
+\DoxyCodeLine{00393       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)\mbox{\hyperlink{structpd__granular__synth__tilde_a1dda6842f095de3ccf12153828f000cd}{pd\_granular\_synth\_tilde\_dsp}},}
+\DoxyCodeLine{00394                     gensym(\textcolor{stringliteral}{"dsp"}), A\_CANT, 0);}
+\DoxyCodeLine{00395       class\_addcreator((t\_newmethod)\mbox{\hyperlink{structpd__granular__synth__tilde_a1d620b5fd5e33ac6a1e388eb7b20b8f1}{pd\_granular\_synth\_tilde\_new}}, }
+\DoxyCodeLine{00396                     gensym(\textcolor{stringliteral}{"purple\_grain"}), A\_DEFSYMBOL, 0);}
+\DoxyCodeLine{00397       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_grain\_size,}
+\DoxyCodeLine{00398                     gensym(\textcolor{stringliteral}{"grain\_size"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00399       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_start\_pos,}
+\DoxyCodeLine{00400                     gensym(\textcolor{stringliteral}{"start\_pos"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00401       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_time\_stretch\_factor,}
+\DoxyCodeLine{00402                     gensym(\textcolor{stringliteral}{"time\_stretch\_factor"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00403       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_midi\_pitch,}
+\DoxyCodeLine{00404                     gensym(\textcolor{stringliteral}{"midi\_pitch"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00405       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_midi\_velo,}
+\DoxyCodeLine{00406                     gensym(\textcolor{stringliteral}{"midi\_velo"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00407       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_attack,}
+\DoxyCodeLine{00408                     gensym(\textcolor{stringliteral}{"attack"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00409       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_decay,}
+\DoxyCodeLine{00410                     gensym(\textcolor{stringliteral}{"decay"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00411       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_sustain,}
+\DoxyCodeLine{00412                     gensym(\textcolor{stringliteral}{"sustain"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00413       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_release,}
+\DoxyCodeLine{00414                     gensym(\textcolor{stringliteral}{"release"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00415       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_gauss\_q\_factor,}
+\DoxyCodeLine{00416                     gensym(\textcolor{stringliteral}{"gauss\_q\_factor"}), A\_DEFFLOAT, 0);}
+\DoxyCodeLine{00417       class\_addmethod(pd\_granular\_synth\_tilde\_class, (t\_method)pd\_granular\_synth\_set\_spray\_input,}
+\DoxyCodeLine{00418                     gensym(\textcolor{stringliteral}{"spray"}), A\_DEFFLOAT, 0);}
 \DoxyCodeLine{00419 }
-\DoxyCodeLine{00420       CLASS\_MAINSIGNALIN(pd\_granular\_synth\_tilde\_class, \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}}, f);}
-\DoxyCodeLine{00426 \}}
+\DoxyCodeLine{00420       CLASS\_MAINSIGNALIN(pd\_granular\_synth\_tilde\_class, \mbox{\hyperlink{structpd__granular__synth__tilde}{t\_pd\_granular\_synth\_tilde}}, f);   }
+\DoxyCodeLine{00421 \}}
 
 \end{DoxyCode}

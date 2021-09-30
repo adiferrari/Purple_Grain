@@ -1,47 +1,65 @@
 \hypertarget{structenvelope}{}\doxysubsection{envelope Struct Reference}
 \label{structenvelope}\index{envelope@{envelope}}
+
+
+pure data struct of the {\itshape envelope} object  
+
+
+
+
+{\ttfamily \#include $<$envelope.\+h$>$}
+
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structenvelope_aa62a9d7a45089d801b3d6735958a98c5}\label{structenvelope_aa62a9d7a45089d801b3d6735958a98c5}} 
-t\+\_\+object {\bfseries x\+\_\+obj}
-\item 
+t\+\_\+object \mbox{\hyperlink{structenvelope_aa62a9d7a45089d801b3d6735958a98c5}{x\+\_\+obj}}
+\begin{DoxyCompactList}\small\item\em object used for method input/output handling ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_a9b07827e09a449d7d625093567f9b63e}\label{structenvelope_a9b07827e09a449d7d625093567f9b63e}} 
-t\+\_\+int {\bfseries attack}
-\item 
+t\+\_\+int \mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}}
+\begin{DoxyCompactList}\small\item\em attack time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}\label{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}} 
-t\+\_\+int {\bfseries decay}
+t\+\_\+int \mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}}
+\begin{DoxyCompactList}\small\item\em decay time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structenvelope_a14c3262cb9b39d1f34eaacc0c6676314}\label{structenvelope_a14c3262cb9b39d1f34eaacc0c6676314}} 
+t\+\_\+float {\bfseries peak}
 \item 
 \mbox{\Hypertarget{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}\label{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}} 
-t\+\_\+float {\bfseries sustain}
-\item 
+t\+\_\+float \mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}}
+\begin{DoxyCompactList}\small\item\em sustain time in the range of 0 -\/ 1, adjustable through slider ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_ad39b6e45d776796f9a3329384d236c34}\label{structenvelope_ad39b6e45d776796f9a3329384d236c34}} 
-t\+\_\+int {\bfseries release}
-\item 
-\mbox{\Hypertarget{structenvelope_a32abfbe70e80a1c20d6a9ff4e82fbf6f}\label{structenvelope_a32abfbe70e80a1c20d6a9ff4e82fbf6f}} 
-t\+\_\+int {\bfseries duration}
-\item 
+t\+\_\+int \mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}}
+\begin{DoxyCompactList}\small\item\em release time in the range of 0 -\/ 10000ms, adjustable through slider ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_a75aab461d84714b0952a55ed586eb047}\label{structenvelope_a75aab461d84714b0952a55ed586eb047}} 
-t\+\_\+int {\bfseries attack\+\_\+samples}
-\item 
+t\+\_\+int \mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{attack\+\_\+samples}}
+\begin{DoxyCompactList}\small\item\em attack time in samples ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}\label{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}} 
-t\+\_\+int {\bfseries decay\+\_\+samples}
-\item 
+t\+\_\+int \mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{decay\+\_\+samples}}
+\begin{DoxyCompactList}\small\item\em decay time in samples ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}\label{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}} 
-t\+\_\+int {\bfseries release\+\_\+samples}
-\item 
-\mbox{\Hypertarget{structenvelope_abbb9d44b4d5c4c5f989270a01bba5c47}\label{structenvelope_abbb9d44b4d5c4c5f989270a01bba5c47}} 
-t\+\_\+sample $\ast$ {\bfseries envelope\+\_\+samples\+\_\+table}
-\item 
+t\+\_\+int \mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{release\+\_\+samples}}
+\begin{DoxyCompactList}\small\item\em release time in samples ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}\label{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}} 
-enum adsr\+\_\+stage {\bfseries adsr}
-\end{DoxyCompactItemize}
+enum adsr\+\_\+stage \mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}}
+\begin{DoxyCompactList}\small\item\em current A\+D\+SR stage ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
+pure data struct of the {\itshape envelope} object 
 
+pure data struct of the {\itshape envelope} object, defines all necessary variables for enevelope generation ~\newline
+ 
 
-Definition at line \mbox{\hyperlink{envelope_8h_source_l00039}{39}} of file \mbox{\hyperlink{envelope_8h_source}{envelope.\+h}}.
+Definition at line \mbox{\hyperlink{envelope_8h_source_l00041}{41}} of file \mbox{\hyperlink{envelope_8h_source}{envelope.\+h}}.
 
 
 

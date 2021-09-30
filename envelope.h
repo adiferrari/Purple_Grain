@@ -6,6 +6,8 @@
  * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file of @a envelope.c file <br>
+ * @version 1.0
+ * @date 2021-09-27
  */
 
 #ifndef envelope_h
@@ -39,14 +41,14 @@ enum adsr_stage {
 typedef struct envelope
 {
     t_object x_obj;                     ///< object used for method input/output handling <br>
-    int attack;                       ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
-    int decay;                        ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
-    float peak,
-         sustain;                    ///< sustain time in the range of 0 - 1, adjustable through slider <br>
-    int release;                      ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
-    int attack_samples,               ///< attack time in samples <br>
-          decay_samples,                ///< decay time in samples <br>
-          release_samples;              ///< release time in samples <br>
+    int     attack;                    ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
+    int     decay;                     ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
+    float   peak,                      ///< maximum value reached within one adsr cycle <br>
+            sustain;                   ///< sustain time in the range of 0 - 1, adjustable through slider <br>
+    int     release;                   ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
+    int     attack_samples,            ///< attack time in samples <br>
+            decay_samples,             ///< decay time in samples <br>
+            release_samples;           ///< release time in samples <br>
     enum adsr_stage adsr;               ///< current ADSR stage <br>
 } envelope;
 

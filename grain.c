@@ -7,7 +7,7 @@
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles grain creation
  * @details handles grain creation and basic scheduling according to input parameters set by the synthesizer<br>
- * @version 0.1
+ * @version 1.1
  * @date 2021-09-27
  * 
  * @copyright Copyright (c) 2021
@@ -20,8 +20,8 @@
 
 /**
  * @brief generates new grain
- * @details  generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size
- * @param grain_size_samples size of  a grain as amount of contained samples
+ * @details generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size <br>
+ * @param grain_size_samples size of a grain as amount of contained samples <br>
  * @param soundfile_size size of the soundfile in samples <br>
  * @param start_pos starting position within the soundfile, adjustable through slider <br>
  * @param grain_index corresponding index of a grain <br>
@@ -31,8 +31,6 @@
 grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int grain_index, float time_stretch_factor)
 {
     grain x;
-    //grain *next_grain = NULL;
-    //grain *previous_grain = NULL;
     x.grain_active = false;
     x.grain_size_samples = grain_size_samples;
     x.grain_index = grain_index;
@@ -66,9 +64,9 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
 }
 /**
  * @brief scheduling of grain playback
- * @details recursive scheduling of successive grain playback with time and/or start position shifts
- * @param g grain
- * @param synth pointer to c_granular_synth object that schedules the grain
+ * @details recursive scheduling of successive grain playback with time and/or start position shifts <br>
+ * @param g grain <br>
+ * @param synth pointer to c_granular_synth object that schedules the grain <br>
  */
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
@@ -87,11 +85,11 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
     
     if(g->grain_active)
     {
-        float   left_sample, ///<
-                right_sample, ///<
-                frac, ///<
-                integral, ///<
-                weighted;///<
+        float   left_sample, 
+                right_sample, 
+                frac, 
+                integral, 
+                weighted;
         
         left_sample = synth->soundfile_table[(int)floorf(g->current_sample_pos)];
         right_sample = synth->soundfile_table[(int)ceilf(g->current_sample_pos)];
@@ -119,7 +117,6 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
             g->internal_step_count = 0;
             synth->spray_true_offset = 0;
             c_granular_synth_reset_playback_position(synth);
-            //synth->playback_position = synth->current_start_pos;
         }
         
         if(g->next_grain)
@@ -138,8 +135,8 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 }
 /**
  * @brief frees grain
- * @details frees grain
- * @param x input pointer of grain object
+ * @details frees grain <br>
+ * @param x input pointer of grain object <br>
  */
 void grain_free(grain *x)
 {

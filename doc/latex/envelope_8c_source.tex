@@ -2,106 +2,105 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001 }
-\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{envelope_8h}{envelope.h}}"}}
-\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
-\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
-\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include "m\_pd.h"}}
-\DoxyCodeLine{00020 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{c__granular__synth_8h}{c\_granular\_synth.h}}"}}
-\DoxyCodeLine{00021 }
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{envelope_8h}{envelope.h}}"}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
+\DoxyCodeLine{00020 \textcolor{preprocessor}{\#include "m\_pd.h"}}
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{c__granular__synth_8h}{c\_granular\_synth.h}}"}}
 \DoxyCodeLine{00022 }
 \DoxyCodeLine{\Hypertarget{envelope_8c_source_l00029}\mbox{\hyperlink{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}{00029}} \textcolor{keywordtype}{float} \mbox{\hyperlink{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}{calculate\_adsr\_value}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
 \DoxyCodeLine{00030 \{}
 \DoxyCodeLine{00031     \textcolor{keywordtype}{float} adsr\_val = 0;}
 \DoxyCodeLine{00032     \textcolor{keywordtype}{float} attack\_val = 0;}
-\DoxyCodeLine{00033     \textcolor{keywordflow}{switch}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr)}
+\DoxyCodeLine{00033     \textcolor{keywordflow}{switch}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}})}
 \DoxyCodeLine{00034     \{}
 \DoxyCodeLine{00035         \textcolor{keywordflow}{case} ATTACK:}
-\DoxyCodeLine{00036             attack\_val = (1.0/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>attack\_samples);}
+\DoxyCodeLine{00036             attack\_val = (1.0/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{attack\_samples}});}
 \DoxyCodeLine{00037             adsr\_val = x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}}++ * attack\_val;}
-\DoxyCodeLine{00038             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>attack\_samples)}
-\DoxyCodeLine{00039             \{}
-\DoxyCodeLine{00040                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
-\DoxyCodeLine{00041                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr = DECAY;}
-\DoxyCodeLine{00042             \}}
-\DoxyCodeLine{00043             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00044         \textcolor{keywordflow}{case} DECAY:}
-\DoxyCodeLine{00045             \textcolor{comment}{//decay\_val = (x-\/>adsr\_env-\/>sustain-\/1.0)/x-\/>adsr\_env-\/>decay\_samples;}}
-\DoxyCodeLine{00046             adsr\_val = 1.0 + ((x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>sustain-\/1.0)/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>decay\_samples*x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}}++);}
-\DoxyCodeLine{00047             \textcolor{comment}{//adsr\_val = 1.0 + ((x-\/>adsr\_env-\/>sustain-\/1.0)*(x-\/>current\_adsr\_stage\_index++/x-\/>adsr\_env-\/>decay\_samples));}}
-\DoxyCodeLine{00048             }
-\DoxyCodeLine{00049             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>decay\_samples)}
-\DoxyCodeLine{00050             \{}
-\DoxyCodeLine{00051                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
-\DoxyCodeLine{00052                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr = SUSTAIN;}
-\DoxyCodeLine{00053             \}}
-\DoxyCodeLine{00054             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00055         \textcolor{keywordflow}{case} SUSTAIN:}
-\DoxyCodeLine{00056             adsr\_val = x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>sustain;}
+\DoxyCodeLine{00038             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak = adsr\_val;}
+\DoxyCodeLine{00039             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{attack\_samples}})}
+\DoxyCodeLine{00040             \{}
+\DoxyCodeLine{00041                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
+\DoxyCodeLine{00042                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = DECAY;}
+\DoxyCodeLine{00043             \}}
+\DoxyCodeLine{00044             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045         \textcolor{keywordflow}{case} DECAY:}
+\DoxyCodeLine{00046             adsr\_val = 1.0 + ((x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}}-\/1.0)/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{decay\_samples}}*x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}}++);}
+\DoxyCodeLine{00047             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak = adsr\_val;}
+\DoxyCodeLine{00048             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{decay\_samples}})}
+\DoxyCodeLine{00049             \{}
+\DoxyCodeLine{00050                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
+\DoxyCodeLine{00051                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = SUSTAIN;}
+\DoxyCodeLine{00052             \}}
+\DoxyCodeLine{00053             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054         \textcolor{keywordflow}{case} SUSTAIN:}
+\DoxyCodeLine{00055             adsr\_val = x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}};}
+\DoxyCodeLine{00056             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak != x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}}) x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak = x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}};}
 \DoxyCodeLine{00057             \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00058         \textcolor{keywordflow}{case} RELEASE:}
 \DoxyCodeLine{00059             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}} > 0)}
 \DoxyCodeLine{00060             \{}
-\DoxyCodeLine{00061                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr = ATTACK;}
+\DoxyCodeLine{00061                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = ATTACK;}
 \DoxyCodeLine{00062                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
 \DoxyCodeLine{00063                 \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00064             \}}
-\DoxyCodeLine{00065             adsr\_val = x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>sustain -\/ ((x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>sustain/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>release\_samples)*x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}}++);}
-\DoxyCodeLine{00066             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>release\_samples)}
+\DoxyCodeLine{00065             adsr\_val = x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak -\/ ((x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak/x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{release\_samples}})*x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}}++);}
+\DoxyCodeLine{00066             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{release\_samples}})}
 \DoxyCodeLine{00067             \{}
 \DoxyCodeLine{00068                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
-\DoxyCodeLine{00069                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr = SILENT;}
+\DoxyCodeLine{00069                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = SILENT;}
 \DoxyCodeLine{00070             \}}
 \DoxyCodeLine{00071             \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00072         \textcolor{keywordflow}{case} SILENT:}
 \DoxyCodeLine{00073             \textcolor{keywordflow}{if}(x-\/>\mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\_velo}}>0)}
 \DoxyCodeLine{00074             \{}
-\DoxyCodeLine{00075                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>adsr = ATTACK;}
+\DoxyCodeLine{00075                 x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = ATTACK;}
 \DoxyCodeLine{00076                 x-\/>\mbox{\hyperlink{structc__granular__synth_a5f71a7137862c5f5e1173bb931b66bc4}{current\_adsr\_stage\_index}} = 0;}
 \DoxyCodeLine{00077                 \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00078             \}}
 \DoxyCodeLine{00079             adsr\_val = 0;}
-\DoxyCodeLine{00080             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00081     \}}
-\DoxyCodeLine{00082     \textcolor{keywordflow}{return} adsr\_val;}
-\DoxyCodeLine{00083 \}}
-\DoxyCodeLine{00084 }
-\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00094}\mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{00094}} \mbox{\hyperlink{structenvelope}{envelope}} *\mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(\textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release)}
-\DoxyCodeLine{00095 }
-\DoxyCodeLine{00096 \{}
-\DoxyCodeLine{00097     \mbox{\hyperlink{structenvelope}{envelope}} *x = (\mbox{\hyperlink{structenvelope}{envelope}} *) vas\_mem\_alloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structenvelope}{envelope}}));}
-\DoxyCodeLine{00098     t\_float SAMPLERATE = sys\_getsr();}
-\DoxyCodeLine{00099     }
-\DoxyCodeLine{00103     x-\/>adsr = SILENT;     }
-\DoxyCodeLine{00104 }
-\DoxyCodeLine{00105     x-\/>attack = attack;}
-\DoxyCodeLine{00106     x-\/>decay = decay;}
-\DoxyCodeLine{00107     x-\/>sustain = sustain;}
-\DoxyCodeLine{00108     x-\/>release = release;}
-\DoxyCodeLine{00109     }
-\DoxyCodeLine{00110     x-\/>attack\_samples = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(attack, SAMPLERATE);}
-\DoxyCodeLine{00111     x-\/>decay\_samples = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(decay, SAMPLERATE);}
-\DoxyCodeLine{00112     x-\/>release\_samples = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(release, SAMPLERATE);}
-\DoxyCodeLine{00113     \textcolor{keywordflow}{return} x;}
-\DoxyCodeLine{00114 \}}
-\DoxyCodeLine{00115 }
-\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00122}\mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{00122}} \textcolor{keywordtype}{float} \mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
-\DoxyCodeLine{00123 \{}
-\DoxyCodeLine{00124     \textcolor{comment}{//t\_int grain\_size = x.grain\_size\_samples;}}
-\DoxyCodeLine{00125     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} == 0)}
-\DoxyCodeLine{00126         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{00127     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}})}
-\DoxyCodeLine{00128     \{}
-\DoxyCodeLine{00129         x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} = 0;}
-\DoxyCodeLine{00130     \}}
-\DoxyCodeLine{00131     \textcolor{keywordtype}{float} numerator = pow(x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}}++ -\/(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}/2), 2);}
-\DoxyCodeLine{00132     \textcolor{keywordtype}{float} denominatior = x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} * pow(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}, 2);}
-\DoxyCodeLine{00133     \textcolor{keywordtype}{float} gauss\_value = expf(-\/numerator/denominatior);}
-\DoxyCodeLine{00134     \textcolor{keywordflow}{return} gauss\_value;}
-\DoxyCodeLine{00135 \}}
-\DoxyCodeLine{00136 }
-\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00142}\mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{00142}} \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x)}
-\DoxyCodeLine{00143 \{}
-\DoxyCodeLine{00144     free(x);}
-\DoxyCodeLine{00145 \}}
+\DoxyCodeLine{00080             x-\/>\mbox{\hyperlink{structc__granular__synth_ac23fc892366143927bb8bf45a94b862b}{adsr\_env}}-\/>peak = 0;}
+\DoxyCodeLine{00081             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00082     \}}
+\DoxyCodeLine{00083     \textcolor{keywordflow}{return} adsr\_val;}
+\DoxyCodeLine{00084 \}}
+\DoxyCodeLine{00085 }
+\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00095}\mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{00095}} \mbox{\hyperlink{structenvelope}{envelope}} *\mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(\textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release)}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097 \{}
+\DoxyCodeLine{00098     \mbox{\hyperlink{structenvelope}{envelope}} *x = (\mbox{\hyperlink{structenvelope}{envelope}} *) malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structenvelope}{envelope}}));}
+\DoxyCodeLine{00099     t\_float SAMPLERATE = sys\_getsr();}
+\DoxyCodeLine{00100     }
+\DoxyCodeLine{00101     x-\/>\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}} = SILENT;}
+\DoxyCodeLine{00102     x-\/>\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}} = attack;}
+\DoxyCodeLine{00103     x-\/>\mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}} = decay;}
+\DoxyCodeLine{00104     x-\/>\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}} = sustain;}
+\DoxyCodeLine{00105     x-\/>peak = 0.0;}
+\DoxyCodeLine{00106     x-\/>\mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}} = release;}
+\DoxyCodeLine{00107     }
+\DoxyCodeLine{00108     x-\/>\mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{attack\_samples}} = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(attack, SAMPLERATE);}
+\DoxyCodeLine{00109     x-\/>\mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{decay\_samples}} = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(decay, SAMPLERATE);}
+\DoxyCodeLine{00110     x-\/>\mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{release\_samples}} = \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\_samples\_from\_ms}}(release, SAMPLERATE);}
+\DoxyCodeLine{00111     \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{00112 \}}
+\DoxyCodeLine{00113 }
+\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00120}\mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{00120}} \textcolor{keywordtype}{float} \mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}}(\mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}} *x)}
+\DoxyCodeLine{00121 \{}
+\DoxyCodeLine{00122     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}} == 0)}
+\DoxyCodeLine{00123         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00124     \textcolor{keywordflow}{if} (x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} >= x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}})}
+\DoxyCodeLine{00125     \{}
+\DoxyCodeLine{00126         x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}} = 0;}
+\DoxyCodeLine{00127     \}}
+\DoxyCodeLine{00128     \textcolor{keywordtype}{float} numerator = pow(x-\/>\mbox{\hyperlink{structc__granular__synth_a785e130c854174d3a9e7a51190c8e194}{current\_gauss\_stage\_index}}++ -\/(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}/2), 2);}
+\DoxyCodeLine{00129     \textcolor{keywordtype}{float} denominatior = x-\/>\mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\_q\_factor}} * pow(x-\/>\mbox{\hyperlink{structc__granular__synth_abd1056818e99cc3c63d27a14010b90e4}{grain\_size\_samples}}, 2);}
+\DoxyCodeLine{00130     \textcolor{keywordtype}{float} gauss\_value = expf(-\/numerator/denominatior);}
+\DoxyCodeLine{00131     \textcolor{keywordflow}{return} gauss\_value;}
+\DoxyCodeLine{00132 \}}
+\DoxyCodeLine{00133 }
+\DoxyCodeLine{\Hypertarget{envelope_8c_source_l00139}\mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{00139}} \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x)}
+\DoxyCodeLine{00140 \{}
+\DoxyCodeLine{00141     free(x);}
+\DoxyCodeLine{00142 \}}
 
 \end{DoxyCode}

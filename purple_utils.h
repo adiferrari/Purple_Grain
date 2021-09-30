@@ -3,11 +3,11 @@
  * @author Kretschmar, Nikita 
  * @author Philipp, Adrian 
  * @author Strobl, Micha 
- * @author Wennemann,Tim <b>
+ * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file to @a purple_utils.c file
- * @version 0.1
- * @date 2021-09-28
+ * @version 1.1
+ * @date 2021-09-27
  * 
  * @copyright Copyright (c) 2021
  * 

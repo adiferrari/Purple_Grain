@@ -7,7 +7,7 @@
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles envelope generation
  * @details generates ADSR envelope according to adjustable attack, decay, sustain and release parameters <br>
- * @version 0.1
+ * @version 1.1
  * @date 2021-09-27
  * 
  * @copyright Copyright (c) 2021
@@ -22,7 +22,7 @@
 
 /**
  * @brief calculates ADSR value
- * @details calculates single atm ADSR value according to current state <br>
+ * @details calculates single momentary ADSR value according to current state <br>
  * @param x input pointer of @a c_granular_synth object <br>
  * @return ADSR value of type float <br>
  */
@@ -85,7 +85,7 @@ float calculate_adsr_value(c_granular_synth *x)
 
 /**
  * @brief generates new ADSR envelope
- * 
+ * @details generates new ADSR envelope according to its four components <br>
  * @param attack attack time in the range of 0 - 4000ms, adjustable through slider <br>
  * @param decay decay time in the range of 0 - 4000ms, adjustable through slider <br>
  * @param sustain sustain time in the range of 0 - 1, adjustable through slider <br>
@@ -113,9 +113,9 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
 
 /**
  * @brief calculates gauss value
- * @details calculates gauss value according to @a grainindex <br>
- * @param x reference to the actual synthesizer
- * @return gauss value of type float
+ * @details calculates gauss value according to @a grain index <br>
+ * @param x reference to the actual synthesizer <b>
+ * @return gauss value of type float <b>
  */
 float gauss(c_granular_synth *x)
 {

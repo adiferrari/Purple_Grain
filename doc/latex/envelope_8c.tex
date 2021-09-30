@@ -20,7 +20,7 @@ float \mbox{\hyperlink{envelope_8c_aaae5d861cb60747af27b39b0658a92bd}{calculate\
 \mbox{\hyperlink{structenvelope}{envelope}} $\ast$ \mbox{\hyperlink{envelope_8c_a0854138c64859a1f4079feb9b9194786}{envelope\+\_\+new}} (int attack, int decay, float sustain, int release)
 \begin{DoxyCompactList}\small\item\em generates new A\+D\+SR envelope \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}{gauss}} (\mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}} $\ast$x)
-\begin{DoxyCompactList}\small\item\em calculates gauss value calculates gauss value according to {\itshape grainindex} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates gauss value \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\_\+free}} (\mbox{\hyperlink{structenvelope}{envelope}} $\ast$x)
 \begin{DoxyCompactList}\small\item\em frees envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -29,16 +29,19 @@ void \mbox{\hyperlink{envelope_8c_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\+\
 handles envelope generation 
 
 \begin{DoxyAuthor}{Author}
-Nikita Kretschmar 
+Kretschmar, Nikita 
 
-Adrian Philipp 
+Philipp, Adrian 
 
-Micha Strobl 
+Strobl, Micha 
 
-Tim Wennemann
+Wennemann,Tim ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
+
 \end{DoxyAuthor}
-generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters {\bfseries{ \begin{DoxyVersion}{Version}
-0.\+1 
+generates A\+D\+SR envelope according to adjustable attack, decay, sustain and release parameters ~\newline
+ \begin{DoxyVersion}{Version}
+1.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
 2021-\/09-\/27
@@ -46,7 +49,7 @@ generates A\+D\+SR envelope according to adjustable attack, decay, sustain and r
 \begin{DoxyCopyright}{Copyright}
 Copyright (c) 2021 
 \end{DoxyCopyright}
-}}
+
 
 Definition in file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
@@ -63,15 +66,18 @@ Definition in file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 calculates A\+D\+SR value 
 
-calculates single atm A\+D\+SR value according to current state {\bfseries{ 
+calculates single momentary A\+D\+SR value according to current state ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of {\itshape calculate\+\_\+adsr\+\_\+value} object {\bfseries{ }}\\
+{\em x} & input pointer of {\itshape calculate\+\_\+adsr\+\_\+value} object ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\bfseries{ A\+D\+SR value of type float {\bfseries{ }}}}
+A\+D\+SR value of type float ~\newline
+ 
 \end{DoxyReturn}
-}}
+
 
 Definition at line \mbox{\hyperlink{envelope_8c_source_l00029}{29}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
@@ -85,14 +91,15 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00029}{29}} of file \mbo
 
 frees envelope 
 
-
+frees envelope ~\newline
+ 
 \begin{DoxyParams}{Parameters}
 {\em x} & input pointer of {\itshape envelope\+\_\+free} object \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00142}{142}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00139}{139}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 \mbox{\Hypertarget{envelope_8c_a0854138c64859a1f4079feb9b9194786}\label{envelope_8c_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.c@{envelope.c}!envelope\_new@{envelope\_new}}
@@ -104,26 +111,28 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00142}{142}} of file \mb
 
 generates new A\+D\+SR envelope 
 
-
+generates new A\+D\+SR envelope according to its four components ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}\\
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \\
 \hline
-{\em decay} & {\bfseries{decay time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}}}\\
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \\
 \hline
-{\em sustain} & {\bfseries{{\bfseries{sustain time in the range of 0 -\/ 1, adjustable through slider {\bfseries{ }}}}}}\\
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider ~\newline
+ \\
 \hline
-{\em release} & {\bfseries{{\bfseries{{\bfseries{release time in the range of 0 -\/ 10000ms, adjustable through slider {\bfseries{ }}}}}}}}\\
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\bfseries{{\bfseries{{\bfseries{{\bfseries{ envelope$\ast$ }}}}}}}}
+envelope$\ast$ 
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-muss bei Note on wieder raus -\/$>$ start mit silent
-\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00094}{94}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00095}{95}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 \mbox{\Hypertarget{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}\label{envelope_8c_a75f7c04e22734cdd5ad2f7684a3fd494}} 
 \index{envelope.c@{envelope.c}!gauss@{gauss}}
@@ -133,17 +142,18 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00094}{94}} of file \mbo
 
 
 
-calculates gauss value calculates gauss value according to {\itshape grainindex} 
+calculates gauss value 
 
-
+calculates gauss value according to {\itshape grain} index ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & reference to the actual synthesizer \\
+{\em x} & reference to the actual synthesizer {\bfseries{ }}\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-gauss value of type float 
+{\bfseries{ gauss value of type float {\bfseries{ }}}}
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00122}{122}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00120}{120}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 

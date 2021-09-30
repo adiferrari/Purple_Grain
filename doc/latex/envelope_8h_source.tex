@@ -2,67 +2,58 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001 }
-\DoxyCodeLine{00011 \textcolor{preprocessor}{\#ifndef envelope\_h}}
-\DoxyCodeLine{00012 \textcolor{preprocessor}{\#define envelope\_h}}
-\DoxyCodeLine{00013 }
-\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "m\_pd.h"}}
-\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
-\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdlib.h>}}
-\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <math.h>}}
-\DoxyCodeLine{00019 }
-\DoxyCodeLine{00020 }
-\DoxyCodeLine{00021 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{00022 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{}
-\DoxyCodeLine{00023 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00024 }
-\DoxyCodeLine{00025 \textcolor{comment}{/*}}
-\DoxyCodeLine{00026 \textcolor{comment}{    ADSR Angaben bestimmt in s oder ms?}}
-\DoxyCodeLine{00027 \textcolor{comment}{    Konvertierung in Samples notwendig?}}
-\DoxyCodeLine{00028 \textcolor{comment}{    Check Funktion dass Enveloe Länge nicht länger alsLänge des Soundfiles ist?}}
-\DoxyCodeLine{00029 \textcolor{comment}{ */}}
-\DoxyCodeLine{00030 }
-\DoxyCodeLine{00031 \textcolor{keyword}{enum} adsr\_stage \{}
-\DoxyCodeLine{00032     ATTACK,}
-\DoxyCodeLine{00033     DECAY,}
-\DoxyCodeLine{00034     SUSTAIN,}
-\DoxyCodeLine{00035     RELEASE,}
-\DoxyCodeLine{00036     SILENT}
-\DoxyCodeLine{00037 \};}
-\DoxyCodeLine{00038 }
-\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00039}\mbox{\hyperlink{structenvelope}{00039}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structenvelope}{envelope}}}
-\DoxyCodeLine{00040 \{}
-\DoxyCodeLine{00041     t\_object x\_obj;}
-\DoxyCodeLine{00042     t\_int attack;}
-\DoxyCodeLine{00043     t\_int decay;}
-\DoxyCodeLine{00044     t\_float sustain;}
-\DoxyCodeLine{00045     t\_int release;}
-\DoxyCodeLine{00046     t\_int duration;}
-\DoxyCodeLine{00047     t\_int attack\_samples,}
-\DoxyCodeLine{00048             decay\_samples,}
-\DoxyCodeLine{00049             release\_samples;}
-\DoxyCodeLine{00050     t\_sample *envelope\_samples\_table;}
-\DoxyCodeLine{00051     \textcolor{keyword}{enum} adsr\_stage adsr;}
-\DoxyCodeLine{00052 \} \mbox{\hyperlink{structenvelope}{envelope}};}
-\DoxyCodeLine{00053 }
-\DoxyCodeLine{00054 \textcolor{keywordtype}{int} getsamples\_from\_ms(\textcolor{keywordtype}{int} ms, \textcolor{keywordtype}{float} sr);}
-\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00055}\mbox{\hyperlink{structwindow}{00055}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwindow}{window}}}
-\DoxyCodeLine{00056 \{}
-\DoxyCodeLine{00057     t\_object x\_obj;}
-\DoxyCodeLine{00058     t\_int q\_factor;}
-\DoxyCodeLine{00059     t\_sample *window\_samples\_table;}
-\DoxyCodeLine{00060 \}\mbox{\hyperlink{structwindow}{window}};}
-\DoxyCodeLine{00061 }
-\DoxyCodeLine{00062 \mbox{\hyperlink{structenvelope}{envelope}} *\mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(\textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release);}
-\DoxyCodeLine{00063 }
-\DoxyCodeLine{00064 \textcolor{comment}{//float gauss(float q\_factor, int grain\_size, int sample);}}
-\DoxyCodeLine{00065 }
-\DoxyCodeLine{00066 \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x);}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#ifndef envelope\_h}}
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#define envelope\_h}}
+\DoxyCodeLine{00015 }
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include "m\_pd.h"}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{00020 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{00021 }
+\DoxyCodeLine{00022 }
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00024 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{}
+\DoxyCodeLine{00025 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00026 }
+\DoxyCodeLine{00027 \textcolor{keyword}{enum} adsr\_stage \{}
+\DoxyCodeLine{00028     ATTACK,}
+\DoxyCodeLine{00029     DECAY,}
+\DoxyCodeLine{00030     SUSTAIN,}
+\DoxyCodeLine{00031     RELEASE,}
+\DoxyCodeLine{00032     SILENT}
+\DoxyCodeLine{00033 \};}
+\DoxyCodeLine{00034 }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00041}\mbox{\hyperlink{structenvelope}{00041}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structenvelope}{envelope}}}
+\DoxyCodeLine{00042 \{}
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00043}\mbox{\hyperlink{structenvelope_aa62a9d7a45089d801b3d6735958a98c5}{00043}}     t\_object \mbox{\hyperlink{structenvelope_aa62a9d7a45089d801b3d6735958a98c5}{x\_obj}};                     }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00044}\mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{00044}}     t\_int    \mbox{\hyperlink{structenvelope_a9b07827e09a449d7d625093567f9b63e}{attack}};                    }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00045}\mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{00045}}     t\_int    \mbox{\hyperlink{structenvelope_ae6decb28291ea6014fd65a2ba5c7c57f}{decay}};                     }
+\DoxyCodeLine{00046     t\_float  peak,                      }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00047}\mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{00047}}              \mbox{\hyperlink{structenvelope_a76111f8cc917bab1a80fbd30893c05bc}{sustain}};                   }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00048}\mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{00048}}     t\_int    \mbox{\hyperlink{structenvelope_ad39b6e45d776796f9a3329384d236c34}{release}};                   }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00049}\mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{00049}}     t\_int    \mbox{\hyperlink{structenvelope_a75aab461d84714b0952a55ed586eb047}{attack\_samples}},            }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00050}\mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{00050}}              \mbox{\hyperlink{structenvelope_a30ec5b0e049d60ddf8cd1c908b0790f3}{decay\_samples}},             }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00051}\mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{00051}}              \mbox{\hyperlink{structenvelope_a8e5491047fb2b191ebf9dbb24859acda}{release\_samples}};           }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00052}\mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{00052}}     \textcolor{keyword}{enum} adsr\_stage \mbox{\hyperlink{structenvelope_aaba6f05062d02b7a5f5efb5304135b25}{adsr}};               }
+\DoxyCodeLine{00053 \} \mbox{\hyperlink{structenvelope}{envelope}};}
+\DoxyCodeLine{00054 }
+\DoxyCodeLine{00055 \textcolor{keywordtype}{int} getsamples\_from\_ms(\textcolor{keywordtype}{int} ms, \textcolor{keywordtype}{float} sr);}
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00061}\mbox{\hyperlink{structwindow}{00061}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structwindow}{window}}}
+\DoxyCodeLine{00062 \{}
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00063}\mbox{\hyperlink{structwindow_afba9aec4b0fee036182178571277d40d}{00063}}     t\_object \mbox{\hyperlink{structwindow_afba9aec4b0fee036182178571277d40d}{x\_obj}};                     }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00064}\mbox{\hyperlink{structwindow_aa12508861c1ac0425914b04e8184342e}{00064}}     t\_int \mbox{\hyperlink{structwindow_aa12508861c1ac0425914b04e8184342e}{q\_factor}};                     }
+\DoxyCodeLine{\Hypertarget{envelope_8h_source_l00065}\mbox{\hyperlink{structwindow_adff02a41ea5d841650707f289fe3962b}{00065}}     t\_sample *\mbox{\hyperlink{structwindow_adff02a41ea5d841650707f289fe3962b}{window\_samples\_table}};     }
+\DoxyCodeLine{00066 \}\mbox{\hyperlink{structwindow}{window}};}
 \DoxyCodeLine{00067 }
-\DoxyCodeLine{00068 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{00069 \}}
-\DoxyCodeLine{00070 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00071 }
-\DoxyCodeLine{00072 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00068 \mbox{\hyperlink{structenvelope}{envelope}} *\mbox{\hyperlink{envelope_8h_a0854138c64859a1f4079feb9b9194786}{envelope\_new}}(\textcolor{keywordtype}{int} attack, \textcolor{keywordtype}{int} decay, \textcolor{keywordtype}{float} sustain, \textcolor{keywordtype}{int} release);}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00075 \textcolor{keywordtype}{void} \mbox{\hyperlink{envelope_8h_a1c1368cf5424e9a5ae2dd5d9295661c5}{envelope\_free}}(\mbox{\hyperlink{structenvelope}{envelope}} *x);}
+\DoxyCodeLine{00076 }
+\DoxyCodeLine{00077 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{00078 \}}
+\DoxyCodeLine{00079 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080 }
+\DoxyCodeLine{00081 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

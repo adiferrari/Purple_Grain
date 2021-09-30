@@ -21,13 +21,8 @@ t\+\_\+word $\ast$ \mbox{\hyperlink{structc__granular__synth_a558aac696a5378e196
 \begin{DoxyCompactList}\small\item\em pointer towards the soundfile \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}\label{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}} 
 int \mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\+\_\+length}}
-\begin{DoxyCompactList}\small\item\em lenght of the soundfile in samples \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}\label{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}} 
-int \mbox{\hyperlink{structc__granular__synth_a593e2aa931a0a6f337ca502eea1af5ac}{current\+\_\+start\+\_\+pos}}
-\begin{DoxyCompactList}\small\item\em position in the soundfle, determined by slider position \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}\label{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}} 
-int \mbox{\hyperlink{structc__granular__synth_a379cd827e410135cc6d31d17cee130a1}{playback\+\_\+cycle\+\_\+end}}
-\begin{DoxyCompactList}\small\item\em determines when to reset {\itshape playback\+\_\+pos} to current\+\_\+start\+\_\+pos \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em lenght of the soundfile in samples ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}\label{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}} 
 int \mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\+\_\+grain\+\_\+index}}
 \begin{DoxyCompactList}\small\item\em index of the current grain \end{DoxyCompactList}\item 
@@ -52,12 +47,30 @@ int \mbox{\hyperlink{structc__granular__synth_a97c01fc7c99e8f7b02981474089bae35}
 \mbox{\Hypertarget{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}\label{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}} 
 int \mbox{\hyperlink{structc__granular__synth_a994c0961d2b320fcf41ffb910a6ab92c}{midi\+\_\+velo}}
 \begin{DoxyCompactList}\small\item\em velocity value given by M\+I\+DI input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}\label{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}} 
+int \mbox{\hyperlink{structc__granular__synth_a3f05e1654bb28ffe92d0c1b5ec3396b1}{spray\+\_\+input}}
+\begin{DoxyCompactList}\small\item\em randomizes the start position of each grain \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}\label{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}} 
 float \mbox{\hyperlink{structc__granular__synth_aa164a91c3ebd564ef440719225a15f58}{gauss\+\_\+q\+\_\+factor}}
-\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope height \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em used to manipulate grain envelope slope \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}\label{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}} 
+float \mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em multiplicator of M\+I\+DI input pitch/key value \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}\label{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}} 
 t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\+\_\+position}}
 \begin{DoxyCompactList}\small\item\em which sample of the grain goes to the output next \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}\label{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}} 
+t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a2a2ae5a2d7f08558222953603627ff06}{current\+\_\+start\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em position in the soundfle, determined by slider position \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}\label{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}} 
+t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a9a710b291c75c03960d6e790fe33ef05}{sprayed\+\_\+start\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em start position is affected by {\itshape spray\+\_\+true\+\_\+offset} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}\label{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}} 
+t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a7e532e2061fc13ce67758ee0524920c9}{playback\+\_\+cycle\+\_\+end}}
+\begin{DoxyCompactList}\small\item\em determines when to reset {\itshape playback\+\_\+pos} to {\itshape current\+\_\+start\+\_\+pos} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}\label{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}} 
+t\+\_\+int \mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\+\_\+true\+\_\+offset}}
+\begin{DoxyCompactList}\small\item\em actual starting position offset (initally set to 0) calculated on the run \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structc__granular__synth_a11189b409749c9930f477892a71de86d}\label{structc__granular__synth_a11189b409749c9930f477892a71de86d}} 
 bool \mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\+\_\+playback}}
 \begin{DoxyCompactList}\small\item\em used fo switch playback to reverse, depends on {\itshape time\+\_\+stretch\+\_\+factor} value negativity \end{DoxyCompactList}\item 
@@ -84,9 +97,10 @@ t\+\_\+float \mbox{\hyperlink{structc__granular__synth_a3c2dba821ef09dd3229fc8d9
 \doxysubsubsection{Detailed Description}
 pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object 
 
-pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object, defines all necessary variables for synth operation{\bfseries{ }}
+pure data struct of the {\itshape \mbox{\hyperlink{structc__granular__synth}{c\+\_\+granular\+\_\+synth}}} object, defines all necessary variables for synth operation~\newline
+ 
 
-Definition at line \mbox{\hyperlink{c__granular__synth_8h_source_l00034}{34}} of file \mbox{\hyperlink{c__granular__synth_8h_source}{c\+\_\+granular\+\_\+synth.\+h}}.
+Definition at line \mbox{\hyperlink{c__granular__synth_8h_source_l00036}{36}} of file \mbox{\hyperlink{c__granular__synth_8h_source}{c\+\_\+granular\+\_\+synth.\+h}}.
 
 
 
