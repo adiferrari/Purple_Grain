@@ -6,6 +6,8 @@
  * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file of @a granular_synth.c file
+ * @version 1.0
+ * @date 2021-07-25
  */
 
 #ifndef c_granular_synth_h
@@ -43,14 +45,14 @@ typedef struct c_granular_synth
                 num_grains,                     ///< number of grains
                 midi_pitch,                     ///< pitch/key value given by MIDI input
                 midi_velo,                      ///< velocity value given by MIDI input
-                spray_input;
-    float       gauss_q_factor,                 ///< used to manipulate grain envelope height
-                pitch_factor;
+                spray_input;                    ///< randomizes the start position of each grain
+    float       gauss_q_factor,                 ///< used to manipulate grain envelope slope
+                pitch_factor;                   ///< multiplicator of MIDI input pitch/key value
     t_int       playback_position,              ///< which sample of the grain goes to the output next
                 current_start_pos,              ///< position in the soundfle, determined by slider position
-                sprayed_start_pos,          // start_pos affected by spray offset
-                playback_cycle_end,             ///< determines when to reset @a playback_pos to current_start_pos
-                spray_true_offset;
+                sprayed_start_pos,              ///< start position is affected by @a spray_true_offset
+                playback_cycle_end,             ///< determines when to reset @a playback_pos to @a current_start_pos
+                spray_true_offset;              ///< actual starting position offset (initally set to 0) calculated on the run
     bool        reverse_playback;               ///< used fo switch playback to reverse, depends on @a time_stretch_factor value negativity
     float       *soundfile_table;               ///< array containing the original soundfile
     t_float     output_buffer,                  ///< used to sum up the current samples of all active grains
@@ -58,7 +60,6 @@ typedef struct c_granular_synth
                 sr;                             ///< defined samplerate
     grain       *grains_table;                  ///< array containing the grains
     envelope    *adsr_env;                      ///< ADSR envelope
-    //float* windowing_table;  // smoothing window function applied to grain output
 } c_granular_synth;
 
 void c_granular_synth_free(c_granular_synth *x);

@@ -3,12 +3,12 @@
 
 
 useful utilities for value conversion and manipulation ~\newline
- useful utilities for value conversion and manipulation ~\newline
- outsourced into own .c file for better code readability ~\newline
+ useful utilities for value conversion and manipulation, outsourced into own .c file for better code readability ~\newline
   
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$math.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}m\+\_\+pd.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}purple\+\_\+utils.\+h\char`\"{}}\newline
@@ -18,33 +18,33 @@ Include dependency graph for purple\+\_\+utils.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{purple__utils_8c_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
-\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates number of samples \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
-\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates sample time in ms \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
 \begin{DoxyCompactList}\small\item\em calculates interpolated sample value ~\newline
- calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
  \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{purple__utils_8c_aa70b6fc905b978c25b15eaa49ddda958}{switch\+\_\+float\+\_\+values}} (float $\ast$a, float $\ast$b)
-\begin{DoxyCompactList}\small\item\em swaps to values swaps to values of float type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em swaps to values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{purple__utils_8c_a6a5f0b499868877a5f59c0b0f86ba1b7}\label{purple__utils_8c_a6a5f0b499868877a5f59c0b0f86ba1b7}} 
+int {\bfseries spray\+\_\+dependant\+\_\+playback\+\_\+nudge} (int spray\+\_\+input)
+\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
 useful utilities for value conversion and manipulation ~\newline
- useful utilities for value conversion and manipulation ~\newline
- outsourced into own .c file for better code readability ~\newline
+ useful utilities for value conversion and manipulation, outsourced into own .c file for better code readability ~\newline
  
 
 \begin{DoxyAuthor}{Author}
-Nikita Kretschmar 
+Kretschmar, Nikita 
 
-Adrian Philipp 
+Philipp, Adrian 
 
-Micha Strobl 
+Strobl, Micha 
 
-Tim Wennemann 
+Wennemann,Tim ~\newline
+ 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 0.\+1 
@@ -71,10 +71,10 @@ Definition in file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\
 
 
 calculates interpolated sample value ~\newline
- calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
  
 
-
+calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+ 
 \begin{DoxyParams}{Parameters}
 {\em sample\+\_\+left} & value at the beginning of sample \\
 \hline
@@ -98,10 +98,10 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00063}{63}} of file
 
 
 
-calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+calculates sample time in ms 
+
+calculates sample time from {\itshape num\+\_\+samples} according to defined {\itshape sr} ~\newline
  
-
-
 \begin{DoxyParams}{Parameters}
 {\em num\+\_\+samples} & number of samples \\
 \hline
@@ -123,10 +123,10 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00045}{45}} of file
 
 
 
-calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+calculates number of samples 
+
+calculates number of samples from {\itshape ms} according to defined {\itshape sr} ~\newline
  
-
-
 \begin{DoxyParams}{Parameters}
 {\em ms} & sample time in ms \\
 \hline
@@ -148,9 +148,10 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00028}{28}} of file
 
 
 
-swaps to values swaps to values of float type 
+swaps to values 
 
-
+swaps to values {\itshape a} with {\itshape b} using a temporary third pointer ~\newline
+ 
 \begin{DoxyParams}{Parameters}
 {\em a} & first value to swapped with second \\
 \hline

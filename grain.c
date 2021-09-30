@@ -7,7 +7,7 @@
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief handles grain creation
  * @details handles grain creation according to set input parameters<br>
- * @version 0.1
+ * @version 1.1
  * @date 2021-09-27
  * 
  * @copyright Copyright (c) 2021
@@ -19,15 +19,15 @@
 #include "purple_utils.h"
 
 /**
- * @brief set maximum amount of simoultaneously playing grains
+ * @brief sets maximum amount of simoultaneously playing grains
  * @todo check if necessary, set dynamically by user input
  */
 #define OVERLAP_DENSITY = 8
 
 /**
  * @brief generates new grain
- * @details  generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size
- * @param grain_size_samples size of samples contained in a grain
+ * @details generates new grain with @a grain_index according to set @a grain_size_samples, @a start_pos, @a time_stretch_factor based on @a soundfile_size <br>
+ * @param grain_size_samples size of samples contained in a grain <br>
  * @param soundfile_size size of the soundfile which can be read in via inlet <br>
  * @param start_pos starting position within the soundfile, adjustable through slider <br>
  * @param grain_index corresponding index of a grain <br>
@@ -81,9 +81,9 @@ grain grain_new(int grain_size_samples, int soundfile_size, float start_pos, int
 }
 /**
  * @brief scheduling of grain playback
- * @details sheduling of grain playback
- * @param g grain
- * @param synth synthesized output of c_granular_synth object
+ * @details sheduling of grain playback <br>
+ * @param g grain <br>
+ * @param synth synthesized output of c_granular_synth object <br>
  */
 void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 {
@@ -177,8 +177,8 @@ void grain_internal_scheduling(grain* g, c_granular_synth* synth)
 }
 /**
  * @brief frees grain
- * @details frees grain
- * @param x input pointer of grain_fre object
+ * @details frees grain <br>
+ * @param x input pointer of grain_fre object <br>
  */
 void grain_free(grain *x)
 {

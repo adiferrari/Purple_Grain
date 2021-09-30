@@ -91,16 +91,9 @@ t_word *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr class="separator:a558aac696a5378e1963a5afcb4f12f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2f524c1b162d569fdafccecbe8199f3"><td class="memItemLeft" align="right" valign="top"><a id="aa2f524c1b162d569fdafccecbe8199f3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#aa2f524c1b162d569fdafccecbe8199f3">soundfile_length</a></td></tr>
-<tr class="memdesc:aa2f524c1b162d569fdafccecbe8199f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lenght of the soundfile in samples <br /></td></tr>
+<tr class="memdesc:aa2f524c1b162d569fdafccecbe8199f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">lenght of the soundfile in samples <br  />
+ <br /></td></tr>
 <tr class="separator:aa2f524c1b162d569fdafccecbe8199f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a593e2aa931a0a6f337ca502eea1af5ac"><td class="memItemLeft" align="right" valign="top"><a id="a593e2aa931a0a6f337ca502eea1af5ac"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a593e2aa931a0a6f337ca502eea1af5ac">current_start_pos</a></td></tr>
-<tr class="memdesc:a593e2aa931a0a6f337ca502eea1af5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">position in the soundfle, determined by slider position <br /></td></tr>
-<tr class="separator:a593e2aa931a0a6f337ca502eea1af5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a379cd827e410135cc6d31d17cee130a1"><td class="memItemLeft" align="right" valign="top"><a id="a379cd827e410135cc6d31d17cee130a1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a379cd827e410135cc6d31d17cee130a1">playback_cycle_end</a></td></tr>
-<tr class="memdesc:a379cd827e410135cc6d31d17cee130a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines when to reset <em>playback_pos</em> to current_start_pos <br /></td></tr>
-<tr class="separator:a379cd827e410135cc6d31d17cee130a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a4bd1fc4f1624d14cc9bf9e11e1f661"><td class="memItemLeft" align="right" valign="top"><a id="a6a4bd1fc4f1624d14cc9bf9e11e1f661"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a6a4bd1fc4f1624d14cc9bf9e11e1f661">current_grain_index</a></td></tr>
 <tr class="memdesc:a6a4bd1fc4f1624d14cc9bf9e11e1f661"><td class="mdescLeft">&#160;</td><td class="mdescRight">index of the current grain <br /></td></tr>
@@ -133,14 +126,34 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a994c0961d2b320fcf41ffb910a6ab92c">midi_velo</a></td></tr>
 <tr class="memdesc:a994c0961d2b320fcf41ffb910a6ab92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">velocity value given by MIDI input <br /></td></tr>
 <tr class="separator:a994c0961d2b320fcf41ffb910a6ab92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f05e1654bb28ffe92d0c1b5ec3396b1"><td class="memItemLeft" align="right" valign="top"><a id="a3f05e1654bb28ffe92d0c1b5ec3396b1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>spray_input</b></td></tr>
+<tr class="separator:a3f05e1654bb28ffe92d0c1b5ec3396b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa164a91c3ebd564ef440719225a15f58"><td class="memItemLeft" align="right" valign="top"><a id="aa164a91c3ebd564ef440719225a15f58"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#aa164a91c3ebd564ef440719225a15f58">gauss_q_factor</a></td></tr>
-<tr class="memdesc:aa164a91c3ebd564ef440719225a15f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope height <br /></td></tr>
+<tr class="memdesc:aa164a91c3ebd564ef440719225a15f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to manipulate grain envelope slope <br /></td></tr>
 <tr class="separator:aa164a91c3ebd564ef440719225a15f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d91e370701d04209bc69e60a84ff402"><td class="memItemLeft" align="right" valign="top"><a id="a5d91e370701d04209bc69e60a84ff402"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>pitch_factor</b></td></tr>
+<tr class="separator:a5d91e370701d04209bc69e60a84ff402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f10a2ae717bf695c448157ddab09c85"><td class="memItemLeft" align="right" valign="top"><a id="a9f10a2ae717bf695c448157ddab09c85"></a>
 t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a9f10a2ae717bf695c448157ddab09c85">playback_position</a></td></tr>
 <tr class="memdesc:a9f10a2ae717bf695c448157ddab09c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">which sample of the grain goes to the output next <br /></td></tr>
 <tr class="separator:a9f10a2ae717bf695c448157ddab09c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2ae5a2d7f08558222953603627ff06"><td class="memItemLeft" align="right" valign="top"><a id="a2a2ae5a2d7f08558222953603627ff06"></a>
+t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a2a2ae5a2d7f08558222953603627ff06">current_start_pos</a></td></tr>
+<tr class="memdesc:a2a2ae5a2d7f08558222953603627ff06"><td class="mdescLeft">&#160;</td><td class="mdescRight">position in the soundfle, determined by slider position <br /></td></tr>
+<tr class="separator:a2a2ae5a2d7f08558222953603627ff06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a710b291c75c03960d6e790fe33ef05"><td class="memItemLeft" align="right" valign="top"><a id="a9a710b291c75c03960d6e790fe33ef05"></a>
+t_int&#160;</td><td class="memItemRight" valign="bottom"><b>sprayed_start_pos</b></td></tr>
+<tr class="separator:a9a710b291c75c03960d6e790fe33ef05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e532e2061fc13ce67758ee0524920c9"><td class="memItemLeft" align="right" valign="top"><a id="a7e532e2061fc13ce67758ee0524920c9"></a>
+t_int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a7e532e2061fc13ce67758ee0524920c9">playback_cycle_end</a></td></tr>
+<tr class="memdesc:a7e532e2061fc13ce67758ee0524920c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines when to reset <em>playback_pos</em> to current_start_pos <br /></td></tr>
+<tr class="separator:a7e532e2061fc13ce67758ee0524920c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08fe6ec8d8447dbab42226cde74bf814"><td class="memItemLeft" align="right" valign="top"><a id="a08fe6ec8d8447dbab42226cde74bf814"></a>
+t_int&#160;</td><td class="memItemRight" valign="bottom"><b>spray_true_offset</b></td></tr>
+<tr class="separator:a08fe6ec8d8447dbab42226cde74bf814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11189b409749c9930f477892a71de86d"><td class="memItemLeft" align="right" valign="top"><a id="a11189b409749c9930f477892a71de86d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structc__granular__synth.html#a11189b409749c9930f477892a71de86d">reverse_playback</a></td></tr>
 <tr class="memdesc:a11189b409749c9930f477892a71de86d"><td class="mdescLeft">&#160;</td><td class="mdescRight">used fo switch playback to reverse, depends on <em>time_stretch_factor</em> value negativity <br /></td></tr>
@@ -172,7 +185,8 @@ t_float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>pure data struct of the <em><a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a></em> object </p>
-<p>pure data struct of the <em><a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a></em> object, defines all necessary variables for synth operation<br> </b></p>
+<p>pure data struct of the <em><a class="el" href="structc__granular__synth.html" title="pure data struct of the c_granular_synth object">c_granular_synth</a></em> object, defines all necessary variables for synth operation<br  />
+ </p>
 
 <p class="definition">Definition at line <a class="el" href="c__granular__synth_8h_source.html#l00034">34</a> of file <a class="el" href="c__granular__synth_8h_source.html">c_granular_synth.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>

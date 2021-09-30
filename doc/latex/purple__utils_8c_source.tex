@@ -2,7 +2,8 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001 }
-\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdlib.h>}}
 \DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <math.h>}}
 \DoxyCodeLine{00019 \textcolor{preprocessor}{\#include "m\_pd.h"}}
 \DoxyCodeLine{00020 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
@@ -39,5 +40,12 @@
 \DoxyCodeLine{00079     b = temp\_ptr;}
 \DoxyCodeLine{00080     \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00081 \}}
+\DoxyCodeLine{00082 }
+\DoxyCodeLine{00083 \textcolor{keywordtype}{int} spray\_dependant\_playback\_nudge(\textcolor{keywordtype}{int} spray\_input)}
+\DoxyCodeLine{00084 \{}
+\DoxyCodeLine{00085     \textcolor{keywordflow}{if}(spray\_input == 0) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00086     \textcolor{keywordtype}{int} off = rand() \% (2 * spray\_input);}
+\DoxyCodeLine{00087     \textcolor{keywordflow}{return} off -\/ spray\_input;}
+\DoxyCodeLine{00088 \}}
 
 \end{DoxyCode}

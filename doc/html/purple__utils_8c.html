@@ -71,11 +71,11 @@ $(function() {
 <div class="contents">
 
 <p>useful utilities for value conversion and manipulation <br  />
- useful utilities for value conversion and manipulation <br  />
- outsourced into own .c file for better code readability <br  />
+ useful utilities for value conversion and manipulation, outsourced into own .c file for better code readability <br  />
   
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &quot;m_pd.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="purple__utils_8h_source.html">purple_utils.h</a>&quot;</code><br />
@@ -93,34 +93,34 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adedfab0848a63809acd487441d157908"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="purple__utils_8c.html#adedfab0848a63809acd487441d157908">get_samples_from_ms</a> (int ms, float sr)</td></tr>
-<tr class="memdesc:adedfab0848a63809acd487441d157908"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates number of samples from <em>ms</em> and <em>sr</em> <br  />
-  <a href="purple__utils_8c.html#adedfab0848a63809acd487441d157908">More...</a><br /></td></tr>
+<tr class="memdesc:adedfab0848a63809acd487441d157908"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates number of samples  <a href="purple__utils_8c.html#adedfab0848a63809acd487441d157908">More...</a><br /></td></tr>
 <tr class="separator:adedfab0848a63809acd487441d157908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f939b5cdf750d42da571e97fdd1510f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="purple__utils_8c.html#a4f939b5cdf750d42da571e97fdd1510f">get_ms_from_samples</a> (int num_samples, float sr)</td></tr>
-<tr class="memdesc:a4f939b5cdf750d42da571e97fdd1510f"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates sample time in ms from <em>num_samples</em> and <em>sr</em> <br  />
-  <a href="purple__utils_8c.html#a4f939b5cdf750d42da571e97fdd1510f">More...</a><br /></td></tr>
+<tr class="memdesc:a4f939b5cdf750d42da571e97fdd1510f"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates sample time in ms  <a href="purple__utils_8c.html#a4f939b5cdf750d42da571e97fdd1510f">More...</a><br /></td></tr>
 <tr class="separator:a4f939b5cdf750d42da571e97fdd1510f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a228b2ef6097d375daeea9358a534ce54"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="purple__utils_8c.html#a228b2ef6097d375daeea9358a534ce54">get_interpolated_sample_value</a> (float sample_left, float sample_right, float frac)</td></tr>
 <tr class="memdesc:a228b2ef6097d375daeea9358a534ce54"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates interpolated sample value <br  />
- calculates interpolated sample value between <em>sample_left</em> and <em>sample_right</em> <br  />
   <a href="purple__utils_8c.html#a228b2ef6097d375daeea9358a534ce54">More...</a><br /></td></tr>
 <tr class="separator:a228b2ef6097d375daeea9358a534ce54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa70b6fc905b978c25b15eaa49ddda958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="purple__utils_8c.html#aa70b6fc905b978c25b15eaa49ddda958">switch_float_values</a> (float *a, float *b)</td></tr>
-<tr class="memdesc:aa70b6fc905b978c25b15eaa49ddda958"><td class="mdescLeft">&#160;</td><td class="mdescRight">swaps to values swaps to values of float type  <a href="purple__utils_8c.html#aa70b6fc905b978c25b15eaa49ddda958">More...</a><br /></td></tr>
+<tr class="memdesc:aa70b6fc905b978c25b15eaa49ddda958"><td class="mdescLeft">&#160;</td><td class="mdescRight">swaps to values  <a href="purple__utils_8c.html#aa70b6fc905b978c25b15eaa49ddda958">More...</a><br /></td></tr>
 <tr class="separator:aa70b6fc905b978c25b15eaa49ddda958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5f0b499868877a5f59c0b0f86ba1b7"><td class="memItemLeft" align="right" valign="top"><a id="a6a5f0b499868877a5f59c0b0f86ba1b7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>spray_dependant_playback_nudge</b> (int spray_input)</td></tr>
+<tr class="separator:a6a5f0b499868877a5f59c0b0f86ba1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>useful utilities for value conversion and manipulation <br  />
- useful utilities for value conversion and manipulation <br  />
- outsourced into own .c file for better code readability <br  />
+ useful utilities for value conversion and manipulation, outsourced into own .c file for better code readability <br  />
  </p>
-<dl class="section author"><dt>Author</dt><dd>Nikita Kretschmar </dd>
+<dl class="section author"><dt>Author</dt><dd>Kretschmar, Nikita </dd>
 <dd>
-Adrian Philipp </dd>
+Philipp, Adrian </dd>
 <dd>
-Micha Strobl </dd>
+Strobl, Micha </dd>
 <dd>
-Tim Wennemann </dd></dl>
+Wennemann,Tim <br  />
+ </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-09-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
@@ -160,9 +160,9 @@ Tim Wennemann </dd></dl>
 </div><div class="memdoc">
 
 <p>calculates interpolated sample value <br  />
- calculates interpolated sample value between <em>sample_left</em> and <em>sample_right</em> <br  />
  </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>calculates interpolated sample value between <em>sample_left</em> and <em>sample_right</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sample_left</td><td>value at the beginning of sample </td></tr>
     <tr><td class="paramname">sample_right</td><td>value at the end of sample </td></tr>
@@ -202,9 +202,9 @@ Tim Wennemann </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>calculates sample time in ms from <em>num_samples</em> and <em>sr</em> <br  />
- </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>calculates sample time in ms </p>
+<p>calculates sample time from <em>num_samples</em> according to defined <em>sr</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num_samples</td><td>number of samples </td></tr>
     <tr><td class="paramname">sr</td><td>defined samplerate </td></tr>
@@ -243,9 +243,9 @@ Tim Wennemann </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>calculates number of samples from <em>ms</em> and <em>sr</em> <br  />
- </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>calculates number of samples </p>
+<p>calculates number of samples from <em>ms</em> according to defined <em>sr</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ms</td><td>sample time in ms </td></tr>
     <tr><td class="paramname">sr</td><td>defined sample rate </td></tr>
@@ -284,8 +284,9 @@ Tim Wennemann </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>swaps to values swaps to values of float type </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>swaps to values </p>
+<p>swaps to values <em>a</em> with <em>b</em> using a temporary third pointer <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>first value to swapped with second </td></tr>
     <tr><td class="paramname">b</td><td>second value to be swappend with first </td></tr>
