@@ -39,12 +39,12 @@ enum adsr_stage {
 typedef struct envelope
 {
     t_object x_obj;                     ///< object used for method input/output handling <br>
-    t_int attack;                       ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
-    t_int decay;                        ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
-    t_float peak,
+    int attack;                       ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
+    int decay;                        ///< decay time in the range of 0 - 4000ms, adjustable through slider <br>
+    float peak,
          sustain;                    ///< sustain time in the range of 0 - 1, adjustable through slider <br>
-    t_int release;                      ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
-    t_int attack_samples,               ///< attack time in samples <br>
+    int release;                      ///< release time in the range of 0 - 10000ms, adjustable through slider <br>
+    int attack_samples,               ///< attack time in samples <br>
           decay_samples,                ///< decay time in samples <br>
           release_samples;              ///< release time in samples <br>
     enum adsr_stage adsr;               ///< current ADSR stage <br>

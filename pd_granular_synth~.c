@@ -25,8 +25,7 @@ typedef struct pd_granular_synth_tilde
     t_float f;                                          ///< of type float, used for various input handling
     t_float sr;                                         ///< defined samplerate
     c_granular_synth *synth;                            ///< pure data garnular synth object
-    t_int               grain_size,                     ///< size of a grain in milliseconds, adjustable through slider <br>
-                        start_pos,                      ///< position within the soundfile, adjustable through slider <br>
+    t_int               start_pos,                      ///< position within the soundfile, adjustable through slider <br>
                         midi_pitch,                     ///< pitch/key value given by MIDI input <br>
                         midi_velo,                      ///< velocity value given by MIDI input <br>
                         attack,                         ///< attack time in the range of 0 - 4000ms, adjustable through slider <br>
@@ -38,7 +37,8 @@ typedef struct pd_granular_synth_tilde
                         gauss_q_factor;                 ///< used to manipulate grain envelope height <br>
     t_word              *soundfile;                     ///< Pointer to the soundfile Array <br>
     t_symbol            *soundfile_arrayname;                      ///< String used in pd to identify array that holds the soundfile <br>
-    int                 soundfile_length;                               ///< lenght of the soundfile in samples
+    int                 grain_size,                     ///< size of a grain in milliseconds, adjustable through slider <br>
+                        soundfile_length;                               ///< lenght of the soundfile in samples
     float               pitch_faktor,
                         soundfile_length_ms;                          ///< lenght of the soundfile in milliseconds
 

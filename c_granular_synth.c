@@ -58,9 +58,7 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
     x->current_adsr_stage_index = 0;
     x->adsr_env = envelope_new(attack, decay, sustain, release);
     
-    // Retrigger when user sets different grain size
     c_granular_synth_set_num_grains(x);
-    post("C main file - new method - number of grains = %d", x->num_grains);
     c_granular_synth_adjust_current_grain_index(x);
     
     for(int i = 0; i<soundfile_length;i++)
@@ -75,12 +73,12 @@ c_granular_synth *c_granular_synth_new(t_word *soundfile, int soundfile_length, 
 }
 
 /**
- * @brief refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output
+ * @brief refresh plaback positions, opens grain scheduling, writes gaus value, writes into output
  * 
  * @param x input pointer of c_granular_synth_process object
  * @param in input
  * @param out output
- * @param vector_size vectoral size of 
+ * @param vector_size vectoral size determined by pd
  */
 void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int vector_size)
 {
@@ -123,7 +121,6 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
         gauss_val = gauss(x);
         x->output_buffer *= gauss_val;
         
-        
         if(x->midi_velo > 0)
         {
             adsr_val = calculate_adsr_value(x);
@@ -134,16 +131,13 @@ void c_granular_synth_process(c_granular_synth *x, float *in, float *out, int ve
             {
                 adsr_val = 0;
             }
-            // Must be in Release State
             else
             {
                 if(x->adsr_env->adsr != RELEASE)
                 {
                     x->current_adsr_stage_index = 0;
+                    x->adsr_env->adsr = RELEASE;
                 }
-                x->adsr_env->adsr = RELEASE;
-
-                //x->current_adsr_stage_index = 0;
                 adsr_val = calculate_adsr_value(x);
             }
         }
@@ -203,7 +197,6 @@ void c_granular_synth_populate_grain_table(c_granular_synth *x)
         }
         grains_table[0].next_grain = &grains_table[x->num_grains - 1];
     }
-    // Playback in forward direction
     else
     {
         for(j = x->current_grain_index; j<x->num_grains; j++)
@@ -303,7 +296,10 @@ void c_granular_synth_properties_update(c_granular_synth *x, t_int grain_size_ms
         {
             x->adsr_env->release = (int)release;
         }
-        x->adsr_env = envelope_new(x->adsr_env->attack, decay, sustain, release);
+        x->adsr_env = envelope_new(x->adsr_env->attack,
+                                   x->adsr_env->decay,
+                                   x->adsr_env->sustain,
+                                   x->adsr_env->release);
     }
 
     if(x->gauss_q_factor != gauss_q_factor)

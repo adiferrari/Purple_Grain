@@ -68,7 +68,7 @@ float get_interpolated_sample_value(float sample_left, float sample_right, float
 }
 /**
  * @brief swaps to values
- * @details swaps to values @a a with @a b using a temporary third pointer <br>
+ * @details swaps two values @a a with @a b using a temporary third pointer <br>
  * @param a first value to swapped with second
  * @param b second value to be swappend with first
  */

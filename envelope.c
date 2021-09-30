@@ -23,7 +23,7 @@
 /**
  * @brief calculates ADSR value
  * @details calculates single atm ADSR value according to current state <br>
- * @param x input pointer of @a calculate_adsr_value object <br>
+ * @param x input pointer of @a c_granular_synth object <br>
  * @return ADSR value of type float <br>
  */
 float calculate_adsr_value(c_granular_synth *x)
@@ -119,7 +119,6 @@ envelope *envelope_new(int attack, int decay, float sustain, int release)
  */
 float gauss(c_granular_synth *x)
 {
-    //t_int grain_size = x.grain_size_samples;
     if (x->grain_size_samples == 0)
         return 0;
     if (x->current_gauss_stage_index >= x->grain_size_samples)
@@ -135,7 +134,7 @@ float gauss(c_granular_synth *x)
 /**
  * @brief frees envelope
  * @details frees envelope <br>
- * @param x input pointer of @a envelope_free object
+ * @param x input pointer of @a envelope object
  */
 void envelope_free(envelope *x)
 {
