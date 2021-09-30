@@ -13,5 +13,5 @@ digraph "purple_utils.h"
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node5 [label="pd_granular_synth~.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pd__granular__synth~_8c_source.html",tooltip=" "];
   Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node6 [label="purple_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8c.html",tooltip="useful utilities for value conversion and manipulation   useful utilities for value conversion and ma..."];
+  Node6 [label="purple_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$purple__utils_8c.html",tooltip="useful utilities for value conversion and manipulation"];
 }

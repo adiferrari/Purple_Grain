@@ -1,158 +1,114 @@
 \hypertarget{grain_8c_source}{}\doxysubsection{grain.\+c}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001 \textcolor{comment}{// duration in ms and/or samples}}
-\DoxyCodeLine{00002 \textcolor{comment}{// dur\_in\_ms * (samplerate/1000) = dur\_in\_samples}}
-\DoxyCodeLine{00003 }
-\DoxyCodeLine{00004 \textcolor{comment}{// fade in/out -\/> hanning fenster in main file?}}
-\DoxyCodeLine{00005 }
-\DoxyCodeLine{00006 \textcolor{comment}{// start point [in samples] relative to the sound file -\/> PASS IN original playback point}}
-\DoxyCodeLine{00007 \textcolor{comment}{// endpoint = startpoint + duration}}
-\DoxyCodeLine{00008 \textcolor{comment}{// overlap}}
-\DoxyCodeLine{00009 }
-\DoxyCodeLine{00010 \textcolor{comment}{// length of the entire sound file [in samples]}}
-\DoxyCodeLine{00025 \textcolor{comment}{}\textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
-\DoxyCodeLine{00026 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{c__granular__synth_8h}{c\_granular\_synth.h}}"}}
-\DoxyCodeLine{00027 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{envelope_8h}{envelope.h}}"}}
-\DoxyCodeLine{00028 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
-\DoxyCodeLine{00029 }
-\DoxyCodeLine{00030 \textcolor{comment}{//static t\_class *grain\_class;}}
-\DoxyCodeLine{\Hypertarget{grain_8c_source_l00035}\mbox{\hyperlink{grain_8c_a6df8a4f0caf7397fd15879daef804894}{00035}} \textcolor{comment}{}\textcolor{preprocessor}{\#define OVERLAP\_DENSITY = 8   }}
-\DoxyCodeLine{00036 \textcolor{preprocessor}{}}
-\DoxyCodeLine{00037 }
-\DoxyCodeLine{\Hypertarget{grain_8c_source_l00046}\mbox{\hyperlink{grain_8h_add05c8e2a37126d9bd6f745368b130ed}{00046}} \mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(\textcolor{keywordtype}{int} grain\_size\_samples, \textcolor{keywordtype}{int} soundfile\_size, \textcolor{keywordtype}{float} start\_pos, \textcolor{keywordtype}{int} grain\_index, \textcolor{keywordtype}{float} time\_stretch\_factor)}
-\DoxyCodeLine{00047 \{}
-\DoxyCodeLine{00048     \mbox{\hyperlink{structgrain}{grain}} x;}
-\DoxyCodeLine{00049     \mbox{\hyperlink{structgrain}{grain}} *next\_grain = NULL;}
-\DoxyCodeLine{00050     \mbox{\hyperlink{structgrain}{grain}} *previous\_grain = NULL;}
-\DoxyCodeLine{00051     x.grain\_active = \textcolor{keyword}{false};}
-\DoxyCodeLine{00052     x.grain\_size\_samples = grain\_size\_samples;}
-\DoxyCodeLine{00053     x.grain\_index = grain\_index;}
-\DoxyCodeLine{00054     x.internal\_step\_count = 0;}
-\DoxyCodeLine{00055     x.time\_stretch\_factor = time\_stretch\_factor;}
-\DoxyCodeLine{00056     }
-\DoxyCodeLine{00057     }
-\DoxyCodeLine{00058     \textcolor{comment}{//x.start = fabsf(x.grain\_size\_samples * grain\_index * x.time\_stretch\_factor);}}
-\DoxyCodeLine{00059     x.start = start\_pos;}
-\DoxyCodeLine{00060     x.end = x.start + ((x.grain\_size\_samples -\/ 1) * x.time\_stretch\_factor);}
-\DoxyCodeLine{00061     }
-\DoxyCodeLine{00062     \textcolor{keywordflow}{if}(x.end < 0) x.end = soundfile\_size -\/ 1 -\/ x.end;}
-\DoxyCodeLine{00063     \textcolor{keywordflow}{if}(x.end > soundfile\_size -\/ 1) x.end = soundfile\_size -\/ 1;}
-\DoxyCodeLine{00064     }
-\DoxyCodeLine{00065     \textcolor{comment}{/*}}
-\DoxyCodeLine{00066 \textcolor{comment}{    if(time\_stretch\_factor < 0.0)}}
-\DoxyCodeLine{00067 \textcolor{comment}{    \{}}
-\DoxyCodeLine{00068 \textcolor{comment}{        switch\_float\_values(\&x.start, \&x.end);}}
-\DoxyCodeLine{00069 \textcolor{comment}{    \}}}
-\DoxyCodeLine{00070 \textcolor{comment}{     */}}
-\DoxyCodeLine{00071     }
-\DoxyCodeLine{00072     x.current\_sample\_pos = x.start;}
-\DoxyCodeLine{00073     x.next\_sample\_pos = x.current\_sample\_pos + x.time\_stretch\_factor;}
-\DoxyCodeLine{00074     \textcolor{keywordflow}{if}(x.next\_sample\_pos < 0) x.next\_sample\_pos = soundfile\_size -\/ 1 -\/ x.next\_sample\_pos;}
-\DoxyCodeLine{00075     \textcolor{keywordflow}{if}(x.next\_sample\_pos >= x.end) x.next\_sample\_pos = x.end;}
-\DoxyCodeLine{00076     }
-\DoxyCodeLine{00077     \textcolor{comment}{// If the endpoint exceeds the soundfile length in positive or negative direction}}
-\DoxyCodeLine{00078     \textcolor{comment}{// clamp the grain length to a point the size of the file}}
-\DoxyCodeLine{00079     \textcolor{comment}{// maybe just use fabsf(x.end) < soundfile\_size}}
-\DoxyCodeLine{00080 }
-\DoxyCodeLine{00081     \textcolor{keywordflow}{return} x;}
-\DoxyCodeLine{00082 \}}
-\DoxyCodeLine{\Hypertarget{grain_8c_source_l00089}\mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(\mbox{\hyperlink{structgrain}{grain}}* g, \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}}* synth)}
-\DoxyCodeLine{00090 \{}
-\DoxyCodeLine{00091     \textcolor{keywordflow}{if}(synth-\/>\mbox{\hyperlink{structc__granular__synth_abb895a6eb0e335be28492b8ddf981d95}{time\_stretch\_factor}} <= -\/1.0)}
-\DoxyCodeLine{00092     \{}
-\DoxyCodeLine{00093         \textcolor{comment}{//}}
-\DoxyCodeLine{00094     \}}
-\DoxyCodeLine{00095     \textcolor{keywordflow}{if}(synth-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}})}
-\DoxyCodeLine{00096     \{}
-\DoxyCodeLine{00097         \textcolor{comment}{// ???}}
-\DoxyCodeLine{00098         \textcolor{comment}{//g-\/>grain\_active = ((int)g-\/>start == synth-\/>current\_start\_pos) ||}}
-\DoxyCodeLine{00099         g-\/>grain\_active = g-\/>grain\_index == synth-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} ||}
-\DoxyCodeLine{00100         ((((synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 -\/ synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) <= g-\/>start) \&\&}
-\DoxyCodeLine{00101           ((synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 -\/ synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) >= g-\/>end)));}
-\DoxyCodeLine{00102         \textcolor{comment}{/*}}
-\DoxyCodeLine{00103 \textcolor{comment}{        (((g-\/>start * synth-\/>time\_stretch\_factor * -\/1) >= synth-\/>playback\_position) \&\&}}
-\DoxyCodeLine{00104 \textcolor{comment}{        ((g-\/>end * synth-\/>time\_stretch\_factor * -\/1) <= (synth-\/>playback\_position * synth-\/>time\_stretch\_factor * -\/1)));}}
-\DoxyCodeLine{00105 \textcolor{comment}{         */}}
-\DoxyCodeLine{00106     \}}
-\DoxyCodeLine{00107     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00108     \{}
-\DoxyCodeLine{00109         \textcolor{comment}{//g-\/>grain\_active = ((int)g-\/>start == synth-\/>current\_start\_pos) ||}}
-\DoxyCodeLine{00110         g-\/>grain\_active = g-\/>grain\_index == synth-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} ||}
-\DoxyCodeLine{00111         ((g-\/>start <= synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) \&\&}
-\DoxyCodeLine{00112          (g-\/>end >= synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}));}
-\DoxyCodeLine{00113     \}}
-\DoxyCodeLine{00114     }
-\DoxyCodeLine{00115     \textcolor{keywordflow}{if}(g-\/>grain\_active)}
-\DoxyCodeLine{00116     \{}
-\DoxyCodeLine{00117         \textcolor{keywordtype}{float}   left\_sample, }
-\DoxyCodeLine{00118                 right\_sample, }
-\DoxyCodeLine{00119                 frac, }
-\DoxyCodeLine{00120                 integral, }
-\DoxyCodeLine{00121                 weighted;}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{grain_8h}{grain.h}}"}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{c__granular__synth_8h}{c\_granular\_synth.h}}"}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{envelope_8h}{envelope.h}}"}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{purple__utils_8h}{purple\_utils.h}}"}}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{\Hypertarget{grain_8c_source_l00031}\mbox{\hyperlink{grain_8h_add05c8e2a37126d9bd6f745368b130ed}{00031}} \mbox{\hyperlink{structgrain}{grain}} \mbox{\hyperlink{grain_8c_add05c8e2a37126d9bd6f745368b130ed}{grain\_new}}(\textcolor{keywordtype}{int} grain\_size\_samples, \textcolor{keywordtype}{int} soundfile\_size, \textcolor{keywordtype}{float} start\_pos, \textcolor{keywordtype}{int} grain\_index, \textcolor{keywordtype}{float} time\_stretch\_factor)}
+\DoxyCodeLine{00032 \{}
+\DoxyCodeLine{00033     \mbox{\hyperlink{structgrain}{grain}} x;}
+\DoxyCodeLine{00034     x.\mbox{\hyperlink{structgrain_a55cdc993050e6e886756b0e338dfb85d}{grain\_active}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{00035     x.\mbox{\hyperlink{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}{grain\_size\_samples}} = grain\_size\_samples;}
+\DoxyCodeLine{00036     x.\mbox{\hyperlink{structgrain_aa279b25631b91e8d1dee9edd79453ff4}{grain\_index}} = grain\_index;}
+\DoxyCodeLine{00037     x.\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} = 0;}
+\DoxyCodeLine{00038     x.\mbox{\hyperlink{structgrain_a6909b3ca1a15b560f9af844e8e965ead}{time\_stretch\_factor}} = time\_stretch\_factor;}
+\DoxyCodeLine{00039     \textcolor{keywordtype}{bool} reverse\_playback = x.\mbox{\hyperlink{structgrain_a6909b3ca1a15b560f9af844e8e965ead}{time\_stretch\_factor}} < 0.0;}
+\DoxyCodeLine{00040     }
+\DoxyCodeLine{00041     x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} = start\_pos;}
+\DoxyCodeLine{00042     \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} < 0) x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} += (soundfile\_size -\/ 1);}
+\DoxyCodeLine{00043     x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} = x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} + ((x.\mbox{\hyperlink{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}{grain\_size\_samples}} -\/ 1) * x.\mbox{\hyperlink{structgrain_a6909b3ca1a15b560f9af844e8e965ead}{time\_stretch\_factor}});}
+\DoxyCodeLine{00044     }
+\DoxyCodeLine{00045     \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} < 0) x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} += soundfile\_size -\/ 1;}
+\DoxyCodeLine{00046     \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} > soundfile\_size -\/ 1) x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} -\/= (soundfile\_size -\/ 1);}
+\DoxyCodeLine{00047 }
+\DoxyCodeLine{00048     x.\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}};}
+\DoxyCodeLine{00049     x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = x.\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + x.\mbox{\hyperlink{structgrain_a6909b3ca1a15b560f9af844e8e965ead}{time\_stretch\_factor}};}
+\DoxyCodeLine{00050     }
+\DoxyCodeLine{00051     \textcolor{keywordflow}{if}(reverse\_playback)}
+\DoxyCodeLine{00052     \{}
+\DoxyCodeLine{00053         \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} < 0) x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} += (soundfile\_size -\/ 1);}
+\DoxyCodeLine{00054         \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} < x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} \&\& x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} > x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}}) x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}};}
+\DoxyCodeLine{00055  }
+\DoxyCodeLine{00056     \}}
+\DoxyCodeLine{00057     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00058     \{}
+\DoxyCodeLine{00059         \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} > (soundfile\_size -\/ 1)) x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} -\/= (soundfile\_size -\/ 1);}
+\DoxyCodeLine{00060         \textcolor{keywordflow}{if}(x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} >= x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} \&\& x.\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} < x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}}) x.\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = x.\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}};}
+\DoxyCodeLine{00061     \}}
+\DoxyCodeLine{00062 }
+\DoxyCodeLine{00063     \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{00064 \}}
+\DoxyCodeLine{\Hypertarget{grain_8c_source_l00072}\mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{00072}} \textcolor{keywordtype}{void} \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(\mbox{\hyperlink{structgrain}{grain}}* g, \mbox{\hyperlink{structc__granular__synth}{c\_granular\_synth}}* synth)}
+\DoxyCodeLine{00073 \{}
+\DoxyCodeLine{00074     \textcolor{keywordflow}{if}(synth-\/>\mbox{\hyperlink{structc__granular__synth_a11189b409749c9930f477892a71de86d}{reverse\_playback}})}
+\DoxyCodeLine{00075     \{}
+\DoxyCodeLine{00076         g-\/>\mbox{\hyperlink{structgrain_a55cdc993050e6e886756b0e338dfb85d}{grain\_active}} = g-\/>\mbox{\hyperlink{structgrain_aa279b25631b91e8d1dee9edd79453ff4}{grain\_index}} == synth-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} ||}
+\DoxyCodeLine{00077         ((((synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 -\/ synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) <= g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}}) \&\&}
+\DoxyCodeLine{00078           ((synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1 -\/ synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) >= g-\/>\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}})));}
+\DoxyCodeLine{00079     \}}
+\DoxyCodeLine{00080     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00081     \{}
+\DoxyCodeLine{00082         g-\/>\mbox{\hyperlink{structgrain_a55cdc993050e6e886756b0e338dfb85d}{grain\_active}} = g-\/>\mbox{\hyperlink{structgrain_aa279b25631b91e8d1dee9edd79453ff4}{grain\_index}} == synth-\/>\mbox{\hyperlink{structc__granular__synth_a6a4bd1fc4f1624d14cc9bf9e11e1f661}{current\_grain\_index}} ||}
+\DoxyCodeLine{00083         ((g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}} <= synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}) \&\&}
+\DoxyCodeLine{00084          (g-\/>\mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}} >= synth-\/>\mbox{\hyperlink{structc__granular__synth_a9f10a2ae717bf695c448157ddab09c85}{playback\_position}}));}
+\DoxyCodeLine{00085     \}}
+\DoxyCodeLine{00086     }
+\DoxyCodeLine{00087     \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_a55cdc993050e6e886756b0e338dfb85d}{grain\_active}})}
+\DoxyCodeLine{00088     \{}
+\DoxyCodeLine{00089         \textcolor{keywordtype}{float}   left\_sample, }
+\DoxyCodeLine{00090                 right\_sample, }
+\DoxyCodeLine{00091                 frac, }
+\DoxyCodeLine{00092                 integral, }
+\DoxyCodeLine{00093                 weighted;}
+\DoxyCodeLine{00094         }
+\DoxyCodeLine{00095         left\_sample = synth-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[(int)floorf(g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}})];}
+\DoxyCodeLine{00096         right\_sample = synth-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[(int)ceilf(g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}})];}
+\DoxyCodeLine{00097         frac = modff(g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}}, \&integral);}
+\DoxyCodeLine{00098         weighted = \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\_interpolated\_sample\_value}}(left\_sample, right\_sample,frac);}
+\DoxyCodeLine{00099         synth-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} += weighted;}
+\DoxyCodeLine{00100         g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}};}
+\DoxyCodeLine{00101         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} += synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00103         \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} > (synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1))}
+\DoxyCodeLine{00104         \{}
+\DoxyCodeLine{00105             g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} -\/= (synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1);}
+\DoxyCodeLine{00106         \}}
+\DoxyCodeLine{00107         }
+\DoxyCodeLine{00108         \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} < 0.0)}
+\DoxyCodeLine{00109         \{}
+\DoxyCodeLine{00110             g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} += (synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1);}
+\DoxyCodeLine{00111         \}}
+\DoxyCodeLine{00112         g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}}++;}
+\DoxyCodeLine{00113         }
+\DoxyCodeLine{00114         \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} >= g-\/>\mbox{\hyperlink{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}{grain\_size\_samples}})}
+\DoxyCodeLine{00115         \{}
+\DoxyCodeLine{00116             g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}};}
+\DoxyCodeLine{00117             g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
+\DoxyCodeLine{00118             g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} = 0;}
+\DoxyCodeLine{00119             synth-\/>\mbox{\hyperlink{structc__granular__synth_a08fe6ec8d8447dbab42226cde74bf814}{spray\_true\_offset}} = 0;}
+\DoxyCodeLine{00120             \mbox{\hyperlink{structpd__granular__synth__tilde_aa4bc811658b8df54563de4af0ca045f1}{c\_granular\_synth\_reset\_playback\_position}}(synth);}
+\DoxyCodeLine{00121         \}}
 \DoxyCodeLine{00122         }
-\DoxyCodeLine{00123         }
-\DoxyCodeLine{00124         \textcolor{comment}{// For negative time\_stretch\_factor values read samples in backwards direction}}
-\DoxyCodeLine{00125         left\_sample = synth-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[(int)floorf(g-\/>current\_sample\_pos)];}
-\DoxyCodeLine{00126         right\_sample = synth-\/>\mbox{\hyperlink{structc__granular__synth_ad78acae3cc48dab4d1e4ab118872ec27}{soundfile\_table}}[(int)ceilf(g-\/>current\_sample\_pos)];}
-\DoxyCodeLine{00127         frac = modff(g-\/>current\_sample\_pos, \&integral);}
-\DoxyCodeLine{00128         weighted = \mbox{\hyperlink{purple__utils_8c_a228b2ef6097d375daeea9358a534ce54}{get\_interpolated\_sample\_value}}(left\_sample, right\_sample,frac);}
-\DoxyCodeLine{00129         synth-\/>\mbox{\hyperlink{structc__granular__synth_a3536cd671fe04bd9e84cbdb501ecbe00}{output\_buffer}} += weighted;}
-\DoxyCodeLine{00130         g-\/>current\_sample\_pos = g-\/>next\_sample\_pos;}
-\DoxyCodeLine{00131         g-\/>next\_sample\_pos += g-\/>time\_stretch\_factor;}
-\DoxyCodeLine{00132         \textcolor{comment}{// does the next index exceed the soundfile length? (Forward Playback)}}
-\DoxyCodeLine{00133         \textcolor{keywordflow}{if}(g-\/>next\_sample\_pos > synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}})}
-\DoxyCodeLine{00134         \{}
-\DoxyCodeLine{00135             \textcolor{keywordtype}{float} diff = g-\/>next\_sample\_pos -\/ synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}};}
-\DoxyCodeLine{00136             g-\/>next\_sample\_pos = diff;}
-\DoxyCodeLine{00137         \}}
-\DoxyCodeLine{00138         \textcolor{comment}{// Or does it go negatively past 0 (Reverse Playback)}}
-\DoxyCodeLine{00139         \textcolor{keywordflow}{if}(g-\/>next\_sample\_pos < 0.0)}
-\DoxyCodeLine{00140         \{}
-\DoxyCodeLine{00141             g-\/>next\_sample\_pos += synth-\/>\mbox{\hyperlink{structc__granular__synth_aa2f524c1b162d569fdafccecbe8199f3}{soundfile\_length}} -\/ 1;}
-\DoxyCodeLine{00142         \}}
-\DoxyCodeLine{00143         g-\/>internal\_step\_count++;}
-\DoxyCodeLine{00144         }
-\DoxyCodeLine{00145         \textcolor{comment}{/*}}
-\DoxyCodeLine{00146 \textcolor{comment}{        if((!synth-\/>reverse\_playback \&\& g-\/>current\_sample\_pos >= g-\/>end)}}
-\DoxyCodeLine{00147 \textcolor{comment}{           || (synth-\/>reverse\_playback \&\& g-\/>current\_sample\_pos <= g-\/>end)}}
-\DoxyCodeLine{00148 \textcolor{comment}{           || g-\/>next\_sample\_pos > synth-\/>soundfile\_length -\/ 1}}
-\DoxyCodeLine{00149 \textcolor{comment}{           || g-\/>next\_sample\_pos < 0.0)}}
-\DoxyCodeLine{00150 \textcolor{comment}{         */}}
-\DoxyCodeLine{00151         \textcolor{keywordflow}{if}(g-\/>internal\_step\_count >= g-\/>grain\_size\_samples)}
-\DoxyCodeLine{00152         \{}
-\DoxyCodeLine{00153             \textcolor{comment}{//g-\/>grain\_active = false;}}
-\DoxyCodeLine{00154             \textcolor{comment}{// Grain wieder auf seinen Startpunkt setzen, wie bei Initialisierung in new-\/methode}}
-\DoxyCodeLine{00155             g-\/>current\_sample\_pos = g-\/>start;}
-\DoxyCodeLine{00156             g-\/>next\_sample\_pos = g-\/>current\_sample\_pos + g-\/>time\_stretch\_factor;}
-\DoxyCodeLine{00157             g-\/>internal\_step\_count = 0;}
-\DoxyCodeLine{00158             \textcolor{comment}{//synth-\/>playback\_position = synth-\/>current\_start\_pos;}}
-\DoxyCodeLine{00159         \}}
-\DoxyCodeLine{00160         }
-\DoxyCodeLine{00161         \textcolor{comment}{// checken ob nächstes grain aktiv ist}}
-\DoxyCodeLine{00162         \textcolor{keywordflow}{if}(g-\/>next\_grain)}
-\DoxyCodeLine{00163         \{}
-\DoxyCodeLine{00164             \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(g-\/>next\_grain, synth);}
-\DoxyCodeLine{00165         \}}
-\DoxyCodeLine{00166         }
-\DoxyCodeLine{00167     \}}
-\DoxyCodeLine{00168     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00169         \textcolor{comment}{// Grain nicht oder nicht mehr aktiv}}
-\DoxyCodeLine{00170         \textcolor{comment}{// seine current pos auf seinen start zurücksetzen}}
-\DoxyCodeLine{00171         g-\/>current\_sample\_pos = g-\/>start;}
-\DoxyCodeLine{00172         g-\/>next\_sample\_pos = g-\/>current\_sample\_pos + g-\/>time\_stretch\_factor;}
-\DoxyCodeLine{00173         g-\/>internal\_step\_count = 0;}
-\DoxyCodeLine{00174         \textcolor{comment}{/*}}
-\DoxyCodeLine{00175 \textcolor{comment}{        g-\/>current\_sample\_pos = g-\/>grain\_size\_samples * g-\/>grain\_index * g-\/>time\_stretch\_factor;}}
-\DoxyCodeLine{00176 \textcolor{comment}{        g-\/>next\_sample\_pos = g-\/>current\_sample\_pos + g-\/>time\_stretch\_factor;}}
-\DoxyCodeLine{00177 \textcolor{comment}{         */}}
-\DoxyCodeLine{00178         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00179         }
-\DoxyCodeLine{00180     \}}
-\DoxyCodeLine{00181 \}}
-\DoxyCodeLine{\Hypertarget{grain_8c_source_l00187}\mbox{\hyperlink{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}{00187}} \textcolor{keywordtype}{void} \mbox{\hyperlink{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\_free}}(\mbox{\hyperlink{structgrain}{grain}} *x)}
-\DoxyCodeLine{00188 \{}
-\DoxyCodeLine{00189     free(x);}
-\DoxyCodeLine{00190 \}}
+\DoxyCodeLine{00123         \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}})}
+\DoxyCodeLine{00124         \{}
+\DoxyCodeLine{00125             \mbox{\hyperlink{grain_8c_a25635e32880f4c39cdf848a5820aa9d9}{grain\_internal\_scheduling}}(g-\/>\mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\_grain}}, synth);}
+\DoxyCodeLine{00126         \}}
+\DoxyCodeLine{00127         }
+\DoxyCodeLine{00128     \}}
+\DoxyCodeLine{00129     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00130         g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}};}
+\DoxyCodeLine{00131         g-\/>\mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\_sample\_pos}} = g-\/>\mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\_sample\_pos}} + synth-\/>\mbox{\hyperlink{structc__granular__synth_a5d91e370701d04209bc69e60a84ff402}{pitch\_factor}};}
+\DoxyCodeLine{00132         g-\/>\mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\_step\_count}} = 0;}
+\DoxyCodeLine{00133         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00134         }
+\DoxyCodeLine{00135     \}}
+\DoxyCodeLine{00136 \}}
+\DoxyCodeLine{\Hypertarget{grain_8c_source_l00142}\mbox{\hyperlink{grain_8h_a95667aefa8dd361c1f8dfba4ecbbf670}{00142}} \textcolor{keywordtype}{void} \mbox{\hyperlink{grain_8c_a95667aefa8dd361c1f8dfba4ecbbf670}{grain\_free}}(\mbox{\hyperlink{structgrain}{grain}} *x)}
+\DoxyCodeLine{00143 \{}
+\DoxyCodeLine{00144     free(x);}
+\DoxyCodeLine{00145 \}}
 
 \end{DoxyCode}

@@ -88,24 +88,24 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af1a16e5125d6512b3a38b85e9be75d6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#af1a16e5125d6512b3a38b85e9be75d6d">c_granular_synth_new</a> (t_word *soundfile, int soundfile_length, int grain_size_ms, int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor)</td></tr>
-<tr class="memdesc:af1a16e5125d6512b3a38b85e9be75d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial setup of soundfile and adjustment silder related variables  <a href="c__granular__synth_8c.html#af1a16e5125d6512b3a38b85e9be75d6d">More...</a><br /></td></tr>
-<tr class="separator:af1a16e5125d6512b3a38b85e9be75d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ade448d3c461937245056428a158fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structc__granular__synth.html">c_granular_synth</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a97ade448d3c461937245056428a158fc">c_granular_synth_new</a> (t_word *soundfile, int soundfile_length, int grain_size_ms, t_int start_pos, float time_stretch_factor, int attack, int decay, float sustain, int release, float gauss_q_factor, int spray_input, float pitch_factor, int midi_pitch)</td></tr>
+<tr class="memdesc:a97ade448d3c461937245056428a158fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial setup of soundfile and adjustment silder related variables  <a href="c__granular__synth_8c.html#a97ade448d3c461937245056428a158fc">More...</a><br /></td></tr>
+<tr class="separator:a97ade448d3c461937245056428a158fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c4e09392d873e432cb0edeae71f17c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">c_granular_synth_process</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, float *in, float *out, int vector_size)</td></tr>
-<tr class="memdesc:ab1c4e09392d873e432cb0edeae71f17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output  <a href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">More...</a><br /></td></tr>
+<tr class="memdesc:ab1c4e09392d873e432cb0edeae71f17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">main synthesizer process  <a href="c__granular__synth_8c.html#ab1c4e09392d873e432cb0edeae71f17c">More...</a><br /></td></tr>
 <tr class="separator:ab1c4e09392d873e432cb0edeae71f17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">c_granular_synth_set_num_grains</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br> </b> <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
+<tr class="memdesc:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets number of grains  <a href="c__granular__synth_8c.html#ac8c478d5ad0c8ecd25c13951e8d1a4d6">More...</a><br /></td></tr>
 <tr class="separator:ac8c478d5ad0c8ecd25c13951e8d1a4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4851564c44cc8e0bae53de300c6dec30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">c_granular_synth_adjust_current_grain_index</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em>  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
+<tr class="memdesc:a4851564c44cc8e0bae53de300c6dec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">adjusts current grain index  <a href="c__granular__synth_8c.html#a4851564c44cc8e0bae53de300c6dec30">More...</a><br /></td></tr>
 <tr class="separator:a4851564c44cc8e0bae53de300c6dec30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">c_granular_synth_populate_grain_table</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x)</td></tr>
-<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
+<tr class="memdesc:af1fcbd7334868a3c94bea99fee01f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a grain table  <a href="c__granular__synth_8c.html#af1fcbd7334868a3c94bea99fee01f7ce">More...</a><br /></td></tr>
 <tr class="separator:af1fcbd7334868a3c94bea99fee01f7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af99ecce451128b29c30bcc32803dbe52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#af99ecce451128b29c30bcc32803dbe52">c_granular_synth_properties_update</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, int grain_size_ms, int start_pos, float time_stretch_factor, int midi_velo, int midi_pitch, int attack, int decay, float sustain, int release, float gauss_q_factor)</td></tr>
-<tr class="memdesc:af99ecce451128b29c30bcc32803dbe52"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks on current input states  <a href="c__granular__synth_8c.html#af99ecce451128b29c30bcc32803dbe52">More...</a><br /></td></tr>
-<tr class="separator:af99ecce451128b29c30bcc32803dbe52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878c6a0073df67b10d63b5e819eaad74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c__granular__synth_8c.html#a878c6a0073df67b10d63b5e819eaad74">c_granular_synth_properties_update</a> (<a class="el" href="structc__granular__synth.html">c_granular_synth</a> *x, t_int grain_size_ms, t_int start_pos, float time_stretch_factor, t_int midi_velo, t_int midi_pitch, t_int attack, t_int decay, float sustain, t_int release, float gauss_q_factor, t_int spray_input)</td></tr>
+<tr class="memdesc:a878c6a0073df67b10d63b5e819eaad74"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks on current input states  <a href="c__granular__synth_8c.html#a878c6a0073df67b10d63b5e819eaad74">More...</a><br /></td></tr>
+<tr class="separator:a878c6a0073df67b10d63b5e819eaad74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>main file of the synthesizer's implementation </p>
@@ -115,9 +115,10 @@ Philipp, Adrian </dd>
 <dd>
 Strobl, Micha </dd>
 <dd>
-Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
+Wennemann,Tim <br  />
+ Audiocommunication Group, Technische Universität Berlin <br  />
  </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-07-25</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
@@ -139,20 +140,25 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
       </table>
 </div><div class="memdoc">
 
-<p>adjusts current grain index adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em> </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>adjusts current grain index </p>
+<dl class="section author"><dt>Author</dt><dd>Strobl, Micha </dd>
+<dd>
+Wennemann,Tim <br  />
+</dd></dl>
+<p>adjusts current grain index according to <em>currents_start_pos</em> and <em>grain_size_samples</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_adjust_current_grain_index</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_adjust_current_grain_index</em> object <b> </b></td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00151">151</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00177">177</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
-<a id="af1a16e5125d6512b3a38b85e9be75d6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1a16e5125d6512b3a38b85e9be75d6d">&#9670;&nbsp;</a></span>c_granular_synth_new()</h2>
+<a id="a97ade448d3c461937245056428a158fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97ade448d3c461937245056428a158fc">&#9670;&nbsp;</a></span>c_granular_synth_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,7 +184,7 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>start_pos</em>, </td>
         </tr>
         <tr>
@@ -215,7 +221,25 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>gauss_q_factor</em>&#160;</td>
+          <td class="paramname"><em>gauss_q_factor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>spray_input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pitch_factor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>midi_pitch</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -226,23 +250,41 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
 </div><div class="memdoc">
 
 <p>initial setup of soundfile and adjustment silder related variables </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>initial setup of soundfile and adjustment silder related variables <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">soundfile</td><td>contains the soundfile which can be read in via inlet </td></tr>
-    <tr><td class="paramname">soundfile_length</td><td>lenght of the soundfile in samples </td></tr>
-    <tr><td class="paramname">grain_size_ms</td><td>size of a grain in milliseconds, adjustable through slider </td></tr>
-    <tr><td class="paramname">start_pos</td><td>position within the soundfile, adjustable through slider </td></tr>
-    <tr><td class="paramname">time_stretch_factor</td><td>resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider </td></tr>
-    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider </td></tr>
-    <tr><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider </td></tr>
-    <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider </td></tr>
+    <tr><td class="paramname">soundfile</td><td>contains the soundfile which can be read in via inlet <br  />
+ </td></tr>
+    <tr><td class="paramname">soundfile_length</td><td>length of the soundfile in samples <br  />
+ </td></tr>
+    <tr><td class="paramname">grain_size_ms</td><td>size of a grain in milliseconds, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">start_pos</td><td>position within the soundfile, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">time_stretch_factor</td><td>resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramname">gauss_q_factor</td><td>used to manipulate grain envelope slope in the range of 0.01 - 1, adjustable through slider<br  />
+ </td></tr>
+    <tr><td class="paramname">spray_input</td><td>randomizes the start position of each grain, actual starting position offset (initally set to 0) calculated on the run <br  />
+ </td></tr>
+    <tr><td class="paramname">pitch_factor</td><td>scaled by pitch/key value given by MIDI input <br  />
+ </td></tr>
+    <tr><td class="paramname">midi_pitch</td><td>MIDI input pitch/key value, usable through virtual or external MIDI device <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>c_granular_synth* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00035">35</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00039">39</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -262,15 +304,21 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
       </table>
 </div><div class="memdoc">
 
-<p>generates a grain table generates a grain table according to <em>current_grain_index</em> for negative <em>time_stretch_factor</em> values samples are read in backwards direction </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>generates a grain table </p>
+<dl class="section author"><dt>Author</dt><dd>Philipp, Adrian </dd>
+<dd>
+Strobl, Micha <br  />
+</dd></dl>
+<p>generates a grain table according to <em>current_grain_index</em>, for negative <em>time_stretch_factor</em> values samples are read in backwards direction <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_populate_grain_table</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_populate_grain_table</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00163">163</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00192">192</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -312,23 +360,38 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
       </table>
 </div><div class="memdoc">
 
-<p>refresh plaback positions, opens grain scheduleing, writes gaus value, writes into output </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>main synthesizer process </p>
+<dl class="section author"><dt>Author</dt><dd>Kretschmar, Nikita </dd>
+<dd>
+Philipp, Adrian </dd>
+<dd>
+Strobl, Micha </dd>
+<dd>
+Wennemann,Tim <br  />
+</dd></dl>
+<p>refreshs plaback positions, starts grain scheduleing, sets gauss value, generates ADSR value according to current state <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of c_granular_synth_process object </td></tr>
-    <tr><td class="paramname">in</td><td>input </td></tr>
-    <tr><td class="paramname">out</td><td>output </td></tr>
-    <tr><td class="paramname">vector_size</td><td>vectoral size of </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">in</td><td>input pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">out</td><td>output pointer of <em>c_granular_synth_process</em> object <br  />
+ </td></tr>
+    <tr><td class="paramname">vector_size</td><td>size of the input vector <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>adsr must be in release state <br  />
+ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00080">80</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00092">92</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
-<a id="af99ecce451128b29c30bcc32803dbe52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af99ecce451128b29c30bcc32803dbe52">&#9670;&nbsp;</a></span>c_granular_synth_properties_update()</h2>
+<a id="a878c6a0073df67b10d63b5e819eaad74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878c6a0073df67b10d63b5e819eaad74">&#9670;&nbsp;</a></span>c_granular_synth_properties_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -342,13 +405,13 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>grain_size_ms</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>start_pos</em>, </td>
         </tr>
         <tr>
@@ -360,25 +423,25 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>midi_velo</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>midi_pitch</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>attack</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>decay</em>, </td>
         </tr>
         <tr>
@@ -390,14 +453,20 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">t_int&#160;</td>
           <td class="paramname"><em>release</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>gauss_q_factor</em>&#160;</td>
+          <td class="paramname"><em>gauss_q_factor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_int&#160;</td>
+          <td class="paramname"><em>spray_input</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -408,25 +477,42 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
 </div><div class="memdoc">
 
 <p>checks on current input states </p>
-<p>checks slider positions, MIDI input and ADSR state to update correspondent values <br> </p><dl class="params"><dt>Parameters</dt><dd>
+<dl class="section author"><dt>Author</dt><dd>Philipp, Adrian </dd>
+<dd>
+Wennemann,Tim <br  />
+</dd></dl>
+<p>checks slider positions, MIDI input and ADSR state to update correspondent values <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>input pointer of c_granular_synth_properties_update object <br> </b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">midi_velo</td><td><br>MIDI input velocity value, usable through virtual or external MIDI device <br> </b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">midi_pitch</td><td><br><br>MIDI input pitch/key value, usable through virtual or external MIDI device, also used for noteon detection <br> </b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">grain_size_ms</td><td><br><br><br>size of a grain in milliseconds, adjustable through slider <br> </b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">start_pos</td><td><br><br><br><br>position within the soundfile, adjustable through slider <br> </b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">time_stretch_factor</td><td><br><br><br><br><br>resizes sample length within a grain, adjustable through slider <br> </b></b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">attack</td><td><br><br><br><br><br><br>attack time in the range of 0 - 4000ms, adjustable through slider <br> </b></b></b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">decay</td><td><br><br><br><br><br><br><br>decay time in the range of 0 - 4000ms, adjustable through slider <br> </b></b></b></b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">sustain</td><td><br><br><br><br><br><br><br><br>sustain time in the range of 0 - 1, adjustable through slider <br> </b></b></b></b></b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">release</td><td><br><br><br><br><br><br><br><br><br>release time in the range of 0 - 10000ms, adjustable through slider <br> </b></b></b></b></b></b></b></b></b></b></td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">gauss_q_factor</td><td><br><br><br><br><br><br><br><br><br><br>envelope manipulation value in the range of 0.01 - 1, adjustable through slider <br> </b></b></b></b></b></b></b></b></b></b></b></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>input pointer of c_granular_synth_properties_update object <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">midi_velo</td><td>MIDI input velocity value, usable through virtual or external MIDI device, also used for noteon detection <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">midi_pitch</td><td>MIDI input pitch/key value, usable through virtual or external MIDI device<br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">grain_size_ms</td><td>size of a grain in milliseconds, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">start_pos</td><td>position within the soundfile, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time_stretch_factor</td><td>resizes sample length within a grain, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attack</td><td>attack time in the range of 0 - 4000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">decay</td><td>decay time in the range of 0 - 4000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sustain</td><td>sustain time in the range of 0 - 1, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">release</td><td>release time in the range of 0 - 10000ms, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gauss_q_factor</td><td>envelope manipulation value in the range of 0.01 - 1, adjustable through slider <br  />
+ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">spray_input</td><td>randomizes the start position of each grain, adjustable through slider <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
-<p></b></p>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00237">237</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00252">252</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>
@@ -446,15 +532,21 @@ Wennemann,Tim Audiocommunication Group, Technische Universität Berlin <br  />
       </table>
 </div><div class="memdoc">
 
-<p>sets number of grains sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br> </b></p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>sets number of grains </p>
+<dl class="section author"><dt>Author</dt><dd>Kretschmar, Nikita </dd>
+<dd>
+Philipp, Adrian <br  />
+</dd></dl>
+<p>sets number of grains according to <em>soundfile_length</em> and <em>grain_size_samples</em> <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_set_num_grains</em> object </td></tr>
+    <tr><td class="paramname">x</td><td>input pointer of <em>c_granular_synth_set_num_grains</em> object <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00142">142</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="c__granular__synth_8c_source.html#l00166">166</a> of file <a class="el" href="c__granular__synth_8c_source.html">c_granular_synth.c</a>.</p>
 
 </div>
 </div>

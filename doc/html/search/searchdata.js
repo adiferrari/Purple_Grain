@@ -1,12 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "acdefgimnoprstwx",
+  0: "acdefgimnopqrstwx",
   1: "cegpw",
   2: "cegp",
   3: "cegps",
-  4: "acdefgimnoprstx",
-  5: "o",
-  6: "rt"
+  4: "acdefgimnopqrstwx",
+  5: "r"
 };
 
 var indexSectionNames =
@@ -16,8 +15,7 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "defines",
-  6: "pages"
+  5: "pages"
 };
 
 var indexSectionLabels =
@@ -27,7 +25,6 @@ var indexSectionLabels =
   2: "Files",
   3: "Functions",
   4: "Variables",
-  5: "Macros",
-  6: "Pages"
+  5: "Pages"
 };
 

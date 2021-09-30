@@ -19,10 +19,6 @@
         </Subnodes>
        </Node>
        <Node>
-        <Name>Todo List</Name>
-        <Path>todo.html</Path>
-       </Node>
-       <Node>
         <Name>Data Structures</Name>
         <Path>annotated.html</Path>
         <Subnodes>
@@ -57,7 +53,7 @@
              <Node>
               <Name>current_start_pos</Name>
               <Path>structc__granular__synth.html</Path>
-              <Anchor>a593e2aa931a0a6f337ca502eea1af5ac</Anchor>
+              <Anchor>a2a2ae5a2d7f08558222953603627ff06</Anchor>
              </Node>
              <Node>
               <Name>gauss_q_factor</Name>
@@ -100,9 +96,14 @@
               <Anchor>a3536cd671fe04bd9e84cbdb501ecbe00</Anchor>
              </Node>
              <Node>
+              <Name>pitch_factor</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a5d91e370701d04209bc69e60a84ff402</Anchor>
+             </Node>
+             <Node>
               <Name>playback_cycle_end</Name>
               <Path>structc__granular__synth.html</Path>
-              <Anchor>a379cd827e410135cc6d31d17cee130a1</Anchor>
+              <Anchor>a7e532e2061fc13ce67758ee0524920c9</Anchor>
              </Node>
              <Node>
               <Name>playback_position</Name>
@@ -128,6 +129,21 @@
               <Name>soundfile_table</Name>
               <Path>structc__granular__synth.html</Path>
               <Anchor>ad78acae3cc48dab4d1e4ab118872ec27</Anchor>
+             </Node>
+             <Node>
+              <Name>spray_input</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a3f05e1654bb28ffe92d0c1b5ec3396b1</Anchor>
+             </Node>
+             <Node>
+              <Name>spray_true_offset</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a08fe6ec8d8447dbab42226cde74bf814</Anchor>
+             </Node>
+             <Node>
+              <Name>sprayed_start_pos</Name>
+              <Path>structc__granular__synth.html</Path>
+              <Anchor>a9a710b291c75c03960d6e790fe33ef05</Anchor>
              </Node>
              <Node>
               <Name>sr</Name>
@@ -157,47 +173,42 @@
              <Node>
               <Name>attack</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a9b07827e09a449d7d625093567f9b63e</Anchor>
+              <Anchor>a45b0cf896dd79b16b180428fd010d960</Anchor>
              </Node>
              <Node>
               <Name>attack_samples</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a75aab461d84714b0952a55ed586eb047</Anchor>
+              <Anchor>ae1c285d05cdf978f940ade97d5fd9ba8</Anchor>
              </Node>
              <Node>
               <Name>decay</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>ae6decb28291ea6014fd65a2ba5c7c57f</Anchor>
+              <Anchor>aaa0f6c6117d3b74d90f43736b2820de8</Anchor>
              </Node>
              <Node>
               <Name>decay_samples</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a30ec5b0e049d60ddf8cd1c908b0790f3</Anchor>
+              <Anchor>af8bfed7e60f92481f1bd8842f59aee17</Anchor>
              </Node>
              <Node>
-              <Name>duration</Name>
+              <Name>peak</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a32abfbe70e80a1c20d6a9ff4e82fbf6f</Anchor>
-             </Node>
-             <Node>
-              <Name>envelope_samples_table</Name>
-              <Path>structenvelope.html</Path>
-              <Anchor>abbb9d44b4d5c4c5f989270a01bba5c47</Anchor>
+              <Anchor>af58cdf289c9db30c99c90453632b346d</Anchor>
              </Node>
              <Node>
               <Name>release</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>ad39b6e45d776796f9a3329384d236c34</Anchor>
+              <Anchor>a59f3f35440dd9fd04b3063dcf4482c5e</Anchor>
              </Node>
              <Node>
               <Name>release_samples</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a8e5491047fb2b191ebf9dbb24859acda</Anchor>
+              <Anchor>a63b8d4763d52b647553bf2a22ee89f60</Anchor>
              </Node>
              <Node>
               <Name>sustain</Name>
               <Path>structenvelope.html</Path>
-              <Anchor>a76111f8cc917bab1a80fbd30893c05bc</Anchor>
+              <Anchor>aa10d3e71a1373857929796c382494afe</Anchor>
              </Node>
              <Node>
               <Name>x_obj</Name>
@@ -317,11 +328,6 @@
               <Anchor>a8bf991875ff7337fcc6e8058da547de6</Anchor>
              </Node>
              <Node>
-              <Name>envelopeTable</Name>
-              <Path>structpd__granular__synth__tilde.html</Path>
-              <Anchor>a580767361ca6d23f0dde257cce4f4f08</Anchor>
-             </Node>
-             <Node>
               <Name>f</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>a07a8b159fe23c3fec189fbe71e0920c8</Anchor>
@@ -334,7 +340,7 @@
              <Node>
               <Name>grain_size</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
-              <Anchor>a7541f4440303f6fb8a6b5c8b184dbd60</Anchor>
+              <Anchor>a62f55889465ff31e02f50697bf1433a7</Anchor>
              </Node>
              <Node>
               <Name>in_attack</Name>
@@ -354,12 +360,12 @@
              <Node>
               <Name>in_grain_size</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
-              <Anchor>a1d5d353d48121dbb96ba2fcb1ed3fba0</Anchor>
+              <Anchor>abafdf3c414759420728e8730e45bdf5e</Anchor>
              </Node>
              <Node>
               <Name>in_midi_pitch</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
-              <Anchor>ad0f944404dc59f1a42d3713d99335c42</Anchor>
+              <Anchor>a1e2060bd4d869dcfe477b9adf7e14eda</Anchor>
              </Node>
              <Node>
               <Name>in_midi_velo</Name>
@@ -370,6 +376,11 @@
               <Name>in_release</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>ab3bb9be8f4918b42a86b34dea5f74a16</Anchor>
+             </Node>
+             <Node>
+              <Name>in_spray</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>a275ca19a1bb7f04fd0d7bdc4c4af8850</Anchor>
              </Node>
              <Node>
               <Name>in_start_pos</Name>
@@ -402,6 +413,11 @@
               <Anchor>aad9fb0c87b0533a422bf8cce988bebea</Anchor>
              </Node>
              <Node>
+              <Name>pitch_factor</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>a6cef9588a88f74c0f17b5d4694a404fb</Anchor>
+             </Node>
+             <Node>
               <Name>release</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>a3bf42c53fbc6686ce84cffe630eb1d02</Anchor>
@@ -425,6 +441,11 @@
               <Name>soundfile_length_ms</Name>
               <Path>structpd__granular__synth__tilde.html</Path>
               <Anchor>aebb056d761c7f1d9860d3756f8f2783a</Anchor>
+             </Node>
+             <Node>
+              <Name>spray_input</Name>
+              <Path>structpd__granular__synth__tilde.html</Path>
+              <Anchor>a68d0cd58cc26f59c3fe84d2c0b6e33b1</Anchor>
              </Node>
              <Node>
               <Name>sr</Name>
@@ -525,7 +546,7 @@
              <Node>
               <Name>c_granular_synth_new</Name>
               <Path>c__granular__synth_8c.html</Path>
-              <Anchor>af1a16e5125d6512b3a38b85e9be75d6d</Anchor>
+              <Anchor>a97ade448d3c461937245056428a158fc</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_populate_grain_table</Name>
@@ -540,7 +561,7 @@
              <Node>
               <Name>c_granular_synth_properties_update</Name>
               <Path>c__granular__synth_8c.html</Path>
-              <Anchor>af99ecce451128b29c30bcc32803dbe52</Anchor>
+              <Anchor>a878c6a0073df67b10d63b5e819eaad74</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_set_num_grains</Name>
@@ -580,7 +601,7 @@
                <Node>
                 <Name>current_start_pos</Name>
                 <Path>structc__granular__synth.html</Path>
-                <Anchor>a593e2aa931a0a6f337ca502eea1af5ac</Anchor>
+                <Anchor>a2a2ae5a2d7f08558222953603627ff06</Anchor>
                </Node>
                <Node>
                 <Name>gauss_q_factor</Name>
@@ -623,9 +644,14 @@
                 <Anchor>a3536cd671fe04bd9e84cbdb501ecbe00</Anchor>
                </Node>
                <Node>
+                <Name>pitch_factor</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a5d91e370701d04209bc69e60a84ff402</Anchor>
+               </Node>
+               <Node>
                 <Name>playback_cycle_end</Name>
                 <Path>structc__granular__synth.html</Path>
-                <Anchor>a379cd827e410135cc6d31d17cee130a1</Anchor>
+                <Anchor>a7e532e2061fc13ce67758ee0524920c9</Anchor>
                </Node>
                <Node>
                 <Name>playback_position</Name>
@@ -651,6 +677,21 @@
                 <Name>soundfile_table</Name>
                 <Path>structc__granular__synth.html</Path>
                 <Anchor>ad78acae3cc48dab4d1e4ab118872ec27</Anchor>
+               </Node>
+               <Node>
+                <Name>spray_input</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a3f05e1654bb28ffe92d0c1b5ec3396b1</Anchor>
+               </Node>
+               <Node>
+                <Name>spray_true_offset</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a08fe6ec8d8447dbab42226cde74bf814</Anchor>
+               </Node>
+               <Node>
+                <Name>sprayed_start_pos</Name>
+                <Path>structc__granular__synth.html</Path>
+                <Anchor>a9a710b291c75c03960d6e790fe33ef05</Anchor>
                </Node>
                <Node>
                 <Name>sr</Name>
@@ -692,7 +733,7 @@
              <Node>
               <Name>c_granular_synth_new</Name>
               <Path>c__granular__synth_8h.html</Path>
-              <Anchor>af1a16e5125d6512b3a38b85e9be75d6d</Anchor>
+              <Anchor>a97ade448d3c461937245056428a158fc</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_populate_grain_table</Name>
@@ -707,7 +748,7 @@
              <Node>
               <Name>c_granular_synth_properties_update</Name>
               <Path>c__granular__synth_8h.html</Path>
-              <Anchor>a406ea44f161b03755e9579b5c99c1d0d</Anchor>
+              <Anchor>a878c6a0073df67b10d63b5e819eaad74</Anchor>
              </Node>
              <Node>
               <Name>c_granular_synth_reset_playback_position</Name>
@@ -783,47 +824,42 @@
                <Node>
                 <Name>attack</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a9b07827e09a449d7d625093567f9b63e</Anchor>
+                <Anchor>a45b0cf896dd79b16b180428fd010d960</Anchor>
                </Node>
                <Node>
                 <Name>attack_samples</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a75aab461d84714b0952a55ed586eb047</Anchor>
+                <Anchor>ae1c285d05cdf978f940ade97d5fd9ba8</Anchor>
                </Node>
                <Node>
                 <Name>decay</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>ae6decb28291ea6014fd65a2ba5c7c57f</Anchor>
+                <Anchor>aaa0f6c6117d3b74d90f43736b2820de8</Anchor>
                </Node>
                <Node>
                 <Name>decay_samples</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a30ec5b0e049d60ddf8cd1c908b0790f3</Anchor>
+                <Anchor>af8bfed7e60f92481f1bd8842f59aee17</Anchor>
                </Node>
                <Node>
-                <Name>duration</Name>
+                <Name>peak</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a32abfbe70e80a1c20d6a9ff4e82fbf6f</Anchor>
-               </Node>
-               <Node>
-                <Name>envelope_samples_table</Name>
-                <Path>structenvelope.html</Path>
-                <Anchor>abbb9d44b4d5c4c5f989270a01bba5c47</Anchor>
+                <Anchor>af58cdf289c9db30c99c90453632b346d</Anchor>
                </Node>
                <Node>
                 <Name>release</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>ad39b6e45d776796f9a3329384d236c34</Anchor>
+                <Anchor>a59f3f35440dd9fd04b3063dcf4482c5e</Anchor>
                </Node>
                <Node>
                 <Name>release_samples</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a8e5491047fb2b191ebf9dbb24859acda</Anchor>
+                <Anchor>a63b8d4763d52b647553bf2a22ee89f60</Anchor>
                </Node>
                <Node>
                 <Name>sustain</Name>
                 <Path>structenvelope.html</Path>
-                <Anchor>a76111f8cc917bab1a80fbd30893c05bc</Anchor>
+                <Anchor>aa10d3e71a1373857929796c382494afe</Anchor>
                </Node>
                <Node>
                 <Name>x_obj</Name>
@@ -916,11 +952,6 @@
             <Name>grain.c</Name>
             <Path>grain_8c.html</Path>
             <Subnodes>
-             <Node>
-              <Name>OVERLAP_DENSITY</Name>
-              <Path>grain_8c.html</Path>
-              <Anchor>a6df8a4f0caf7397fd15879daef804894</Anchor>
-             </Node>
              <Node>
               <Name>grain_free</Name>
               <Path>grain_8c.html</Path>
@@ -1044,6 +1075,11 @@
               <Anchor>adedfab0848a63809acd487441d157908</Anchor>
              </Node>
              <Node>
+              <Name>spray_dependant_playback_nudge</Name>
+              <Path>purple__utils_8c.html</Path>
+              <Anchor>a6a5f0b499868877a5f59c0b0f86ba1b7</Anchor>
+             </Node>
+             <Node>
               <Name>switch_float_values</Name>
               <Path>purple__utils_8c.html</Path>
               <Anchor>aa70b6fc905b978c25b15eaa49ddda958</Anchor>
@@ -1070,6 +1106,11 @@
               <Anchor>adedfab0848a63809acd487441d157908</Anchor>
              </Node>
              <Node>
+              <Name>spray_dependant_playback_nudge</Name>
+              <Path>purple__utils_8h.html</Path>
+              <Anchor>a6a5f0b499868877a5f59c0b0f86ba1b7</Anchor>
+             </Node>
+             <Node>
               <Name>switch_float_values</Name>
               <Path>purple__utils_8h.html</Path>
               <Anchor>aa70b6fc905b978c25b15eaa49ddda958</Anchor>
@@ -1089,10 +1130,6 @@
            <Node>
             <Name>Functions</Name>
             <Path>globals_func.html</Path>
-           </Node>
-           <Node>
-            <Name>Macros</Name>
-            <Path>globals_defs.html</Path>
            </Node>
           </Subnodes>
          </Node>

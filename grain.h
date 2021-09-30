@@ -6,6 +6,8 @@
  * @author Wennemann,Tim <br>
  * Audiocommunication Group, Technische Universität Berlin <br>
  * @brief header file to @a grain.c file
+ * @version 1.0
+ * @date 2021-09-27
  */
 
 #ifndef grain_h

@@ -18,7 +18,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structgrain}{grain}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em pure data struct of the {\itshape grain} object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,9 +44,16 @@ Philipp, Adrian
 
 Strobl, Micha 
 
-Wennemann,Tim Audiocommunication Group, Technische Universität Berlin ~\newline
+Wennemann,Tim ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
  
 \end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/09-\/27 
+\end{DoxyDate}
 
 
 Definition in file \mbox{\hyperlink{grain_8h_source}{grain.\+h}}.
@@ -64,14 +71,22 @@ Definition in file \mbox{\hyperlink{grain_8h_source}{grain.\+h}}.
 
 frees grain 
 
-frees grain 
+frees grain, necessary reset for further instances of grain genration ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of grain\+\_\+fre object \\
+{\em x} & input pointer of {\itshape grain\+\_\+free} object\\
+\hline
+\end{DoxyParams}
+frees grain ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em x} & input pointer of grain object ~\newline
+ \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{grain_8c_source_l00187}{187}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+Definition at line \mbox{\hyperlink{grain_8c_source_l00142}{142}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 
 \mbox{\Hypertarget{grain_8h_add05c8e2a37126d9bd6f745368b130ed}\label{grain_8h_add05c8e2a37126d9bd6f745368b130ed}} 
 \index{grain.h@{grain.h}!grain\_new@{grain\_new}}
@@ -83,15 +98,27 @@ Definition at line \mbox{\hyperlink{grain_8c_source_l00187}{187}} of file \mbox{
 
 generates new grain 
 
-generates new grain depending on {\itshape grain\+\_\+size\+\_\+samples}, {\itshape soundfile\+\_\+size} and {\itshape grain\+\_\+index} 
+generates new grain with {\itshape grain\+\_\+index} according to set {\itshape grain\+\_\+size\+\_\+samples}, {\itshape start\+\_\+pos}, {\itshape time\+\_\+stretch\+\_\+factor} based on {\itshape soundfile\+\_\+size} \begin{DoxyNote}{Note}
+include order forced this method to be included in \mbox{\hyperlink{c__granular__synth_8h}{c\+\_\+granular\+\_\+synth.\+h}} ~\newline
+
+\end{DoxyNote}
+generates new grain with {\itshape grain\+\_\+index} according to set {\itshape grain\+\_\+size\+\_\+samples}, {\itshape start\+\_\+pos}, {\itshape time\+\_\+stretch\+\_\+factor} based on {\itshape soundfile\+\_\+size} ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em grain\+\_\+size\+\_\+samples} & size of samples contained in a grain \\
+{\em grain\+\_\+size\+\_\+samples} & size of a grain as amount of contained samples ~\newline
+ \\
 \hline
-{\em soundfile\+\_\+size} & size of the soundfile which can be read in via inlet \\
+{\em soundfile\+\_\+size} & size of the soundfile in samples ~\newline
+ \\
 \hline
-{\em grain\+\_\+index} & corresponding index of a grain \\
+{\em start\+\_\+pos} & starting position within the soundfile, adjustable through slider ~\newline
+ \\
 \hline
-{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider \\
+{\em grain\+\_\+index} & corresponding index of a grain ~\newline
+ \\
+\hline
+{\em time\+\_\+stretch\+\_\+factor} & resizes sample length within a grain, adjustable through slider ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -99,5 +126,5 @@ grain
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{grain_8c_source_l00046}{46}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
+Definition at line \mbox{\hyperlink{grain_8c_source_l00031}{31}} of file \mbox{\hyperlink{grain_8c_source}{grain.\+c}}.
 

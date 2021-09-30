@@ -2,50 +2,73 @@
 \label{structgrain}\index{grain@{grain}}
 
 
+pure data struct of the {\itshape grain} object  
+
+
+
+
+{\ttfamily \#include $<$grain.\+h$>$}
+
+
+
 Collaboration diagram for grain\+:
 % FIG 0
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}\label{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}} 
-struct \mbox{\hyperlink{structgrain}{grain}} $\ast$ {\bfseries next\+\_\+grain}
-\item 
+struct \mbox{\hyperlink{structgrain}{grain}} $\ast$ \mbox{\hyperlink{structgrain_afbf47a53c6afd71b938b4bb2aa4a8143}{next\+\_\+grain}}
+\begin{DoxyCompactList}\small\item\em next grain according to the current one, passed back and forth between instances of {\itshape granular\+\_\+synth} and every instantiated grain ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_aee20eeacfe035db8b13bfe787af5bb6f}\label{structgrain_aee20eeacfe035db8b13bfe787af5bb6f}} 
-struct \mbox{\hyperlink{structgrain}{grain}} $\ast$ {\bfseries previous\+\_\+grain}
-\item 
+struct \mbox{\hyperlink{structgrain}{grain}} $\ast$ \mbox{\hyperlink{structgrain_aee20eeacfe035db8b13bfe787af5bb6f}{previous\+\_\+grain}}
+\begin{DoxyCompactList}\small\item\em previous grain according to the current one, passed back and forth between instances of {\itshape granular\+\_\+synth} and every instantiated grain ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}\label{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}} 
-t\+\_\+int {\bfseries grain\+\_\+size\+\_\+samples}
-\item 
+t\+\_\+int \mbox{\hyperlink{structgrain_ac3f579526e827c8e44bbe1e725ec9dc4}{grain\+\_\+size\+\_\+samples}}
+\begin{DoxyCompactList}\small\item\em size of the grain in samples ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_aa279b25631b91e8d1dee9edd79453ff4}\label{structgrain_aa279b25631b91e8d1dee9edd79453ff4}} 
-t\+\_\+int {\bfseries grain\+\_\+index}
-\item 
+t\+\_\+int \mbox{\hyperlink{structgrain_aa279b25631b91e8d1dee9edd79453ff4}{grain\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em index of the current grain ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a77f7d08ef6d5b0813156e9d47badc914}\label{structgrain_a77f7d08ef6d5b0813156e9d47badc914}} 
-t\+\_\+int {\bfseries internal\+\_\+step\+\_\+count}
-\item 
+t\+\_\+int \mbox{\hyperlink{structgrain_a77f7d08ef6d5b0813156e9d47badc914}{internal\+\_\+step\+\_\+count}}
+\begin{DoxyCompactList}\small\item\em count of steps ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a1f3a346626963438c6b4f934cf2c9011}\label{structgrain_a1f3a346626963438c6b4f934cf2c9011}} 
-t\+\_\+float {\bfseries start}
-\item 
+t\+\_\+float \mbox{\hyperlink{structgrain_a1f3a346626963438c6b4f934cf2c9011}{start}}
+\begin{DoxyCompactList}\small\item\em starting point ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}\label{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}} 
-t\+\_\+float {\bfseries end}
-\item 
+t\+\_\+float \mbox{\hyperlink{structgrain_a971aaec2d8e0b45df1e364c8e16dda57}{end}}
+\begin{DoxyCompactList}\small\item\em ending point ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a6909b3ca1a15b560f9af844e8e965ead}\label{structgrain_a6909b3ca1a15b560f9af844e8e965ead}} 
-t\+\_\+float {\bfseries time\+\_\+stretch\+\_\+factor}
-\item 
+t\+\_\+float \mbox{\hyperlink{structgrain_a6909b3ca1a15b560f9af844e8e965ead}{time\+\_\+stretch\+\_\+factor}}
+\begin{DoxyCompactList}\small\item\em resizes sample length within a grain, for negative values read samples in backwards direction, adjustable through slider ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_afe77b379af00742a9fb66495ab2accbe}\label{structgrain_afe77b379af00742a9fb66495ab2accbe}} 
-t\+\_\+float {\bfseries current\+\_\+sample\+\_\+pos}
-\item 
+t\+\_\+float \mbox{\hyperlink{structgrain_afe77b379af00742a9fb66495ab2accbe}{current\+\_\+sample\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em position of the current sample ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a915424dcb7cddd180aef2d61da20f693}\label{structgrain_a915424dcb7cddd180aef2d61da20f693}} 
-t\+\_\+float {\bfseries next\+\_\+sample\+\_\+pos}
-\item 
+t\+\_\+float \mbox{\hyperlink{structgrain_a915424dcb7cddd180aef2d61da20f693}{next\+\_\+sample\+\_\+pos}}
+\begin{DoxyCompactList}\small\item\em position of the next sample according to the current one ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structgrain_a55cdc993050e6e886756b0e338dfb85d}\label{structgrain_a55cdc993050e6e886756b0e338dfb85d}} 
-bool {\bfseries grain\+\_\+active}
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{structgrain_a55cdc993050e6e886756b0e338dfb85d}{grain\+\_\+active}}
+\begin{DoxyCompactList}\small\item\em current state of the grain, inactive or active ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
+pure data struct of the {\itshape grain} object 
 
+pure data struct of the {\itshape grain} object, defines all necessary variables for grain management~\newline
+ 
 
-Definition at line \mbox{\hyperlink{grain_8h_source_l00027}{27}} of file \mbox{\hyperlink{grain_8h_source}{grain.\+h}}.
+Definition at line \mbox{\hyperlink{grain_8h_source_l00032}{32}} of file \mbox{\hyperlink{grain_8h_source}{grain.\+h}}.
 
 
 

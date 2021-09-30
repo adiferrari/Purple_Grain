@@ -19,9 +19,9 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structenvelope}{envelope}}
-\item 
+\begin{DoxyCompactList}\small\item\em pure data struct of the {\itshape envelope} object \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwindow}{window}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em pure data struct of the {\itshape window} object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -67,9 +67,16 @@ Philipp, Adrian
 
 Strobl, Micha 
 
-Wennemann,Tim Audiocommunication Group, Technische Universität Berlin ~\newline
+Wennemann,Tim ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
  
 \end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/09-\/27 
+\end{DoxyDate}
 
 
 Definition in file \mbox{\hyperlink{envelope_8h_source}{envelope.\+h}}.
@@ -87,14 +94,21 @@ Definition in file \mbox{\hyperlink{envelope_8h_source}{envelope.\+h}}.
 
 frees envelope 
 
-
+frees envelope, necessary reset for further instances of envelope generation ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em x} & input pointer of {\itshape envelope\+\_\+free} object \\
+{\em x} & input pointer of {\itshape envelope\+\_\+free} object\\
+\hline
+\end{DoxyParams}
+frees envelope ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em x} & input pointer of {\itshape envelope} object \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00142}{142}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00143}{143}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 
 \mbox{\Hypertarget{envelope_8h_a0854138c64859a1f4079feb9b9194786}\label{envelope_8h_a0854138c64859a1f4079feb9b9194786}} 
 \index{envelope.h@{envelope.h}!envelope\_new@{envelope\_new}}
@@ -106,24 +120,26 @@ Definition at line \mbox{\hyperlink{envelope_8c_source_l00142}{142}} of file \mb
 
 generates new A\+D\+SR envelope 
 
-
+generates new A\+D\+SR envelope according to its four components ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}\\
+{\em attack} & attack time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \\
 \hline
-{\em decay} & {\bfseries{decay time in the range of 0 -\/ 4000ms, adjustable through slider {\bfseries{ }}}}\\
+{\em decay} & decay time in the range of 0 -\/ 4000ms, adjustable through slider ~\newline
+ \\
 \hline
-{\em sustain} & {\bfseries{{\bfseries{sustain time in the range of 0 -\/ 1, adjustable through slider {\bfseries{ }}}}}}\\
+{\em sustain} & sustain time in the range of 0 -\/ 1, adjustable through slider ~\newline
+ \\
 \hline
-{\em release} & {\bfseries{{\bfseries{{\bfseries{release time in the range of 0 -\/ 10000ms, adjustable through slider {\bfseries{ }}}}}}}}\\
+{\em release} & release time in the range of 0 -\/ 10000ms, adjustable through slider ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\bfseries{{\bfseries{{\bfseries{{\bfseries{ envelope$\ast$ }}}}}}}}
+envelope$\ast$ 
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-muss bei Note on wieder raus -\/$>$ start mit silent
-\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{envelope_8c_source_l00094}{94}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
+Definition at line \mbox{\hyperlink{envelope_8c_source_l00099}{99}} of file \mbox{\hyperlink{envelope_8c_source}{envelope.\+c}}.
 

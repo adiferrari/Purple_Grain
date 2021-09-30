@@ -11,17 +11,15 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{purple__utils_8h_adedfab0848a63809acd487441d157908}{get\+\_\+samples\+\_\+from\+\_\+ms}} (int ms, float sr)
-\begin{DoxyCompactList}\small\item\em calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates number of samples \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}{get\+\_\+ms\+\_\+from\+\_\+samples}} (int num\+\_\+samples, float sr)
-\begin{DoxyCompactList}\small\item\em calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates sample time in ms \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{purple__utils_8h_a228b2ef6097d375daeea9358a534ce54}{get\+\_\+interpolated\+\_\+sample\+\_\+value}} (float sample\+\_\+left, float sample\+\_\+right, float frac)
-\begin{DoxyCompactList}\small\item\em calculates interpolated sample value ~\newline
- calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
- \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em calculates interpolated sample value \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}{switch\+\_\+float\+\_\+values}} (float $\ast$a, float $\ast$b)
-\begin{DoxyCompactList}\small\item\em swaps to values swaps to values of float type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em swaps to values \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{purple__utils_8h_a6a5f0b499868877a5f59c0b0f86ba1b7}{spray\+\_\+dependant\+\_\+playback\+\_\+nudge}} (int spray\+\_\+input)
+\begin{DoxyCompactList}\small\item\em randomizes spray input value \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
@@ -34,14 +32,15 @@ Philipp, Adrian
 
 Strobl, Micha 
 
-Wennemann,Tim Audiocommunication Group, Technische Universität Berlin ~\newline
+Wennemann,Tim ~\newline
+ Audiocommunication Group, Technische Universität Berlin ~\newline
  
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+1 
+1.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-2021-\/09-\/28
+2021-\/09-\/27
 \end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
 Copyright (c) 2021 
@@ -61,25 +60,28 @@ Definition in file \mbox{\hyperlink{purple__utils_8h_source}{purple\+\_\+utils.\
 
 
 
-calculates interpolated sample value ~\newline
- calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
+calculates interpolated sample value 
+
+calculates interpolated sample value between {\itshape sample\+\_\+left} and {\itshape sample\+\_\+right} ~\newline
  
-
-
 \begin{DoxyParams}{Parameters}
-{\em sample\+\_\+left} & value at the beginning of sample \\
+{\em sample\+\_\+left} & value at the beginning of sample ~\newline
+ \\
 \hline
-{\em sample\+\_\+right} & value at the end of sample \\
+{\em sample\+\_\+right} & value at the end of sample ~\newline
+ \\
 \hline
-{\em frac} & position after decimal point \\
+{\em frac} & position after decimal point ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float interpolated sample value 
+float interpolated sample value ~\newline
+ 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00063}{63}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00064}{64}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
 
 \mbox{\Hypertarget{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}\label{purple__utils_8h_a4f939b5cdf750d42da571e97fdd1510f}} 
 \index{purple\_utils.h@{purple\_utils.h}!get\_ms\_from\_samples@{get\_ms\_from\_samples}}
@@ -89,14 +91,16 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00063}{63}} of file
 
 
 
-calculates sample time in ms from {\itshape num\+\_\+samples} and {\itshape sr} ~\newline
+calculates sample time in ms 
+
+calculates sample time from {\itshape num\+\_\+samples} according to defined {\itshape sr} ~\newline
  
-
-
 \begin{DoxyParams}{Parameters}
-{\em num\+\_\+samples} & number of samples \\
+{\em num\+\_\+samples} & number of samples ~\newline
+ \\
 \hline
-{\em sr} & defined samplerate \\
+{\em sr} & defined samplerate ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -104,7 +108,7 @@ float sample time
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00045}{45}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00046}{46}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
 
 \mbox{\Hypertarget{purple__utils_8h_adedfab0848a63809acd487441d157908}\label{purple__utils_8h_adedfab0848a63809acd487441d157908}} 
 \index{purple\_utils.h@{purple\_utils.h}!get\_samples\_from\_ms@{get\_samples\_from\_ms}}
@@ -114,22 +118,48 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00045}{45}} of file
 
 
 
-calculates number of samples from {\itshape ms} and {\itshape sr} ~\newline
+calculates number of samples 
+
+calculates number of samples from {\itshape ms} according to defined {\itshape sr} ~\newline
  
-
-
 \begin{DoxyParams}{Parameters}
-{\em ms} & sample time in ms \\
+{\em ms} & sample time in ms ~\newline
+ \\
 \hline
-{\em sr} & defined sample rate \\
+{\em sr} & defined sample rate ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-int number of samples 
+int number of samples ~\newline
+ 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00028}{28}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00029}{29}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{purple__utils_8h_a6a5f0b499868877a5f59c0b0f86ba1b7}\label{purple__utils_8h_a6a5f0b499868877a5f59c0b0f86ba1b7}} 
+\index{purple\_utils.h@{purple\_utils.h}!spray\_dependant\_playback\_nudge@{spray\_dependant\_playback\_nudge}}
+\index{spray\_dependant\_playback\_nudge@{spray\_dependant\_playback\_nudge}!purple\_utils.h@{purple\_utils.h}}
+\doxyparagraph{\texorpdfstring{spray\_dependant\_playback\_nudge()}{spray\_dependant\_playback\_nudge()}}
+{\footnotesize\ttfamily int spray\+\_\+dependant\+\_\+playback\+\_\+nudge (\begin{DoxyParamCaption}\item[{int}]{spray\+\_\+input }\end{DoxyParamCaption})}
+
+
+
+randomizes spray input value 
+
+randomizes spray input value for randomized start position of each grain ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em spray\+\_\+input} & spray input value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int randomized value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00089}{89}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
 
 \mbox{\Hypertarget{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}\label{purple__utils_8h_aa70b6fc905b978c25b15eaa49ddda958}} 
 \index{purple\_utils.h@{purple\_utils.h}!switch\_float\_values@{switch\_float\_values}}
@@ -139,16 +169,19 @@ Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00028}{28}} of file
 
 
 
-swaps to values swaps to values of float type 
+swaps to values 
 
-
+swaps to values {\itshape a} with {\itshape b} using a temporary third pointer ~\newline
+ 
 \begin{DoxyParams}{Parameters}
-{\em a} & first value to swapped with second \\
+{\em a} & first value to swapped with second ~\newline
+ \\
 \hline
-{\em b} & second value to be swappend with first \\
+{\em b} & second value to be swappend with first ~\newline
+ \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00075}{75}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
+Definition at line \mbox{\hyperlink{purple__utils_8c_source_l00076}{76}} of file \mbox{\hyperlink{purple__utils_8c_source}{purple\+\_\+utils.\+c}}.
 
