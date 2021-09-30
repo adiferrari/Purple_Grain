@@ -1,4 +1,4 @@
-#N canvas 209 175 1367 810 12;
+#N canvas 750 386 1367 810 12;
 #X declare -stdpath soundfiler;
 #X obj 374 122 soundfiler;
 #X obj 18 502 declare -stdpath soundfiler;
@@ -31,14 +31,14 @@
 #X obj 172 282 hsl 195 15 0 127 0 0 empty empty StartPosition -2 -8
 0 10 -262144 -1 -1 0 1;
 #X obj 492 166 hsl 128 15 0 300 0 0 empty empty GrainSize(ms) -2 -8
-0 10 -262144 -1 -1 4200 1;
+0 10 -262144 -1 -1 0 1;
 #X msg 342 316 s sample.length;
 #X obj 700 153 hsl 128 15 -2 4 0 0 empty empty Playback_Speed_Factor
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 697 173 5 0 0 0 - - -;
 #X floatatom 548 249 5 0 0 0 - - -;
 #X obj 551 225 hsl 128 15 0.001 1 0 0 empty empty Gauss_Q_Factor -2
--8 0 10 -262144 -1 -1 9400 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 719 244 hsl 128 15 0 75 0 0 empty empty Spray_(ms) -2 -8 0 10
 -262144 -1 -1 0 1;
 #X floatatom 716 265 5 0 0 0 - - -;
@@ -170,7 +170,7 @@ ctlin object.;
 #X obj 26 168 *;
 #X floatatom 26 77 5 0 0 0 - - -;
 #X obj 120 85 inlet;
-#X text 86 42;
+#X text 86 42 comment;
 #X text 107 211 This object shows the cc-number of the midi-knob you
 are currently turning. Rename the object which gives the inlet to this
 subpatch with "ctlin cc-number" to map it on preferd midi-knob.;
@@ -341,9 +341,9 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X restore 1012 431 graph;
 #X obj 96 153 ctlin 3;
 #X obj 912 442 vsl 15 120 1 8 0 0 empty empty Master_Vol 0 -9 0 10
--262144 -1 -1 8900 1;
+-262144 -1 -1 0 1;
 #X obj 1100 138 vsl 15 128 0 12550 0 0 empty empty LP 0 -9 0 10 -262144
--1 -1 8976 1;
+-1 -1 0 1;
 #N canvas 642 207 450 300 LowPass 0;
 #X obj 27 242 outlet;
 #X obj 136 144 ctlin;
@@ -380,17 +380,7 @@ preferd midi-knob. Get the cc-number from the object below.;
 #X text 82 12 Load Audio To load your own audio file copy the path
 including filename into the read-object. Then klick on the load bang
 button and restart the PD DSP.;
-#X text 17 712 3 Grain size: Grain size controls the size of a single
-grain in milliseconds.;
-#X text 467 573 Gauss Q Every Grain has an envelope in shape of a Gaussian
-function. Choose the width of the Gaussian function on the Grain with
-this slider;
 #X text 468 558 4 Effects:;
-#X text 16 555 1 Note in: It is recommended to use a MIDI Keyboard.
-If you choose to do not however enter a velocity (vel) and key_pitch
-with the respective numberbox to play a key. Every key_pitch value
-represents one of the midi-keyboard keys. key_pitch = 48 is the note
-c3 and plays the grain at original speed.;
 #X text 17 667 2 Start Position: Choose the grains start position within
 the loaded sample.;
 #X text 1136 158 !!!!!!!!!! If the Velocity vel > 0 and you still can't
@@ -415,6 +405,17 @@ milliseconds.;
 position for each grain. The values sets the maximum range of the randomised
 start position offset in milliseconds.;
 #X text 17 533 Instructions:;
+#X text 16 555 1 Note in: It is recommended to use a MIDI Keyboard.
+If you choose to do not however enter a velocity (vel) and key_pitch
+value with the respective numberbox below the notein object to play
+a key. Every key_pitch value represents one of the midi-keyboard keys.
+key_pitch = 48 is the note c3 and plays the grain at original speed.
+;
+#X text 17 712 3 Grain size: Grain size controls the size of a single
+grain in milliseconds.;
+#X text 467 573 Gauss Q Every Grain has an envelope in shape of a Gaussian
+function. Choose the width of the Gaussian function on the Grain with
+this slider.;
 #X connect 0 0 2 0;
 #X connect 2 0 22 0;
 #X connect 2 0 36 1;
